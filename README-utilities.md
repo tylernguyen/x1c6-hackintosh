@@ -1,0 +1,7 @@
+Clover Configurator
+PlistEdit Pro
+MaciASL
+IORegistryExplorer
+DarwinDumper
+FixEDID
+KextBeast

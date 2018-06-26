@@ -1,0 +1,9 @@
+FakeSMC
+VoodooPS2Controller
+AppleALC
+USBInjectAll
+Lilu
+IntelGraphicsFixup
+IntelMausiEthernet
+BrcmFirmwareRepo
+BrcmPatchRAM2
