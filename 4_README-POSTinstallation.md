@@ -12,6 +12,7 @@
             BrcmPatchRAM2 - along with BrcmFirmwareRepo, enables Bluetooth.  
             FakePCIID  
             FAKEPCID_Broadcom_WiFi - along with FakePCIID, enables WiFi.  
+            ACPIBatteryManager - along with DSDT patching, enable battery status
 4. Rebuild the kextcache with "sudo kextcache -i /"   
 5. Configure system to enable iMessage, follow this [Guide](https://www.tonymacx86.com/threads/an-idiots-guide-to-imessage.196827/). Make sure to pick system definition MacBookPro 13,1 as it supports HWP for better power management. 
 6. Reboot and proceed to 5_README-ACPIpatching.md  
