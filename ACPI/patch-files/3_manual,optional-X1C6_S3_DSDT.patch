@@ -1,0 +1,243 @@
+--- dsdt.dsl	2018-03-03 14:47:12.279105691 +0100
++++ dsdt.dsl	2018-03-03 14:26:30.606427931 +0100
+@@ -18,9 +18,8 @@
+  *     Compiler ID      "INTL"
+  *     Compiler Version 0x20160527 (538314023)
+  */
+-DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000000)
++DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
+ {
+-    External (_GPE.TBNF, MethodObj)    // 0 Arguments
+     External (_PR_.BGIA, UnknownObj)
+     External (_PR_.BGMA, UnknownObj)
+     External (_PR_.BGMS, UnknownObj)
+@@ -40,19 +39,15 @@
+     External (_PR_.PDTS, UnknownObj)
+     External (_PR_.PKGA, UnknownObj)
+     External (_PR_.POWS, UnknownObj)
+-    External (_PR_.PR00, DeviceObj)
+     External (_PR_.PR00.LPSS, PkgObj)
+     External (_PR_.PR00.TPSS, PkgObj)
+     External (_PR_.TRPD, UnknownObj)
+     External (_PR_.TRPF, UnknownObj)
+-    External (_SB_.GGIV, MethodObj)    // 1 Arguments
+-    External (_SB_.GGOV, MethodObj)    // 1 Arguments
+     External (_SB_.IETM, DeviceObj)
+     External (_SB_.IETM.DPTE, UnknownObj)
+     External (_SB_.PCI0.B0D4.NPCC, PkgObj)
+     External (_SB_.PCI0.CTCD, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.CTCN, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.GFX0, DeviceObj)
+     External (_SB_.PCI0.GFX0.AINT, MethodObj)    // 2 Arguments
+     External (_SB_.PCI0.GFX0.ALSI, UnknownObj)
+     External (_SB_.PCI0.GFX0.CBLV, UnknownObj)
+@@ -71,109 +66,81 @@
+     External (_SB_.PCI0.HDAS.PS3X, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.HIDW, MethodObj)    // 4 Arguments
+     External (_SB_.PCI0.HIWC, MethodObj)    // 1 Arguments
+-    External (_SB_.PCI0.ISP0, DeviceObj)
+-    External (_SB_.PCI0.LPCB.EC__.HKEY.DYTC, MethodObj)    // 1 Arguments
+     External (_SB_.PCI0.LPCB.H_EC.XDAT, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.PAUD.PUAM, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.PEG0, DeviceObj)
+-    External (_SB_.PCI0.PEG0.PEGP, DeviceObj)
+     External (_SB_.PCI0.PEG0.PG00.PEGP, DeviceObj)
+-    External (_SB_.PCI0.PEG1, DeviceObj)
+     External (_SB_.PCI0.PEG1.PG01.PEGP, DeviceObj)
+-    External (_SB_.PCI0.PEG2, DeviceObj)
+     External (_SB_.PCI0.PEG2.PG02.PEGP, DeviceObj)
+     External (_SB_.PCI0.PTDP, UnknownObj)
+     External (_SB_.PCI0.RP01.PON_, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.RP01.PXSX, DeviceObj)
+-    External (_SB_.PCI0.RP01.PXSX.WGST, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.RP01.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP02.PON_, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.RP02.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP02.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP02.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP03.PON_, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.RP03.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP03.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP03.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP04.PON_, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.RP04.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP04.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP04.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP05.PON_, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP05.PWRG, UnknownObj)
+-    External (_SB_.PCI0.RP05.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP05.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP05.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP05.RSTG, UnknownObj)
+     External (_SB_.PCI0.RP05.SCLK, UnknownObj)
+     External (_SB_.PCI0.RP06.PON_, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.RP06.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP06.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP06.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP07.PON_, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.RP07.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP07.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP07.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP08.PON_, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.RP08.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP08.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP08.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP09.PEGP.NVST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP09.PON_, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP09.PWRG, UnknownObj)
+-    External (_SB_.PCI0.RP09.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP09.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP09.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP09.RSTG, UnknownObj)
+     External (_SB_.PCI0.RP09.SCLK, UnknownObj)
+     External (_SB_.PCI0.RP10.PON_, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.RP10.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP10.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP10.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP11.PON_, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.RP11.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP11.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP11.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP12.PON_, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.RP12.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP12.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP12.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP13.PON_, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP13.PWRG, UnknownObj)
+-    External (_SB_.PCI0.RP13.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP13.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP13.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP13.RSTG, UnknownObj)
+     External (_SB_.PCI0.RP13.SCLK, UnknownObj)
+     External (_SB_.PCI0.RP14.PON_, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.RP14.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP14.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP14.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP15.PON_, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.RP15.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP15.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP15.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP16.PON_, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.RP16.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP16.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP16.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP17.PON_, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP17.PWRG, UnknownObj)
+-    External (_SB_.PCI0.RP17.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP17.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP17.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP17.RSTG, UnknownObj)
+     External (_SB_.PCI0.RP17.SCLK, UnknownObj)
+     External (_SB_.PCI0.RP18.PON_, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.RP18.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP18.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP18.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP19.PON_, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.RP19.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP19.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP19.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP20.PON_, MethodObj)    // 0 Arguments
+-    External (_SB_.PCI0.RP20.PXSX, DeviceObj)
+     External (_SB_.PCI0.RP20.PXSX.WGST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.RP20.PXSX.WIST, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.SAT0.NVM1.VLPM, UnknownObj)
+@@ -192,20 +159,15 @@
+     External (_SB_.PCI0.XHC_.RHUB.PS0X, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.XHC_.RHUB.PS2X, MethodObj)    // 0 Arguments
+     External (_SB_.PCI0.XHC_.RHUB.PS3X, MethodObj)    // 0 Arguments
+-    External (_SB_.SGOV, MethodObj)    // 2 Arguments
+-    External (_SB_.TBFP, MethodObj)    // 1 Arguments
+     External (_SB_.TPM_.PTS_, MethodObj)    // 1 Arguments
+     External (_SB_.UBTC.NTFY, MethodObj)    // 0 Arguments
+     External (_TZ_.ETMD, IntObj)
+     External (_TZ_.TZ00, DeviceObj)
+     External (_TZ_.TZ01, DeviceObj)
+-    External (ADBG, MethodObj)    // 1 Arguments
+     External (ALSE, UnknownObj)
+-    External (BNUM, UnknownObj)
+     External (BRTL, UnknownObj)
+     External (CFGD, UnknownObj)
+     External (DIDX, UnknownObj)
+-    External (DX2H, MethodObj)    // 2 Arguments
+     External (GSMI, UnknownObj)
+     External (IGDS, UnknownObj)
+     External (LHIH, UnknownObj)
+@@ -215,29 +177,6 @@
+     External (M32L, UnknownObj)
+     External (M64B, UnknownObj)
+     External (M64L, UnknownObj)
+-    External (MBGS, MethodObj)    // 1 Arguments
+-    External (MMRP, MethodObj)    // 1 Arguments
+-    External (MMTB, MethodObj)    // 1 Arguments
+-    External (ODV0, IntObj)
+-    External (ODV1, IntObj)
+-    External (ODV2, IntObj)
+-    External (ODV3, IntObj)
+-    External (ODV4, IntObj)
+-    External (ODV5, IntObj)
+-    External (ODV6, IntObj)
+-    External (ODV7, IntObj)
+-    External (ODV8, IntObj)
+-    External (ODV9, IntObj)
+-    External (ODVA, IntObj)
+-    External (ODVB, IntObj)
+-    External (ODVC, IntObj)
+-    External (ODVD, IntObj)
+-    External (ODVE, IntObj)
+-    External (ODVF, IntObj)
+-    External (ODVG, IntObj)
+-    External (ODVH, IntObj)
+-    External (ODVI, IntObj)
+-    External (ODVJ, IntObj)
+     External (PC00, IntObj)
+     External (PC01, UnknownObj)
+     External (PC02, UnknownObj)
+@@ -256,9 +195,6 @@
+     External (PC15, UnknownObj)
+     External (PTTB, UnknownObj)
+     External (SGMD, UnknownObj)
+-    External (STDV, IntObj)
+-    External (TBTD, MethodObj)    // 1 Arguments
+-    External (TBTF, MethodObj)    // 1 Arguments
+ 
+     Name (MBUF, Buffer (0x4000){})
+     OperationRegion (MDBR, SystemMemory, 0xAB52C018, 0x00004008)
+@@ -415,9 +351,7 @@
+     Name (SS1, 0x00)
+     Name (SS2, 0x00)
+     Name (SS3, One)
+-    One
+     Name (SS4, One)
+-    One
+     OperationRegion (GNVS, SystemMemory, 0xAB54E000, 0x0767)
+     Field (GNVS, AnyAcc, Lock, Preserve)
+     {
+@@ -13824,8 +13758,7 @@
+                     If ((DerefOf (Arg0 [0x00]) == 0x01))
+                     {
+                         ADBG (Concatenate ("POFF GPIO=", ToHexString (DerefOf (Arg0 [0x02]))))
+-                        \_SB.SGOV (DerefOf (Arg0 [0x02]), (DerefOf (Arg0 [0x03]) ^ 
+-                            0x01))
++                        \_SB.SGOV (DerefOf (Arg0 [0x02]), (DerefOf (Arg0 [0x03]) ^ 0x01))
+                     }
+ 
+                     If ((DerefOf (Arg0 [0x00]) == 0x02))
+@@ -27559,6 +27492,13 @@
+         0x00, 
+         0x00
+     })
++    Name (\_S3, Package (0x04)  // _S3_: S3 System State
++    {
++        0x05,
++        0x05,
++        0x00,
++        0x00
++    })
+     Name (\_S4, Package (0x04)  // _S4_: S4 System State
+     {
+         0x06, 
+@@ -34795,4 +34735,3 @@
+         }
+     }
+ }
+-
