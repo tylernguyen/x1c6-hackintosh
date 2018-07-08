@@ -20,6 +20,5 @@ Replace factory Intel wifi module with a MacOS compatible one. Make sure that th
 ### M.2 Hard Drive Replacements:
 Replace factory Samsung PM981 with preferably a SATA M.2 SSD, as it is more power efficient and plays nicer with APFS than an NVMe M.2 SSD. 
 
-## Contacts:
-
-
+## Contacts:  
+https://tyler-nguyen.com/contact/  
