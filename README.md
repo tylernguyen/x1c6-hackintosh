@@ -11,6 +11,7 @@ Hand-off is unstable - not needed
 USB Power Property Injection - unsure of real values
 Battery life optimization - currently average 6-7 hours of regular usage
 With the exeption of volume and brightness, function keys do not properly work - DSDT patches and testing in progress  
+Keymapping is not perfect, need to do a complete ADB map
 Performance optimization
 
 ## Hardware Replacements:
