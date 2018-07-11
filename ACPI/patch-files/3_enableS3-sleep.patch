@@ -1,0 +1,35 @@
+--- dsdt.dsl~	2018-04-26 09:35:29.501055509 -0600
++++ dsdt.dsl	2018-04-26 09:36:23.769729028 -0600
+@@ -18,7 +18,7 @@
+  *     Compiler ID      "INTL"
+  *     Compiler Version 0x20160527 (538314023)
+  */
+-DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000000)
++DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
+ {
+     External (_GPE.TBNF, MethodObj)    // 0 Arguments
+     External (_PR_.BGIA, UnknownObj)
+@@ -415,9 +415,7 @@
+     Name (SS1, 0x00)
+     Name (SS2, 0x00)
+     Name (SS3, One)
+-    One
+     Name (SS4, One)
+-    One
+     OperationRegion (GNVS, SystemMemory, 0x9FF4E000, 0x0771)
+     Field (GNVS, AnyAcc, Lock, Preserve)
+     {
+@@ -27580,6 +27578,13 @@
+         0x00, 
+         0x00
+     })
++    Name (\_S3, Package (0x04)  // _S3_: S3 System State
++    {
++        0x05,
++        0x05,
++        0x00,
++        0x00
++    })
+     Name (\_S4, Package (0x04)  // _S4_: S4 System State
+     {
+         0x06, 
