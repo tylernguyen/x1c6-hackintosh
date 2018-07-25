@@ -4,15 +4,16 @@
 ## What doesn't work:
 MicroSD Card Reader [DISABLED at BIOS Level] - not needed  
 Fingerprint Reader [DISABLED at BIOS Level] - not needed  
+Wireless WAN [DISABLED at BIOS Level] - not needed  
 TrackPoint nub is unstable [DISABLED at BIOS Level] - tluck's fork of VoodooPS2Controller may fix this problem, but I have yet to try it.  
 Hand-off is unstable - not needed  
 
 ## Underlying minor issues that needs to be examined in the future:
 USB Power Property Injection - unsure of real values
-Battery life optimization - currently average 6-7 hours of regular usage
+Battery life optimization - currently average 4-6 hours of regular usage  
 With the exeption of volume and brightness, function keys do not properly work - DSDT patches and testing in progress  
 Keymapping is not perfect, need to do a complete ADB map
-Performance optimization
+Performance optimization - proper SMBIOS with the 2018 Macbook Pro  
 
 ## Hardware Replacements:
 ### WiFi and Bluetooth:
