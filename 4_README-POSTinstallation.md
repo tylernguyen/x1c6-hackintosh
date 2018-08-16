@@ -6,7 +6,7 @@
             AppleALC - also inject audio layout 11 with Clover Configurator, this enables native audio.
             USBInjectAll - make sure to create a custom SSDT patch [Guide](https://www.tonymacx86.com/threads/guide-creating-a-custom-ssdt-for-usbinjectall-kext.211311/), also refer to README-patchingACPI.md  
             Lilu - support library needed by other kexts  
-            IntelGraphicsFixup  - enable support for Intel Graphics.  
+            WhateverGreen  - enable support for Intel Graphics.   
             IntelMausiEthernet  - enable Ethernet with the Lenovo adapter. A recommended installation even if you don't use Ethernet as it helps with battery performance.  
             BrcmFirmwareRepo  
             BrcmPatchRAM2 - along with BrcmFirmwareRepo, enables Bluetooth.  

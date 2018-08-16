@@ -9,11 +9,11 @@ TrackPoint nub is unstable [DISABLED at BIOS Level] - tluck's fork of VoodooPS2C
 Hand-off is unstable - not needed  
 
 ## Underlying minor issues that needs to be examined in the future:
-USB Power Property Injection - unsure of real values
+USB Power Property Injection - unsure of real values  
 Battery life optimization - currently average 4-6 hours of regular usage  
 With the exeption of volume and brightness, function keys do not properly work - DSDT patches and testing in progress  
-Keymapping is not perfect, need to do a complete ADB map
-Performance optimization - proper SMBIOS with the 2018 Macbook Pro  
+Keymapping is not perfect, need to do a complete ADB map  
+Performance optimization - proper SMBIOS with the 2018 Macbook  
 
 ## Hardware Replacements:
 ### WiFi and Bluetooth:
@@ -24,3 +24,6 @@ Replace factory Samsung PM981 with preferably a SATA M.2 SSD, as it is more powe
 
 ## Contacts:  
 https://tyler-nguyen.com/contact/  
+
+## Donate and Support:
+https://tyler-nguyen.com/support/
