@@ -15,6 +15,10 @@ With the exeption of volume and brightness, function keys do not properly work -
 Keymapping is not perfect, need to do a complete ADB map  
 Performance optimization - proper SMBIOS with the 2018 Macbook  
 
+## Pull Needed:"
+Anything that partially/fully fixes "What doesn't work".  
+Proper DisplayOverride for HiDPI support and general screen profile correction.  
+
 ## Hardware Replacements:
 ### WiFi and Bluetooth:
 Replace factory Intel wifi module with a MacOS compatible one. Make sure that the card is of M.2 form factor. I replaced it with a Broadcom BCM94352Z.   
