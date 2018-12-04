@@ -180,7 +180,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>dart=0 nv_disable=1 -disablegfxfirmware -igfxnohdmi -cdfon</string>
+		<string>dart=0 nv_disable=1 -disablegfxfirmware -cdfon -igfxnohdmi lilucpu=9</string>
 		<key>#DefaultVolume</key>
 		<string>LastBootedVolume</string>
 		<key>NeverHibernate</key>
@@ -296,8 +296,10 @@
 				<key>device-id</key>
 				<data>FlkAAA==</data>
 				<key>#hda-gfx</key>
-				<data>b25ib2FyZC0xAA==</data>
+				<string>onboard-1</string>
 				<key>#AAPL00,override-no-connect</key>
+				<data></data>
+				<key>#AAPL00,override-no-edid</key>
 				<data></data>
 				<key># DVMT-prealloc</key>
 				<string>32MB BIOS, 19MB framebuffer, 9MB cursor bytes (credit RehabMan)</string>
@@ -365,9 +367,13 @@
 			<key>PciRoot(0)/Pci(0x1f,3)</key>
 			<dict>
 				<key>#layout-id</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>#PinConfigurations</key>
 				<data></data>
+				<key>#hda-gfx</key>
+				<string>onboard-1</string>
+				<key>#no-controller-patch</key>
+				<integer>1</integer>
 			</dict>
 		</dict>
 		<key>USB</key>
@@ -480,7 +486,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Disable panic kext logging on 10.13 release kernel (credit Vandroiy)</string>
+				<string>Disable panic kext logging on 10.13 release kernel (credit vit9696)</string>
 				<key>MatchOS</key>
 				<string>10.13.x</string>
 				<key>Find</key>
@@ -490,7 +496,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Disable panic kext logging on 10.14 release kernel (credit Vandroiy)</string>
+				<string>Disable panic kext logging on 10.14 release kernel (credit vit9696)</string>
 				<key>MatchOS</key>
 				<string>10.14.x</string>
 				<key>Find</key>

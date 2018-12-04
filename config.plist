@@ -240,7 +240,7 @@
 		<key>#DefaultVolume</key>
 		<string>LastBootedVolume</string>
 		<key>Arguments</key>
-		<string>nv_disable=1 dart=0 -cdfon -disablegfxfirmware -igfxnohdmi</string>
+		<string>nv_disable=1 dart=0 -cdfon -disablegfxfirmware -igfxnohdmi lilucpu=9</string>
 		<key>DefaultVolume</key>
 		<string>LastBootedVolume</string>
 		<key>NeverHibernate</key>
@@ -249,6 +249,8 @@
 		<false/>
 		<key>Timeout</key>
 		<integer>2</integer>
+		<key>XMPDetection</key>
+		<false/>
 	</dict>
 	<key>Comment</key>
 	<string>This file is for 10.12.6+ with native KabyLake support</string>
@@ -387,8 +389,8 @@
 				<string>0x591b0000, 0105 instead of 0306, HDMI</string>
 				<key>#1 framebuffer-con1-alldata</key>
 				<data>
-				AQUKAAAIAACHAQAAAgQKAAAACAAAhwEAAP8AAAABAAAA
-				ACAAAAA=
+				AQUKAAAIAACHAQAAAgQKAAAIAACHAQAA/wAAAAEAAAAg
+				AAAA
 				</data>
 				<key>#1 framebuffer-con1-enable</key>
 				<integer>1</integer>
@@ -396,15 +398,15 @@
 				<string>0x591b0000, 0105 instead of 0204, HDMI</string>
 				<key>#2 framebuffer-con1-alldata</key>
 				<data>
-				AQUKAAAIAACHAQAAAwYKAAAABAAAhwEAAP8AAAABAAAA
-				ACAAAAA=
+				AQUKAAAIAACHAQAAAwYKAAAEAACHAQAA/wAAAAEAAAAg
+				AAAA
 				</data>
 				<key>#2 framebuffer-con1-enable</key>
 				<integer>1</integer>
 				<key>#3 framebuffer-con1-alldata</key>
 				<data>
-				/wAAAAEAAAAgAAAA/wAAAAABAAAAIAAAAP8AAAABAAAA
-				ACAAAAA=
+				/wAAAAEAAAAgAAAA/wAAAAEAAAAgAAAA/wAAAAEAAAAg
+				AAAA
 				</data>
 				<key>#3 framebuffer-con1-enable</key>
 				<integer>1</integer>
@@ -459,9 +461,7 @@
 				AAgAAA==
 				</data>
 				<key>#hda-gfx</key>
-				<data>
-				b25ib2FyZC0xAA==
-				</data>
+				<string>onboard-1</string>
 				<key>AAPL,ig-platform-id</key>
 				<data>
 				AAAbWQ==
@@ -483,6 +483,10 @@
 			</dict>
 			<key>PciRoot(0)/Pci(0x1f,3)</key>
 			<dict>
+				<key>#hda-gfx</key>
+				<string>onboard-1</string>
+				<key>#no-controller-patch</key>
+				<integer>1</integer>
 				<key>layout-id</key>
 				<integer>11</integer>
 			</dict>
@@ -507,6 +511,8 @@
 	<dict>
 		<key>#ScreenResolution</key>
 		<string>1920x1080</string>
+		<key>EmbeddedThemeType</key>
+		<string>Dark</string>
 		<key>Hide</key>
 		<array>
 			<string>Preboot</string>
@@ -519,7 +525,7 @@
 		<key>Scan</key>
 		<true/>
 		<key>Theme</key>
-		<string>BGM</string>
+		<string>embedded</string>
 	</dict>
 	<key>Graphics</key>
 	<dict>
@@ -572,7 +578,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Disable panic kext logging on 10.13 release kernel (credit Vandroiy)</string>
+				<string>Disable panic kext logging on 10.13 release kernel (credit vit9696)</string>
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
@@ -588,7 +594,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Disable panic kext logging on 10.14 release kernel (credit Vandroiy)</string>
+				<string>Disable panic kext logging on 10.14 release kernel (credit vit9696)</string>
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
@@ -604,40 +610,7 @@
 			</dict>
 		</array>
 		<key>KextsToPatch</key>
-		<array>
-			<dict>
-				<key>Comment</key>
-				<string>Disable minStolenSize less or equal fStolenMemorySize assertion, 10.14 Credits (Sniki)</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				dkZI/wU=
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>Name</key>
-				<string>com.apple.driver.AppleIntelKBLGraphicsFramebuffer</string>
-				<key>Replace</key>
-				<data>
-				60ZI/wU=
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>change F%uT%04x to F%uTxxxx in AppleBacklightInjector.kext (credit RehabMan)</string>
-				<key>Find</key>
-				<data>
-				RiV1VCUwNHgA
-				</data>
-				<key>Name</key>
-				<string>com.apple.driver.AppleBacklight</string>
-				<key>Replace</key>
-				<data>
-				RiV1VHh4eHgA
-				</data>
-			</dict>
-		</array>
+		<array/>
 	</dict>
 	<key>RtVariables</key>
 	<dict>
