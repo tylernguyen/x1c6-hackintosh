@@ -4,6 +4,8 @@
 <dict>
 	<key>Boot</key>
 	<dict>
+		<key>Arguments</key>
+		<string>nv_disable=1 dart=0 -cdfon -disablegfxfirmware -igfxnohdmi lilucpu=8</string>
 		<key>DefaultVolume</key>
 		<string>LastBootedVolume</string>
 		<key>Timeout</key>
