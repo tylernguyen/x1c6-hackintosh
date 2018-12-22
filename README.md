@@ -11,15 +11,15 @@
 |                                                                               |                                                    | Power management, currently 5-6 hours with average usage. Maybe a custom injection with CPUFriend will optimize this? |
 
 ## Where to start:
-Follow the series of README files included in the repository.
+Follow the series of README files included in the repository.  
 **1_README-HARDWAREandBIOS**: Replace Wifi/Bluetooth card and M.2 drive. Then change laptop's BIOS settings as detailed.    
 **2_README-installMEDIA**: Creating the macOS install drive.  
-**3_README-POSTinstallation**: Settings and tweaks post installation.
-**4_README-ACPIpatching**: Patching the system ACPI table for battery status, brightness, sleep, etc...
+**3_README-POSTinstallation**: Settings and tweaks post installation.  
+**4_README-ACPIpatching**: Patching the system ACPI table for battery status, brightness, sleep, etc...  
 *You can use my patched ACPI files on your machine ONLY when it has the exact same specifications as mine! 
 Please dump and patch your own otherwise, for safety and stability purposes.  
 
-**Utilities and software needed:**
+**Utilities and software needed:**  
 KextBeast, for kext installation.
 Clover Configurator and/or PlistEdit Pro (Interchangeable with Xcode).    
 MaciASL, for patching ACPI tables.
@@ -56,7 +56,7 @@ ALC285 Audio Codec
 
 ## Contacts, in order of convenience:  
 **Signal**: 469-480-7748
-*This is Signal ONLY number. You will not get a reply if you text me using this number.
+*This is Signal ONLY number. You will not get a reply if you text me using this number.  
 **Reddit DM**: https://www.reddit.com/user/tylernguyen_
 
 
