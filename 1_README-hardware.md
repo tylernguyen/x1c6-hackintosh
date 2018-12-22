@@ -1,2 +1,0 @@
-1. Stock Samsung PM981 should be replaced to avoid installation problems with macOS. It should be noted that since there is no NVMe power management, a SATA m.2 SSD drive will drastically increase battery life [Reference](https://www.tonymacx86.com/threads/solved-lenovo-x1-carbon-6th-gen-battery-life.254508/#post-1768978).  
-2. Stock Intel Wifi/Bluetooth card must be replaced with a macOS compatible card. See [Broadcom Wifi/Bluetooth Guide](https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/#post-1664577).  
