@@ -9,8 +9,6 @@
 	</array>
 	<key>ACPI</key>
 	<dict>
-		<key>AutoMerge</key>
-		<true/>
 		<key>#DropMCFG</key>
 		<false/>
 		<key>#PatchAPIC</key>
@@ -101,67 +99,65 @@
 			<false/>
 			<key>Fixes</key>
 			<dict>
-				<key>AddDTGP</key>
+				<key>AddDTGP_0001</key>
 				<true/>
-				<key>AddHDMI</key>
+				<key>AddHDMI_8000000</key>
 				<true/>
-				<key>AddIMEI</key>
+				<key>AddIMEI_80000</key>
 				<false/>
-				<key>AddMCHC</key>
+				<key>AddMCHC_0008</key>
 				<false/>
-				<key>AddPNLF</key>
+				<key>AddPNLF_1000000</key>
 				<true/>
-				<key>DeleteUnused</key>
+				<key>DeleteUnused_400000</key>
 				<true/>
-				<key>FixACST</key>
+				<key>FIX_ACST_4000000</key>
 				<true/>
-				<key>FixADP1</key>
+				<key>FIX_ADP1_800000</key>
 				<true/>
-				<key>FixIntelGfx</key>
+				<key>FIX_INTELGFX_100000</key>
 				<false/>
-				<key>FixRTC</key>
+				<key>FIX_RTC_20000</key>
 				<true/>
-				<key>FixS3D</key>
+				<key>FIX_S3D_2000000</key>
 				<true/>
-				<key>FixTMR</key>
+				<key>FIX_TMR_40000</key>
 				<true/>
-				<key>FixWAK</key>
+				<key>FIX_WAK_200000</key>
 				<true/>
-				<key>FakeLPC</key>
+				<key>FakeLPC_0020</key>
 				<false/>
-				<key>FixAirport</key>
+				<key>FixAirport_4000</key>
 				<false/>
-				<key>FixDarwin</key>
+				<key>FixDarwin_0002</key>
 				<false/>
-				<key>FixDarwin7</key>
+				<key>FixDarwin7_10000</key>
 				<true/>
-				<key>FixDisplay</key>
+				<key>FixDisplay_0100</key>
 				<true/>
-				<key>FixFirewire</key>
+				<key>FixFirewire_0800</key>
 				<false/>
-				<key>FixHDA</key>
+				<key>FixHDA_8000</key>
 				<true/>
-				<key>FixHPET</key>
+				<key>FixHPET_0010</key>
 				<true/>
-				<key>FixHeaders</key>
+				<key>FixHeaders_20000000</key>
 				<true/>
-				<key>FixIDE</key>
+				<key>FixIDE_0200</key>
 				<false/>
-				<key>FixIPIC</key>
+				<key>FixIPIC_0040</key>
 				<true/>
-				<key>FixLAN</key>
+				<key>FixLAN_2000</key>
 				<true/>
-				<key>FixRegions</key>
+				<key>FixRegions_10000000</key>
 				<true/>
-				<key>FixSATA</key>
+				<key>FixSATA_0400</key>
 				<false/>
-				<key>FixSBUS</key>
+				<key>FixSBUS_0080</key>
 				<true/>
-				<key>FixShutdown</key>
+				<key>FixShutdown_0004</key>
 				<true/>
-				<key>FixUSB</key>
-				<true/>
-				<key>FixMutex</key>
+				<key>FixUSB_1000</key>
 				<true/>
 			</dict>
 			<key>Name</key>
@@ -214,8 +210,6 @@
 			<integer>12</integer>
 			<key>#MinMultiplier</key>
 			<integer>8</integer>
-			<key>#NoOemTableId</key>
-			<false/>
 			<key>#PLimitDict</key>
 			<integer>1</integer>
 			<key>#PluginType</key>
@@ -229,12 +223,6 @@
 				<key>CStates</key>
 				<true/>
 				<key>PStates</key>
-				<true/>
-				<key>#APLF</key>
-				<true/>
-				<key>#APSN</key>
-				<true/>
-				<key>#PluginType</key>
 				<true/>
 			</dict>
 		</dict>

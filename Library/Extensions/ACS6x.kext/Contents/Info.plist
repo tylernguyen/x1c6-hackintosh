@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BuildMachineOSBuild</key>
+	<string>13F34</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>ACS6x</string>
+	<key>CFBundleGetInfoString</key>
+	<string>ACS6x 3.5.3 Copyright (c) 2004-2017 Accusys, Inc.</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.Accusys.driver.Acxxx</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>3.5.3</string>
+	<key>CFBundleName</key>
+	<string>ACS6x</string>
+	<key>CFBundlePackageType</key>
+	<string>KEXT</string>
+	<key>CFBundleShortVersionString</key>
+	<string>3.5.3</string>
+	<key>CFBundleVersion</key>
+	<string>3.5.3</string>
+	<key>DTCompiler</key>
+	<string>com.apple.compilers.llvm.clang.1_0</string>
+	<key>DTPlatformBuild</key>
+	<string>5B1008</string>
+	<key>DTPlatformVersion</key>
+	<string>GM</string>
+	<key>DTSDKBuild</key>
+	<string>13C64</string>
+	<key>DTSDKName</key>
+	<string>macosx10.9</string>
+	<key>DTXcode</key>
+	<string>0511</string>
+	<key>DTXcodeBuild</key>
+	<string>5B1008</string>
+	<key>IOKitPersonalities</key>
+	<dict>
+		<key>ACS6xxxx</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.Accusys.driver.Acxxx</string>
+			<key>IOClass</key>
+			<string>com_Accusys_driver_Acxxx</string>
+			<key>IOPCIMatch</key>
+			<string>0x610114d6 0x620114d6 0x622014d6 0x630014d6 0x623214d6 0x623314d6 0x623514d6 0x624014d6 0x626214d6 0x850810B5 0x860810B5 0x860814D6 0x512D10B5 0x512e14d6 0x626514d6 0x626614d6 0x626714d6 0x626814d6 0x626914d6 0x626a14d6 0x512F10B5 0x626b14d6</string>
+			<key>IOPCIPauseCompatible</key>
+			<true/>
+			<key>IOPCITunnelCompatible</key>
+			<true/>
+			<key>IOProbeScore</key>
+			<integer>400</integer>
+			<key>IOProviderClass</key>
+			<string>IOPCIDevice</string>
+			<key>IOUserClientClass</key>
+			<string>com_Accusys_UserClient</string>
+			<key>Protocol Characteristics</key>
+			<dict>
+				<key>Physical Interconnect</key>
+				<string>Fibre Channel Interface</string>
+				<key>Physical Interconnect Location</key>
+				<string>External</string>
+			</dict>
+			<key>model</key>
+			<string>ACS6x</string>
+		</dict>
+	</dict>
+	<key>OSBundleLibraries</key>
+	<dict>
+		<key>com.apple.iokit.IOPCIFamily</key>
+		<string>1.3.2</string>
+		<key>com.apple.iokit.IOSCSIParallelFamily</key>
+		<string>1.3.7</string>
+		<key>com.apple.kpi.iokit</key>
+		<string>8.0.0</string>
+		<key>com.apple.kpi.libkern</key>
+		<string>8.0.0</string>
+		<key>com.apple.kpi.mach</key>
+		<string>8.0.0</string>
+	</dict>
+	<key>OSBundleLibraries_x86_64</key>
+	<dict>
+		<key>com.apple.iokit.IOPCIFamily</key>
+		<string>1.3.2</string>
+		<key>com.apple.iokit.IOSCSIParallelFamily</key>
+		<string>1.3.7</string>
+		<key>com.apple.kpi.iokit</key>
+		<string>8.0.0</string>
+		<key>com.apple.kpi.libkern</key>
+		<string>8.0.0</string>
+		<key>com.apple.kpi.mach</key>
+		<string>8.0.0</string>
+	</dict>
+	<key>OSBundleRequired</key>
+	<string>Local-Root</string>
+</dict>
+</plist>

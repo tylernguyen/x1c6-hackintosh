@@ -1,2 +1,12 @@
 .DS_Store
-EFI/CLOVER/config.plist
+Library/Extensions/ASC6x.kext
+Library/Extensions/ArcMSR.kext
+Library/Extensions/ATTOCelerityFC8.kext
+Library/Extensions/ATTOExpressSASHBA2.kext
+Library/Extensions/ATTOExpressSASRAID2.kext
+Library/Extensions/CalDigitHDProDrv.kext
+Library/Extensions/EnergyDriver.kext
+Library/Extensions/HighPointIOP.kext
+Library/Extensions/HighPointRR.kext
+Library/Extensions/HighPointRR.kext
+Library/Extensions/HighPointRR.kext
