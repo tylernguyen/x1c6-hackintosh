@@ -1,5 +1,5 @@
 .DS_Store
-Library/Extensions/ASC6x.kext
+Library/Extensions/ACS6x.kext
 Library/Extensions/ArcMSR.kext
 Library/Extensions/ATTOCelerityFC8.kext
 Library/Extensions/ATTOExpressSASHBA2.kext
@@ -10,3 +10,5 @@ Library/Extensions/HighPointIOP.kext
 Library/Extensions/HighPointRR.kext
 Library/Extensions/HighPointRR.kext
 Library/Extensions/HighPointRR.kext
+Library/Extensions/PromiseSTEX.kext
+Library/Extensions/SoftRAID.kext
