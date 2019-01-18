@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>DisplayProductID</key>
+            <integer>8246</integer>
+        <key>DisplayVendorID</key>
+            <integer>1711</integer>
+        <key>scale-resolutions</key>
+            <array>
+                <data>AAAQAAAACQAA</data>
+                <data>AAAPAAAACHAA</data>
+                <data>AAANIAAAB2IA</data>
+                <data>AAALQAAABlQA</data>
+                <data>AAAKAAAABaAA</data>
+                <data>AAAIAAAABIAAAAABACAAAA==</data>
+                <data>AAAHgAAABDgAAAAB</data>
+                <data>AAAQAAAACQAAAAAJAKAAAA==</data>
+                <data>AAAKAAAABaAAAAABACAAAA==</data>
+                <data>AAAHgAAABDgAAAABACAAAA==</data>
+                <data>AAAFAAAAAtAAAAABACAAAA==</data>
+                <data>AAAGkAAAA7AAAAAB</data>
+                <data>AAAFoAAAAyoAAAAB</data>
+                <data>AAAFAAAAAtAAAAAB</data>
+                <data>AAAEgAAAAogAAAAB</data>
+                <data>AAAEAAAAAkAAAAAB</data>
+                <data>AAADSAAAAdQAAAAB</data>
+                <data>AAADIAAAAcIAAAAB</data>
+                <data>AAACgAAAAWgAAAAB</data>
+                <data>AAAPAAAACHAAAAAJAKAAAA==</data>
+                <data>AAANIAAAB2IAAAAJAKAAAA==</data>
+                <data>AAALQAAABlQAAAAJAKAAAA==</data>
+                <data>AAAKAAAABaAAAAAJAKAAAA==</data>
+                <data>AAAIAAAABIAAAAAJAKAAAA==</data>
+                <data>AAAHgAAABDgAAAAJAKAAAA==</data>
+                <data>AAAFAAAAAtAAAAAJAKAAAA==</data>
+            </array>
+        <key>target-default-ppmm</key>
+            <real>10.0699301</real>
+    </dict>
+</plist>
