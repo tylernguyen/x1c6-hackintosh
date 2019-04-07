@@ -1,27 +1,31 @@
-# MacOS on Thinkpad X1 Carbon 6th Generation, Model 20KH*
-
+# MacOS on Thinkpad X1 Carbon 6th Generation, Model 20KH* 
 ## Summary:
-
-| Fully functional                                                              | Non-functional                                     | Semi-functional. Additional pulls needed and welcomed.                                                                |
-|-------------------------------------------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| Stable, macOS work machine.                                                   | MicroSD Card Reader (not needed, DISABLED at BIOS) | HDMI, currently only outputs at 1080p.Though capable of 4K 4096x2150.                                                 |
-| USB A, USB C, Thunderbolt 3, Audio, Sleep, Ethernet, Integrated Intel Graphics | Fingerprint Reader (not needed, DISABLED at BIOS)  | Function keys, F1-F6 work. The rest need to be mapped and patched via DSDT/SSDTs.                                     |
-| iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc...             | Wireless WAN (not needed, DISABLED at BIOS)        | TrackPoint is unstable: skipping and jumping.                                                                         |
-| Wifi and Bluetooth *need card replacement                                     |                                                    | USB power property injection - unsure of real values.                                                                 |
-|                                                                               |                                                    | Power management, currently 5-6 hours with average usage. Maybe a custom injection with CPUFriend will optimize this? |
-
+| Fully functional | Non-functional | Semi-functional. Additional pulls needed and welcomed. |
+|-------------------------------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| Stable, macOS work machine. | MicroSD Card Reader (not needed, DISABLED at BIOS) | HDMI, currently only outputs at 1080p.Though capable of 4K 4096x2150. |
+| USB A, USB C, Audio, Sleep, Ethernet, Integrated Intel Graphics | Fingerprint Reader (not needed, DISABLED at BIOS) | Function keys, F1-F6 work. The rest need to be mapped and patched via DSDT/SSDTs. |
+| iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... | Wireless WAN (not needed, DISABLED at BIOS) | Power management, currently 5-6 hours with average usage. Maybe a custom injection with CPUFriend will optimize this? |
+| Wifi and Bluetooth \*need card replacement |  | USB power property injection - unsure of real values. |
+| TrackPoint \*with SSDT patch |  | Thunderbolt 3: proper patch needed. |
 ## Where to start:
 Follow the series of README files included in the repository.  
-**1_README-HARDWAREandBIOS**: Replace Wifi/Bluetooth card and M.2 drive. Then change laptop's BIOS settings as detailed.    
-**2_README-installMEDIA**: Creating the macOS install drive.  
-**3_README-POSTinstallation**: Settings and tweaks post installation.  
-**4_README-ACPIpatching**: Patching the system ACPI table for battery status, brightness, sleep, etc...  
-*You can use my patched ACPI files on your machine ONLY when it has the exact same specifications as mine! 
-Please dump and patch your own otherwise, for safety and stability purposes.  
+**1\_README-HARDWAREandBIOS**: Replace Wifi/Bluetooth card and M.2 drive. Then change laptop's BIOS settings as detailed.  
+**2\_README-installMEDIA**: Creating the macOS install drive.  
+**3\_README-POSTinstallation**: Settings and tweaks post installation.  
+**4\_README-ACPIpatching**: Patching the system ACPI table for battery status, brightness, sleep, etc...  
+\*You can use my patched ACPI files on your machine ONLY when it has the exact same specifications as mine! 
+Please dump and patch your own otherwise, for safety and stability purposes.
 
-**Utilities and software needed:**  
+## Clover Configurations and Data:
+**For Kaby Lake-R/UHD620**
+"AAPL,ig-platform-id", Buffer() { 0x00, 0x00, 0x16, 0x59 },
+"hda-gfx", Buffer() { "onboard-1" },
+"model", Buffer() { "Intel UHD Graphics 620" },
+"device-id", Buffer() { 0x16, 0x59, 0x00, 0x00 },  
+
+## Utilities and software needed:
 KextBeast, for kext installation.
-Clover Configurator and/or PlistEdit Pro (Interchangeable with Xcode).    
+Clover Configurator and/or PlistEdit Pro (Interchangeable with Xcode).  
 MaciASL, for patching ACPI tables.
 IORegistryExplorer, for reference and diagnosis.
 
@@ -45,20 +49,27 @@ Audio:
 ALC285 Audio Codec  
 
 ## References:
-[FAQ READ FIRST! Laptop Frequent Questions](https://www.tonymacx86.com/threads/faq-read-first-laptop-frequent-questions.164990/)  
-[(99% perfect) Sierra 10.12.6 on Thinkpad x1 carbon 5th-gen with dual-boot unchanged Win7](https://www.tonymacx86.com/threads/99-perfect-sierra-10-12-6-on-thinkpad-x1-carbon-5th-gen-with-dual-boot-unchanged-win7.237922/)  
-[An idiot's guide to iMessage](https://www.tonymacx86.com/threads/an-idiots-guide-to-imessage.196827/)
-[Native power management guide for laptop](https://www.tonymacx86.com/threads/guide-native-power-management-for-laptops.175801/)
-[Custom SSDT for USBinjectall](https://www.tonymacx86.com/threads/guide-creating-a-custom-ssdt-for-usbinjectall-kext.211311/)
-[Laptop screen goes blank when plugging in external monitor](https://www.tonymacx86.com/threads/laptop-screen-goes-blank-when-plugging-in-external-monitor.226226/)
-[Override EDID for display problem](https://www.tonymacx86.com/threads/override-edid-for-display-problem.47200/)
+[FAQ READ FIRST! Laptop Frequent Questions][1]  
+[(99% perfect) Sierra 10.12.6 on Thinkpad x1 carbon 5th-gen with dual-boot unchanged Win7][2]  
+[An idiot's guide to iMessage][3]
+[Native power management guide for laptop][4]
+[Custom SSDT for USBinjectall][5]
+[Laptop screen goes blank when plugging in external monitor][6]
+[Override EDID for display problem][7]
 
 
 ## Contacts, in order of convenience:  
 **Signal**: 469-480-7748
-*This is Signal ONLY number. You will not get a reply if you text me using this number.  
-**Reddit DM**: https://www.reddit.com/user/tylernguyen_
-
+\*This is Signal ONLY number. You will not get a reply if you text me using this number.  
+**Reddit DM**: https://www.reddit.com/user/tylernguyen_ 
 
 ## Donate and Support:
 https://tylerspaper.com/support/
+
+[1]:	https://www.tonymacx86.com/threads/faq-read-first-laptop-frequent-questions.164990/
+[2]:	https://www.tonymacx86.com/threads/99-perfect-sierra-10-12-6-on-thinkpad-x1-carbon-5th-gen-with-dual-boot-unchanged-win7.237922/
+[3]:	https://www.tonymacx86.com/threads/an-idiots-guide-to-imessage.196827/
+[4]:	https://www.tonymacx86.com/threads/guide-native-power-management-for-laptops.175801/
+[5]:	https://www.tonymacx86.com/threads/guide-creating-a-custom-ssdt-for-usbinjectall-kext.211311/
+[6]:	https://www.tonymacx86.com/threads/laptop-screen-goes-blank-when-plugging-in-external-monitor.226226/
+[7]:	https://www.tonymacx86.com/threads/override-edid-for-display-problem.47200/
