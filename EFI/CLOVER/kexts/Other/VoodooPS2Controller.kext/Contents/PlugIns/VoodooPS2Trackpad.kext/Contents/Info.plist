@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>18A391</string>
+	<string>18D109</string>
 	<key>CFBundleExecutable</key>
 	<string>VoodooPS2Trackpad</string>
 	<key>CFBundleGetInfoString</key>
-	<string>1.9.2, Copyright Apple Computer, Inc. 2002-2003, mackerintel 2008, RehabMan 2012-2013</string>
+	<string>2.0.1, Copyright Apple Computer, Inc. 2002-2003, mackerintel 2008, RehabMan 2012-2013</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.rehabman.voodoo.driver.PS2Trackpad</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.9.2</string>
+	<string>2.0.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -25,21 +25,21 @@
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.9.2</string>
+	<string>2.0.1</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>9F2000</string>
+	<string>10E1001</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>12D75</string>
+	<string>18E219</string>
 	<key>DTSDKName</key>
-	<string>macosx10.8</string>
+	<string>macosx10.14</string>
 	<key>DTXcode</key>
-	<string>0941</string>
+	<string>1020</string>
 	<key>DTXcodeBuild</key>
-	<string>9F2000</string>
+	<string>10E1001</string>
 	<key>IOKitPersonalities</key>
 	<dict>
 		<key>ALPS GlidePoint</key>
@@ -104,6 +104,17 @@
 					<string>ProBook</string>
 				</dict>
 			</dict>
+		</dict>
+		<key>Native Multitouch Engine</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>org.rehabman.voodoo.driver.PS2Trackpad</string>
+			<key>IOClass</key>
+			<string>VoodooI2CNativeEngine</string>
+			<key>IOMatchCategory</key>
+			<string>VoodooI2CNativeEngine</string>
+			<key>IOProviderClass</key>
+			<string>VoodooI2CMultitouchInterface</string>
 		</dict>
 		<key>Sentelic FSP</key>
 		<dict>
@@ -238,20 +249,8 @@
 			<dict>
 				<key>Default</key>
 				<dict>
-					<key>BogusDeltaThreshX</key>
-					<integer>0</integer>
-					<key>BogusDeltaThreshY</key>
-					<integer>0</integer>
 					<key>ButtonCount</key>
 					<integer>3</integer>
-					<key>CenterX</key>
-					<integer>3000</integer>
-					<key>CenterY</key>
-					<integer>3000</integer>
-					<key>CircularScrollDivisor</key>
-					<integer>0</integer>
-					<key>CircularScrollTrigger</key>
-					<integer>0</integer>
 					<key>ClickPadClickTime</key>
 					<integer>300000000</integer>
 					<key>ClickPadTrackBoth</key>
@@ -281,82 +280,20 @@
 					<false/>
 					<key>DisableLEDUpdating</key>
 					<false/>
-					<key>DisableZoneBottom</key>
-					<integer>4200</integer>
-					<key>DisableZoneControl</key>
-					<integer>0</integer>
-					<key>DisableZoneLeft</key>
-					<integer>0</integer>
-					<key>DisableZoneRight</key>
-					<integer>1700</integer>
-					<key>DisableZoneTop</key>
-					<integer>99999</integer>
-					<key>DivisorX</key>
-					<integer>5</integer>
-					<key>DivisorY</key>
-					<integer>5</integer>
-					<key>DoubleTapThresholdX</key>
-					<integer>150</integer>
-					<key>DoubleTapThresholdY</key>
-					<integer>150</integer>
-					<key>DragExitDelayTime</key>
-					<integer>1000000000</integer>
-					<key>DragLockTempMask</key>
-					<integer>1048592</integer>
 					<key>DynamicEWMode</key>
 					<false/>
-					<key>EdgeBottom</key>
-					<integer>1700</integer>
-					<key>EdgeLeft</key>
-					<integer>1700</integer>
-					<key>EdgeRight</key>
-					<integer>5200</integer>
-					<key>EdgeTop</key>
-					<integer>4200</integer>
 					<key>FakeMiddleButton</key>
 					<true/>
 					<key>FingerChangeIgnoreDeltas</key>
 					<integer>3</integer>
-					<key>FingerZ</key>
-					<integer>30</integer>
-					<key>HorizontalScrollDivisor</key>
-					<integer>0</integer>
-					<key>ImmediateClick</key>
-					<false/>
-					<key>MaxDragTime</key>
-					<integer>180000000</integer>
-					<key>MaxTapTime</key>
-					<integer>130000000</integer>
+					<key>ForceTouchMode</key>
+					<integer>1</integer>
+					<key>ForceTouchPressureThreshold</key>
+					<integer>100</integer>
 					<key>MiddleClickTime</key>
 					<integer>100000000</integer>
-					<key>MomentumScrollDivisor</key>
-					<integer>100</integer>
-					<key>MomentumScrollMultiplier</key>
-					<integer>98</integer>
-					<key>MomentumScrollSamplesMin</key>
-					<integer>3</integer>
-					<key>MomentumScrollThreshY</key>
-					<integer>18</integer>
-					<key>MomentumScrollTimer</key>
-					<integer>10000000</integer>
-					<key>MouseCount</key>
-					<integer>0</integer>
 					<key>MouseMiddleScroll</key>
 					<true/>
-					<key>MouseMultiplierX</key>
-					<integer>20</integer>
-					<key>MouseMultiplierY</key>
-					<integer>20</integer>
-					<key>MouseScrollMultiplierX</key>
-					<integer>20</integer>
-					<key>MouseScrollMultiplierY</key>
-					<integer>20</integer>
-					<key>MultiFingerHorizontalDivisor</key>
-					<integer>13</integer>
-					<key>MultiFingerVerticalDivisor</key>
-					<integer>13</integer>
-					<key>MultiFingerWLimit</key>
-					<integer>9</integer>
 					<key>ProcessBluetoothMouseStopsTrackpad</key>
 					<true/>
 					<key>ProcessUSBMouseStopsTrackpad</key>
@@ -365,64 +302,20 @@
 					<integer>500000000</integer>
 					<key>Resolution</key>
 					<integer>400</integer>
-					<key>RightClickZoneBottom</key>
-					<integer>0</integer>
-					<key>RightClickZoneLeft</key>
-					<integer>3800</integer>
-					<key>RightClickZoneRight</key>
-					<integer>99999</integer>
-					<key>RightClickZoneTop</key>
-					<integer>2000</integer>
-					<key>ScrollDeltaThreshX</key>
-					<integer>0</integer>
-					<key>ScrollDeltaThreshY</key>
-					<integer>0</integer>
 					<key>ScrollResolution</key>
 					<integer>400</integer>
 					<key>SkipPassThrough</key>
 					<false/>
-					<key>SmoothInput</key>
-					<true/>
-					<key>StickyHorizontalScrolling</key>
-					<false/>
-					<key>StickyMultiFingerScrolling</key>
-					<false/>
-					<key>StickyVerticalScrolling</key>
-					<false/>
-					<key>SwapDoubleTriple</key>
-					<false/>
-					<key>SwipeDeltaX</key>
-					<integer>800</integer>
-					<key>SwipeDeltaY</key>
-					<integer>800</integer>
-					<key>TapThresholdX</key>
-					<integer>75</integer>
-					<key>TapThresholdY</key>
-					<integer>75</integer>
 					<key>USBMouseStopsTrackpad</key>
 					<integer>0</integer>
 					<key>UnitsPerMMX</key>
 					<integer>50</integer>
 					<key>UnitsPerMMY</key>
 					<integer>50</integer>
-					<key>UnsmoothInput</key>
-					<true/>
 					<key>UseHighRate</key>
 					<true/>
-					<key>VerticalScrollDivisor</key>
-					<integer>0</integer>
 					<key>WakeDelay</key>
 					<integer>1000</integer>
-					<key>ZLimit</key>
-					<integer>115</integer>
-					<key>ZoneBottom</key>
-					<integer>0</integer>
-					<key>ZoneLeft</key>
-					<integer>1700</integer>
-					<key>ZoneRight</key>
-					<integer>5200</integer>
-					<key>ZoneTop</key>
-					<integer>99999</integer>
 				</dict>
 				<key>HPQOEM</key>
 				<dict>
@@ -478,14 +371,6 @@
 					<string>Thinkpad_ClickPad</string>
 					<key>Thinkpad_ClickPad</key>
 					<dict>
-						<key>BogusDeltaThreshX</key>
-						<integer>100</integer>
-						<key>BogusDeltaThreshY</key>
-						<integer>100</integer>
-						<key>Clicking</key>
-						<true/>
-						<key>DragLockTempMask</key>
-						<integer>262148</integer>
 						<key>DynamicEWMode</key>
 						<false/>
 						<key>EdgeBottom</key>
@@ -510,27 +395,11 @@
 						<true/>
 						<key>ScrollResolution</key>
 						<integer>800</integer>
-						<key>SmoothInput</key>
-						<true/>
 						<key>Thinkpad</key>
-						<true/>
-						<key>UnsmoothInput</key>
 						<true/>
 					</dict>
 					<key>Thinkpad_TrackPad</key>
 					<dict>
-						<key>BogusDeltaThreshX</key>
-						<integer>800</integer>
-						<key>BogusDeltaThreshY</key>
-						<integer>800</integer>
-						<key>Clicking</key>
-						<true/>
-						<key>DivisorX</key>
-						<integer>1</integer>
-						<key>DivisorY</key>
-						<integer>1</integer>
-						<key>DragLockTempMask</key>
-						<integer>262148</integer>
 						<key>DynamicEWMode</key>
 						<false/>
 						<key>FakeMiddleButton</key>
@@ -541,28 +410,10 @@
 						<true/>
 						<key>MaxTapTime</key>
 						<integer>100000000</integer>
-						<key>MomentumScrollThreshY</key>
-						<integer>16</integer>
-						<key>MouseMultiplierX</key>
-						<integer>8</integer>
-						<key>MouseMultiplierY</key>
-						<integer>8</integer>
-						<key>MouseScrollMultiplierX</key>
-						<integer>2</integer>
-						<key>MouseScrollMultiplierY</key>
-						<integer>2</integer>
-						<key>MultiFingerHorizontalDivisor</key>
-						<integer>4</integer>
-						<key>MultiFingerVerticalDivisor</key>
-						<integer>4</integer>
 						<key>PalmNoAction When Typing</key>
 						<true/>
 						<key>Resolution</key>
 						<integer>3200</integer>
-						<key>ScrollDeltaThreshX</key>
-						<integer>10</integer>
-						<key>ScrollDeltaThreshY</key>
-						<integer>10</integer>
 						<key>ScrollResolution</key>
 						<integer>800</integer>
 						<key>SmoothInput</key>
@@ -586,7 +437,7 @@
 	</dict>
 	<key>OSBundleLibraries</key>
 	<dict>
-		<key>com.apple.iokit.IOHIDSystem</key>
+		<key>com.apple.iokit.IOHIDFamily</key>
 		<string>1.0.0b1</string>
 		<key>com.apple.kpi.iokit</key>
 		<string>9.0.0</string>
@@ -595,7 +446,7 @@
 		<key>com.apple.kpi.mach</key>
 		<string>9.0.0</string>
 		<key>org.rehabman.voodoo.driver.PS2Controller</key>
-		<string>1.9.2</string>
+		<string>2.0.1</string>
 	</dict>
 	<key>OSBundleRequired</key>
 	<string>Console</string>

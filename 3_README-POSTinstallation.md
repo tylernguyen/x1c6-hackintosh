@@ -1,7 +1,5 @@
 1. Install CLOVER on the main boot EFI paritition to enable boot without the installation media.
-2. Install the following kexts in EFI/CLOVER/kexts/Other/  
-            FakeSMC  - system support  
-            VoodooPS2Controller  - enable support for keyboard and touchpad  
+2. Please reference my uploaded EFI folder to determine which kexts I'm currently using. Note that for CPUFriend, please generate your own DataProvider kexts per different machine specfiications and desired configurations. Use [one-key-cpufriend](https://github.com/stevezhengshiqi/one-key-cpufriend).  
 3. Using KextBeast or another kext installer, install the following kexts in L/E/ or EFI/Clover/kexts/Other/.  
 L/E/ makes it easy to differentiate between custom kexts and default Apple kexts.
 EFI/Clover/kexts/Other makes it easy to backup or troubleshoot kexts.    
