@@ -39,14 +39,13 @@ Xcode works fine, but I prefer  [PlistEdit Pro](https://www.fatcatsoftware.com/p
 > ## WHERE TO START:
 Explore links included this README, especially those in references and other x1c6-hackintosh repos.  
 
-Once you are ready, follow the series of README files included in the repository.  
+Once you are ready, follow the series of README files included `docs/`.  
 **1_README-HARDWAREandBIOS**: Requirements before starting.   
 **2_README-installMEDIA**: Creating the macOS install drive.  
-**3_README-POSTinstallation**: Settings and tweaks post installation. 
+**3_README-POSTinstallation**: Settings and tweaks post installation.   
 **4_README-ACPIpatching**: The hardest and most time consuming part, patching the system ACPI table for battery status, brightness, sleep, thunderbolt, thunderbolt hotplugging, etc...  
 
-*You can use my patched ACPI files on your machine ONLY when it has the exact same specifications as mine! 
-Please dump and patch your own otherwise, for safety and stability purposes.  
+* While you can plug-and-play most of my hotpatches if you have an x1c6, I still suggest that you dump and disassemble your own DSDT. This is imprortant as your DSDT maybe different from mine. And furthermore, you get to learn more about what's actually going on.
 
 > ## MY SPECIFICATIONS:
 Refer to [x1c6-Platform_Specifications](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/references/x1c6-Platform_Specifications.pdf) for possible stock ThinkPad X1 6th Gen configurations.

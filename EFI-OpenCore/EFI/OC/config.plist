@@ -1212,6 +1212,22 @@
 			</dict>
 			<dict>
 				<key>BundlePath</key>
+				<string>VoodooInput.kext</string>
+				<key>Comment</key>
+				<string></string>
+				<key>Enabled</key>
+				<true/>
+				<key>ExecutablePath</key>
+				<string>Contents/MacOS/VoodooInput</string>
+				<key>MaxKernel</key>
+				<string></string>
+				<key>MinKernel</key>
+				<string></string>
+				<key>PlistPath</key>
+				<string>Contents/Info.plist</string>
+			</dict>
+			<dict>
+				<key>BundlePath</key>
 				<string>VoodooPS2Controller.kext/Contents/Plugins/VoodooPS2Mouse.kext</string>
 				<key>Comment</key>
 				<string>Mouse</string>
@@ -1351,7 +1367,7 @@
 			<key>Resolution</key>
 			<string></string>
 			<key>ShowPicker</key>
-			<true/>
+			<false/>
 			<key>Timeout</key>
 			<integer>3</integer>
 			<key>UsePicker</key>
@@ -1434,7 +1450,7 @@
 			<dict>
 				<key>UIScale</key>
 				<data>
-				AQ==
+				Ag==
 				</data>
 			</dict>
 			<key>7C436110-AB2A-4BBB-A880-FE41995C9F82</key>
@@ -1524,7 +1540,6 @@
 			<string>ApfsDriverLoader.efi</string>
 			<string>FwRuntimeServices.efi</string>
 			<string>VirtualSmc.efi</string>
-			<string>UsbKbDxe.efi</string>
 		</array>
 		<key>Input</key>
 		<dict>
@@ -1533,7 +1548,7 @@
 			<key>KeyMergeThreshold</key>
 			<integer>2</integer>
 			<key>KeySupport</key>
-			<false/>
+			<true/>
 			<key>KeySupportMode</key>
 			<string>Auto</string>
 			<key>KeySwap</key>
@@ -1564,7 +1579,7 @@
 			<key>DeviceProperties</key>
 			<false/>
 			<key>FirmwareVolume</key>
-			<false/>
+			<true/>
 			<key>HashServices</key>
 			<false/>
 			<key>UnicodeCollation</key>
