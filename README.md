@@ -1,92 +1,110 @@
-﻿# MacOS on Thinkpad X1 Carbon 6th Generation, Model 20KH*
+﻿# macOS on Thinkpad X1 Carbon 6th Generation, Model 20KH*
+[![macOS](https://img.shields.io/badge/macOS-Catalina-yellow.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+[![Clover](https://img.shields.io/badge/Clover-5100-red)](https://github.com/996icu/996.ICU/blob/master/LICENSE) *Last Clover version suppported, OpenCore is now my preferred bootloader.  
 
-## Summary:
+[![BIOS](https://img.shields.io/badge/BIOS-1.43-blue)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+[![MODEL](https://img.shields.io/badge/Model-20KH*-blue)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+[![OpenCore](https://img.shields.io/badge/OpenCore-0.5.3-green)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+[![LICENSE](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+
+<img align="right" src="https://i.imgur.com/I3yUS4Q.png" alt="Critter" width="300">
+
+### Check out my blog [tylerspaper.com](https://tylerspaper.com/)
+#### READ THE ENTIRE README.MD BEFORE YOU START.
+#### I AM NOT RESPONSIBLE FOR ANY DAMAGES YOU MAY CAUSE.
+#### IF YOU IMRPOVE UPON ANYTHING HERE, PLEASE CONTRIBUTE BY OPENING AN ISSUE OR A PULL REQUEST.
+`I AM A ONE MAN TEAM, AND A FULL TIME STUDENT. SO, I MIGHT NOT BE ABLE TO RESPOND OR HELP YOU IN A TIMELY MANNER. BUT, I PROMISE I WILL GET TO YOU EVENTUALLY. PLEASE UNDERSTAND.`  
+
+`Lastly, if my work here helped you. Please consider donating, it would mean a lot to me.`
+
+> ## SUMMARY:
 
 | Fully functional | Non-functional | Semi-functional. Additional pulls needed and welcomed. |
 |-------------------------------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| Stable, macOS work machine. | MicroSD Card Reader (not needed, DISABLED at BIOS) | HDMI, currently only outputs at 1080p.Though capable of 4K 4096x2150. |
-| USB A, USB C, Audio, Sleep, Ethernet, Integrated Intel Graphics | Fingerprint Reader (not needed, DISABLED at BIOS) | Function keys, F1-F6 work. The rest need to be mapped and patched via DSDT/SSDTs. |
-| iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... | Wireless WAN (not needed, DISABLED at BIOS) | Power management, currently 5-6 hours with average usage. Maybe a custom injection with CPUFriend will optimize this? |
-| Wifi and Bluetooth \*need card replacement |  | USB power property injection - unsure of real values. |
-| TrackPoint \*with SSDT patch |  | Thunderbolt 3: proper patch needed. |
+| Wifi and Bluetooth \*need card replacement ⚠️| Fingerprint Reader (not needed, DISABLED at BIOS) ❌| HDMI, currently only outputs at 1080p.Though capable of 4K 4096x2150. ⚠️|
+| USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad ✅ | Wireless WAN (DISABLED at BIOS) *ENABLED if you have a 2nd drive connected❌ | Function keys, F1-F6 work. The rest need to be mapped and patched via DSDT/SSDTs. ⚠️|
+| iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... ✅ |  Hibernation ❌ | Power management, currently 5-6 hours with average usage. Maybe a custom injection with CPUFriend will optimize this? ⚠️|
+| HiDPI, Handoff, Sidecar ✅ | | USB power property injection - unsure of real values. ⚠️|
+| MicroSD card reader ✅|  | Thunderbolt 3 hotplug: proper patch needed. ⚠️|
 
-## Where to start:
-Follow the series of README files included in the repository.  
-**1_README-HARDWAREandBIOS**: Replace Wifi/Bluetooth card and M.2 drive. Then change laptop's BIOS settings as detailed.    
+> ## NEEDED:  
+A macOS machine would be VERY useful: to create install drives, and for when your ThinkPad cannot boot. Though it is not completely necessary.  
+[Clover Configurator](https://mackie100projects.altervista.org/download-clover-configurator/), if [Clover](https://github.com/Dids/clover-builder) is your bootloader.  
+Flash drive, 16GB or more.  
+Xcode works fine, but I prefer  [PlistEdit Pro](https://www.fatcatsoftware.com/plisteditpro/).  
+[MaciASL](https://github.com/acidanthera/MaciASL), for patching ACPI tables.  
+[IOJones](https://github.com/acidanthera/IOJones), for diagnosis.  
+[Hackintool](https://www.insanelymac.com/forum/topic/335018-hackintool-v286/), for diagnosis.  
+
+> ## WHERE TO START:
+Explore links included this README, especially those in references and other x1c6-hackintosh repos.  
+
+Once you are ready, follow the series of README files included in the repository.  
+**1_README-HARDWAREandBIOS**: Requirements before starting.   
 **2_README-installMEDIA**: Creating the macOS install drive.  
-**3_README-POSTinstallation**: Settings and tweaks post installation.  
-**4_README-ACPIpatching**: Patching the system ACPI table for battery status, brightness, sleep, etc...  
+**3_README-POSTinstallation**: Settings and tweaks post installation. 
+**4_README-ACPIpatching**: The hardest and most time consuming part, patching the system ACPI table for battery status, brightness, sleep, thunderbolt, thunderbolt hotplugging, etc...  
+
 *You can use my patched ACPI files on your machine ONLY when it has the exact same specifications as mine! 
 Please dump and patch your own otherwise, for safety and stability purposes.  
 
-## Clover configuration and data:
-  
-~~~
-// Kaby Lake-R/UHD620
+> ## MY SPECIFICATIONS:
+Refer to [x1c6-Platform_Specifications](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/references/x1c6-Platform_Specifications.pdf) for possible stock ThinkPad X1 6th Gen configurations.
 
-0x5917, 0, Package()
-
-{
-
-	"AAPL,ig-platform-id", Buffer() { 0x00, 0x00, 0x16, 0x59 },
-
-	"model", Buffer() { "Intel UHD Graphics 620" },
-
-	"hda-gfx", Buffer() { "onboard-1" },
-
-	"device-id", Buffer() { 0x16, 0x59, 0x00, 0x00 },
-
-	// WhateverGreen.kext framebuffer patch instructions
-
-	"framebuffer-patch-enable", Buffer() { 0x01, 0x00, 0x00, 0x00 },
-
-	"framebuffer-fbmem", Buffer() { 0x00, 0x00, 0xC0, 0x00 },
-
-	"framebuffer-stolenmem", Buffer() { 0x00, 0x00, 0x00, 0x05 },
-
-},
-~~~
-
-**Utilities and software needed:**  
-KextBeast, for kext installation.
-Clover Configurator and/or PlistEdit Pro (Interchangeable with Xcode).    
-MaciASL, for patching ACPI tables.
-IORegistryExplorer, for reference and diagnosis.
-
-
-## My specifications:
 | Processor Number | # of Cores | # of Threads | Base Frequency | Max Turbo Frequency | Cache | Memory Types | Graphics |
 |:--|:--|:--|:--|:--|:--|:--|:--|
-| i7-8650U | 4 | 8 | 1.9 GHz | 4.2 GHz | 8 MB | LPDDR3-2133 | Intel UHD 620 |
+| [i7-8650U](https://ark.intel.com/content/www/us/en/ark/products/124968/intel-core-i7-8650u-processor-8m-cache-up-to-4-20-ghz.html) | 4 | 8 | 1.9 GHz | 4.2 GHz | 8 MB | LPDDR3-2133 | Intel UHD 620 |
 
-Peripherals:  
+**Peripherals:**  
+```
 Two USB 3.1 Gen 1 (Right USB Always On)  
 Two USB 3.1 Type-C Gen 2 / Thunderbolt 3 (Max 5120x2880 @60Hz)  
 HDMI 1.4b (Max 4096x2160 @30Hz)  
-Ethernet via ThinkPad Ethernet Extension Cable Gen 2: I219-V (Non-vPro) or I219-LM (vPro)  
-No WWAN
-
-Display:  
-14.0" (355mm) HDR WQHD (2560x1440)  
-
-Audio:
-ALC285 Audio Codec  
-
-## References:
-[FAQ READ FIRST! Laptop Frequent Questions](https://www.tonymacx86.com/threads/faq-read-first-laptop-frequent-questions.164990/)  
-[(99% perfect) Sierra 10.12.6 on Thinkpad x1 carbon 5th-gen with dual-boot unchanged Win7](https://www.tonymacx86.com/threads/99-perfect-sierra-10-12-6-on-thinkpad-x1-carbon-5th-gen-with-dual-boot-unchanged-win7.237922/)  
-[An idiot's guide to iMessage](https://www.tonymacx86.com/threads/an-idiots-guide-to-imessage.196827/)  
-[Native power management guide for laptop](https://www.tonymacx86.com/threads/guide-native-power-management-for-laptops.175801/)  
-[Custom SSDT for USBinjectall](https://www.tonymacx86.com/threads/guide-creating-a-custom-ssdt-for-usbinjectall-kext.211311/)  
-[Laptop screen goes blank when plugging in external monitor](https://www.tonymacx86.com/threads/laptop-screen-goes-blank-when-plugging-in-external-monitor.226226/)  
-[Override EDID for display problem](https://www.tonymacx86.com/threads/override-edid-for-display-problem.47200/)  
+Ethernet via ThinkPad Ethernet Extension Cable Gen 2: I219-LM Ethernet (vPro)  
+No WWAN  
+TrackPoint: PS/2  
+TrackPad: PS/2
+```  
+**Display:**  
+`14.0" (355mm) HDR WQHD (2560x1440)`  
+**Audio:**  
+`ALC285 Audio Codec`  
+**Thunderbolt:**  
+`Intel JHL6540 (Alpine Ridge 4C) Thunderbolt 3 Bridge`  
 
 
-## Contacts, in order of convenience:  
-**Signal**: 469-480-7748
-*This is Signal ONLY number. You will not get a reply if you text me using this number.  
-**Reddit DM**: https://www.reddit.com/user/tylernguyen_
+> ## REFERENCES:
+* [The Vanilla Laptop Guide](https://fewtarius.gitbook.io/laptopguide/)
+* Daliansky's [Hackintool tutorial](https://translate.google.com/translate?js=n&sl=auto&tl=en&u=https://blog.daliansky.net/Intel-FB-Patcher-tutorial-and-insertion-pose.html).  
+* [An iDiot's Guide To Lilu and its Plug-ins](https://www.tonymacx86.com/threads/an-idiots-guide-to-lilu-and-its-plug-ins.260063/)
+* [General Framebuffer Patching Guide (HDMI Black Screen Problem)](https://www.tonymacx86.com/threads/guide-general-framebuffer-patching-guide-hdmi-black-screen-problem.269149/)
+* [Intel Framebuffer patching using WhateverGreen](https://www.tonymacx86.com/threads/guide-intel-framebuffer-patching-using-whatevergreen.256490/)
 
+> ## OTHER x1c6-hackintosh REPOSITORIES:
+[zhtengw/EFI-for-X1C6-hackintosh](https://github.com/zhtengw/EFI-for-X1C6-hackintosh)  
+[Colton-Ko/macOS-ThinkPad-X1C6](https://github.com/Colton-Ko/macOS-ThinkPad-X1C6)  
+Create a pull request if you like to be added, final decision at my discreation.
 
-## Donate and Support:
+> ## OPTIMIZATIONS:
+* Repaste the machine with thermal [Grizzly Kryonaut](https://www.thermal-grizzly.com/en/products/16-kryonaut-en).  
+* Undervolt the machine with [Volta](https://volta.garymathews.com/).  
+* If you must dual boot with Windows or Linux, I advise against paritition. What I recommend, instead, is getting a second compatible hard drive that fits in the WWAN card slot (I have the WDC PC SN520 NVMe 2242), install Windows/Linux onto that drive. Finally, boot into it with Clover or OpenCore.
+* If your laptop did not come with WWAN, you can purchase additional antennas to add to your laptop. This is useful when using Wifi/Bluetooth cards that have 3 antennas.
+
+> ## CONTACT:
+https://tylerspaper.com/contact
+
+> ## DONATE AND SUPPORT:
 https://tylerspaper.com/support/
+
+> ## Credits and Thank You:
+[@Colton-Ko](https://github.com/Colton-Ko/macOS-ThinkPad-X1C6) for the great features template.  
+[@stevezhengshiqi](https://github.com/stevezhengshiqi) for the one-key-cpufriend script.  
+[@corpnewt](https://github.com/corpnewt) for CPUFriendFriend.  
+[@xzhih](https://github.com/xzhih) for one-key-hidpi.  
+[@daliansky](https://github.com/daliansky) for all the hotpatches.  
+[@jsassu20](https://github.com/jsassu20) for translating daliansky's documentations.  
+
+And the greatest thank you and appreciation to [@Acidanthera](https://github.com/acidanthera), without whom's work, none of this would be possible. 
+
+Please let me know if I missed you.  

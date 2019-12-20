@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ACPI</key>
+	<dict>
+		<key>DSDT</key>
+		<dict>
+			<key>Patches</key>
+			<array>
+				<dict>
+					<key>Comment</key>
+					<string>_PTS to ZPTS(1,N)</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					X1BUUwE=
+					</data>
+					<key>Replace</key>
+					<data>
+					WlBUUwE=
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>_PTS to ZPTS(1,S)</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					X1BUUwk=
+					</data>
+					<key>Replace</key>
+					<data>
+					WlBUUwk=
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>_WAK to ZWAK(1,N)</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					X1dBSwE=
+					</data>
+					<key>Replace</key>
+					<data>
+					WldBSwE=
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>_WAK to ZWAK(1,S)</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					X1dBSwk=
+					</data>
+					<key>Replace</key>
+					<data>
+					WldBSwk=
+					</data>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+</dict>
+</plist>
