@@ -48,7 +48,7 @@ Once you are ready, follow the series of README files included `docs/`.
 * While you can plug-and-play most of my hotpatches if you have an x1c6, I still suggest that you dump and disassemble your own DSDT. This is imprortant as your DSDT maybe different from mine. And furthermore, you get to learn more about what's actually going on.
 
 > ## MY SPECIFICATIONS:
-Refer to [x1c6-Platform_Specifications](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/references/x1c6-Platform_Specifications.pdf) for possible stock ThinkPad X1 6th Gen configurations.
+Refer to [x1c6-Platform_Specifications](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/x1c6-Platform_Specifications.pdf) for possible stock ThinkPad X1 6th Gen configurations.
 
 | Processor Number | # of Cores | # of Threads | Base Frequency | Max Turbo Frequency | Cache | Memory Types | Graphics |
 |:--|:--|:--|:--|:--|:--|:--|:--|
