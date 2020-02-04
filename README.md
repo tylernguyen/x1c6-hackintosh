@@ -4,7 +4,7 @@
 
 [![BIOS](https://img.shields.io/badge/BIOS-1.43-blue)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 [![MODEL](https://img.shields.io/badge/Model-20KH*-blue)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
-[![OpenCore](https://img.shields.io/badge/OpenCore-0.5.4-green)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+[![OpenCore](https://img.shields.io/badge/OpenCore-0.5.5-green)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 [![LICENSE](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
 <img align="right" src="https://i.imgur.com/I3yUS4Q.png" alt="Critter" width="300">
@@ -23,7 +23,7 @@
 |-------------------------------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | Wifi and Bluetooth \*need card replacement ⚠️| Fingerprint Reader (not needed, DISABLED at BIOS) ❌| HDMI, currently only outputs at 1080p.Though capable of 4K 4096x2150. ⚠️|
 | USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad ✅ | Wireless WAN (DISABLED at BIOS) *ENABLED if you have a 2nd drive connected❌ | Function keys, F1-F6 work. The rest need to be mapped and patched via DSDT/SSDTs. ⚠️|
-| iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... ✅ |  Hibernation ❌ | Power management, currently 5-6 hours with average usage. Maybe a custom injection with CPUFriend will optimize this? ⚠️|
+| iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... ✅ |  Hibernation ❌ | Power management and optimizations. See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28)  ⚠️|
 | HiDPI, Handoff, Sidecar ✅ | | USB power property injection - unsure of real values. ⚠️|
 | MicroSD card reader ✅|  | Thunderbolt 3 hotplug: proper patch needed. ⚠️|
 

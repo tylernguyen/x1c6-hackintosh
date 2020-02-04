@@ -2,6 +2,8 @@
 
 ## **Credits and a huge thank you to [daliansky](https://github.com/daliansky) for  the great work and documentation, as well as to [jsassu20](https://github.com/jsassu20) for the excellent translations.**
 
+## Some patches here may be unused. Refer to the current OpenCore-EFI folder to see which one I am currently using.
+
 ## Some Thinkpad machines are `LPC` and some are` LPCB`. Please examine your own DSDT and modify patches as needed.
 
 > ### SSDT-OCBAT0-TP_re80_tx70-80_x1c5th-6th_s12017_p51
