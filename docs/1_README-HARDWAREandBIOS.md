@@ -22,6 +22,6 @@ Replace factory Samsung PM981 with preferably a SATA M.2 SSD, as it is [more pow
 |   |   | >> Secure Boot Configuration | Secure Boot `DISABLED` |
 |   |   | >> Intel SGX | Intel SGX Control `DISABLED` |
 |   | >> Startup | UEFI/Legacy Boot `UEFI Only` |   |
-|   |   | CSM Support `Yes` |   |
+|   |   | CSM Support `No` (per OpenCore Documentation) |   |
 
 ### My Current Settings, for Reference:

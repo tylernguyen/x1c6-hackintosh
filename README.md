@@ -25,7 +25,7 @@
 | USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad ✅ | Wireless WAN (DISABLED at BIOS) *ENABLED if you have a 2nd drive connected❌ | Function keys, F1-F6 work. The rest need to be mapped and patched via DSDT/SSDTs. ⚠️|
 | iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... ✅ |  Hibernation ❌ | Power management and optimizations. See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28)  ⚠️|
 | HiDPI, Handoff, Sidecar ✅ | | USB power property injection - unsure of real values. ⚠️|
-| MicroSD card reader ✅|  | Thunderbolt 3 hotplug: proper patch needed. ⚠️|
+| MicroSD card reader ✅|  | Thunderbolt 3 Hotplug: partially working [More details](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) ⚠️|
 
 > ## NEEDED:  
 A macOS machine would be VERY useful: to create install drives, and for when your ThinkPad cannot boot. Though it is not completely necessary.  
