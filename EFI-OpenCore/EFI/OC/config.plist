@@ -104,11 +104,19 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Thunderbolt 3 Hotplug</string>
+				<string>DTPG</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
-				<string>SSDT-TB3.aml</string>
+				<string>SSDT-DTPG.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>TB3HP</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-Z390-TB3HP.aml</string>
 			</dict>
 		</array>
 		<key>Block</key>
@@ -1345,13 +1353,13 @@
 			</dict>
 			<dict>
 				<key>BundlePath</key>
-				<string>IOElectrify.kext</string>
+				<string>RTCMemoryFixup.kext</string>
 				<key>Comment</key>
 				<string></string>
 				<key>Enabled</key>
-				<true/>
+				<false/>
 				<key>ExecutablePath</key>
-				<string>Contents/MacOS/IOElectrify</string>
+				<string>Contents/MacOS/RTCMemoryFixup</string>
 				<key>MaxKernel</key>
 				<string></string>
 				<key>MinKernel</key>
@@ -1361,13 +1369,13 @@
 			</dict>
 			<dict>
 				<key>BundlePath</key>
-				<string>RTCMemoryFixup.kext</string>
+				<string>ThunderboltReset.kext</string>
 				<key>Comment</key>
 				<string></string>
 				<key>Enabled</key>
 				<false/>
 				<key>ExecutablePath</key>
-				<string>Contents/MacOS/RTCMemoryFixup</string>
+				<string>Contents/MacOS/ThunderboltReset</string>
 				<key>MaxKernel</key>
 				<string></string>
 				<key>MinKernel</key>
@@ -1618,6 +1626,7 @@
 			<string>HFSPlus.efi</string>
 			<string>ApfsDriverLoader.efi</string>
 			<string>FwRuntimeServices.efi</string>
+			<string>TbtForcePower.efi</string>
 		</array>
 		<key>Input</key>
 		<dict>
