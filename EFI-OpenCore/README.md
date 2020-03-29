@@ -15,11 +15,15 @@ SystemSerialNumber: Can be generated with MacSerial or use pervious from Clover'
 
 CPUFriendDataProvider: Can be generated with [CPUFriendFriend](https://github.com/corpnewt/CPUFriendFriend_ or [one-key-cpufriend](https://github.com/stevezhengshiqi/one-key-cpufriend). Even if you have the same CPU as me, you may prefer a different Energy Performance Preference (EPP) so do generate your own CPUFriendDataProvider. This is furhtermore important if you have a different CPU than me.  
 
-## Important Note:
+> ## Important Note:
 Unlike Clover, where SSDT patches are only being applied when booting macOS. OpenCore will apply SSDT patches regardless of the operating system. This is critical when multi-booting, since Windows and Linux do not need the additional patches that macOS does. In many cases, if Windows/Linux fails to boot under OpenCore, it is likely that your macOS intended SSDT patch(s) is being applied universally. To prevent OpenCore from doing this, it is important that your SSDT patches specify its intended OS, which in our case is "Darwin."  
 See highlighted example: 
 
 ![OpenCore SSDT patching notice](https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/master/assets/img/OpenCore%20SSDT%20patching%20notice.png)
 
-## Checking your OpenCore config.plist
+> ## Checking your OpenCore config.plist
 It is important to keep your OpenCore config.plist properly up-to-spec, as OpenCore configurations tend to change accordingly with OpenCore versions. A good resource to check your config plist is https://opencore.slowgeek.com/.
+
+> ## Updating:
+
+To update your OpenCore folder to my current version, simply backup your PlatformInfo information and move it to the new OpenCore config. Keep in mind that, depending on your setup, you may wish to keep other settings you've made so make sure to note your OpenCore.plist changes as you make them.

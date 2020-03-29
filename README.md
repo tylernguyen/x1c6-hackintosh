@@ -17,157 +17,19 @@
 
 `Lastly, if my work here helped you. Please consider donating, it would mean a lot to me.`
 
-<details>
-  <summary><h1>CHANGELOG</h1></summary>
+> ## Update
 
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
-
-<details>
-  <summary>2020-3-29</summary>
-  
-### Added
+##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/docs/CHANGELOG.md)
+> ### 2020-3-29
+#### Added
 SSDT-ALS0 hotpatch for faking ambient light sensor ALS0 per Catalina's brightness preservation.  
 SSDT-GPRW hotpatching for fixing instant wake (0D/6D patch).  
-### Changed
+#### Changed
 SSDT-Keyboard with the exception of F7 and F12, now maps all hotkeys to a Fn value that can be remapped within macOS. In addition, PrtSc is now remapped to F13.
 SSDT-PLNF to a cleaner version.
 Similarly, battery patch has been simplified.
-### Deprecated
-
-### Removed
+#### Removed
 Some unused patches within OpenCore config.plist has now been removed.
-
-</details>
-
-<details>
-  <summary>2019-12-22</summary>
-  
-### Added
-Project website: https://tylernguyen.github.io/x1c6-hackintosh/  
-ACPI dump for `BIOS-v1.43`.  
-CHANGELOG.md to keep track of the project's developments.  
-OpenCore bootloader, version `0.5.3`.  
-Better SSDT patching with hotpatches under `patches`. Making sure to read `patches/README`.  
-### Changed
-Switched completely to hotpatching through OpenCore. Credits to [daliansky](https://github.com/daliansky) and [jsassu20](https://github.com/jsassu20).  
-Updated main README, made it look more visually appealing and organized.
-### Deprecated
-Clover bootloader. Clover r5100 is the last version I used on this machine. Moving forward, OpenCore is my preferred bootloader. See `EFI-Clover/README.md`.  
-Reorganized folder/project structure. Setup instructions and references now under `docs`.  
-### Removed
-Old static patches.  
-Old IORegistryExplorer dump.
-</details>
-
-</details>
-
-<details>
-  <summary><h1>ACPI Patches</h1></summary>
-
-# Hotpatching Notes
-
-## **Credits and a huge thank you to [daliansky](https://github.com/daliansky) for  the great work and documentation, as well as to [jsassu20](https://github.com/jsassu20) for the excellent translations.**
-
-## Some patches here may be unused. Refer to the current OpenCore-EFI folder to see which one I am currently using.
-
-## Some Thinkpad machines are `LPC` and some are` LPCB`. Please examine your own DSDT and modify patches as needed.
-
-> ### SSDT-OCBAT0-TP_re80_tx70-80_x1c5th-6th_s12017_p51
-**Need `OpenCore Patches/ TP Battery Basic Rename.plist`** if OpenCore. `preferred`  
-**Need `OpenCore Patches/ TP battery Mutex is set to 0 and renamed.plist`** if OpenCore. `preferred`
-
-- Single battery system: only `BAT0` in ACPI, no` BAT1`.
-  
-> ### SSDT-PLUG-_PR.PR00
-Why?: `Processor` in DSDT
-```
-    Scope (\_PR)
-    {
-        Processor (PR00, 0x01, 0x00001810, 0x06){}
-        Processor (PR01, 0x02, 0x00001810, 0x06){}
-        Processor (PR02, 0x03, 0x00001810, 0x06){}
-        Processor (PR03, 0x04, 0x00001810, 0x06){}
-        Processor (PR04, 0x05, 0x00001810, 0x06){}
-        Processor (PR05, 0x06, 0x00001810, 0x06){}
-        Processor (PR06, 0x07, 0x00001810, 0x06){}
-        Processor (PR07, 0x08, 0x00001810, 0x06){}
-        Processor (PR08, 0x09, 0x00001810, 0x06){}
-        Processor (PR09, 0x0A, 0x00001810, 0x06){}
-        Processor (PR10, 0x0B, 0x00001810, 0x06){}
-        Processor (PR11, 0x0C, 0x00001810, 0x06){}
-        Processor (PR12, 0x0D, 0x00001810, 0x06){}
-        Processor (PR13, 0x0E, 0x00001810, 0x06){}
-        Processor (PR14, 0x0F, 0x00001810, 0x06){}
-        Processor (PR15, 0x10, 0x00001810, 0x06){}
-    }
-```
-
-> ### SSDT-PNLF-SKL_KBL
-Why?: `Skylake/ KabyLake/ KabyLake-R`.  
-Used in conjufction with `WhateverGreen.kext`
-
-> ### SSDT-HPET_RTC_TIMR-fix
-- This patch cannot be used with the following patches:  
-   - ***SSDT-RTC_Y-AWAC_N*** of the "Preset Variable Method"  
-   - OC official ***SSDT-AWAC***  
-   - "Counterfeit Device" or OC official ***SSDT-RTC0***  
-   - ***SSDT-RTC0-NoFlags for CMOS Reset Patch***  
-   
-> ### SSDT-Keyboard
-Keyboard path is `\ _SB.PCI0.LPCB.KBD`.   
-- Remap 1: 
-- Remap 2: 
-- Remap 3:
-- Remap 4: F8 (Network) to F18
-- Remap 5: F9 (Settings) to F19
-- Remap 6: F10 (Bluetooth) to F20
-- Remap 7: F11 (Keyboard) to F17
-- Remap 8:
-- Remap 9:
-- Remap 10: PrtSc to F13
-
-> ### SSDT-PTSWAK
-### SSDT-EXT3-LedReset-TP
-### SSDT-EXT4-WakeScreen
-**Need `OpenCore Patches/ Comprehensive Patch Changed Its Name To.plist`** if OpenCore. `preferred`  
-**Need `Clover Patches/ Comprehensive Patch Changed Its Name To.plist`** if Clover.  
-Look up `_PTS` and `_WAK` and only apply the corresponding patches:  
-`_PTS` is `NotSerialized` in my DSDT  
-`_WAK` is `Serialized` in my DSDT  
-
-- ***SSDT-PTSWAK*** —— Comprehensive Patch。
-
-- ***SSDT-EXT3-LedReset-TP*** — `EXT3` extension patch. Solve the problem that the breathing light does not return to normal after the TP machine wakes up。
-
-- ***SSDT-EXT4-WakeScreen*** — `EXT4` extension patch. Solve the problem that some machines need to press any key to light up the screen after waking up. When using, you should inquire whether the `PNP0C0D` device name and path already exist in the patch file, such as` _SB.PCI0.LPCB.LID0`. If not, add it yourself.
-
-> ### SSDT-SBUS
-Why?: `0x001F0004` under Device (SBUS).
-
-> ### SSDT-DMAC
-Why?: `PNP0200` is missing in DSDT.
- 
-> ### SSDT-MCHC
-Why?:  `MCHC` is missing in DSDT.
- 
-> ### SSDT-PMCR
-Why?: `PMCR`,` APP9876` missing in DSDT.
-
-> ### SSDT-PWRB
-Why?: `PNP0C0C` missing in DSDT.
-
-> ### SSDT-ALS0
-Why?: `ACPI0008` missing in DSDT.
-
-> ### SSDT-GPRW
-Why?: Fix instant wake by hooking GPRW (0D/6D Patch)
-
-</details>
-
-<details>
-  <summary><h1>Getting Started</h1></summary>
 
 > ## SUMMARY:
 
@@ -241,7 +103,6 @@ Create a pull request if you like to be added, final decision at my discreation.
 * Undervolt the machine with [Volta](https://volta.garymathews.com/).  
 * If you must dual boot with Windows or Linux, I advise against paritition. What I recommend, instead, is getting a second compatible hard drive that fits in the WWAN card slot (I have the WDC PC SN520 NVMe 2242), install Windows/Linux onto that drive. Finally, boot into it with Clover or OpenCore.
 * If your laptop did not come with WWAN, you can purchase additional antennas to add to your laptop. This is useful when using Wifi/Bluetooth cards that have 3 antennas.
-</details>
 
 > ## CONTACT:
 https://tylerspaper.com/contact  
