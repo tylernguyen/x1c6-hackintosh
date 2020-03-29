@@ -1,5 +1,5 @@
 //
-DefinitionBlock("", "SSDT", 2, "ACDT", "EXT4", 0)
+DefinitionBlock("", "SSDT", 2, "OCLT", "EXT4", 0)
 {
     External(_SB.LID, DeviceObj)
     External(_SB.LID0, DeviceObj)

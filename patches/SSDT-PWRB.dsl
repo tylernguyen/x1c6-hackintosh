@@ -1,5 +1,5 @@
 //Add PWRB
-DefinitionBlock("", "SSDT", 2, "ACDT", "PNP0C0C", 0)
+DefinitionBlock("", "SSDT", 2, "OCLT", "PNP0C0C", 0)
 {
     //search PNP0C0C
     Scope (\_SB)

@@ -83,3 +83,6 @@ Why?: `PMCR`,` APP9876` missing in DSDT.
 
 > ### SSDT-PWRB
 Why?: `PNP0C0C` missing in DSDT.
+
+> ### SSDT-ALS0
+Why?: `ACPI0008` missing in DSDT.

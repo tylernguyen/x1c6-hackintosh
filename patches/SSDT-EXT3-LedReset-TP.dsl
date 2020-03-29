@@ -1,5 +1,5 @@
 //
-DefinitionBlock("", "SSDT", 2, "ACDT", "EXT3", 0)
+DefinitionBlock("", "SSDT", 2, "OCLT", "EXT3", 0)
 {
     External(_SI._SST, MethodObj)
     Method (EXT3, 1, NotSerialized)
