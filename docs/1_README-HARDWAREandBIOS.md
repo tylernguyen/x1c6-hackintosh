@@ -8,9 +8,11 @@ However, there exists other alternatives:
 - Dell DW1820A, the "CN-08PKF4" model is reported to have the most successes, so make sure to look for that specifically.
 
 ### M.2 Hard Drive Replacements:
-macOS cannot be installed on the factory installed PM981 drive.  
+* macOS cannot be installed on the factory installed PM981 drive. Replace macOS-incompatible factory Samsung PM981 with preferably another M.2 drive. 
+* NVMeFix](https://github.com/acidanthera/NVMeFix) is still in its early stage. However, it has dramtically improved NVMe power management. In my personal experience, it is no longer far from SATA power consumption. I now recommend that you go with an NVMe SSD for the faster speed.
+* An additional hard drive can be installed in the WAN slot. It can be used for a cleaner dual boot experience, or simply as a backup or storage drive.
 
-Replace factory Samsung PM981 with preferably a SATA M.2 SSD, as it is [more power efficient and plays nicer with APFS than an NVMe M.2 SSD](https://www.tonymacx86.com/threads/solved-lenovo-x1-carbon-6th-gen-battery-life.254508/#post-1768978). However, if you absolute need the speed, Samsung NVMe drives are fast and are macOS compatible out of the box.   
+
 
 > ## BIOS:
 | Main Menu | Sub 1 | Sub 2 | Sub 3 |

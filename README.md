@@ -22,14 +22,14 @@
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/docs/CHANGELOG.md)
 > ### 2020-3-29
 #### Added
-SSDT-ALS0 hotpatch for faking ambient light sensor ALS0 per Catalina's brightness preservation.  
-SSDT-GPRW hotpatching for fixing instant wake (0D/6D patch).  
+* SSDT-ALS0 hotpatch for faking ambient light sensor ALS0 per Catalina's brightness preservation.  
+* SSDT-GPRW hotpatching for fixing instant wake (0D/6D patch).  
 #### Changed
-SSDT-Keyboard with the exception of F7 and F12, now maps all hotkeys to a Fn value that can be remapped within macOS. In addition, PrtSc is now remapped to F13.
-SSDT-PLNF to a cleaner version.
-Similarly, battery patch has been simplified.
+* SSDT-Keyboard with the exception of F7 and F12, now maps all hotkeys to a Fn value that can be remapped within macOS. In addition, PrtSc is now remapped to F13.
+* SSDT-PLNF to a cleaner version.
+* Similarly, battery patch has been simplified.
 #### Removed
-Some unused patches within OpenCore config.plist has now been removed.
+* Some unused patches within OpenCore config.plist has now been removed.
 
 > ## SUMMARY:
 
@@ -58,6 +58,7 @@ Once you are ready, follow the series of README files included `docs/`.
 **2_README-installMEDIA**: Creating the macOS install drive.  
 **3_README-POSTinstallation**: Settings and tweaks post installation.   
 **4_README-ACPIpatching**: The hardest and most time consuming part, patching the system ACPI table for battery status, brightness, sleep, thunderbolt, thunderbolt hotplugging, etc...  
+**5_README-other.md**: for other notices
 
 * While you can plug-and-play most of my hotpatches if you have an x1c6, I still suggest that you dump and disassemble your own DSDT. This is imprortant as your DSDT maybe different from mine. And furthermore, you get to learn more about what's actually going on.
 
