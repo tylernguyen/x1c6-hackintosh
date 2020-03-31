@@ -1,0 +1,1 @@
+## Please refer to [docs/4_README-ACPIpatching.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/4_README-ACPIpatching.md) for Hotpatching notes.

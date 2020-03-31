@@ -20,16 +20,17 @@
 > ## Update
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/docs/CHANGELOG.md)
-> ### 2020-3-29
+> ### 2020-3-30
 #### Added
-* SSDT-ALS0 hotpatch for faking ambient light sensor ALS0 per Catalina's brightness preservation.  
-* SSDT-GPRW hotpatching for fixing instant wake (0D/6D patch).  
+* OpenCore configuration folder intended for install media usage.  
+* Configuration, patches and documentation for alternative network cards, specifically the DW1560 and DW1820A.  
 #### Changed
-* SSDT-Keyboard with the exception of F7 and F12, now maps all hotkeys to a Fn value that can be remapped within macOS. In addition, PrtSc is now remapped to F13.
-* SSDT-PLNF to a cleaner version.
-* Similarly, battery patch has been simplified.
+* Moved `assets` folder into `docs/`.  
+#### Deprecated
+* All things Clover. OpenCore is now my only friend.  
 #### Removed
-* Some unused patches within OpenCore config.plist has now been removed.
+* Removed EC related patches from `config.plist` as they are unnecessary.
+* Removed Tools related entries from `config.plist` as they are unnecessary.
 
 > ## SUMMARY:
 

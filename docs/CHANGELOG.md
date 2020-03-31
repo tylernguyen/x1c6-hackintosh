@@ -2,6 +2,17 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-3-30
+#### Added
+* OpenCore configuration folder intended for install media usage.  
+* Configuration, patches and documentation for alternative network cards, specifically the DW1560 and DW1820A.  
+#### Changed
+* Moved `assets` folder into `docs/`.  
+#### Deprecated
+* All things Clover. OpenCore is now my only friend.  
+#### Removed
+* Removed EC related patches from `config.plist` as they are unnecessary.
+
 > ### 2020-3-29
 #### Added
 * SSDT-ALS0 hotpatch for faking ambient light sensor ALS0 per Catalina's brightness preservation.  
