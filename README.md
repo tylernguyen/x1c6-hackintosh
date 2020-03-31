@@ -55,11 +55,11 @@ Xcode works fine, but I prefer  [PlistEdit Pro](https://www.fatcatsoftware.com/p
 Explore links included this README, especially those in references and other x1c6-hackintosh repos.  
 
 Once you are ready, follow the series of README files included `docs/`.  
-**1_README-HARDWAREandBIOS**: Requirements before starting.   
-**2_README-installMEDIA**: Creating the macOS install drive.  
-**3_README-POSTinstallation**: Settings and tweaks post installation.   
-**4_README-ACPIpatching**: The hardest and most time consuming part, patching the system ACPI table for battery status, brightness, sleep, thunderbolt, thunderbolt hotplugging, etc...  
-**5_README-other.md**: for other notices
+[**1_README-HARDWAREandBIOS**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md): Requirements before starting.   
+[**2_README-installMEDIA**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/2_README-installMEDIA.md): Creating the macOS install drive.  
+[**3_README-POSTinstallation**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-POSTinstallation.md): Settings and tweaks post installation.   
+[**4_README-ACPIpatching**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/4_README-ACPIpatching.md): The hardest and most time consuming part, patching the system ACPI table for battery status, brightness, sleep, thunderbolt, thunderbolt hotplugging, etc...  
+[**5_README-other.md**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/5_README-other.md): for other notices
 
 * While you can plug-and-play most of my hotpatches if you have an x1c6, I still suggest that you dump and disassemble your own DSDT. This is imprortant as your DSDT maybe different from mine. And furthermore, you get to learn more about what's actually going on.
 
