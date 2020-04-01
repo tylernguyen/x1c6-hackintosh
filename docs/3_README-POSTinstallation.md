@@ -31,6 +31,7 @@ For the kexts you will be using, make sure to create matching entries within `Op
 | PCIe Ethernet                        | ✅      | `IntelMausi.kext`                                    | -                                                            |                                                            |
 | Audio Recording                      | ✅      | `AppleALC.kext` with Layout ID = 21                          | -                                                            |
 | Audio Playback                       | ✅      | `AppleALC.kext` with Layout ID = 21                          | -                                                            |
+| Automatic Headphone Output Switching | ✅      | `ALCPlugFix`                           | -                                                            |
 | Full Graphics Accleration (QE/CI)    | ✅      | `WhateverGreen.kext`                                         | -                                                            |
 | Brightness Adjustments               | ✅      | `WhateverGreen.kext` and `SSDT-PNLF-SKL_KBL.aml`                                        | -                                                            |
 | Micro SD Card Reader                 | ✅      | Custom `USBPorts.kext` See current OpenCore-EFI kext folder. You can create your own with Hackintool.                           | -                                                            |

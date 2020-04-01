@@ -1,7 +1,5 @@
 ﻿# macOS on Thinkpad X1 Carbon 6th Generation, Model 20KH*
 [![macOS](https://img.shields.io/badge/macOS-Catalina-yellow.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
-[![Clover](https://img.shields.io/badge/Clover-5100-red)](https://github.com/996icu/996.ICU/blob/master/LICENSE) *Last Clover version suppported, OpenCore is now my preferred bootloader.  
-
 [![BIOS](https://img.shields.io/badge/BIOS-1.43-blue)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 [![MODEL](https://img.shields.io/badge/Model-20KH*-blue)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 [![OpenCore](https://img.shields.io/badge/OpenCore-0.5.6-green)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
@@ -20,13 +18,12 @@
 > ## Update
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/docs/CHANGELOG.md)
-> ### 2020-3-31
+> ### 2020-4-1
 #### Added
-* Further documentation regarding specific tweaks and recommmended macOS settings. 
-* ADB and PS2 code reference sheet.   
+* ALCPlugFix to automatically change output to headphones after being plugged in, and to change it back to speakers after being unplugged.    
+* ALCPlugFix to fix the rare condition that audio is messed up after waking from sleep.  
 #### Changed
-* All Fn keys now have have an assigned key, remap as needed. 
-* Keyboard map is now in markdown. 
+* More documentation about recommended macOS settings.  
 
 > ## SUMMARY:
 | Fully functional | Non-functional | Semi-functional. Additional pulls needed and welcomed. |
@@ -58,7 +55,7 @@ Once you are ready, follow the series of README files included `docs/`.
 * While you can plug-and-play most of my hotpatches if you have an x1c6, I still suggest that you dump and disassemble your own DSDT. This is imprortant as your DSDT maybe different from mine. And furthermore, you get to learn more about what's actually going on.
 
 > ## MY SPECIFICATIONS:
-Refer to [x1c6-Platform_Specifications](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/x1c6-Platform_Specifications.pdf) for possible stock ThinkPad X1 6th Gen configurations.
+Refer to [x1c6-Platform_Specifications](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf) for possible stock ThinkPad X1 6th Gen configurations.
 
 | Processor Number | # of Cores | # of Threads | Base Frequency | Max Turbo Frequency | Cache | Memory Types | Graphics |
 |:--|:--|:--|:--|:--|:--|:--|:--|
@@ -111,6 +108,7 @@ https://tylerspaper.com/support/
 [@Colton-Ko](https://github.com/Colton-Ko/macOS-ThinkPad-X1C6) for the great features template.  
 [@stevezhengshiqi](https://github.com/stevezhengshiqi) for the one-key-cpufriend script.  
 [@corpnewt](https://github.com/corpnewt) for CPUFriendFriend.  
+[@Sniki](https://github.com/Sniki) and [@goodwin](https://github.com/goodwin) for ALCPlugFix.  
 [@xzhih](https://github.com/xzhih) for one-key-hidpi.  
 [@daliansky](https://github.com/daliansky) for all the hotpatches.  
 [@jsassu20](https://github.com/jsassu20) for translating daliansky's documentations.  

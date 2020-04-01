@@ -9,7 +9,7 @@
 
 A good way to see if you need to edit and compile your own SSDT patches is to compare your DSDT.dsl with mine of the same BIOS version. You can find my disasemebled DSDT file in `ACPI/Disassembled ACPI/BIOS-v*`.  
 
-7. Once you have the compiled ACPI patches, place them in `EFI/OC/ACPI/` and make sure to create matching entries within `OpenCore.plist`'s `ACPI/Add/` section.  
+7. Once you have the compiled ACPI patches, place them in `EFI/OC/ACPI/` and make sure to create matching entries within OpenCore's `config.plist`'s `ACPI/Add/` section.  
 
 # Hotpatching Notes
 
@@ -83,8 +83,8 @@ For multimedia functions:
 - Remap 10: PrtSc to F13
 - Remap 11: Fn + K to Deadkey
 - Remap 12: Fn + P to Deadkey
-For Fn 1-12 functions, check the follow option within `Preferences/Keyboard`:  
-![Fn keys](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/fnkeys.png)
+For Fn 1-12 functions, check the following option within `Preferences/Keyboard`:  
+![Fn keys](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/fnkeys.png)
 
 > ### SSDT-PTSWAK
 ### SSDT-EXT3-LedReset-TP

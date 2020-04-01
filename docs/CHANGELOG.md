@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-4-1
+#### Added
+* ALCPlugFix to automatically change output to headphones after being plugged in, and to change it back to speakers after being unplugged.    
+* ALCPlugFix to fix the rare condition that audio is messed up after waking from sleep.  
+#### Changed
+* More documentation about recommended macOS settings.  
+
 > ### 2020-3-31
 #### Added
 * Further documentation regarding specific tweaks and recommmended macOS settings. 
