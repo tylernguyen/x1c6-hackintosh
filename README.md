@@ -20,31 +20,25 @@
 > ## Update
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/docs/CHANGELOG.md)
-> ### 2020-3-30
+> ### 2020-3-31
 #### Added
-* OpenCore configuration folder intended for install media usage.  
-* Configuration, patches and documentation for alternative network cards, specifically the DW1560 and DW1820A.  
+* Further documentation regarding specific tweaks and recommmended macOS settings. 
+* ADB and PS2 code reference sheet.   
 #### Changed
-* Moved `assets` folder into `docs/`.  
-#### Deprecated
-* All things Clover. OpenCore is now my only friend.  
-#### Removed
-* Removed EC related patches from `config.plist` as they are unnecessary.
-* Removed Tools related entries from `config.plist` as they are unnecessary.
+* All Fn keys now have have an assigned key, remap as needed. 
+* Keyboard map is now in markdown. 
 
 > ## SUMMARY:
-
 | Fully functional | Non-functional | Semi-functional. Additional pulls needed and welcomed. |
 |-------------------------------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| Wifi and Bluetooth \*need card replacement ⚠️| Fingerprint Reader (not needed, DISABLED at BIOS) ❌| HDMI, currently only outputs at 1080p.Though capable of 4K 4096x2150. ⚠️|
-| USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad ✅ | Wireless WAN (DISABLED at BIOS) *ENABLED if you have a 2nd drive connected❌ | Function keys, F1-F6 work. The rest need to be mapped and patched via DSDT/SSDTs. ⚠️|
+| WiFi, Bluetooth, Apple Continuity \*need card replacement ⚠️| Fingerprint Reader (not needed, DISABLED at BIOS) ❌| HDMI, currently only outputs at 1080p.Though capable of 4K 4096x2150. ⚠️|
+| USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad ✅ | Wireless WAN (DISABLED at BIOS) *ENABLED if you have a 2nd drive connected❌ | Thunderbolt 3 Hotplug: partially working [More details](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) ⚠️|
 | iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... ✅ |  Hibernation ❌ | Power management and optimizations. See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28)  ⚠️|
-| HiDPI, Handoff, Sidecar ✅ | | USB power property injection - unsure of real values. ⚠️|
-| MicroSD card reader ✅|  | Thunderbolt 3 Hotplug: partially working [More details](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) ⚠️|
+| Since some Fn functions, such as Mic Mute, Network Toggle do not have equivalent in macOS, these keys are assigned F14-F20 which can then be programmed to a preferred shortcut by you. ⚠️ | | USB power property injection - unsure of real values. ⚠️|
+| MicroSD card reader ✅|  | |
 
 > ## NEEDED:  
 A macOS machine would be VERY useful: to create install drives, and for when your ThinkPad cannot boot. Though it is not completely necessary.  
-[Clover Configurator](https://mackie100projects.altervista.org/download-clover-configurator/), if [Clover](https://github.com/Dids/clover-builder) is your bootloader.  
 Flash drive, 16GB or more.  
 Xcode works fine, but I prefer  [PlistEdit Pro](https://www.fatcatsoftware.com/plisteditpro/).  
 [MaciASL](https://github.com/acidanthera/MaciASL), for patching ACPI tables.  

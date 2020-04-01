@@ -69,17 +69,22 @@ Used in conjuction with `WhateverGreen.kext`
    - ***SSDT-RTC0-NoFlags for CMOS Reset Patch***  
    
 > ### SSDT-Keyboard - Remapping Fn and PrtSc Keys
-Keyboard path is `\ _SB.PCI0.LPCB.KBD`.   
-- Remap 1: 
-- Remap 2: 
-- Remap 3:
-- Remap 4: F8 (Network) to F18
-- Remap 5: F9 (Settings) to F19
-- Remap 6: F10 (Bluetooth) to F20
-- Remap 7: F11 (Keyboard) to F17
-- Remap 8:
-- Remap 9:
+Keyboard path is `\ _SB.PCI0.LPCB.KBD`.     
+For multimedia functions:  
+- Remap 1: F4 (Network) to F4
+- Remap 2: F5 (Brightness Down)
+- Remap 3: F6 (Brightness Up)
+- Remap 4: F7 (Dual Display) to F16
+- Remap 5: F8 (Network) to F8
+- Remap 6: F9 (Settings) to F19
+- Remap 7: F10 (Bluetooth) to F20
+- Remap 8: F11 (Keyboard) to F17
+- Remap 9: F12 (Star) to F18
 - Remap 10: PrtSc to F13
+- Remap 11: Fn + K to Deadkey
+- Remap 12: Fn + P to Deadkey
+For Fn 1-12 functions, check the follow option within `Preferences/Keyboard`:  
+![Fn keys](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/fnkeys.png)
 
 > ### SSDT-PTSWAK
 ### SSDT-EXT3-LedReset-TP

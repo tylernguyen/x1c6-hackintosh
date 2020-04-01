@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-3-31
+#### Added
+* Further documentation regarding specific tweaks and recommmended macOS settings. 
+* ADB and PS2 code reference sheet.   
+#### Changed
+* All Fn keys now have have an assigned key, remap as needed. 
+* Keyboard map is now in markdown. 
+
 > ### 2020-3-30
 #### Added
 * OpenCore configuration folder intended for install media usage.  
