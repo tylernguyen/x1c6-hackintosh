@@ -11,21 +11,21 @@ For the kexts you will be using, make sure to create matching entries within `Op
 5. Refer to the table below for the other post installtion configurations for each particular issue. Some issues are easy to fix, simply requiring a kext installtion or running a script, while others are my involved and require SSDT patching.
 6. For those other, more complicated issues, proceed to `4_README-ACPIpatching.md` 
 
-| Feature                              | Status | Dependency                                                   | Remarks                                                      |
-| :----------------------------------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Feature                              | Status  | Dependency                                                   | Remarks                                                      |
+| :----------------------------------- | ------  | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | macOS (10.14.x or 10.15.x)           | ✅      | `VirtualSMC.kext`, `Lilu.kext`, Clover  or OpenCore Bootloader             | OpenCore is preferred.                           |
 | iMessage/ FaceTime                   | ✅      | Whitelisted Apple ID, Valid SMBIOS                           | [Guide](https://www.tonymacx86.com/threads/an-idiots-guide-to-imessage.196827/) |
 | Siri                                 | ✅      | Apple ID, Working audio recorder                             | Needs `AppleALC`                                             |
 | iTunes Video Playback                | ✅      | `WhateverGreen.kext`, Apple ID (*Optional*)                  | -                                                            |
 | Sidecar                              | ✅      | iPad with iPadOS 13                                          | Tested with iPad Mini with iPadOS 13.1.2                      |
-| WiFi                                 | ✅      | Native with BCM94360CS2. `AirportBrcmFixup` otherwise.                            |                                              |
-| Bluetooth                            | ✅      | Native with BCM94360CS2. `BrcmFirmwareRepo.kext`, `BrcmPatchRAM3.kext`, and `BrcmBluetoothInjector.kext` otherwise. | -                                                            |
-| Continuty                            | ✅      | Native with BCM94360CS2. `BT4LEContiunityFixup.kext` otherwise. Working Blutetooth and WiFi setup | -                                                            |
-| AirDrop                              | ✅      | Native with BCM94360CS2. `BT4LEContiunityFixup.kext` otherwise. Working Blutetooth and WiFi setup | -                                                            |
+| WiFi                                 | ✅      | Native with BCM94360CS2. `AirportBrcmFixup` otherwise.                            | See `patches/OpenCore Patches/` for specific network card.                                             |
+| Bluetooth                            | ✅      | Native with BCM94360CS2. `BrcmFirmwareRepo.kext`, `BrcmPatchRAM3.kext`, and `BrcmBluetoothInjector.kext` otherwise. | See `patches/OpenCore Patches/` for specific network card. |
+| Continuty                            | ✅      | Native with BCM94360CS2. `BT4LEContiunityFixup.kext` otherwise. Working Blutetooth and WiFi setup | See `patches/OpenCore Patches/` for specific network card.                                                            |
+| AirDrop                              | ✅      | Native with BCM94360CS2. `BT4LEContiunityFixup.kext` otherwise. Working Blutetooth and WiFi setup | See `patches/OpenCore Patches/` for specific network card.                                                            |
 | TrackPoint                           | ✅      | Patched `VoodooPS2Controller.kext`                           | -                                                            |
 | TrackPad                             | ✅      | `VoodooPS2Controller.kext`                                   | -                                                            |
 | Built-in Keyboard                    | ✅      | `VoodooPS2Controller.kext`                                   | -                                                            |
-| Battery Percentage Indication        | ✅      | `SSDT-OCBAT0-TP_re80_tx70-80_x1c5th-6th_s12017_p51.aml`                                           | Use [MaciASL](https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/) |
+| Battery Percentage Indication        | ✅      | `SSDT-OCBAT0-TP_tx80_x1c6th.aml`                                           | Use [MaciASL](https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/) |
 | CPU Power Management (SpeedShift)    | ✅      | `XCPM` and `CPUFriend.kext`, generate your own CPUFriendDataProvider with [CPUFriendFriend](https://github.com/corpnewt/CPUFriendFriend_ or [one-key-cpufriend](https://github.com/stevezhengshiqi/one-key-cpufriend).    |
 | IGPU Power Management                | ✅      | `XCPM`                                                       | -                                                            |
 | PCIe Ethernet                        | ✅      | `IntelMausi.kext`                                    | -                                                            |                                                            |
@@ -36,9 +36,9 @@ For the kexts you will be using, make sure to create matching entries within `Op
 | Brightness Adjustments               | ✅      | `WhateverGreen.kext` and `SSDT-PNLF-SKL_KBL.aml`                                        | -                                                            |
 | Micro SD Card Reader                 | ✅      | Custom `USBPorts.kext` See current OpenCore-EFI kext folder. You can create your own with Hackintool.                           | -                                                            |
 | USB 3.1                              | ✅      | Custom `USBPorts.kext` See current OpenCore-EFI kext folder.  You can create your own with Hackintool.                         | -                                                            |
-| DisplayPort on Thunderbolt 3 Dock    | ⚠️      | `SSDT-TB3.aml`, `IOElectrify.kext`                           | [More details](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002)|
+| DisplayPort on Thunderbolt 3 Dock    | ⚠️       | `SSDT-TB3.aml`, `IOElectrify.kext`                           | [More details](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002)|
 | Thunderbolt 3 Dock (Port Replicator) | ✅      | `SSDT-TB3.aml`, `IOElectrify.kext`                           | -                                                            |
-| Thunderbolt 3 Hotplug                | ⚠️      | `SSDT-TB3.aml`, `IOElectrify.kext`                           | [More details](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002)|
+| Thunderbolt 3 Hotplug                | ⚠️       | `SSDT-TB3.aml`, `IOElectrify.kext`                           | [More details](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002)|
 | ThinkPad TB3 Dock (40AC) Ethernet    | ✅      | `AppleRTL815XComposite109.kext`, `AppleRTL815XEthernet109.kext` | [Item page](https://support.lenovo.com/au/en/solutions/acc100356) |
 | CalDigit TS3 Plus Dock               | ✅      |  | [Item page](https://www.apple.com/shop/product/HMX12ZM/A/caldigit-ts3-plus-dock) |
 | HiDPI *(Optional)*                   | ✅      | [xzhih/one-key-hidpi](https://github.com/xzhih/one-key-hidpi) | Scaling issues post-sleep fixed with AAPL, ig-platform `BAAnWQ==`                 |

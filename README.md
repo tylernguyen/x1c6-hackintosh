@@ -28,10 +28,10 @@
 > ## SUMMARY:
 | Fully functional | Non-functional | Semi-functional. Additional pulls needed and welcomed. |
 |-------------------------------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| WiFi, Bluetooth, Apple Continuity \*need card replacement ⚠️| Fingerprint Reader (not needed, DISABLED at BIOS) ❌| HDMI, currently only outputs at 1080p.Though capable of 4K 4096x2150. ⚠️|
+| WiFi, Bluetooth, Apple Continuity ✅ \*need card replacement| Fingerprint Reader (not needed, DISABLED at BIOS) ❌| HDMI, currently only outputs at 1080p.Though capable of 4K 4096x2150. ⚠️|
 | USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad ✅ | Wireless WAN (DISABLED at BIOS) *ENABLED if you have a 2nd drive connected❌ | Thunderbolt 3 Hotplug: partially working [More details](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) ⚠️|
 | iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... ✅ |  Hibernation ❌ | Power management and optimizations. See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28)  ⚠️|
-| Since some Fn functions, such as Mic Mute, Network Toggle do not have equivalent in macOS, these keys are assigned F14-F20 which can then be programmed to a preferred shortcut by you. ⚠️ | | USB power property injection - unsure of real values. ⚠️|
+| Multimedia Fn keys ✅ *need [Karabiner Elements](https://ke-complex-modifications.pqrs.org/) and [BetterTouchTool](https://folivora.ai/) | | USB power property injection - unsure of real values. ⚠️|
 | MicroSD card reader ✅|  | |
 
 > ## NEEDED:  

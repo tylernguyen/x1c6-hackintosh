@@ -1,0 +1,182 @@
+{
+  "BTTPresetName" : "x1c6-functions",
+  "BTTPresetColor" : "78.353000, 224.400000, 65.076000, 255.000000",
+  "BTTPresetUUID" : "638322AA-15F8-437F-A884-69D474E856F7",
+  "BTTPresetContent" : [
+    {
+      "BTTAppBundleIdentifier" : "BT.G",
+      "BTTAppName" : "Global",
+      "BTTAppAutoInvertIcon" : 1,
+      "BTTTriggers" : [
+        {
+          "BTTTriggerType" : 630,
+          "BTTTriggerTypeDescription" : "Group",
+          "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+          "BTTPredefinedActionType" : -1,
+          "BTTPredefinedActionName" : "No Action",
+          "BTTEnabled2" : 1,
+          "BTTKeyboardShortcutKeyboardType" : 0,
+          "BTTRepeatDelay" : 0,
+          "BTTUUID" : "41C56E38-AFF2-47DE-A652-8C40D498BC80",
+          "BTTTriggerOnDown" : 1,
+          "BTTNotesInsteadOfDescription" : 0,
+          "BTTGroupName" : "x1c6-functions",
+          "BTTEnabled" : 1,
+          "BTTModifierMode" : 0,
+          "BTTShortcutKeyCode" : -1,
+          "BTTShortcutModifierKeys" : -1,
+          "BTTOrder" : 0,
+          "BTTDisplayOrder" : 0,
+          "BTTAutoAdaptToKeyboardLayout" : 0,
+          "BTTAdditionalActions" : [
+            {
+              "BTTGestureNotes" : "F7 = Toggle Display Mirroring",
+              "BTTTriggerType" : 0,
+              "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+              "BTTPredefinedActionType" : 266,
+              "BTTPredefinedActionName" : "Toggle Display Mirroring On\/Off",
+              "BTTAdditionalConfiguration" : "8388608",
+              "BTTEnabled2" : 1,
+              "BTTKeyboardShortcutScope" : 1,
+              "BTTKeyboardShortcutKeyboardType" : 0,
+              "BTTRepeatDelay" : 0,
+              "BTTUUID" : "2B2A7AB6-EA55-4896-AC67-B9F10E7048A0",
+              "BTTTriggerOnDown" : 1,
+              "BTTNotesInsteadOfDescription" : 0,
+              "BTTLayoutIndependentChar" : "F16",
+              "BTTEnabled" : 1,
+              "BTTModifierMode" : 0,
+              "BTTShortcutKeyCode" : 106,
+              "BTTShortcutModifierKeys" : 8388608,
+              "BTTOrder" : 0,
+              "BTTDisplayOrder" : 0,
+              "BTTAutoAdaptToKeyboardLayout" : 0,
+              "BTTTriggerConfig" : {
+                "BTTKeyboardShortcutScope" : 1
+              }
+            },
+            {
+              "BTTGestureNotes" : "F9 = Launch System Preferences",
+              "BTTTriggerType" : 0,
+              "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+              "BTTPredefinedActionType" : 49,
+              "BTTPredefinedActionName" : "Launch Application \/ Open File \/ Start Apple Script …",
+              "BTTLaunchPath" : "file:\/\/\/System\/Applications\/System%20Preferences.app",
+              "BTTAdditionalConfiguration" : "8388608",
+              "BTTEnabled2" : 1,
+              "BTTKeyboardShortcutScope" : 1,
+              "BTTKeyboardShortcutKeyboardType" : 0,
+              "BTTRepeatDelay" : 0,
+              "BTTUUID" : "CEE18E36-8CBA-4D0B-B480-8C9027F034CC",
+              "BTTTriggerOnDown" : 1,
+              "BTTNotesInsteadOfDescription" : 0,
+              "BTTLayoutIndependentChar" : "F19",
+              "BTTEnabled" : 1,
+              "BTTModifierMode" : 0,
+              "BTTShortcutKeyCode" : 80,
+              "BTTShortcutModifierKeys" : 8388608,
+              "BTTOrder" : 1,
+              "BTTDisplayOrder" : 0,
+              "BTTAutoAdaptToKeyboardLayout" : 0,
+              "BTTTriggerConfig" : {
+                "BTTKeyboardShortcutScope" : 1
+              }
+            },
+            {
+              "BTTGestureNotes" : "F10 = Toggle Bluetooth",
+              "BTTTriggerType" : 0,
+              "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+              "BTTPredefinedActionType" : 279,
+              "BTTPredefinedActionName" : "Toggle Bluetooth Enabled\/Disabled",
+              "BTTAdditionalConfiguration" : "0",
+              "BTTEnabled2" : 1,
+              "BTTKeyboardShortcutScope" : 1,
+              "BTTKeyboardShortcutKeyboardType" : 0,
+              "BTTRepeatDelay" : 0,
+              "BTTUUID" : "609D822A-B55F-46FB-8F90-DFDBDE09ED92",
+              "BTTTriggerOnDown" : 1,
+              "BTTNotesInsteadOfDescription" : 0,
+              "BTTLayoutIndependentChar" : "",
+              "BTTEnabled" : 1,
+              "BTTModifierMode" : 0,
+              "BTTShortcutKeyCode" : 90,
+              "BTTShortcutModifierKeys" : 8388608,
+              "BTTOrder" : 2,
+              "BTTDisplayOrder" : 0,
+              "BTTAutoAdaptToKeyboardLayout" : 0,
+              "BTTTriggerConfig" : {
+                "BTTKeyboardShortcutScope" : 1
+              }
+            },
+            {
+              "BTTGestureNotes" : "PrtSc = Window Screen Capture",
+              "BTTTriggerType" : 0,
+              "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+              "BTTPredefinedActionType" : 169,
+              "BTTPredefinedActionName" : "Capture Screenshot (Configurable)",
+              "BTTScreenshotOptions" : "-i;;-w;;-t;;png;;BTTAdditionallyCopyToClipboard;;\/Users\/jessica\/Pictures\/Screenshot_{datetime}_{random}.png;;",
+              "BTTScreenshotDateFormat" : "yyyy-MM-dd HH.mm.ss",
+              "BTTAdditionalConfiguration" : "8388608",
+              "BTTEnabled2" : 1,
+              "BTTKeyboardShortcutScope" : 1,
+              "BTTKeyboardShortcutKeyboardType" : 0,
+              "BTTRepeatDelay" : 0,
+              "BTTUUID" : "523CDC75-1C67-43A9-BFA9-7A38AFE1BBC1",
+              "BTTTriggerOnDown" : 1,
+              "BTTNotesInsteadOfDescription" : 0,
+              "BTTLayoutIndependentChar" : "F13",
+              "BTTEnabled" : 1,
+              "BTTModifierMode" : 0,
+              "BTTShortcutKeyCode" : 105,
+              "BTTShortcutModifierKeys" : 8388608,
+              "BTTOrder" : 3,
+              "BTTDisplayOrder" : 0,
+              "BTTAutoAdaptToKeyboardLayout" : 0,
+              "BTTTriggerConfig" : {
+                "BTTKeyboardShortcutScope" : 1
+              }
+            },
+            {
+              "BTTGestureNotes" : "F12 = Favorite App",
+              "BTTTriggerType" : 0,
+              "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+              "BTTPredefinedActionType" : 49,
+              "BTTPredefinedActionName" : "Launch Application \/ Open File \/ Start Apple Script …",
+              "BTTLaunchPath" : "file:\/\/\/System\/Applications\/Utilities\/Terminal.app",
+              "BTTAdditionalConfiguration" : "8388608",
+              "BTTEnabled2" : 1,
+              "BTTKeyboardShortcutScope" : 1,
+              "BTTKeyboardShortcutKeyboardType" : 0,
+              "BTTRepeatDelay" : 0,
+              "BTTUUID" : "0B36F550-8965-43E7-AF7A-EAFFCF5CBC9B",
+              "BTTTriggerOnDown" : 1,
+              "BTTNotesInsteadOfDescription" : 0,
+              "BTTLayoutIndependentChar" : "F18",
+              "BTTEnabled" : 1,
+              "BTTModifierMode" : 0,
+              "BTTShortcutKeyCode" : 79,
+              "BTTShortcutModifierKeys" : 8388608,
+              "BTTOrder" : 4,
+              "BTTDisplayOrder" : 0,
+              "BTTAutoAdaptToKeyboardLayout" : 0,
+              "BTTTriggerConfig" : {
+                "BTTKeyboardShortcutScope" : 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "BTTAppBundleIdentifier" : "com.apple.finder",
+      "BTTAppName" : "Finder",
+      "BTTAppAutoInvertIcon" : 1,
+      "BTTTriggers" : [
+
+      ]
+    }
+  ],
+  "BTTPresetSnapAreas" : [
+
+  ]
+}

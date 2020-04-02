@@ -1,11 +1,11 @@
 ## **Use Hackintool to determine your audio layout's pin configuration. For x1c6 owners with `ALC285`, it will most likely be the same and you can simply install my prebuilt files.**
-![alc285_pin](https://github.com/tylernguyen/x1c6-hackintosh/tree/master/docs/references/alc285_pin.png) 
+![alc285_pin](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/alc285_pin.png) 
 
 Build
 -------
 
-By default its code command is for **Lenovo ThinkPad X1 Carbon 6th Gen** with **`ALC285`** Audio Codec with Combo Jack, you may need to change that in `fixAudio` function: 
-![ALCPlugFix_fixAudio](https://github.com/tylernguyen/x1c6-hackintosh/tree/master/docs/img/ALCPlugFix_fixAudio.png)   
+By default its code command is for **Lenovo ThinkPad X1 Carbon 6th Gen** with **`ALC285`** Audio Codec with Combo Jack, you may need to change that in `ALCPlugFix/main.m`'s `fixAudio` function:   
+![ALCPlugFix_fixAudio](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/img/ALCPlugFix_fixAudio.png)   
 
 After `fixAudio` has been adjusted according to your pin layout, run:  
 ```
