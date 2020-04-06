@@ -20,20 +20,23 @@
 
 `Lastly, if my work here helped you. Please consider donating, it would mean a lot to me.`
 
+**`In short, x1c6-hackintosh is very stable and is currently my daily driver. I fully recommend this project to anyone looking for a MacBook alternative.`**
+
+
 > ## Update
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/docs/CHANGELOG.md)
 
-> ### 2020-4-1
+> ### 2020-4-6
 
 #### Added
 
-- ALCPlugFix to automatically change output to headphones after being plugged in, and to change it back to speakers after being unplugged.
-- ALCPlugFix to fix the rare condition that audio is messed up after waking from sleep.
+- SSDT-EXT1-FixShutdown to fix the rare issue that sometimes a shutdown would result in a restart instead.  
+- SSDT-HPET to patch out legacy IRQ conflicts.  
 
 #### Changed
-
-- More documentation about recommended macOS settings.
+- Better notes and documentation with `config.plist`  
+- Modularized each needed OpenCore config patches.  
 
 > ## SUMMARY:
 
@@ -42,7 +45,7 @@
 | WiFi, Bluetooth, Apple Continuity ✅ \*need card replacement                                                                              | Fingerprint Reader (not needed, DISABLED at BIOS) ❌                          | HDMI, currently only outputs at 1080p.Though capable of 4K 4096x2150. ⚠️                                                                    |
 | USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad ✅                                | Wireless WAN (DISABLED at BIOS) \*ENABLED if you have a 2nd drive connected❌ | Thunderbolt 3 Hotplug: partially working [More details](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) ⚠️ |
 | iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... ✅                                                                      | Hibernation ❌                                                                | Power management and optimizations. See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28) ⚠️                            |
-| Multimedia Fn keys ✅ \*need [Karabiner Elements](https://ke-complex-modifications.pqrs.org/) and [BetterTouchTool](https://folivora.ai/) |                                                                               | USB power property injection - unsure of real values. ⚠️                                                                                    |
+| Multimedia Fn keys ✅ \*need [Karabiner Elements](https://ke-complex-modifications.pqrs.org/) and [BetterTouchTool](https://folivora.ai/) |                                                                               |                                                                                                                                             |
 | MicroSD card reader ✅                                                                                                                    |                                                                               |                                                                                                                                             |
 
 > ## NEEDED:
@@ -94,11 +97,12 @@ TrackPad: PS/2
 **Thunderbolt:**  
 `Intel JHL6540 (Alpine Ridge 4C) Thunderbolt 3 Bridge`
 
-> ## REFERENCES:
+> ## Read These (References):
 
 - [The Vanilla Laptop Guide](https://fewtarius.gitbook.io/laptopguide/)
 - Daliansky's [Hackintool tutorial](https://translate.google.com/translate?js=n&sl=auto&tl=en&u=https://blog.daliansky.net/Intel-FB-Patcher-tutorial-and-insertion-pose.html).
 - [An iDiot's Guide To Lilu and its Plug-ins](https://www.tonymacx86.com/threads/an-idiots-guide-to-lilu-and-its-plug-ins.260063/)
+- [Getting Started with ACPI](https://khronokernel.github.io/Getting-Started-With-ACPI/)  
 - [General Framebuffer Patching Guide (HDMI Black Screen Problem)](https://www.tonymacx86.com/threads/guide-general-framebuffer-patching-guide-hdmi-black-screen-problem.269149/)
 - [Intel Framebuffer patching using WhateverGreen](https://www.tonymacx86.com/threads/guide-intel-framebuffer-patching-using-whatevergreen.256490/)
 

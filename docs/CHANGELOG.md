@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-4-6
+
+#### Added
+
+- SSDT-EXT1-FixShutdown to fix the rare issue that sometimes a shutdown would result in a restart instead.  
+- SSDT-HPET to patch out legacy IRQ conflicts.  
+
+#### Changed
+- Better notes and documentation with `config.plist`  
+- Modularized each needed OpenCore config patches.  
+
+
 > ### 2020-4-1
 
 #### Added

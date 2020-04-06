@@ -8,7 +8,7 @@
 		<array>
 			<dict>
 				<key>Comment</key>
-				<string>Battery Status</string>
+				<string>Battery (Needs TPbattery.plist)</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -16,7 +16,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>plugin-type=1</string>
+				<string>Intel Power Management</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -24,7 +24,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>brightness</string>
+				<string>Brightness Adjustment</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -32,7 +32,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>fake als</string>
+				<string>Fake ALS0 (Brightness Preservation, starting with Catalina)</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -48,7 +48,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Thinkpad Keyboard</string>
+				<string>Thinkpad Keyboard (Need x1c6-keyboard.plist)</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -56,7 +56,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Comprehensive Sleep/ Wake Patch</string>
+				<string>Comprehensive Sleep/ Wake Patch (Needs PTSWAK.plist)</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -64,7 +64,15 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>PTSWAK EXT3</string>
+				<string>Fix Reboot after Shutdown</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-EXT1-FixShutdown.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>TP Light Sleep/Wake Fix</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -80,7 +88,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>DMAC</string>
+				<string>Fake DMAC (Completeness)</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -88,7 +96,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>MCHC</string>
+				<string>Fake MCHC (Completeness)</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -96,7 +104,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>PMCR</string>
+				<string>Fake PMCR (Completeness)</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -112,7 +120,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>GPRW 0D/6D Patch</string>
+				<string>Fix Instant Wake (Need GPRW.plist)</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -120,7 +128,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>DTPG</string>
+				<string>TB3 Hotplug Support</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -128,17 +136,133 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>TB3HP</string>
+				<string>TB3 Hotplug</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
 				<string>SSDT-Z390-TB3HP.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>HPET _CRS (Needs HPET.plist)</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-HPET.aml</string>
 			</dict>
 		</array>
 		<key>Block</key>
 		<array/>
 		<key>Patch</key>
 		<array>
+			<dict>
+				<key>Comment</key>
+				<string>HPET _CRS to XCRS Rename</string>
+				<key>Count</key>
+				<integer>0</integer>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				X0NSUwig
+				</data>
+				<key>Limit</key>
+				<integer>0</integer>
+				<key>Mask</key>
+				<data>
+				</data>
+				<key>OemTableId</key>
+				<data>
+				AAAAAA==
+				</data>
+				<key>Replace</key>
+				<data>
+				WENSUwig
+				</data>
+				<key>ReplaceMask</key>
+				<data>
+				</data>
+				<key>Skip</key>
+				<integer>0</integer>
+				<key>TableLength</key>
+				<integer>0</integer>
+				<key>TableSignature</key>
+				<data>
+				AAAAAA==
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>RTC IRQ 8 Patch</string>
+				<key>Count</key>
+				<integer>0</integer>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				IgABeQA=
+				</data>
+				<key>Limit</key>
+				<integer>0</integer>
+				<key>Mask</key>
+				<data>
+				</data>
+				<key>OemTableId</key>
+				<data>
+				AAAAAA==
+				</data>
+				<key>Replace</key>
+				<data>
+				IgAAeQA=
+				</data>
+				<key>ReplaceMask</key>
+				<data>
+				</data>
+				<key>Skip</key>
+				<integer>0</integer>
+				<key>TableLength</key>
+				<integer>0</integer>
+				<key>TableSignature</key>
+				<data>
+				AAAAAA==
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>TIMR IRQ 0 Patch</string>
+				<key>Count</key>
+				<integer>0</integer>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				IgEAeQA=
+				</data>
+				<key>Limit</key>
+				<integer>0</integer>
+				<key>Mask</key>
+				<data>
+				</data>
+				<key>OemTableId</key>
+				<data>
+				AAAAAA==
+				</data>
+				<key>Replace</key>
+				<data>
+				IgAAeQA=
+				</data>
+				<key>ReplaceMask</key>
+				<data>
+				</data>
+				<key>Skip</key>
+				<integer>0</integer>
+				<key>TableLength</key>
+				<integer>0</integer>
+				<key>TableSignature</key>
+				<data>
+				AAAAAA==
+				</data>
+			</dict>
 			<dict>
 				<key>Comment</key>
 				<string>Name6D-03 to 00</string>

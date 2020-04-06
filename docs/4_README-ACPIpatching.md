@@ -1,16 +1,18 @@
 > ## ACPI Patching:
 
 1. Download and install [MaciASL](https://github.com/acidanthera/MaciASL/releases) if you do not have it already.
-2. Dump your original ACPI tables. There are a number of ways to do this, using Clover, Hackintool, Linux.
+2. Dump your original ACPI tables. There are a number of ways to do this, using Clover, Hackintool, Linux. See [here](https://khronokernel.github.io/Getting-Started-With-ACPI/Manual/dump.html).  
 3. In Terminal, disassemble the copied ACPI tables with "iasl-stable -dl DSDT.aml". For our purpose, the only file that really matters is DSDT.dsl
 
 - Your DSDT file will be used as a reference table in determining that needs to be patched and what patches need to be added.
 
 4. Source SSDT\*.dsl patch files are located in `patches` folder.
 5. Refer to my `EFI-OpenCore` folder to see which patches are currently being used by me.
-6. Refer to `PATCHES.md` for hotpatching documentation, most of my compiled hotpatches and can be copied straight to your setup. However, some patches may require certain directories or variables to be changed depending on your hardware (examine your own disasemebled DSDT). For these, edit the .dsl patch files. Also, note that some SSDT patches also require accompanying OpenCore/ Clover ACPI patches to work.
+6. If your x1c6's model is 20KH*, most of my compiled hotpatches and can likely be copied straight to your setup. However, some patches may require certain directories or variables to be changed depending on your hardware (examine your own disasemebled DSDT). For these, edit the .dsl patch files. Also, note that some SSDT patches also require accompanying OpenCore/ Clover ACPI patches to work.
 
 A good way to see if you need to edit and compile your own SSDT patches is to compare your DSDT.dsl with mine of the same BIOS version. You can find my disasemebled DSDT file in `ACPI/Disassembled ACPI/BIOS-v*`.
+
+Should your source DSDT be similar enough (in regards to certain items in these ACPI patches)to mine. Congrats! You can simply try my compiled patches. Should it differ however, please carefully examine these notes and create your own SSDT patches.  
 
 7. Once you have the compiled ACPI patches, place them in `EFI/OC/ACPI/` and make sure to create matching entries within OpenCore's `config.plist`'s `ACPI/Add/` section.
 
@@ -69,17 +71,14 @@ Why?: `Processor` search in DSDT, rename `PR` to other variables as needed.
 Why?: `Skylake/ KabyLake/ KabyLake-R` CPU.  
 Used in conjuction with `WhateverGreen.kext`
 
-> ### SSDT-HPET_RTC_TIMR-fix
+> ### SSDT-HPET
 
-- This patch cannot be used with the following patches:  
-     - **_SSDT-RTC_Y-AWAC_N_** of the "Preset Variable Method"  
-     - OC official **_SSDT-AWAC_**  
-     - "Counterfeit Device" or OC official **_SSDT-RTC0_**  
-     - **_SSDT-RTC0-NoFlags for CMOS Reset Patch_**
+- Patch out IRQ conflicts. Credits to [corpnewt/SSDTTime](https://github.com/corpnewt/SSDTTime).  
+**Needs `OpenCore Patches/ HPET.plist`**
 
 > ### SSDT-Keyboard - Remapping Fn and PrtSc Keys
 
-Keyboard path is `\ _SB.PCI0.LPCB.KBD`.    
+ Keyboard path is `\ _SB.PCI0.LPCB.KBD`.    
 For multimedia functions:
 
 - Remap 1: F4 (Network) to F4
@@ -97,22 +96,28 @@ For multimedia functions:
   For Fn 1-12 functions, check the following option within `Preferences/Keyboard`:  
   ![Fn keys](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/fnkeys.png)
 
+**Needs `OpenCore Patches/ x1c6-keyboard.plist`**
+
 > ### SSDT-PTSWAK
 
-### SSDT-EXT3-LedReset-TP
+- Comprehensive sleep/wake patch.  
+**Needs `OpenCore Patches/ PTSWAK.plist`**
 
-### SSDT-EXT4-WakeScreen
-
-**Need `OpenCore Patches/ Comprehensive Patch Changed Its Name To.plist`**  
-Look up `_PTS` and `_WAK` and only apply the corresponding patches:  
+Look up `_PTS` and `_WAK` in source DSDT and confirm the following, modify if different:  
 `_PTS` is `NotSerialized` in my DSDT  
 `_WAK` is `Serialized` in my DSDT
 
-- **_SSDT-PTSWAK_** —— Comprehensive Patch。
+### SSDT-EXT1-FixShutdown
 
-- **_SSDT-EXT3-LedReset-TP_** — `EXT3` extension patch. Solve the problem that the breathing light does not return to normal after the TP machine wakes up。
+- PTSWAK extension patch. Fixes reboot after shutdown.  
 
-- **_SSDT-EXT4-WakeScreen_** — `EXT4` extension patch. Solve the problem that some machines need to press any key to light up the screen after waking up. When using, you should inquire whether the `PNP0C0D` device name and path already exist in the patch file, such as`_SB.PCI0.LPCB.LID0`. If not, add it yourself.
+### SSDT-EXT3-LedReset-TP
+
+- PTSWAK extension patch. Solve the problem that the breathing light does not return to normal after the TP machine wakes up.  
+
+### SSDT-EXT4-WakeScreen
+
+- PTSWAK extension patch. Solve the problem that some machines need to press any key to light up the screen after waking up. When using, you should inquire whether the `PNP0C0D` device name and path already exist in the patch file, such as`_SB.PCI0.LPCB.LID0`. If not, add it yourself.  
 
 > ### SSDT-SBUS
 
@@ -136,6 +141,7 @@ Why?: `PNP0C0C` missing in DSDT.
 
 > ### SSDT-ALS0
 
+Starting with Catalina, an ambient light sensor device is required for brightness preservation. This patch fakes an ambient light sensor device `ALS0` since the x1c6 does not have one.  
 Why?: `ACPI0008` missing in DSDT.
 
 > ### SSDT-GPRW
@@ -143,5 +149,5 @@ Why?: `ACPI0008` missing in DSDT.
 Why?: Fix instant wake by hooking GPRW (0D/6D Patch)
 
 ```
-Special thanks to [daliansky](https://github.com/daliansky) and [jsassu20](https://github.com/jsassu20) for their work.
+Special thanks to [daliansky](https://github.com/daliansky).
 ```
