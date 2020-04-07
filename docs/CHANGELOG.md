@@ -3,7 +3,19 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-> ### 2020-4-6
+> ### 2020-4-6 (#2)
+
+#### Added
+
+- Added OpenCanopy to EFI for Picker GUI support.  
+- NVMeFix kext to EFI-installUSB for PM981 support.  
+
+#### Changed
+- Upgraded OpenCore to 0.5.7  
+- Upgraded various kexts.  
+
+
+> ### 2020-4-6 (#1)
 
 #### Added
 

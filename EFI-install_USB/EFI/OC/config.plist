@@ -33,7 +33,7 @@
 			<key>AvoidRuntimeDefrag</key>
 			<true/>
 			<key>DevirtualiseMmio</key>
-			<true/>
+			<false/>
 			<key>DisableSingleUser</key>
 			<false/>
 			<key>DisableVariableWrite</key>
@@ -46,18 +46,24 @@
 			<true/>
 			<key>ForceExitBootServices</key>
 			<false/>
-			<key>ProtectCsmRegion</key>
+			<key>ProtectMemoryRegions</key>
 			<false/>
 			<key>ProtectSecureBoot</key>
-			<true/>
+			<false/>
+			<key>ProtectUefiServices</key>
+			<false/>
 			<key>ProvideCustomSlide</key>
 			<true/>
+			<key>RebuildAppleMemoryMap</key>
+			<false/>
 			<key>SetupVirtualMap</key>
 			<true/>
 			<key>ShrinkMemoryMap</key>
 			<false/>
 			<key>SignalAppleOS</key>
 			<false/>
+			<key>SyncRuntimePermissions</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>DeviceProperties</key>
@@ -196,7 +202,7 @@
 			</dict>
 			<dict>
 				<key>BundlePath</key>
-				<string>VoodooInput.kext</string>
+				<string>VoodooPS2Controller.kext/Contents/Plugins/VoodooInput.kext</string>
 				<key>Comment</key>
 				<string></string>
 				<key>Enabled</key>
@@ -258,6 +264,22 @@
 				<key>PlistPath</key>
 				<string>Contents/Info.plist</string>
 			</dict>
+			<dict>
+				<key>BundlePath</key>
+				<string>NVMeFix.kext</string>
+				<key>Comment</key>
+				<string></string>
+				<key>Enabled</key>
+				<true/>
+				<key>ExecutablePath</key>
+				<string>Contents/MacOS/NVMeFix</string>
+				<key>MaxKernel</key>
+				<string></string>
+				<key>MinKernel</key>
+				<string></string>
+				<key>PlistPath</key>
+				<string>Contents/Info.plist</string>
+			</dict>
 		</array>
 		<key>Block</key>
 		<array/>
@@ -310,8 +332,8 @@
 		<array/>
 		<key>Boot</key>
 		<dict>
-			<key>ConsoleMode</key>
-			<string></string>
+			<key>ConsoleAttributes</key>
+			<integer>0</integer>
 			<key>HibernateMode</key>
 			<string>None</string>
 			<key>HideAuxiliary</key>
@@ -321,20 +343,20 @@
 			<key>PickerAudioAssist</key>
 			<false/>
 			<key>PickerMode</key>
-			<string>Builtin</string>
+			<string>External</string>
 			<key>PollAppleHotKeys</key>
 			<true/>
-			<key>Resolution</key>
-			<string></string>
 			<key>ShowPicker</key>
 			<true/>
 			<key>TakeoffDelay</key>
 			<integer>0</integer>
 			<key>Timeout</key>
-			<integer>7</integer>
+			<integer>5</integer>
 		</dict>
 		<key>Debug</key>
 		<dict>
+			<key>AppleDebug</key>
+			<true/>
 			<key>DisableWatchDog</key>
 			<true/>
 			<key>DisplayDelay</key>
@@ -353,13 +375,13 @@
 			<key>AllowSetDefault</key>
 			<true/>
 			<key>AuthRestart</key>
-			<true/>
+			<false/>
 			<key>ExposeSensitiveData</key>
 			<integer>6</integer>
 			<key>HaltLevel</key>
 			<integer>2147483648</integer>
 			<key>ScanPolicy</key>
-			<integer>0</integer>
+			<integer>983299</integer>
 			<key>Vault</key>
 			<string>Optional</string>
 		</dict>
@@ -383,7 +405,7 @@
 				<string>keepsyms=1 -v</string>
 				<key>csr-active-config</key>
 				<data>
-				5wMAAA==
+				AAAAAA==
 				</data>
 			</dict>
 		</dict>
@@ -462,10 +484,14 @@
 		<array>
 			<string>HFSPlus.efi</string>
 			<string>ApfsDriverLoader.efi</string>
-			<string>FwRuntimeServices.efi</string>
+			<string>OpenRuntime.efi</string>
+			<string>OpenCanopy.efi</string>
+			<string>TbtForcePower.efi</string>
 		</array>
 		<key>Input</key>
 		<dict>
+			<key>KeyFiltering</key>
+			<false/>
 			<key>KeyForgetThreshold</key>
 			<integer>5</integer>
 			<key>KeyMergeThreshold</key>
@@ -489,6 +515,8 @@
 			<false/>
 			<key>ConsoleMode</key>
 			<string></string>
+			<key>DirectGopCacheMode</key>
+			<string></string>
 			<key>DirectGopRendering</key>
 			<false/>
 			<key>IgnoreTextInGraphics</key>
@@ -500,7 +528,7 @@
 			<key>ReplaceTabWithSpace</key>
 			<false/>
 			<key>Resolution</key>
-			<string></string>
+			<string>Max</string>
 			<key>SanitiseClearScreen</key>
 			<true/>
 			<key>TextRenderer</key>
@@ -511,6 +539,8 @@
 			<key>AppleAudio</key>
 			<false/>
 			<key>AppleBootPolicy</key>
+			<false/>
+			<key>AppleDebugLog</key>
 			<false/>
 			<key>AppleEvent</key>
 			<false/>

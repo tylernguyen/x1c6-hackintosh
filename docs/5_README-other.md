@@ -7,8 +7,8 @@
 
 > ## Dual Booting:
 
-- I recommend that you dual boot using another drive in the WAN slot.
-- I've found that dual booting with OpenCore can be quite troulesome. Instead, what I recommend is to use rEFInd Boot Manager should you need to dual boot Windows or Linux.
+- I recommend that you dual boot using another drive in the WAN slot (I have the WDC PC SN520 NVMe 2242).
+- I've found that dual booting with OpenCore can be quite troublesome. Instead, what I recommend is to use rEFInd Boot Manager should you need to dual boot Windows or Linux.
 
 > ## Modifier Key Patching:
 
@@ -42,3 +42,9 @@ Simply import `patches/BetterTouchTool/x1c6-functions.bttpreset`. My settings ar
   - Fix the rare condition that audio is messed up after waking from sleep.
 
 See `patches/ALCPlugFix/README.md` for more details.
+
+> ## OPTIMIZATIONS:
+
+- Repaste the machine with thermal [Grizzly Kryonaut](https://www.thermal-grizzly.com/en/products/16-kryonaut-en).  
+- For those willing to risk permanently damaging your machine for the best thermal, repaste the machine with liquid metal [Grizzly Conductonaut](https://www.thermal-grizzly.com/produkte/25-conductonaut).  For the majority however, I recommend using [Grizzly Kryonaut](https://www.thermal-grizzly.com/en/products/16-kryonaut-en).  
+- Undervolt the machine with [Volta](https://volta.garymathews.com/).  

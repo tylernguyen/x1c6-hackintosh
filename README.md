@@ -22,7 +22,6 @@
 
 **`In short, x1c6-hackintosh is very stable and is currently my daily driver. I fully recommend this project to anyone looking for a MacBook alternative.`**
 
-
 > ## Update
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/docs/CHANGELOG.md)
@@ -31,12 +30,13 @@
 
 #### Added
 
-- SSDT-EXT1-FixShutdown to fix the rare issue that sometimes a shutdown would result in a restart instead.  
-- SSDT-HPET to patch out legacy IRQ conflicts.  
+- Added OpenCanopy to EFI for Picker GUI support.
+- NVMeFix kext to EFI-installUSB for PM981 support.
 
 #### Changed
-- Better notes and documentation with `config.plist`  
-- Modularized each needed OpenCore config patches.  
+
+- Upgraded OpenCore to 0.5.7
+- Upgraded various kexts.
 
 > ## SUMMARY:
 
@@ -102,7 +102,7 @@ TrackPad: PS/2
 - [The Vanilla Laptop Guide](https://fewtarius.gitbook.io/laptopguide/)
 - Daliansky's [Hackintool tutorial](https://translate.google.com/translate?js=n&sl=auto&tl=en&u=https://blog.daliansky.net/Intel-FB-Patcher-tutorial-and-insertion-pose.html).
 - [An iDiot's Guide To Lilu and its Plug-ins](https://www.tonymacx86.com/threads/an-idiots-guide-to-lilu-and-its-plug-ins.260063/)
-- [Getting Started with ACPI](https://khronokernel.github.io/Getting-Started-With-ACPI/)  
+- [Getting Started with ACPI](https://khronokernel.github.io/Getting-Started-With-ACPI/)
 - [General Framebuffer Patching Guide (HDMI Black Screen Problem)](https://www.tonymacx86.com/threads/guide-general-framebuffer-patching-guide-hdmi-black-screen-problem.269149/)
 - [Intel Framebuffer patching using WhateverGreen](https://www.tonymacx86.com/threads/guide-intel-framebuffer-patching-using-whatevergreen.256490/)
 
@@ -111,13 +111,6 @@ TrackPad: PS/2
 [zhtengw/EFI-for-X1C6-hackintosh](https://github.com/zhtengw/EFI-for-X1C6-hackintosh)  
 [Colton-Ko/macOS-ThinkPad-X1C6](https://github.com/Colton-Ko/macOS-ThinkPad-X1C6)  
 Create a pull request if you like to be added, final decision at my discreation.
-
-> ## OPTIMIZATIONS:
-
-- Repaste the machine with thermal [Grizzly Kryonaut](https://www.thermal-grizzly.com/en/products/16-kryonaut-en).
-- Undervolt the machine with [Volta](https://volta.garymathews.com/).
-- If you must dual boot with Windows or Linux, I advise against paritition. What I recommend, instead, is getting a second compatible hard drive that fits in the WWAN card slot (I have the WDC PC SN520 NVMe 2242), install Windows/Linux onto that drive. Finally, boot into it with Clover or OpenCore.
-- If your laptop did not come with WWAN, you can purchase additional antennas to add to your laptop. This is useful when using Wifi/Bluetooth cards that have 3 antennas.
 
 > ## CONTACT:
 
@@ -136,9 +129,10 @@ https://tylerspaper.com/support/
 [@Sniki](https://github.com/Sniki) and [@goodwin](https://github.com/goodwin) for ALCPlugFix.  
 [@xzhih](https://github.com/xzhih) for one-key-hidpi.  
 [@daliansky](https://github.com/daliansky) for all the hotpatches.  
-[@jsassu20](https://github.com/jsassu20) for translating daliansky's documentations.  
 [@velaar](https://github.com/velaar) for your continual support and contributions.
 
-And the greatest thank you and appreciation to [@Acidanthera](https://github.com/acidanthera), without whom's work, none of this would be possible.
+The greatest thank you and appreciation to [@Acidanthera](https://github.com/acidanthera), without whom's work, none of this would be possible.
+
+And to everyone else who supports and uses my project.  
 
 Please let me know if I missed you.
