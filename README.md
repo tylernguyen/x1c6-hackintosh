@@ -1,9 +1,10 @@
 ﻿# macOS on Thinkpad X1 Carbon 6th Generation, Model 20KH\*
 
 [![macOS](https://img.shields.io/badge/macOS-Catalina-yellow.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
-[![BIOS](https://img.shields.io/badge/BIOS-1.43-blue)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+[![version](https://img.shields.io/badge/10.15.4-yellow)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+[![BIOS](https://img.shields.io/badge/BIOS-1.45-blue)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 [![MODEL](https://img.shields.io/badge/Model-20KH*-blue)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
-[![OpenCore](https://img.shields.io/badge/OpenCore-0.5.6-green)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+[![OpenCore](https://img.shields.io/badge/OpenCore-0.5.7-green)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 [![LICENSE](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
 <img align="right" src="https://i.imgur.com/I3yUS4Q.png" alt="Critter" width="300">

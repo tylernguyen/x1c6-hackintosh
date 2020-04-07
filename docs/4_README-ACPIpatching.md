@@ -2,7 +2,7 @@
 
 1. Download and install [MaciASL](https://github.com/acidanthera/MaciASL/releases) if you do not have it already.
 2. Dump your original ACPI tables. There are a number of ways to do this, using Clover, Hackintool, Linux. See [here](https://khronokernel.github.io/Getting-Started-With-ACPI/Manual/dump.html).  
-3. In Terminal, disassemble the copied ACPI tables with "iasl-stable -dl DSDT.aml". For our purpose, the only file that really matters is DSDT.dsl
+3. In Terminal, disassemble the copied ACPI tables with "iasl -dl DSDT.aml". For our purpose, the only file that really matters is DSDT.dsl
 
 - Your DSDT file will be used as a reference table in determining that needs to be patched and what patches need to be added.
 
@@ -35,8 +35,7 @@ Should your source DSDT be similar enough (in regards to certain items in these 
 
 > ### SSDT-OCBAT0-TP_tx80_x1c6th - Enabling Battery Status in macOS
 
-**Need `OpenCore Patches/ TP Battery Basic Rename.plist`**  
-**Need `OpenCore Patches/ TP battery Mutex is set to 0 and renamed.plist`**
+**Need `OpenCore Patches/ TPbattery.plist`**  
 
 - Single battery system: only `BAT0` in ACPI, no`BAT1`.
 
