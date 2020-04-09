@@ -21,8 +21,6 @@
 
 `Lastly, if my work here helped you. Please consider donating, it would mean a lot to me.`
 
-**`In short, x1c6-hackintosh is very stable and is currently my daily driver. I fully recommend this project to anyone looking for a MacBook alternative.`**
-
 > ## Update
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/docs/CHANGELOG.md)
@@ -40,6 +38,8 @@
 - Upgraded various kexts.
 
 > ## SUMMARY:
+
+**`In short, x1c6-hackintosh is very stable and is currently my daily driver. I fully recommend this project to anyone looking for a MacBook alternative.`**
 
 | Fully functional                                                                                                                          | Non-functional                                                                | Semi-functional. Additional pulls needed and welcomed.                                                                                      |
 | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -134,6 +134,6 @@ https://tylerspaper.com/support/
 
 The greatest thank you and appreciation to [@Acidanthera](https://github.com/acidanthera), without whom's work, none of this would be possible.
 
-And to everyone else who supports and uses my project.  
+And to everyone else who supports and uses my project.
 
 Please let me know if I missed you.
