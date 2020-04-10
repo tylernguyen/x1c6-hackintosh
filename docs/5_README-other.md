@@ -47,4 +47,4 @@ See `patches/ALCPlugFix/README.md` for more details.
 
 - Repaste the machine with thermal [Grizzly Kryonaut](https://www.thermal-grizzly.com/en/products/16-kryonaut-en).  
 - For those willing to risk permanently damaging your machine for the best thermal, repaste the machine with liquid metal [Grizzly Conductonaut](https://www.thermal-grizzly.com/produkte/25-conductonaut).  For the majority however, I recommend using [Grizzly Kryonaut](https://www.thermal-grizzly.com/en/products/16-kryonaut-en).  
-- Undervolt the machine with [Volta](https://volta.garymathews.com/).  
+- Undervolt the machine with [VoltageShift](https://github.com/sicreative/VoltageShift).  

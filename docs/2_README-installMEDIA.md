@@ -6,7 +6,7 @@
 4. Install CLOVER bootloader onto the installation media. Use its latest daily build from GitHub. [Download](https://github.com/Dids/clover-builder/releases)  
    **Though we will not be using Clover, I've found that using the Clover installer is the most convinient way to create an EFI paritition on the installation drive.**
 5. After Clover has been installed onto the macOS install drive, its EFI parition should be mounted. Proceed to delete the Clover EFI folder and replace with the EFI folder inside my `EFI-install_USB` folder.
-6. Proceed to boot into the installation media.
+6. Boot into the installation media.
 7. Format the intended drive as APFS.
 8. Complete the installation.
 9. Boot into the newly installed Hackintosh partition using the installation media. That is to say, boot into the installtion media for OpenCore to boot into the installed Hackintosh partition.

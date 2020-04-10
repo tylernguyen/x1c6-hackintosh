@@ -37,7 +37,7 @@ Should your source DSDT be similar enough (in regards to certain items in these 
 
 **Need `OpenCore Patches/ TPbattery.plist`**  
 
-- Single battery system: only `BAT0` in ACPI, no`BAT1`.
+- Single battery system: only `BAT0` in ACPI, no `BAT1`.
 
 > ### SSDT-PLUG-\_PR.PR00 - Enablaing Native Intel Power Managements
 
@@ -67,8 +67,10 @@ Why?: `Processor` search in DSDT, rename `PR` to other variables as needed.
 
 > ### SSDT-PNLF-SKL_KBL - Enabling Brightness Mangement in macOS
 
+iGPU is `PCI0.GFX0`  
 Why?: `Skylake/ KabyLake/ KabyLake-R` CPU.  
 Used in conjuction with `WhateverGreen.kext`
+
 
 > ### SSDT-HPET
 
