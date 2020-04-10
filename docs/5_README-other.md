@@ -47,8 +47,7 @@ See `patches/ALCPlugFix/README.md` for more details.
 
 - Repaste the machine with thermal [Grizzly Kryonaut](https://www.thermal-grizzly.com/en/products/16-kryonaut-en).  
 - For those willing to risk permanently damaging your machine for the best thermal, repaste the machine with liquid metal [Grizzly Conductonaut](https://www.thermal-grizzly.com/produkte/25-conductonaut).  For the majority however, I recommend using [Grizzly Kryonaut](https://www.thermal-grizzly.com/en/products/16-kryonaut-en).  
-- Undervolt the machine with [Volta](https://volta.garymathews.com/).  
-
+- Undervolt the machine with [VoltageShift](https://github.com/sicreative/VoltageShift).  
 
 > ## Configuring iMessage/iCloud/Facetime:
 
@@ -95,4 +94,3 @@ ATTEMPT THIS SECTION AT YOUR OWN RISK - It may result in your Apple ID being bla
   - You may need to follow the other fixes on the guide, such as [setting the Network card MAC address](https://khronokernel-2.gitbook.io/opencore-vanilla-desktop-guide/post-install/post-install/iservices#fixing-rom) in the config.plist
   - **Try not to attempt too many serial codes, or messing around too much as you may end up blacklisting your apple ID!** In which case you will get the following error:
   ![blacklist](https://i.imgur.com/ypDy99L.png)
-  - Additional information can be obtained from the [following page](https://www.tonymacx86.com/threads/an-idiots-guide-to-imessage.196827/)

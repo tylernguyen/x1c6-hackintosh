@@ -333,7 +333,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>GPRW to XRRW</string>
+				<string>GPRW to XPRW</string>
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
