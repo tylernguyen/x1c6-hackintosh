@@ -4,16 +4,20 @@
 
 ## OpenCore is better than Clover in [many ways](https://khronokernel-2.gitbook.io/opencore-vanilla-desktop-guide/). But since it is still in its infancy, OpenCore still requires a lot of time and personal confgurations to work. So even though I have posted my EFI-OpenCore folder, there are still some work which you have to do before you are able to get it working on your machine.
 
-### Fortunately, acidanthera has done a great job documenting OpenCore. And while it can be greatly time consuming, I really recommend taking a look at it because it helps so much in: creating, configurating, dianosing, personalizing, and understanding OpenCore configurations.
+### Fortunately, [acidanthera](https://github.com/acidanthera) has done a great job documenting OpenCore. And while it can be greatly time consuming, I really recommend taking a look at it and starting a `config.plist` from scratch. Doing so will allow you to personalize and understand OpenCore configurations. More importantly, by starting an `config.plist` from scratch, you may catch a mistake in my own config.plist or find a better setting variable.  
 
 I do, however, understand if you are strapped for time. So here are the necessary changes to my uploaded configs that would get your machine working. In most cases, your machine should boot with OpenCore after these changes. However, if it does not. please refer to acidanthera's OpenCore documentation.
 
-SystemUUID: Can be generated with MacSerial or use pervious from Clover's config.plist.  
-MLB: Can be generated with MacSerial or use pervious from Clover's config.plist.  
-ROM: ROM must either be Apple ROM (dumped from a real Mac), or your NIC MAC address, or any random MAC address (could be just 6 random bytes) - Vit9696  
-SystemSerialNumber: Can be generated with MacSerial or use pervious from Clover's config.plist.
+```
+* SystemUUID: Can be generated with MacSerial or use pervious from Clover's config.plist.
+* MLB: Can be generated with MacSerial or use pervious from Clover's config.plist.
+* ROM: ROM must either be Apple ROM (dumped from a real Mac), or your NIC MAC address, or any random MAC address (could be just 6 random bytes) - Vit9696
+* SystemSerialNumber: Can be generated with MacSerial or use pervious from Clover's config.plist.
+```
 
-CPUFriendDataProvider: Can be generated with [CPUFriendFriend](https://github.com/corpnewt/CPUFriendFriend_ or [one-key-cpufriend](https://github.com/stevezhengshiqi/one-key-cpufriend). Even if you have the same CPU as me, you may prefer a different Energy Performance Preference (EPP) so do generate your own CPUFriendDataProvider. This is furhtermore important if you have a different CPU than me.
+See [`docs/5_README-other`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/5_README-other.md) for more details regarding PlatformInfo settings.
+
+`CPUFriendDataProvider` can be generated with [CPUFriendFriend](https://github.com/corpnewt/CPUFriendFriend_) or [one-key-cpufriend](https://github.com/stevezhengshiqi/one-key-cpufriend). This is especially important if you have a different CPU than mine. Even if you have the same CPU as me, you may prefer a different Energy Performance Preference (EPP) so do generate your own CPUFriendDataProvider.  
 
 > ## Important Note:
 
@@ -28,4 +32,4 @@ It is important to keep your OpenCore config.plist properly up-to-spec, as OpenC
 
 > ## Updating:
 
-To update your OpenCore folder to my current version, simply backup your PlatformInfo information and move it to the new OpenCore config. Keep in mind that, depending on your setup, you may wish to keep other settings you've made so make sure to note your OpenCore.plist changes as you make them.
+To update your OpenCore folder to my current version, simply backup your `PlatformInfo` information and move it to the new OpenCore config. Keep in mind that, depending on your setup, you may wish to keep other settings you've made so make sure to note your OpenCore `config.plist` changes as you make them.

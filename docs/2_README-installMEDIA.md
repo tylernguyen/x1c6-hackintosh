@@ -1,5 +1,7 @@
 > ## Creating a macOS Installation Media:
 
+> ### If you have a macOS machine: 
+
 1. Download macOS installer from the App Store.
 2. Erase the installation media as GUID Partition Map, Mac OS Extended "Journaled". Name it "Install macOS (MacOS version)" - Example: "Install macOS Catalina".
 3. Use 'createinstallermedia' command to copy installer to install media. [guide](https://support.apple.com/en-us/ht201372)

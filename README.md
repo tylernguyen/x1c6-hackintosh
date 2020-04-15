@@ -13,9 +13,9 @@
 
 #### READ THE ENTIRE README.MD BEFORE YOU START.
 
-#### I AM NOT RESPONSIBLE FOR ANY DAMAGES YOU MAY CAUSE.
+#### I am not responsible for any damages you may cause.
 
-#### IF YOU IMRPOVE UPON ANYTHING HERE, PLEASE CONTRIBUTE BY OPENING AN ISSUE OR A PULL REQUEST.
+### Should you find an error, or improve anything, be it in the config itself or in the my documentation, please consider opening an issue or a pull request to contribute.  
 
 `I AM A ONE MAN TEAM, AND A FULL TIME STUDENT. SO, I MIGHT NOT BE ABLE TO RESPOND OR HELP YOU IN A TIMELY MANNER. BUT, I PROMISE I WILL GET TO YOU EVENTUALLY. PLEASE UNDERSTAND.`
 
@@ -41,19 +41,21 @@
 
 **`In short, x1c6-hackintosh is very stable and is currently my daily driver. I fully recommend this project to anyone looking for a MacBook alternative.`**
 
-| Fully functional                                                                                                                          | Non-functional                                                                | Semi-functional. Additional pulls needed and welcomed.                                                                                      |
-| ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| WiFi, Bluetooth, Apple Continuity ✅ \*need card replacement                                                                              | Fingerprint Reader (not needed, DISABLED at BIOS) ❌                          | Video Output: Currently only output `2560x1440`. Though capable of 4K `4096x2150`. See [Issue #40](https://github.com/tylernguyen/x1c6-hackintosh/issues/40) ⚠️                                                                    |
-| USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad ✅                                | Wireless WAN (DISABLED at BIOS) \*ENABLED if you have a 2nd drive connected❌ | Thunderbolt 3 hotplug partially working. See [Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) ⚠️ |
-| iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... ✅                                                                      | Hibernation ❌                                                                | Power management and optimizations. See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28) ⚠️                            |
-| Multimedia Fn keys ✅ \*need [Karabiner Elements](https://ke-complex-modifications.pqrs.org/) and [BetterTouchTool](https://folivora.ai/) |                                                                               |                                                                                                                                             |
-| MicroSD card reader ✅                                                                                                                    |                                                                               |                                                                                                                                             |
+| Fully functional                                                                                                                                                    | Non-functional                                                                | Semi-functional. Additional pulls needed and welcomed.                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| WiFi, Bluetooth, Apple Continuity ✅ \*need [network card replacement](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) | Fingerprint Reader (not needed, DISABLED at BIOS) ❌                          | Video Output: Currently only output `2560x1440`. Though capable of 4K `4096x2150`. See [Issue #40](https://github.com/tylernguyen/x1c6-hackintosh/issues/40) ⚠️ |
+| USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad ✅                                                          | Wireless WAN (DISABLED at BIOS) \*ENABLED if you have a 2nd drive connected❌ | Thunderbolt 3 hotplug partially working. See [Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) ⚠️                    |
+| iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... ✅                                                                                                | Hibernation ❌                                                                | Power management and optimizations. See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28) ⚠️                                                |
+| Multimedia Fn keys ✅ \*need [Karabiner Elements](https://ke-complex-modifications.pqrs.org/) and [BetterTouchTool](https://folivora.ai/)                           |                                                                               |                                                                                                                                                                 |
+| MicroSD card reader ✅                                                                                                                                              |                                                                               |                                                                                                                                                                 |
+
+**For more information regarding certain features, please refer to [`docs/3_README-POSTinstallation.md`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-POSTinstallation.md)**
 
 > ## NEEDED:
 
 A macOS machine would be VERY useful: to create install drives, and for when your ThinkPad cannot boot. Though it is not completely necessary.  
 Flash drive, 16GB or more.  
-Xcode works fine, but I prefer [PlistEdit Pro](https://www.fatcatsoftware.com/plisteditpro/).  
+Xcode works fine for editing plist files, but I prefer [PlistEdit Pro](https://www.fatcatsoftware.com/plisteditpro/).  
 [MaciASL](https://github.com/acidanthera/MaciASL), for patching ACPI tables.  
 [IOJones](https://github.com/acidanthera/IOJones), for diagnosis.  
 [Hackintool](https://www.insanelymac.com/forum/topic/335018-hackintool-v286/), for diagnosis.
@@ -100,12 +102,11 @@ TrackPad: PS/2
 
 > ## Read These (References):
 
+- [dortania Hackintosh guides](https://github.com/dortania)
 - [The Vanilla Laptop Guide](https://fewtarius.gitbook.io/laptopguide/)
 - Daliansky's [Hackintool tutorial](https://translate.google.com/translate?js=n&sl=auto&tl=en&u=https://blog.daliansky.net/Intel-FB-Patcher-tutorial-and-insertion-pose.html).
-- [An iDiot's Guide To Lilu and its Plug-ins](https://www.tonymacx86.com/threads/an-idiots-guide-to-lilu-and-its-plug-ins.260063/)
 - [Getting Started with ACPI](https://khronokernel.github.io/Getting-Started-With-ACPI/)
-- [General Framebuffer Patching Guide (HDMI Black Screen Problem)](https://www.tonymacx86.com/threads/guide-general-framebuffer-patching-guide-hdmi-black-screen-problem.269149/)
-- [Intel Framebuffer patching using WhateverGreen](https://www.tonymacx86.com/threads/guide-intel-framebuffer-patching-using-whatevergreen.256490/)
+- [WhateverGreen Intel HD Manual](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
 
 > ## OTHER x1c6-hackintosh REPOSITORIES:
 
