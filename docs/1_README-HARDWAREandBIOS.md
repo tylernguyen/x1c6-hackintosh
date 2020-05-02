@@ -10,7 +10,7 @@ Replace factory Intel WiFi module with a macOS compatible one. Make sure that th
 - For the BCM94360CS2 to work with the x1c6, you would also need a M.2 NGFF adapter. They run for <\$10 on eBay under "BCM94360CS2 m2 adapter"
 - Above is my current setup.    
 
-However, there exists other alternatives with better WiFi and Bluetooth standards, but additional kexts are required. See [`dortania/Wireless-Buyers-Guide`](https://wifi.dortania.ml/).  
+However, there exists other alternatives with better WiFi and Bluetooth standards, but additional kexts are required. See [`dortania/Wireless-Buyers-Guide`](https://dortania.github.io/Wireless-Buyers-Guide/).  
 
 > ## BIOS Settings:
 
