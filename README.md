@@ -4,7 +4,7 @@
 [![version](https://img.shields.io/badge/10.15.4-yellow)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 [![BIOS](https://img.shields.io/badge/BIOS-1.45-blue)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 [![MODEL](https://img.shields.io/badge/Model-20KH*-blue)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
-[![OpenCore](https://img.shields.io/badge/OpenCore-0.5.7-green)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+[![OpenCore](https://img.shields.io/badge/OpenCore-0.5.8-green)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 [![LICENSE](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
 <img align="right" src="https://i.imgur.com/I3yUS4Q.png" alt="Critter" width="300">
@@ -25,17 +25,16 @@
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/docs/CHANGELOG.md)
 
-> ### 2020-4-6
-
-#### Added
-
-- Added OpenCanopy to EFI for Picker GUI support.
-- NVMeFix kext to EFI-installUSB for PM981 support.
+> ### 2020-5-9
 
 #### Changed
 
-- Upgraded OpenCore to 0.5.7
-- Upgraded various kexts.
+- Upgraded OpenCore to 0.5.8
+- Upgraded various acidanthera kexts.
+- Fixed various dortania broken guide links.
+- Removed `TbtForcePower.efi` from LiveUSB OpenCore `config.plist`
+- Added PM981 install suggestions per [Issue #43](https://github.com/tylernguyen/x1c6-hackintosh/issues/43)
+- Changed ScanPolicy of `install_USB` to 0. 
 
 > ## SUMMARY:
 
@@ -44,10 +43,10 @@
 | Fully functional                                                                                                                                                    | Non-functional                                                                | Semi-functional. Additional pulls needed and welcomed.                                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | WiFi, Bluetooth, Apple Continuity ✅ \*need [network card replacement](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) | Fingerprint Reader (not needed, DISABLED at BIOS) ❌                          | Video Output: Currently only output `2560x1440`. Though capable of 4K `4096x2150`. See [Issue #40](https://github.com/tylernguyen/x1c6-hackintosh/issues/40) ⚠️ |
-| USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad ✅                                                          | Wireless WAN (DISABLED at BIOS) \*ENABLED if you have a 2nd drive connected❌ | Thunderbolt 3 hotplug partially working. See [Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) ⚠️                    |
+| USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad, MicroSD card reader  ✅                                                          | Wireless WAN (DISABLED at BIOS) \*ENABLED if you have a 2nd drive connected❌ | Thunderbolt 3 hotplug partially working. See [Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) ⚠️                    |
 | iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... ✅                                                                                                | Hibernation ❌                                                                | Power management and optimizations. See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28) ⚠️                                                |
 | Multimedia Fn keys ✅ \*need [Karabiner Elements](https://ke-complex-modifications.pqrs.org/) and [BetterTouchTool](https://folivora.ai/)                           |                                                                               |                                                                                                                                                                 |
-| MicroSD card reader ✅                                                                                                                                              |                                                                               |                                                                                                                                                                 |
+| PM981 installation. ✅ See [Issue #43](https://github.com/tylernguyen/x1c6-hackintosh/issues/43)                                                                                                                                              |                                                                               |                                                                                                                                                                 |
 
 **For more information regarding certain features, please refer to [`docs/3_README-POSTinstallation.md`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-POSTinstallation.md)**
 

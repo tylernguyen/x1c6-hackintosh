@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-5-9
+
+#### Changed
+
+- Upgraded OpenCore to 0.5.8
+- Upgraded various acidanthera kexts.
+- Fixed various dortania broken guide links.
+- Removed `TbtForcePower.efi` from LiveUSB OpenCore `config.plist`
+- Added PM981 install suggestions per [Issue #43](https://github.com/tylernguyen/x1c6-hackintosh/issues/43)
+- Changed ScanPolicy of `install_USB` to 0. 
+
 > ### 2020-4-6 (#2)
 
 #### Added

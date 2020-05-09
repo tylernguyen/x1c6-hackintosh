@@ -54,7 +54,7 @@ See `patches/ALCPlugFix/README.md` for more details.
 
 ATTEMPT THIS SECTION AT YOUR OWN RISK - It may result in your Apple ID being blacklisted. You can have a perfectly adequate hackintosh without iMessage/FaceTime.
 
-- To get iCloud related services we will follow the instructions on [this page](https://khronokernel-2.gitbook.io/opencore-vanilla-desktop-guide/post-install/post-install/iservices) that are suited to an OC EFI.
+- To get iCloud related services we will follow the instructions on [this page](https://dortania.github.io/OpenCore-Desktop-Guide/post-install/iservices.html) that are suited to an OC EFI.
 
   - Download [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS), install MacSerial by selecting option 1
   - With GenSMBIOS select option 3 and enter `MacBookPro14,1 10` to generate 10 potential Serials/Board Serial/SmUUID combinations.
@@ -93,6 +93,6 @@ ATTEMPT THIS SECTION AT YOUR OWN RISK - It may result in your Apple ID being bla
   - You do **NOT want** the device to already be purchased. You will mess up your own device and some poor person's legitimate Mac.
     ![Already purchased/registered](https://i.imgur.com/rh0r28T.png)
   - If you try to verify too many serials you will be blocked, just reopen the page in an incognito window to bypass the block.
-  - You may need to follow the other fixes on the guide, such as [setting the Network card MAC address](https://khronokernel-2.gitbook.io/opencore-vanilla-desktop-guide/post-install/post-install/iservices#fixing-rom) in the config.plist
+  - You may need to follow the other fixes on the guide, such as [setting the Network card MAC address](https://dortania.github.io/OpenCore-Desktop-Guide/post-install/iservices.html#fixing-rom) in the config.plist
   - **Try not to attempt too many serial codes, or messing around too much as you may end up blacklisting your apple ID!** In which case you will get the following error:
     ![blacklist](https://i.imgur.com/ypDy99L.png)
