@@ -18,14 +18,12 @@ By default, Windows, Left Alt, and Right Alt are mismapped. An easy fix for this
 
 > ## Multimedia Fn Key Patching:
 
-Since macOS doesn't not natively support some multimedia Fn key actions. BetterTouchTool is required to program these actions. Keyboard Mastero is also an alternative but I've found that BetterTouchTool is a simpler and easier option.  
+Since macOS doesn't not natively support some multimedia Fn key actions. [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant) is required for the Fn actions to be implemented.
+The Fn key not yet supported by ThinkPadAssistant is F10: Bluetooth Toggle. So BetterTouchTool is required to program F10. Keyboard Mastero is also an alternative but I've found that BetterTouchTool is a simpler and easier option. But generally speaking, BetterTouchTool is a useful productivity program that I recommend to everyone.
 Simply import `patches/BetterTouchTool/x1c6-functions.bttpreset`. My settings are as followed:
 
-- F7 = Screen Mirroring On/Off
-- F9 = Open System Preferences
 - F10 = Toggle Bluetooth On/Off
 - F11 = Switch Keyboard Input Language (Set in System `Preferences/Keyboard`)
-- F12 = Open Terminal
 - PrtSc = Window Screen Capture  
   Of course, feel free to change this to your preference in BetterTouchTool.
 

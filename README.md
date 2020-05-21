@@ -25,16 +25,17 @@
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/docs/CHANGELOG.md)
 
-> ### 2020-5-9
+> ### 2020-5-21
 
 #### Changed
 
-- Upgraded OpenCore to 0.5.8
-- Upgraded various acidanthera kexts.
-- Fixed various dortania broken guide links.
-- Removed `TbtForcePower.efi` from LiveUSB OpenCore `config.plist`
-- Added PM981 install suggestions per [Issue #43](https://github.com/tylernguyen/x1c6-hackintosh/issues/43)
-- Changed ScanPolicy of `install_USB` to 0. 
+Keyboard Perfection is almost here!
+- Modified SSDT-Keyboard patch to be compatible with [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant).
+    - Mute/unMute Microphone with F4, with LED, and HUD!
+    - Disable WiFi with F8 with HUD
+    - Mirror with F7 with HUD
+    - Bluetooth, F10 still has to be handled by BetterTouchTool, but hopefully supported will be added soon. See my [request](https://github.com/MSzturc/ThinkpadAssistant/issues/9)
+
 
 > ## SUMMARY:
 
@@ -45,7 +46,7 @@
 | WiFi, Bluetooth, Apple Continuity ✅ \*need [network card replacement](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) | Fingerprint Reader (not needed, DISABLED at BIOS) ❌                          | Video Output: Currently only output `2560x1440`. Though capable of 4K `4096x2150`. See [Issue #40](https://github.com/tylernguyen/x1c6-hackintosh/issues/40) ⚠️ |
 | USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad, MicroSD card reader  ✅                                                          | Wireless WAN (DISABLED at BIOS) \*ENABLED if you have a 2nd drive connected❌ | Thunderbolt 3 hotplug partially working. See [Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) ⚠️                    |
 | iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... ✅                                                                                                | Hibernation ❌                                                                | Power management and optimizations. See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28) ⚠️                                                |
-| Multimedia Fn keys ✅ \*need [Karabiner Elements](https://ke-complex-modifications.pqrs.org/) and [BetterTouchTool](https://folivora.ai/)                           |                                                                               |                                                                                                                                                                 |
+| Multimedia Fn keys ✅ \*need [Karabiner Elements](https://ke-complex-modifications.pqrs.org/), [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant), and [BetterTouchTool](https://folivora.ai/)                           |                                                                               |                                                                                                                                                                 |
 | PM981 installation. ✅ See [Issue #43](https://github.com/tylernguyen/x1c6-hackintosh/issues/43)                                                                                                                                              |                                                                               |                                                                                                                                                                 |
 
 **For more information regarding certain features, please refer to [`docs/3_README-POSTinstallation.md`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-POSTinstallation.md)**

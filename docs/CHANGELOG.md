@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-5-21
+
+#### Changed
+
+Keyboard Perfection is almost here!
+- Modified SSDT-Keyboard patch to be compatible with [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant).
+    - Mute/unMute Microphone with F4, with LED!
+    - Disable WiFi with F8
+    - Mirror with F7
+    - Bluetooth, F10 still has to be handled by BetterTouchTool, but hopefully supported will be added soon. See my [request](https://github.com/MSzturc/ThinkpadAssistant/issues/9)
+
 > ### 2020-5-9
 
 #### Changed
