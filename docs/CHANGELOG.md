@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-5-22
+
+- Further SSDT-Keyboard tweaks:
+    - Windows (mismapped to Left Alt by default) is now properly mapped to Left GUI
+    - Left Alt (mismapped to Left GUI by default) is now properly mapped to Left Alt
+    - Right Alt (mismapped to Right GUI by default) is now properly mapped to Right Alt
+- This means that Karabiner-Elements is no longer a necessary for this project. Once less program! unless you need it for other purposes (like a hyper key). 
+- *Similarly, once Bluetooth toggle is implemented in ThinkpadAssistant, BetterTouchTool can also go away.
+
 > ### 2020-5-21
 
 #### Changed

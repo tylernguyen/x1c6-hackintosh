@@ -11,11 +11,6 @@
 - I've found that dual booting with OpenCore can be quite troublesome. Instead, what I recommend is to use rEFInd Boot Manager should you need to dual boot Windows or Linux.
 - It is possible to share Bluetooth pairing keys between Windows and macOS when dual booting. See [oc-laptop-guide](https://dortania.github.io/oc-laptop-guide/extras/dual-booting-with-bluetooth-devices.html).
 
-> ## Modifier Key Patching:
-
-By default, Windows, Left Alt, and Right Alt are mismapped. An easy fix for this is to install [Karabiner-Elements](https://karabiner-elements.pqrs.org/) and configure it as:  
-![karabiner_modifier](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/karabiner_modifier.png)
-
 > ## Multimedia Fn Key Patching:
 
 Since macOS doesn't not natively support some multimedia Fn key actions. [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant) is required for the Fn actions to be implemented.
