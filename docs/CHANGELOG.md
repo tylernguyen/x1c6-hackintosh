@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-5-24
+
+#### Added
+- Setting instructions better sleep in 5_README-other.md
+
+#### Changed
+
+- Bluetooth Toggle is now supported by [ThinkpadAssistant 1.6](https://github.com/MSzturc/ThinkpadAssistant), thank so much [@MSzturc](https://github.com/MSzturc)
+- SSDT-keyboard to support ThinkpadAssistant 1.6.0
+
+#### Removed
+- BetterTouchTool is no longer needed for Fn key functions and has been removed.
+- `SMCLightSensor.kext` has been removed as the x1c6 has no ambient light sensor.
+
 > ### 2020-5-22
 
 - Further SSDT-Keyboard tweaks:

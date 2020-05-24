@@ -120,12 +120,10 @@ DefinitionBlock("", "SSDT", 2, "OCLT", "x1input", 0)
 
             If (_OSI ("Darwin"))
             {
-                // // Send a down event for the Control key (scancode 1d), then a one-shot event (down then up) for
-                // the down arrow key (scancode 0e 50), and finally an up event for the Control key (break scancode 9d).
-                // This is picked up by VoodooPS2 and sent to macOS as the Control+Down key combo.
-                Notify (\_SB.PCI0.LPCB.KBD, 0x011D)
-                Notify (\_SB.PCI0.LPCB.KBD, 0x0450)
-                Notify (\_SB.PCI0.LPCB.KBD, 0x019D)
+                // Left Shift + F17
+                Notify (\_SB.PCI0.LPCB.KBD, 0x012A)
+                Notify (\_SB.PCI0.LPCB.KBD, 0x0368)
+                Notify (\_SB.PCI0.LPCB.KBD, 0x01AA)
             }
             Else
             {

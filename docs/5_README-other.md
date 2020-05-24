@@ -11,16 +11,17 @@
 - I've found that dual booting with OpenCore can be quite troublesome. Instead, what I recommend is to use rEFInd Boot Manager should you need to dual boot Windows or Linux.
 - It is possible to share Bluetooth pairing keys between Windows and macOS when dual booting. See [oc-laptop-guide](https://dortania.github.io/oc-laptop-guide/extras/dual-booting-with-bluetooth-devices.html).
 
+> ## Sleep:
+- Disable Power Nap for both [`Battery`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/Batter_powernap.png) and [`Power Adapter`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/Poweradt_powernap.png).
+- Disable [`Wake for Network Access`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/Poweradt_powernap.png) in `Power Adapter`.
+- Uncheck [`Allow Bluetooth devices to wake this computer`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/Bluetooth_wake.png).
+
 > ## Multimedia Fn Key Patching:
 
-Since macOS doesn't not natively support some multimedia Fn key actions. [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant) is required for the Fn actions to be implemented.
-The Fn key not yet supported by ThinkPadAssistant is F10: Bluetooth Toggle. So BetterTouchTool is required to program F10. Keyboard Mastero is also an alternative but I've found that BetterTouchTool is a simpler and easier option. But generally speaking, BetterTouchTool is a useful productivity program that I recommend to everyone.
-Simply import `patches/BetterTouchTool/x1c6-functions.bttpreset`. My settings are as followed:
+Since macOS doesn't not natively support some multimedia Fn key actions. [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant) is required for the Fn actions to be implemented. Additionally, my settings are:
 
-- F10 = Toggle Bluetooth On/Off
 - F11 = Switch Keyboard Input Language (Set in System `Preferences/Keyboard`)
-- PrtSc = Window Screen Capture  
-  Of course, feel free to change this to your preference in BetterTouchTool.
+- PrtSc = Screen Capture (Set in System `Preferences/Keyboard`)
 
 > ## Touchpad Settings in macOS:
 
