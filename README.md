@@ -25,19 +25,14 @@
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-> ### 2020-5-24
-
-#### Added
-- Setting instructions better sleep in 5_README-other.md
+> ### 2020-5-27
 
 #### Changed
 
-- Bluetooth Toggle is now supported by [ThinkpadAssistant 1.6](https://github.com/MSzturc/ThinkpadAssistant), thank so much [@MSzturc](https://github.com/MSzturc)
-- SSDT-keyboard to support ThinkpadAssistant 1.6.0
-
-#### Removed
-- BetterTouchTool is no longer needed for Fn key functions and has been removed.
-- `SMCLightSensor.kext` has been removed as the x1c6 has no ambient light sensor.
+- Keyboard backlight is now supported by [ThinkpadAssistant 1.7](https://github.com/MSzturc/ThinkpadAssistant), thank so much [@MSzturc](https://github.com/MSzturc)
+- SSDT-keyboard to support ThinkpadAssistant 1.7.0
+- Thank you to [@Sniki](https://github.com/Sniki) [@MSzturc](https://github.com/MSzturc) [@hexart](https://github.com/hexart), and everyone who contributed on [Issue #12](https://github.com/MSzturc/ThinkpadAssistant/issues/12)
+- Honestly, what's even left to improve on the keyboard? Open an issue.
 
 > ## SUMMARY:
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-5-27
+
+#### Changed
+
+- Keyboard backlight is now supported by [ThinkpadAssistant 1.7](https://github.com/MSzturc/ThinkpadAssistant), thank so much [@MSzturc](https://github.com/MSzturc)
+- SSDT-keyboard to support ThinkpadAssistant 1.7.0
+- Honestly, what's even left to improve on the keyboard? Open an issue.
+
 > ### 2020-5-24
 
 #### Added
