@@ -1,7 +1,7 @@
 /*
  * XCPM power management compatibility table.
  */
-DefinitionBlock ("", "SSDT", 2, "OCLT", "CpuPlug", 0x00003000)
+DefinitionBlock ("", "SSDT", 2, "tyler", "CpuPlug", 0x00003000)
 {
     External (_PR.PR00, ProcessorObj)
 

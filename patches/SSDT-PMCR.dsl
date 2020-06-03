@@ -1,5 +1,5 @@
 //Add PMCR
-DefinitionBlock ("", "SSDT", 2, "OCLT", "PMCR", 0)
+DefinitionBlock ("", "SSDT", 2, "tyler", "PMCR", 0)
 {
     External(_SB.PCI0.LPCB, DeviceObj)
     Scope (_SB.PCI0.LPCB)

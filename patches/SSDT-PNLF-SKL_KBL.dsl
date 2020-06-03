@@ -1,5 +1,5 @@
 //
-DefinitionBlock("", "SSDT", 2, "OCLT", "PNLF", 0)
+DefinitionBlock("", "SSDT", 2, "tyler", "PNLF", 0)
 {
     Scope(_SB)
     {

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-6-1
+
+#### Changed
+
+- OpenCore to 0.5.9
+- Upgraded various Acidanthera kexts.
+- Recompiled various SSDT with new iasl libraries.
+- Replaced `SSDT-EXT3` with `SSDT-LED`
+- Change SSDT OEM ID to `tyler` to somewhat track distributions and usage across various projects
+
 > ### 2020-5-27
 
 #### Changed

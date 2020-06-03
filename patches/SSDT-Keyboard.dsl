@@ -1,4 +1,4 @@
-DefinitionBlock("", "SSDT", 2, "OCLT", "x1input", 0)
+DefinitionBlock("", "SSDT", 2, "tyler", "x1input", 0)
 {
     External(_SB.PCI0.LPCB.KBD, DeviceObj)
     External(_SB.PCI0.LPCB.EC, DeviceObj)

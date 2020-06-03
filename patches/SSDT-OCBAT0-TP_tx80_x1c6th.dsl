@@ -1,5 +1,5 @@
 // battery
-DefinitionBlock ("", "SSDT", 2, "OCLT", "BATT", 0)
+DefinitionBlock ("", "SSDT", 2, "tyler", "BATT", 0)
 {
     External (_SB.PCI0.LPCB.EC, DeviceObj)
     External (_SB.PCI0.LPCB.EC.AC._PSR, MethodObj)

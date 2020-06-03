@@ -99,6 +99,10 @@ For multimedia functions:
 
 **Needs `OpenCore Patches/ x1c6-keyboard.plist`**
 
+> ### SSDT-LED
+- Fix ThinkPad `i` LED after sleep.
+- Persist F4 Mute LED after sleep.
+
 > ### SSDT-PTSWAK
 
 - Comprehensive sleep/wake patch.  
@@ -111,10 +115,6 @@ Look up `_PTS` and `_WAK` in source DSDT and confirm the following, modify if di
 ### SSDT-EXT1-FixShutdown
 
 - PTSWAK extension patch. Fixes reboot after shutdown.  
-
-### SSDT-EXT3-LedReset-TP
-
-- PTSWAK extension patch. Solve the problem that the breathing light does not return to normal after the TP machine wakes up.  
 
 ### SSDT-EXT4-WakeScreen
 

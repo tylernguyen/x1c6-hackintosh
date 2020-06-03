@@ -15,7 +15,7 @@
 // Find:     5F57414B09
 // Replace:  5A57414B09
 //
-DefinitionBlock("", "SSDT", 2, "OCLT", "PTSWAK", 0)
+DefinitionBlock("", "SSDT", 2, "tyler", "PTSWAK", 0)
 {
     External(ZPTS, MethodObj)
     External(ZWAK, MethodObj)
