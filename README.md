@@ -25,38 +25,53 @@
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-> ### 2020-6-1
+> ### 2020-6-26
+
+#### Added
+
+- `VoodooRMI` as alternative trackpad option. **Enabled by default, feel free to revert back to `VoodooPS2Mouse` and `VoodooPS2Trackpad` if you prefer**. *Note, there's currently a bug with RMI where the touchpad would not load once in a while. The RMI kext uploaded in this repo has a temp fix by me (See [VoodooSMBUS/PR](https://github.com/VoodooSMBus/VoodooSMBus/pull/41)). However, the issue is still ongoing and the dev team is aware of it. I'm switching this repo to VoodooRMI because I believe it's the future and I want to possible bugs to be reported to be fixed for the kext's first stable release.  
+- Kernel patches to enable 4K external graphics, thank you so much [@benbender](https://github.com/benbender)
+- `XQ74` patch in `SSDT-Keyboard` to support `FnLock` HUD per ThinkpadAssistant 1.8.0
+- In [EFI-OpenCore/README.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/EFI-OpenCore/README.md), I've added a short section explaining why certain variables are the way they are in my `config.plist`. I will continue to update this section with more details as time goes on.  
 
 #### Changed
 
-- OpenCore to 0.5.9
-- Upgraded various Acidanthera kexts.
-- Recompiled various SSDT with new iasl libraries.
-- Replaced `SSDT-EXT3` with `SSDT-LED`
-- Change SSDT OEM ID to `tyler` to somewhat track distributions and usage across various projects
+- iGPU Framebuffer patching for HDMI issue in Catalina. 
+    - In Catalina/WhateverGreen version, for some reasons my previous framebuffer patches for HDMI no longer worked. So I re-did the patch in mode details but eventually the property that fixed it was `disable-external-gpu` or `-wegnoegpu`. For some strange reasons, that variable activated on-board HDMI. See [similar reports here](https://www.tonymacx86.com/threads/guide-general-framebuffer-patching-guide-hdmi-black-screen-problem.269149/page-123). I'm going to create an issue on acidanthera/bugtracker soon to report to the dev team. In the mean time, keep this property if you rely on HDMI and do not have an eGPU. Delete this property if you have an eGPU (You're likely using the HDMI on the eGPU anyway).
+- Fixed `VoodooPS2` kexts loading order.
+- Various reference docs to dortania.
+- `HibernateMode` to `Auto`
+
+#### Removed
+
+- Unnecessary Mutex OpenCore patches, all Mutex are already 0 in stock `DSDT`.
+- `SSDT-MCHC` and `SSDT-SBUS` for `VoodooRMI` compatibility.
 
 > ## SUMMARY:
 
 **`In short, x1c6-hackintosh is very stable and is currently my daily driver. I fully recommend this project to anyone looking for a MacBook alternative.`**
 
-| Fully functional                                                                                                                                                    | Non-functional                                                                | Semi-functional. Additional pulls needed and welcomed.                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| WiFi, Bluetooth, Apple Continuity ✅ \*need [network card replacement](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) | Fingerprint Reader (not needed, DISABLED at BIOS) ❌                          | Video Output: Currently only output `2560x1440`. Though capable of 4K `4096x2150`. See [Issue #40](https://github.com/tylernguyen/x1c6-hackintosh/issues/40) ⚠️ |
-| USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad, MicroSD card reader ✅                                     | Wireless WAN (DISABLED at BIOS) \*ENABLED if you have a 2nd drive connected❌ | Thunderbolt 3 hotplug partially working. See [Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) ⚠️                    |
-| iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... ✅                                                                                                | Hibernation ❌                                                                | Power management and optimizations. See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28) ⚠️                                                |
-| Multimedia Fn keys ✅ \*need [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant)                                                                      |                                                                               |                                                                                                                                                                 |
-| PM981 installation. ✅ See [Issue #43](https://github.com/tylernguyen/x1c6-hackintosh/issues/43)                                                                    |                                                                               |                                                                                                                                                                 |
+| Fully functional                                                                                                                                                                    | Non-functional                                                                                               | Semi-functional. Additional pulls needed and welcomed.                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| WiFi, Bluetooth, Apple Continuity ✅ \*need [network card replacement](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md)                 | Fingerprint Reader (not needed, DISABLED at BIOS) ❌                                                         | Power management and optimizations. See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28) ⚠️                             |
+| USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad, MicroSD card reader ✅                                                     | Wireless WAN (DISABLED at BIOS) \*ENABLED if you have a 2nd drive connected❌                                | Thunderbolt 3 hotplug partially working. See [Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) ⚠️ |
+| iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... ✅                                                                                                                | Hibernation mode 25 ❌ CMOS error, see [Issue #44](https://github.com/tylernguyen/x1c6-hackintosh/issues/44) |                                                                                                                                              |
+| Multimedia Fn keys ✅ \*need [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant)                                                                                      |                                                                                                              |                                                                                                                                              |
+| PM981 installation. ✅ See [Issue #43](https://github.com/tylernguyen/x1c6-hackintosh/issues/43)                                                                                    |                                                                                                              |                                                                                                                                              |
+| 4K UHD via HDMI/DisplayPort. ✅ \*one minor quirk with Recovery and macOS updates, See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28#issuecomment-649107190) |                                                                                                              |                                                                                                                                              |
 
 **For more information regarding certain features, please refer to [`docs/3_README-POSTinstallation.md`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-POSTinstallation.md)**
 
 > ## NEEDED:
 
 A macOS machine would be VERY useful: to create install drives, and for when your ThinkPad cannot boot. Though it is not completely necessary.  
-Flash drive, 16GB or more.  
-Xcode works fine for editing plist files, but I prefer [PlistEdit Pro](https://www.fatcatsoftware.com/plisteditpro/).  
+Flash drive, 12GB or more.  
+Xcode works fine for editing plist files on macOS, but I prefer [PlistEdit Pro](https://www.fatcatsoftware.com/plisteditpro/).  
+[ProperTree](https://github.com/corpnewt/ProperTree) if you need to edit plist files on Windows.  
 [MaciASL](https://github.com/acidanthera/MaciASL), for patching ACPI tables.  
+[MountEFI](https://github.com/corpnewt/MountEFI) to quickly mount EFI partitions.  
 [IOJones](https://github.com/acidanthera/IOJones), for diagnosis.  
-[Hackintool](https://www.insanelymac.com/forum/topic/335018-hackintool-v286/), for diagnosis.
+[Hackintool](https://www.insanelymac.com/forum/topic/335018-hackintool-v286/), for diagnostic ONLY, Hackintool should not be used for patching, it is outdated.
 
 > ## WHERE TO START:
 
@@ -100,10 +115,14 @@ TrackPad: PS/2
 
 > ## Read These (References):
 
-- [dortania Hackintosh guides](https://github.com/dortania)
-- [The Vanilla Laptop Guide](https://fewtarius.gitbook.io/laptopguide/)
+- [dortania's Hackintosh guides](https://github.com/dortania)
+- [dortania/ Getting Started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)
+- [dortania/ vanilla laptop guide](https://dortania.github.io/vanilla-laptop-guide/)
+- [dortania/ opencore `laptop` guide](https://dortania.github.io/oc-laptop-guide/)
+- [dortania/ opencore `desktop` guide](https://dortania.github.io/OpenCore-Desktop-Guide/)
+- [dortania/ opencore `multiboot`](https://github.com/dortania/OpenCore-Multiboot)
+- [dortania/ `USB map` guide](https://github.com/dortania/USB-Map-Guide)
 - Daliansky's [Hackintool tutorial](https://translate.google.com/translate?js=n&sl=auto&tl=en&u=https://blog.daliansky.net/Intel-FB-Patcher-tutorial-and-insertion-pose.html).
-- [Getting Started with ACPI](https://khronokernel.github.io/Getting-Started-With-ACPI/)
 - [WhateverGreen Intel HD Manual](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
 
 > ## OTHER x1c6-hackintosh REPOSITORIES:
@@ -115,7 +134,7 @@ Create a pull request if you like to be added, final decision at my discreation.
 > ## CONTACT:
 
 https://tylerspaper.com/contact  
-Signal: (202)-644-9951 \*This is a Signal ONLY number. You will not get a reply of you text me at this number.
+Signal: +1 (202)-644-9951 \*This is a Signal ONLY number. You will not get a reply of you text me at this number.
 
 > ## DONATE AND SUPPORT:
 
@@ -128,8 +147,11 @@ https://tylerspaper.com/support/
 [@corpnewt](https://github.com/corpnewt) for CPUFriendFriend.  
 [@Sniki](https://github.com/Sniki) and [@goodwin](https://github.com/goodwin) for ALCPlugFix.  
 [@xzhih](https://github.com/xzhih) for one-key-hidpi.  
-[@daliansky](https://github.com/daliansky) for all the hotpatches.  
+[@daliansky](https://github.com/daliansky) for various hotpatches.  
 [@velaar](https://github.com/velaar) for your continual support and contributions.
+[@benbender](https://github.com/benbender) for the the 4K output patch.  
+[@Porco-Rosso](https://github.com/Porco-Rosso) putting up with my requests to test repo changes.  
+[@MSzturc](https://github.com/MSzturc) for adding my requested features to ThinkpadAssistant.
 
 The greatest thank you and appreciation to [@Acidanthera](https://github.com/acidanthera), without whom's work, none of this would be possible.
 

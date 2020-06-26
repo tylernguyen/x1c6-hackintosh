@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-6-26
+
+#### Added
+
+- `VoodooRMI` as alternative trackpad option. **Enabled by default, feel free to revert back to `VoodooPS2Mouse` and `VoodooPS2Trackpad` if you prefer**. *Note, there's currently a bug with RMI where the touchpad would not load once in a while. The RMI kext uploaded in this repo has a temp fix by me (See [VoodooSMBUS/PR](https://github.com/VoodooSMBus/VoodooSMBus/pull/41)). However, the issue is still ongoing and the dev team is aware of it. I'm switching this repo to VoodooRMI because I believe it's the future and I want to possible bugs to be reported to be fixed for the kext's first stable release.  
+- Kernel patches to enable 4K external graphics, thank you so much [@benbender](https://github.com/benbender)
+- `XQ74` patch in `SSDT-Keyboard` to support `FnLock` HUD per ThinkpadAssistant 1.8.0
+- In [EFI-OpenCore/README.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/EFI-OpenCore/README.md), I've added a short section explaining why certain variables are the way they are in my `config.plist`. I will continue to update this section with more details as time goes on.  
+
+#### Changed
+
+- iGPU Framebuffer patching for HDMI issue in Catalina. 
+    - In Catalina/WhateverGreen version, for some reasons my previous framebuffer patches for HDMI no longer worked. So I re-did the patch in mode details but eventually the property that fixed it was `disable-external-gpu` or `-wegnoegpu`. For some strange reasons, that variable activated on-board HDMI. See [similar reports here](https://www.tonymacx86.com/threads/guide-general-framebuffer-patching-guide-hdmi-black-screen-problem.269149/page-123). I'm going to create an issue on acidanthera/bugtracker soon to report to the dev team. In the mean time, keep this property if you rely on HDMI and do not have an eGPU. Delete this property if you have an eGPU (You're likely using the HDMI on the eGPU anyway).
+- Fixed `VoodooPS2` kexts loading order.
+- Various reference docs to dortania.
+- `HibernateMode` to `Auto`
+
+#### Removed
+
+- Unnecessary Mutex OpenCore patches, all Mutex are already 0 in stock `DSDT`.
+- `SSDT-MCHC` and `SSDT-SBUS` for `VoodooRMI` compatibility.
+
 > ### 2020-6-1
 
 #### Changed

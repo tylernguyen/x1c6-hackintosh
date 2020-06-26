@@ -15,6 +15,8 @@
 - Disable Power Nap for both [`Battery`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/Batter_powernap.png) and [`Power Adapter`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/Poweradt_powernap.png).
 - Disable [`Wake for Network Access`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/Poweradt_powernap.png) in `Power Adapter`.
 - Uncheck [`Allow Bluetooth devices to wake this computer`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/Bluetooth_wake.png).
+- Do not disable `hibernatefile`.
+- `sudo pmset -a tcpkeepalive 0` to disable Network while sleeping.
 
 > ## Multimedia Fn Key Patching:
 

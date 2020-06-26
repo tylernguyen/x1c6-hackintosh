@@ -24,6 +24,13 @@ Should your source DSDT be similar enough (in regards to certain items in these 
 
 ## Some patches here may be unused. Refer to the current OpenCore-EFI folder to see which one I am currently using. While other patches may be needed case-by-case, such as the WiFi/Bluetooth patches.
 
+> ## Important Note:
+
+Unlike Clover, where SSDT patches are only being applied when booting macOS. OpenCore will apply SSDT patches regardless of the operating system. This is critical when multi-booting, since Windows and Linux do not need the additional patches that macOS does. In many cases, if Windows/Linux fails to boot under OpenCore, it is likely that your macOS intended SSDT patch(s) is being applied universally. To prevent OpenCore from doing this, it is important that your SSDT patches specify its intended OS, which in our case is "Darwin."  
+See highlighted example:
+
+![OpenCore SSDT patching notice](https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/master/docs/assets/img/OpenCore%20SSDT%20patching%20notice.png)
+
 ## Some Thinkpad machines are `LPC` and some are`LPCB`. Please examine your own DSDT and modify patches as needed.
 
 > ### Non-native WiFi and Bluetooth
@@ -33,13 +40,13 @@ Should your source DSDT be similar enough (in regards to certain items in these 
 
 \*Notice that these patches require additional kexts to be installed. See them in `Kernel/Add/`
 
-> ### SSDT-OCBAT0-TP_tx80_x1c6th - Enabling Battery Status in macOS
+> ### SSDT-OCBAT0-TP_tx80_x1c6th - Enables Battery Status in macOS
 
 **Need `OpenCore Patches/ TPbattery.plist`**  
 
 - Single battery system: only `BAT0` in ACPI, no `BAT1`.
 
-> ### SSDT-PLUG-\_PR.PR00 - Enablaing Native Intel Power Managements
+> ### SSDT-PLUG-\_PR.PR00 - Enables Native Intel Power Managements
 
 Why?: `Processor` search in DSDT, rename `PR` to other variables as needed.
 
@@ -65,11 +72,11 @@ Why?: `Processor` search in DSDT, rename `PR` to other variables as needed.
     }
 ```
 
-> ### SSDT-PNLF-SKL_KBL - Enabling Brightness Mangement in macOS
+> ### SSDT-PNLF-SKL_KBL - Enables Brightness Management in macOS
 
 iGPU is `PCI0.GFX0`  
 Why?: `Skylake/ KabyLake/ KabyLake-R` CPU.  
-Used in conjuction with `WhateverGreen.kext`
+Used in conjunction with `WhateverGreen.kext`
 
 
 > ### SSDT-HPET
@@ -88,7 +95,7 @@ For multimedia functions:
 - Remap 4: F7 (Dual Display) to F16 (for use with ThinkpadAssistant)
 - Remap 5: F8 (Network) to F17 (for use with ThinkpadAssistant)
 - Remap 6: F9 (Settings) to F18 (for use with ThinkpadAssistant)
-- Remap 7: F10 (Bluetooth) to [Shift+Down]
+- Remap 7: F10 (Bluetooth) to [Left Shift + F8] ((for use with ThinkpadAssistant))
 - Remap 8: F11 (Keyboard) to [Shift+Up]
 - Remap 9: F12 (Star) to F19 (for use with ThinkpadAssistant)
 - Remap 10: PrtSc to F13
@@ -120,17 +127,9 @@ Look up `_PTS` and `_WAK` in source DSDT and confirm the following, modify if di
 
 - PTSWAK extension patch. Solve the problem that some machines need to press any key to light up the screen after waking up. When using, you should inquire whether the `PNP0C0D` device name and path already exist in the patch file, such as`_SB.PCI0.LPCB.LID0`. If not, add it yourself.  
 
-> ### SSDT-SBUS
-
-Why?: `0x001F0004` under Device (SBUS).
-
 > ### SSDT-DMAC
 
 Why?: `PNP0200` is missing in DSDT.
-
-> ### SSDT-MCHC
-
-Why?: `MCHC` is missing in DSDT.
 
 > ### SSDT-PMCR
 

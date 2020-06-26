@@ -1,23 +1,66 @@
+/*
+LED1 is F4 - Mic Mute
+LED2 is Keyboard Backlight
+LED3 is FnLock LED
+*/
 DefinitionBlock("", "SSDT", 2, "tyler", "x1input", 0)
 {
     External(_SB.PCI0.LPCB.KBD, DeviceObj)
     External(_SB.PCI0.LPCB.EC, DeviceObj)
-    External(_SB.PCI0.LPCB.EC.XQ6A, MethodObj)
-    External(_SB.PCI0.LPCB.EC.XQ15, MethodObj)
-    External(_SB.PCI0.LPCB.EC.XQ14, MethodObj)
-    External(_SB.PCI0.LPCB.EC.XQ16, MethodObj)
-    External(_SB.PCI0.LPCB.EC.XQ64, MethodObj)
-    External(_SB.PCI0.LPCB.EC.XQ66, MethodObj)
-    External(_SB.PCI0.LPCB.EC.XQ60, MethodObj)
-    External(_SB.PCI0.LPCB.EC.XQ61, MethodObj)
-    External(_SB.PCI0.LPCB.EC.XQ62, MethodObj)
-    External(_SB.PCI0.LPCB.EC.XQ1F, MethodObj)
-    External(_SB.PCI0.LPCB.EC.HKEY.MMTS, MethodObj)
-    External(_SB.PCI0.LPCB.EC.HKEY.MMTG, MethodObj)
-    External(_SB.PCI0.LPCB.EC.HKEY.MLCS, MethodObj)
+    External(_SB.PCI0.LPCB.EC.XQ74, MethodObj) // FnLock
+    External(_SB.PCI0.LPCB.EC.XQ6A, MethodObj)  // F4 - Mic Mute
+    External(_SB.PCI0.LPCB.EC.XQ15, MethodObj) // F5
+    External(_SB.PCI0.LPCB.EC.XQ14, MethodObj) // F6
+    External(_SB.PCI0.LPCB.EC.XQ16, MethodObj) // F7
+    External(_SB.PCI0.LPCB.EC.XQ64, MethodObj) // F8
+    External(_SB.PCI0.LPCB.EC.XQ66, MethodObj) // F9
+    External(_SB.PCI0.LPCB.EC.XQ60, MethodObj) // F10
+    External(_SB.PCI0.LPCB.EC.XQ61, MethodObj) // F11
+    External(_SB.PCI0.LPCB.EC.XQ62, MethodObj) // F12
+    External(_SB.PCI0.LPCB.EC.XQ1F, MethodObj) // Keyboard Backlight (Fn+Space)
+    External(_SB.PCI0.LPCB.EC.HKEY.MHKQ, MethodObj) // FnLock LED
+    External(_SB.PCI0.LPCB.EC.HKEY.MMTS, MethodObj) // F4 - Mic Mute LED
+    External(_SB.PCI0.LPCB.EC.HKEY.MLCS, MethodObj)  // Keyboard Backlight LED
     
     Scope (_SB.PCI0.LPCB.EC)
     {
+        Name (LED3, Zero)
+        Method (_Q74, 0, NotSerialized) // FnLock (Fn + Esc)
+        {
+            If (_OSI ("Darwin"))
+            {
+                // Toggle FnLock LED
+                If ((LED3 == Zero))
+                {
+                    // Right Shift + F18
+                    Notify (\_SB.PCI0.LPCB.KBD, 0x012A)
+                    Notify (\_SB.PCI0.LPCB.KBD, 0x0369)
+                    Notify (\_SB.PCI0.LPCB.KBD, 0x01aa)
+
+                    // 0x02 = Enable LED
+                    \_SB.PCI0.LPCB.EC.HKEY.MHKQ (0x02)
+                    LED3 = One
+                }
+                Else
+                {
+                    // Left Shift + F18
+                    Notify (\_SB.PCI0.LPCB.KBD, 0x0136)
+                    Notify (\_SB.PCI0.LPCB.KBD, 0x0369)
+                    Notify (\_SB.PCI0.LPCB.KBD, 0x01b6)
+
+                    // 0x00 = Disable LED
+                    \_SB.PCI0.LPCB.EC.HKEY.MHKQ (Zero)
+                    LED3 = Zero
+                }
+
+            }
+            Else
+            {
+                // Call original _Q74 method.
+                \_SB.PCI0.LPCB.EC.XQ74()
+            }
+        }
+        
         Name (LED1, Zero)
         // _Q6A - Microphone Mute
         Method (_Q6A, 0, NotSerialized) // F4 - Microphone Mute = F20

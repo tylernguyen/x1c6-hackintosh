@@ -19,16 +19,38 @@ See [`docs/5_README-other`](https://github.com/tylernguyen/x1c6-hackintosh/blob/
 
 `CPUFriendDataProvider` can be generated with [CPUFriendFriend](https://github.com/corpnewt/CPUFriendFriend_) or [one-key-cpufriend](https://github.com/stevezhengshiqi/one-key-cpufriend). This is especially important if you have a different CPU than mine. Even if you have the same CPU as me, you may prefer a different Energy Performance Preference (EPP) so do generate your own CPUFriendDataProvider.  
 
-> ## Important Note:
-
-Unlike Clover, where SSDT patches are only being applied when booting macOS. OpenCore will apply SSDT patches regardless of the operating system. This is critical when multi-booting, since Windows and Linux do not need the additional patches that macOS does. In many cases, if Windows/Linux fails to boot under OpenCore, it is likely that your macOS intended SSDT patch(s) is being applied universally. To prevent OpenCore from doing this, it is important that your SSDT patches specify its intended OS, which in our case is "Darwin."  
-See highlighted example:
-
-![OpenCore SSDT patching notice](https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/master/docs/assets/img/OpenCore%20SSDT%20patching%20notice.png)
-
 > ## Checking your OpenCore config.plist
 
 It is important to keep your OpenCore config.plist properly up-to-spec, as OpenCore configurations tend to change accordingly with OpenCore versions. A good resource to check your config plist is https://opencore.slowgeek.com/.
+
+> ## `config.plist` Comments:
+* Notes on kexts and ACPI patches are on the respective Add OpenCore entry.
+* Injects AppleALC layout-id `21`:   
+`Device Properties` > `PciRoot(0x0)/Pci(0x1f,0x3)` > `layout-id`:
+* Intel iGPU and HDMI patches:
+`Device Properties` > `PciRoot(0x0)/Pci(0x2,0x0)` >  
+    * `device-id` = `16590000` per [WhateverGreen/IntelHD.en.md](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
+* FileVault compatibility:
+    * Misc -> Boot
+        * `PollAppleHotKeys` set to YES(While not needed can be helpful)
+    * Misc -> Security
+        * `AuthRestart` set to YES(Enables Authenticated restart for FileVault 2 so password is not required on reboot. Can be considered a security risk so optional)
+    * NVRAM -> Add -> 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14
+        * `UIScale` set to `02` for high resolution small displays
+    * UEFI -> Input
+        * `KeySupport` set to YES(Only when using OpenCore's builtin input, users of OpenUsbKbDxe should avoid)
+    * UEFI -> Output
+        * `ProvideConsoleGop` to YES
+    * UEFI -> ProtocolOverrides
+        * `FirmwareVolume` set to YES
+        * `AppleSmcIo` set to YES(this replaces VirtualSMC.efi)
+    * UEFI -> Quirks
+        * `RequestBootVarRouting` set to YES
+
+* OpenCanopy Support:  
+I prefer OpenCanopy for its looks. However, it is completely optional and can take up space in your EFI. If you would rather use OpenCore's built in picker. Change `PickerMode` to `Builtin` and remove `OpenCanopy.efi` from `UEFI` > `Drivers`.
+
+* OpenCore tools and utilities are removed for a clean setup and can be added when needed.
 
 > ## Updating:
 

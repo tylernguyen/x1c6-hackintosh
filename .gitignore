@@ -10,3 +10,4 @@ Library/Extensions/HighPointIOP.kext
 Library/Extensions/HighPointRR.kext
 Library/Extensions/PromiseSTEX.kext
 Library/Extensions/SoftRAID.kext
+SMBIOS.plist
