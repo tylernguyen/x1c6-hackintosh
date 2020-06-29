@@ -30,6 +30,11 @@ It is important to keep your OpenCore config.plist properly up-to-spec, as OpenC
 * Intel iGPU and HDMI patches:
 `Device Properties` > `PciRoot(0x0)/Pci(0x2,0x0)` >  
     * `device-id` = `16590000` per [WhateverGreen/IntelHD.en.md](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
+    * `AAPL,ig-platform-id` = This is negotiable. In the future, I will test different variables for optimization. For now, `04002759` works well enough. 
+    * `framebuffer-con1-enable` to enable framebuffer patching by WEG on connector 1.
+    * `framebuffer-con1-type` to set connector 1 type to HDMI (per IOReg)
+    * `framebuffer-patch-enable` tells WEG to patch framebuffer.
+    * `AAPL00,override-no-connect` to override EDID (dependent on display models). See `patches/Internal Displays/`. This is necessary to fix HDMI hotplug. To create your own, see [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60)
 * FileVault compatibility:
     * Misc -> Boot
         * `PollAppleHotKeys` set to YES(While not needed can be helpful)

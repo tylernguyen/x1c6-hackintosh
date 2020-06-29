@@ -994,25 +994,13 @@
 				<data>
 				FlkAAA==
 				</data>
-				<key>disable-external-gpu</key>
-				<data>
-				AQAAAA==
-				</data>
-				<key>framebuffer-con1-alldata</key>
-				<data>
-				AQUJAAAIAADHAwAA
-				</data>
 				<key>framebuffer-con1-enable</key>
 				<data>
 				AQAAAA==
 				</data>
-				<key>framebuffer-con2-alldata</key>
+				<key>framebuffer-con1-type</key>
 				<data>
-				AgQKAAAEAADHAwAA
-				</data>
-				<key>framebuffer-con2-enable</key>
-				<data>
-				AQAAAA==
+				AAgAAA==
 				</data>
 				<key>framebuffer-patch-enable</key>
 				<data>

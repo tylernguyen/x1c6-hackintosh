@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-6-29
+
+#### Added
+
+- X1 6th Gen Hardware Maintenance Guide pdf.
+- Display Patches in `patches/Internal Displays/` for the WQHD HDR Screen:
+    - Color profile as calibrated by notebookcheck
+    - EDID override to patch HDMI hotplug and overclock refresh rate. Thank you @veelar
+- Please follow instructions on [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60) to create an EDID override for your own display. Make sure to create a pull request!
+- Repo issue template to deter low effort issues and better diagnosing and support.
+- More documentation in `EFI-OpenCore/README.md` about decisions on `config.plist`
+
+#### Changed
+
+- Reverted to previous, simpler iGPU framebuffer patches.
+
 > ### 2020-6-26
 
 #### Added

@@ -18,6 +18,11 @@
 - Do not disable `hibernatefile`.
 - `sudo pmset -a tcpkeepalive 0` to disable Network while sleeping.
 
+> ## EDDI Override:
+- This is necessary to fix HDMI hotplug.
+- See current available patches in `patches/Internal Displays/`
+- If a patch is not yet created for your display model. Please see [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60) to create your own EDID override. Please create a pull request to add your EDID override for different displays.
+
 > ## Multimedia Fn Key Patching:
 
 Since macOS doesn't not natively support some multimedia Fn key actions. [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant) is required for the Fn actions to be implemented. Additionally, my settings are:

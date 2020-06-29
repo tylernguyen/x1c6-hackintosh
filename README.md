@@ -25,27 +25,21 @@
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-> ### 2020-6-26
+> ### 2020-6-29
 
 #### Added
 
-- `VoodooRMI` as alternative trackpad option. **Enabled by default, feel free to revert back to `VoodooPS2Mouse` and `VoodooPS2Trackpad` if you prefer**. *Note, there's currently a bug with RMI where the touchpad would not load once in a while. The RMI kext uploaded in this repo has a temp fix by me (See [VoodooSMBUS/PR](https://github.com/VoodooSMBus/VoodooSMBus/pull/41)). However, the issue is still ongoing and the dev team is aware of it. I'm switching this repo to VoodooRMI because I believe it's the future and I want to possible bugs to be reported to be fixed for the kext's first stable release.  
-- Kernel patches to enable 4K external graphics, thank you so much [@benbender](https://github.com/benbender)
-- `XQ74` patch in `SSDT-Keyboard` to support `FnLock` HUD per ThinkpadAssistant 1.8.0
-- In [EFI-OpenCore/README.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/EFI-OpenCore/README.md), I've added a short section explaining why certain variables are the way they are in my `config.plist`. I will continue to update this section with more details as time goes on.  
+- X1 6th Gen Hardware Maintenance Guide pdf.
+- Display Patches in `patches/Internal Displays/` for the WQHD HDR Screen:
+    - Color profile as calibrated by notebookcheck
+    - EDID override to patch HDMI hotplug and overclock refresh rate. Thank you @veelar
+- Please follow instructions on [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60) to create an EDID override for your own display. Make sure to create a pull request!
+- Repo issue template to deter low effort issues and better diagnosing and support.
+- More documentation in `EFI-OpenCore/README.md` about decisions on `config.plist`
 
 #### Changed
 
-- iGPU Framebuffer patching for HDMI issue in Catalina. 
-    - In Catalina/WhateverGreen version, for some reasons my previous framebuffer patches for HDMI no longer worked. So I re-did the patch in mode details but eventually the property that fixed it was `disable-external-gpu` or `-wegnoegpu`. For some strange reasons, that variable activated on-board HDMI. See [similar reports here](https://www.tonymacx86.com/threads/guide-general-framebuffer-patching-guide-hdmi-black-screen-problem.269149/page-123). I'm going to create an issue on acidanthera/bugtracker soon to report to the dev team. In the mean time, keep this property if you rely on HDMI and do not have an eGPU. Delete this property if you have an eGPU (You're likely using the HDMI on the eGPU anyway).
-- Fixed `VoodooPS2` kexts loading order.
-- Various reference docs to dortania.
-- `HibernateMode` to `Auto`
-
-#### Removed
-
-- Unnecessary Mutex OpenCore patches, all Mutex are already 0 in stock `DSDT`.
-- `SSDT-MCHC` and `SSDT-SBUS` for `VoodooRMI` compatibility.
+- Reverted to previous, simpler iGPU framebuffer patches.
 
 > ## SUMMARY:
 
@@ -58,7 +52,7 @@
 | iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... ✅                                                                                                                | Hibernation mode 25 ❌ CMOS error, see [Issue #44](https://github.com/tylernguyen/x1c6-hackintosh/issues/44) |                                                                                                                                              |
 | Multimedia Fn keys ✅ \*need [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant)                                                                                      |                                                                                                              |                                                                                                                                              |
 | PM981 installation. ✅ See [Issue #43](https://github.com/tylernguyen/x1c6-hackintosh/issues/43)                                                                                    |                                                                                                              |                                                                                                                                              |
-| 4K UHD via HDMI/DisplayPort. ✅ \*one minor quirk with Recovery and macOS updates, See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28#issuecomment-649107190) |                                                                                                              |                                                                                                                                              |
+| 4K UHD via HDMI/DisplayPort. ✅ \*one minor quirk with Recovery and macOS updates, See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28#issuecomment-649107190). HDMI hotplug will require a custom EDID override. See [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60)|                                                                                                              |                                                                                                                                              |
 
 **For more information regarding certain features, please refer to [`docs/3_README-POSTinstallation.md`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-POSTinstallation.md)**
 
