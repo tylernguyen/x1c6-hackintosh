@@ -1,10 +1,10 @@
 ﻿# macOS on Thinkpad X1 Carbon 6th Generation, Model 20KH\*
 
-[![macOS](https://img.shields.io/badge/macOS-Catalina-yellow.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
-[![version](https://img.shields.io/badge/10.15.5-yellow)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
-[![BIOS](https://img.shields.io/badge/BIOS-1.45-blue)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
-[![MODEL](https://img.shields.io/badge/Model-20KH*-blue)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
-[![OpenCore](https://img.shields.io/badge/OpenCore-0.5.9-green)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+[![macOS](https://img.shields.io/badge/macOS-Catalina-yellow.svg)](https://www.apple.com/macos/catalina/)
+[![version](https://img.shields.io/badge/10.15.6-yellow)](https://support.apple.com/en-us/HT210642)
+[![BIOS](https://img.shields.io/badge/BIOS-1.45-blue)](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-6th-gen-type-20kh-20kg/downloads/driver-list/component?name=BIOS%2FUEFI)
+[![MODEL](https://img.shields.io/badge/Model-20KH*-blue)](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf)
+[![OpenCore](https://img.shields.io/badge/OpenCore-0.5.9-green)](https://github.com/acidanthera/OpenCorePkg)
 [![LICENSE](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
 <img align="right" src="https://i.imgur.com/I3yUS4Q.png" alt="Critter" width="300">
@@ -25,38 +25,60 @@
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-> ### 2020-6-29
+> ### 2020-7-18
 
 #### Added
 
-- X1 6th Gen Hardware Maintenance Guide pdf.
-- Display Patches in `patches/Internal Displays/` for the WQHD HDR Screen:
-    - Color profile as calibrated by notebookcheck
-    - EDID override to patch HDMI hotplug and overclock refresh rate. Thank you @veelar
-- Please follow instructions on [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60) to create an EDID override for your own display. Make sure to create a pull request!
-- Repo issue template to deter low effort issues and better diagnosing and support.
-- More documentation in `EFI-OpenCore/README.md` about decisions on `config.plist`
+- EDID Override patch for FHD screen. Thanks [@Paolo97Gll](https://github.com/Paolo97Gll)
 
 #### Changed
 
-- Reverted to previous, simpler iGPU framebuffer patches.
+- By default, `OpenCore-EFI` now has the 4K output patch disabled for easier system upgrades. Install `OpenCore patches/4K-Output` if you need it.
+- Upgraded `VoodooRMI`
+- Documentation changes for readability. 
 
-> ## SUMMARY:
+> # table of contents
+ - [summary](#summary)
+ - [before you start](#references)
+ - [needed](#needed)
+ - [my specs for comparison and ref](#specifications)
+ - [getting started ](#start)
+ - [other x1c6 repos](#other)
+ - [contact](#contact)
+ - [donate and support](#support)
+ - [credits and thank you](#credits)
+
+> ## SUMMARY
 
 **`In short, x1c6-hackintosh is very stable and is currently my daily driver. I fully recommend this project to anyone looking for a MacBook alternative.`**
 
-| Fully functional                                                                                                                                                                    | Non-functional                                                                                               | Semi-functional. Additional pulls needed and welcomed.                                                                                       |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| WiFi, Bluetooth, Apple Continuity ✅ \*need [network card replacement](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md)                 | Fingerprint Reader (not needed, DISABLED at BIOS) ❌                                                         | Power management and optimizations. See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28) ⚠️                             |
-| USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad, MicroSD card reader ✅                                                     | Wireless WAN (DISABLED at BIOS) \*ENABLED if you have a 2nd drive connected❌                                | Thunderbolt 3 hotplug partially working. See [Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) ⚠️ |
-| iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... ✅                                                                                                                | Hibernation mode 25 ❌ CMOS error, see [Issue #44](https://github.com/tylernguyen/x1c6-hackintosh/issues/44) |                                                                                                                                              |
-| Multimedia Fn keys ✅ \*need [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant)                                                                                      |                                                                                                              |                                                                                                                                              |
-| PM981 installation. ✅ See [Issue #43](https://github.com/tylernguyen/x1c6-hackintosh/issues/43)                                                                                    |                                                                                                              |                                                                                                                                              |
-| 4K UHD via HDMI/DisplayPort. ✅ \*one minor quirk with Recovery and macOS updates, See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28#issuecomment-649107190). HDMI hotplug will require a custom EDID override. See [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60)|                                                                                                              |                                                                                                                                              |
+| Fully functional                                                                                                                                                                                                               | Non-functional                                                                                               | Semi-functional. Additional pulls needed and welcomed.                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| WiFi, Bluetooth, Apple Continuity ✅ \*need [network card replacement](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md)                                                            | Fingerprint Reader (not needed, DISABLED at BIOS) ❌                                                         | Power management and optimizations. See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28) ⚠️                             |
+| USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad, MicroSD card reader ✅                                                                                                | Wireless WAN (DISABLED at BIOS) \*ENABLED if you have a 2nd drive connected❌                                | Thunderbolt 3 hotplug partially working. See [Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) ⚠️ |
+| iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc... ✅                                                                                                                                                           | Hibernation mode 25 ❌ CMOS error, see [Issue #44](https://github.com/tylernguyen/x1c6-hackintosh/issues/44) |                                                                                                                                              |
+| Multimedia Fn keys ✅ \*need [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant)                                                                                                                                 |                                                                                                              |                                                                                                                                              |
+| PM981 installation. ✅ See [Issue #43](https://github.com/tylernguyen/x1c6-hackintosh/issues/43)                                                                                                                               |                                                                                                              |                                                                                                                                              |
+| 4K UHD via HDMI/DisplayPort. ✅ \*one minor quirk with Recovery and macOS updates, See [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28#issuecomment-649107190). Specifically, follow this when upgrading with `4K-Output` patch enabled: [Issue #40](https://github.com/tylernguyen/x1c6-hackintosh/issues/40#issuecomment-659370165). Disabled by default, install `patches/OpenCore patches/4K-Output.plist` if you need the feature.                                           |                                                                                                              |                                                                                                                                              |
+| HDMI hotplug(requires a custom EDID override). ✅ See `patches/Internal Displays/` for pre-made ones and [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60) if one does not exist already for your display.|                                                                                                              |
 
 **For more information regarding certain features, please refer to [`docs/3_README-POSTinstallation.md`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-POSTinstallation.md)**
 
-> ## NEEDED:
+> ## REFERENCES
+* Read these before you start:
+- [dortania's Hackintosh guides](https://github.com/dortania)
+- [dortania/ Getting Started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)
+- [dortania/ vanilla laptop guide](https://dortania.github.io/vanilla-laptop-guide/)
+- [dortania/ opencore `laptop` guide](https://dortania.github.io/oc-laptop-guide/)
+- [dortania/ opencore `desktop` guide](https://dortania.github.io/OpenCore-Desktop-Guide/)
+- [dortania/ opencore `multiboot`](https://github.com/dortania/OpenCore-Multiboot)
+- [dortania/ `USB map` guide](https://github.com/dortania/USB-Map-Guide)
+- Daliansky's [Hackintool tutorial](https://translate.google.com/translate?js=n&sl=auto&tl=en&u=https://blog.daliansky.net/Intel-FB-Patcher-tutorial-and-insertion-pose.html).
+- [WhateverGreen Intel HD Manual](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
+
+* ### No seriously, please read those.  
+
+> ## NEEDED
 
 A macOS machine would be VERY useful: to create install drives, and for when your ThinkPad cannot boot. Though it is not completely necessary.  
 Flash drive, 12GB or more.  
@@ -67,20 +89,7 @@ Xcode works fine for editing plist files on macOS, but I prefer [PlistEdit Pro](
 [IOJones](https://github.com/acidanthera/IOJones), for diagnosis.  
 [Hackintool](https://www.insanelymac.com/forum/topic/335018-hackintool-v286/), for diagnostic ONLY, Hackintool should not be used for patching, it is outdated.
 
-> ## WHERE TO START:
-
-Explore links included this README, especially those in references and other x1c6-hackintosh repos.
-
-Once you are ready, follow the series of README files included `docs/`.  
-[**1_README-HARDWAREandBIOS**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md): Requirements before starting.  
-[**2_README-installMEDIA**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/2_README-installMEDIA.md): Creating the macOS install drive.  
-[**3_README-POSTinstallation**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-POSTinstallation.md): Settings and tweaks post installation.  
-[**4_README-ACPIpatching**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/4_README-ACPIpatching.md): The hardest and most time consuming part, patching the system ACPI table for battery status, brightness, sleep, thunderbolt, thunderbolt hotplugging, etc...  
-[**5_README-other.md**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/5_README-other.md): for other notices
-
-- While you can plug-and-play most of my hotpatches if you have an x1c6, I still suggest that you dump and disassemble your own DSDT. This is imprortant as your DSDT maybe different from mine. And furthermore, you get to learn more about what's actually going on.
-
-> ## MY SPECIFICATIONS:
+> ## SPECIFICATIONS
 
 Refer to [x1c6-Platform_Specifications](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf) for possible stock ThinkPad X1 6th Gen configurations.
 
@@ -107,34 +116,35 @@ TrackPad: PS/2
 **Thunderbolt:**  
 `Intel JHL6540 (Alpine Ridge 4C) Thunderbolt 3 Bridge`
 
-> ## Read These (References):
+> ## START
 
-- [dortania's Hackintosh guides](https://github.com/dortania)
-- [dortania/ Getting Started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)
-- [dortania/ vanilla laptop guide](https://dortania.github.io/vanilla-laptop-guide/)
-- [dortania/ opencore `laptop` guide](https://dortania.github.io/oc-laptop-guide/)
-- [dortania/ opencore `desktop` guide](https://dortania.github.io/OpenCore-Desktop-Guide/)
-- [dortania/ opencore `multiboot`](https://github.com/dortania/OpenCore-Multiboot)
-- [dortania/ `USB map` guide](https://github.com/dortania/USB-Map-Guide)
-- Daliansky's [Hackintool tutorial](https://translate.google.com/translate?js=n&sl=auto&tl=en&u=https://blog.daliansky.net/Intel-FB-Patcher-tutorial-and-insertion-pose.html).
-- [WhateverGreen Intel HD Manual](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
+Explore links included this README, especially those in references and other x1c6-hackintosh repos.
 
-> ## OTHER x1c6-hackintosh REPOSITORIES:
+Once you are ready, follow the series of README files included `docs/`.  
+[**1_README-HARDWAREandBIOS**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md): Requirements before starting.  
+[**2_README-installMEDIA**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/2_README-installMEDIA.md): Creating the macOS install drive.  
+[**3_README-POSTinstallation**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-POSTinstallation.md): Settings and tweaks post installation.  
+[**4_README-ACPIpatching**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/4_README-ACPIpatching.md): The hardest and most time consuming part, patching the system ACPI table for battery status, brightness, sleep, thunderbolt, thunderbolt hotplugging, etc...  
+[**5_README-other.md**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/5_README-other.md): for other notices
+
+- While you can plug-and-play most of my hotpatches if you have an x1c6, I still suggest that you dump and disassemble your own DSDT. This is imprortant as your DSDT maybe different from mine. And furthermore, you get to learn more about what's actually going on.
+
+> ## OTHER
 
 [zhtengw/EFI-for-X1C6-hackintosh](https://github.com/zhtengw/EFI-for-X1C6-hackintosh)  
 [Colton-Ko/macOS-ThinkPad-X1C6](https://github.com/Colton-Ko/macOS-ThinkPad-X1C6)  
 Create a pull request if you like to be added, final decision at my discreation.
 
-> ## CONTACT:
+> ## CONTACT
 
 https://tylerspaper.com/contact  
 Signal: +1 (202)-644-9951 \*This is a Signal ONLY number. You will not get a reply of you text me at this number.
 
-> ## DONATE AND SUPPORT:
+> ## SUPPORT
 
 https://tylerspaper.com/support/
 
-> ## Credits and Thank You:
+> ## CREDITS
 
 [@Colton-Ko](https://github.com/Colton-Ko/macOS-ThinkPad-X1C6) for the great features template.  
 [@stevezhengshiqi](https://github.com/stevezhengshiqi) for the one-key-cpufriend script.  

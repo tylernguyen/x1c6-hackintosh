@@ -3,14 +3,26 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-7-18
+
+#### Added
+
+- EDID Override patch for FHD screen. Thanks [@Paolo97Gll](https://github.com/Paolo97Gll)
+
+#### Changed
+
+- By default, `OpenCore-EFI` now has the 4K output patch disabled for easier system upgrades. Install `OpenCore patches/4K-Output` if you need it.
+- Upgraded `VoodooRMI`
+- Documentation changes for readability. 
+
 > ### 2020-6-29
 
 #### Added
 
 - X1 6th Gen Hardware Maintenance Guide pdf.
 - Display Patches in `patches/Internal Displays/` for the WQHD HDR Screen:
-    - Color profile as calibrated by notebookcheck
-    - EDID override to patch HDMI hotplug and overclock refresh rate. Thank you @veelar
+- Color profile as calibrated by notebookcheck
+- EDID override to patch HDMI hotplug and overclock refresh rate. Thank you @veelar
 - Please follow instructions on [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60) to create an EDID override for your own display. Make sure to create a pull request!
 - Repo issue template to deter low effort issues and better diagnosing and support.
 - More documentation in `EFI-OpenCore/README.md` about decisions on `config.plist`

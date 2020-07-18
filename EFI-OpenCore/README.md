@@ -24,7 +24,7 @@ See [`docs/5_README-other`](https://github.com/tylernguyen/x1c6-hackintosh/blob/
 It is important to keep your OpenCore config.plist properly up-to-spec, as OpenCore configurations tend to change accordingly with OpenCore versions. A good resource to check your config plist is https://opencore.slowgeek.com/.
 
 > ## `config.plist` Comments:
-* Notes on kexts and ACPI patches are on the respective Add OpenCore entry.
+* Notes on kexts and ACPI patches are on the respective Add OpenCore entry. Additionally, notes on ACPI patches can be found at [docs/4_README-ACPIpatching.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/4_README-ACPIpatching.md).
 * Injects AppleALC layout-id `21`:   
 `Device Properties` > `PciRoot(0x0)/Pci(0x1f,0x3)` > `layout-id`:
 * Intel iGPU and HDMI patches:
@@ -37,21 +37,24 @@ It is important to keep your OpenCore config.plist properly up-to-spec, as OpenC
     * `AAPL00,override-no-connect` to override EDID (dependent on display models). See `patches/Internal Displays/`. This is necessary to fix HDMI hotplug. To create your own, see [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60)
 * FileVault compatibility:
     * Misc -> Boot
-        * `PollAppleHotKeys` set to YES(While not needed can be helpful)
+        * `PollAppleHotKeys` set to `YES`(While not needed can be helpful)
     * Misc -> Security
-        * `AuthRestart` set to YES(Enables Authenticated restart for FileVault 2 so password is not required on reboot. Can be considered a security risk so optional)
+        * `AuthRestart` set to `YES`(Enables Authenticated restart for FileVault 2 so password is not required on reboot. Can be considered a security risk so optional)
     * NVRAM -> Add -> 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14
         * `UIScale` set to `02` for high resolution small displays
     * UEFI -> Input
-        * `KeySupport` set to YES(Only when using OpenCore's builtin input, users of OpenUsbKbDxe should avoid)
+        * `KeySupport` set to `YES`(Only when using OpenCore's builtin input, users of OpenUsbKbDxe should avoid)
     * UEFI -> Output
-        * `ProvideConsoleGop` to YES
+        * `ProvideConsoleGop` to `YES`
     * UEFI -> ProtocolOverrides
-        * `FirmwareVolume` set to YES
-        * `AppleSmcIo` set to YES(this replaces VirtualSMC.efi)
+        * `FirmwareVolume` set to `YES`
+        * `AppleSmcIo` set to `YES`(this replaces VirtualSMC.efi)
     * UEFI -> Quirks
-        * `RequestBootVarRouting` set to YES
-
+        * `RequestBootVarRouting` set to `YES`
+* Personalization:
+    * `ShowPicker` is `NO`. Use `Esc` during boot to show picker when needed.
+    * `PickerMode` is `External` to use `OpenCanopy` boot menu. If you prefer a lighter `EFI`, delete `Resources` and switch variable to `Builtin`.
+ 
 * OpenCanopy Support:  
 I prefer OpenCanopy for its looks. However, it is completely optional and can take up space in your EFI. If you would rather use OpenCore's built in picker. Change `PickerMode` to `Builtin` and remove `OpenCanopy.efi` from `UEFI` > `Drivers`.
 

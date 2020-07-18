@@ -1,7 +1,7 @@
 # Hardware and BIOS:
 
 > ## PM981:  
-For installation on the factory drive `PM981`, please refer to [Issue #43](https://github.com/tylernguyen/x1c6-hackintosh/issues/43).  
+For installation on the factory drive `PM981`, please refer to [Issue #43](https://github.com/tylernguyen/x1c6-hackintosh/issues/43). A note however, installation and upgrading on the `PM981` can be problematic and troublesome. For a smoother experience, replace it with an aftermarket NVMe. For that, refer to [dortania/Anti-Hackintosh-Buyers-Guide](https://dortania.github.io/Anti-Hackintosh-Buyers-Guide/Storage.html).
 
 > ## WiFi and Bluetooth:
 

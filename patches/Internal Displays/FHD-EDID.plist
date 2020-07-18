@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>DeviceProperties</key>
+	<dict>
+		<key>Add</key>
+		<dict>
+			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
+			<dict>
+				<key>AAPL00,override-no-connect</key>
+				<data>
+				AP///////wAJ5d8GAAAAAAEaAQSQHxF4AoYxo1ROmyUO
+				UFQAAAABAQEBAQEBAQEBAQEBAQEBPDeA3nA4FEA8IDYA
+				Na0QAAAaMCyA3nA4FEAwIDYANa0QAAAaAAAA/gBCT0Ug
+				Q1EKICAgICAgAAAA/gBIVjE0MEZITS1ONjEKAF4=
+				</data>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

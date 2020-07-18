@@ -17,13 +17,13 @@
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.4</string>
+	<string>0.5</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>0.4</string>
+	<string>0.5</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
@@ -47,13 +47,21 @@
 			<key>Configuration</key>
 			<dict>
 				<key>DisableWhileTypingTimeout</key>
-				<integer>500</integer>
+				<integer>100</integer>
+				<key>ForceTouchEmulation</key>
+				<true/>
+				<key>ForceTouchMinPressure</key>
+				<integer>90</integer>
+				<key>MinYDiffThumbDetection</key>
+				<integer>200</integer>
+				<key>TrackstickDeadzone</key>
+				<integer>1</integer>
 				<key>TrackstickMultiplier</key>
-				<integer>5</integer>
+				<integer>20</integer>
 				<key>TrackstickScrollMultiplierX</key>
-				<integer>5</integer>
+				<integer>20</integer>
 				<key>TrackstickScrollMultiplierY</key>
-				<integer>5</integer>
+				<integer>20</integer>
 			</dict>
 			<key>IOClass</key>
 			<string>RMIBus</string>
