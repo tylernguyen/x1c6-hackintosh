@@ -1,4 +1,19 @@
+# Folder view configuration files
 .DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# Default macOS Kernel Extensions
 Library/Extensions/ACS6x.kext
 Library/Extensions/ArcMSR.kext
 Library/Extensions/ATTOCelerityFC8.kext
@@ -10,4 +25,9 @@ Library/Extensions/HighPointIOP.kext
 Library/Extensions/HighPointRR.kext
 Library/Extensions/PromiseSTEX.kext
 Library/Extensions/SoftRAID.kext
+
+# Personal and Archive
 SMBIOS.plist
+unpatched-BIOS-v1.45.img
+v6patched-BIOS-v1.45.rom
+/patches/BIOS-mod/

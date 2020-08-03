@@ -24,17 +24,20 @@ See [`docs/5_README-other`](https://github.com/tylernguyen/x1c6-hackintosh/blob/
 It is important to keep your OpenCore config.plist properly up-to-spec, as OpenCore configurations tend to change accordingly with OpenCore versions. A good resource to check your config plist is https://opencore.slowgeek.com/.
 
 > ## `config.plist` Comments:
+* There are two versions. Default `config.plist` is meant who those with a modded BIOS and have made the approiate settings as detailed in [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) while `config_unmoddedBIOS.plist` is meant for those without a modded BIOS. There are no major difference between the two aside from graphics patching. It goes without saying, the two config files are mutually exclusive, use one or the other depending on the state of your BIOS.
 * Notes on kexts and ACPI patches are on the respective Add OpenCore entry. Additionally, notes on ACPI patches can be found at [docs/4_README-ACPIpatching.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/4_README-ACPIpatching.md).
-* Injects AppleALC layout-id `21`:   
-`Device Properties` > `PciRoot(0x0)/Pci(0x1f,0x3)` > `layout-id`:
+* Audio patches:   
+`Device Properties` > `PciRoot(0x0)/Pci(0x1f,0x3)` > `layout-id`: Injects AppleALC layout-id `21`
 * Intel iGPU and HDMI patches:
 `Device Properties` > `PciRoot(0x0)/Pci(0x2,0x0)` >  
     * `device-id` = `16590000` per [WhateverGreen/IntelHD.en.md](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
     * `AAPL,ig-platform-id` = This is negotiable. In the future, I will test different variables for optimization. For now, `04002759` works well enough. 
+    * `AAPL00,override-no-connect` = EDID override to fix HDMI hotplug. Search for yours at `patches/Internal Displays/` or see [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60) to create one for your display model.
     * `framebuffer-con1-enable` to enable framebuffer patching by WEG on connector 1.
     * `framebuffer-con1-type` to set connector 1 type to HDMI (per IOReg)
     * `framebuffer-patch-enable` tells WEG to patch framebuffer.
     * `AAPL00,override-no-connect` to override EDID (dependent on display models). See `patches/Internal Displays/`. This is necessary to fix HDMI hotplug. To create your own, see [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60)
+    * Addtionally, `config_unmoddedBIOS.plist` constains two more variables meant to work around the stock BIOS DVMT `Pre-Allocated` being locked at `32M`.
 * FileVault compatibility:
     * Misc -> Boot
         * `PollAppleHotKeys` set to `YES`(While not needed can be helpful)

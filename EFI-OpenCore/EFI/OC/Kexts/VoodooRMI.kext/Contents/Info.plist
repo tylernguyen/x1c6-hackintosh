@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>17G13035</string>
+	<string>17G14019</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -17,13 +17,13 @@
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.5</string>
+	<string>1.0.1</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>0.5</string>
+	<string>1.0.1</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
@@ -67,23 +67,19 @@
 			<string>RMIBus</string>
 			<key>IOProbeScore</key>
 			<integer>2910</integer>
+			<key>IOPropertyMatch</key>
+			<dict>
+				<key>RMI4 Supported</key>
+				<true/>
+			</dict>
 			<key>IOProviderClass</key>
-			<string>RMISMBus</string>
-		</dict>
-		<key>RMISMBus</key>
-		<dict>
-			<key>CFBundleIdentifier</key>
-			<string>com.1Revenger1.VoodooRMI</string>
-			<key>IOClass</key>
-			<string>RMISMBus</string>
-			<key>IOProbeScore</key>
-			<integer>500</integer>
-			<key>IOProviderClass</key>
-			<string>VoodooSMBusDeviceNub</string>
+			<string>RMITransport</string>
 		</dict>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2020 1Revenger1. All rights reserved.</string>
+	<key>OSBundleCompatibleVersion</key>
+	<string>1.0.0</string>
 	<key>OSBundleLibraries</key>
 	<dict>
 		<key>com.apple.iokit.IOHIDFamily</key>
@@ -94,8 +90,6 @@
 		<string>18.5</string>
 		<key>com.apple.kpi.mach</key>
 		<string>18.5</string>
-		<key>de.leo-labs.VoodooSMBus</key>
-		<string>2.1</string>
 	</dict>
 	<key>OSBundleRequired</key>
 	<string>Console</string>

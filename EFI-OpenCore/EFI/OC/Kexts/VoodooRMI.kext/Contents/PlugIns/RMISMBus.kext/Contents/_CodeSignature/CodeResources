@@ -3,26 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>files</key>
-	<dict>
-		<key>Resources/Headers/VoodooSMBusDeviceNub.hpp</key>
-		<data>
-		Gkz/vNrHlRcTeb3TNsAqUb24aZ4=
-		</data>
-	</dict>
+	<dict/>
 	<key>files2</key>
-	<dict>
-		<key>Resources/Headers/VoodooSMBusDeviceNub.hpp</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			Gkz/vNrHlRcTeb3TNsAqUb24aZ4=
-			</data>
-			<key>hash2</key>
-			<data>
-			OgYn96uJNktmjX+20pkPJEVgMAFTgyFCGxbanbDpdzA=
-			</data>
-		</dict>
-	</dict>
+	<dict/>
 	<key>rules</key>
 	<dict>
 		<key>^Resources/</key>

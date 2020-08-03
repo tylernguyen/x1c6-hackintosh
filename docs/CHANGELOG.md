@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-8-3
+
+#### Added
+
+- Added macOS Boot chime support. Disabled by default, `PlayChime` to `Yes` if you want it.
+  - Boot chime was upsampled by me using Audacity, will use this upsampled file until `AudioDxe.efi` can upsample audio on the fly.
+
+#### Changed
+
+- OC to 0.6 and upgraded various acidanthera kexts.
+- [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md):
+  - BIOS modding instructions, confirmed working on `BIOS-v1.45`. Thanks @benbender for bringing this to my attention.
+  - CPU Performance/Battery configuration guidelines. A year and a half after [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28) is opened. Thank you to everyone in that issue.
+- Upgraded `VoodooRMI`, this kext is now stable.
+- Offloaded universally applicable parts of this guide to `dortania` as referring to their often updated content should be better.
+- `config.plist` is now defaulted to users with a BIOS mod, those without a BIOS mod will need to add `config_unmoddedBIOS.plist` to `config.plist` 
+- Enforces modeset to fix [Issue #69](https://github.com/tylernguyen/x1c6-hackintosh/issues/69)
+
 > ### 2020-7-18
 
 #### Added
