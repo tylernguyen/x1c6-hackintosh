@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>17G14019</string>
+	<string>20A5384c</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -27,17 +27,19 @@
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>9F2000</string>
+	<string>12A8179i</string>
+	<key>DTPlatformName</key>
+	<string>macosx</string>
 	<key>DTPlatformVersion</key>
-	<string>GM</string>
+	<string>11.0</string>
 	<key>DTSDKBuild</key>
-	<string>17E189</string>
+	<string>20A5343f</string>
 	<key>DTSDKName</key>
-	<string>macosx10.13</string>
+	<string>macosx11.0</string>
 	<key>DTXcode</key>
-	<string>0941</string>
+	<string>1200</string>
 	<key>DTXcodeBuild</key>
-	<string>9F2000</string>
+	<string>12A8179i</string>
 	<key>IOKitPersonalities</key>
 	<dict>
 		<key>RMII2C</key>
@@ -51,12 +53,8 @@
 			<key>IOPropertyMatch</key>
 			<array>
 				<dict>
-					<key>name</key>
-					<string>SYNA2B31</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>SYNA2B33</string>
+					<key>compatible</key>
+					<string>PNP0C50</string>
 				</dict>
 			</array>
 			<key>IOProviderClass</key>
@@ -65,6 +63,8 @@
 			<false/>
 		</dict>
 	</dict>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.11</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2020 1Revenger1. All rights reserved.</string>
 	<key>OSBundleLibraries</key>
@@ -72,7 +72,7 @@
 		<key>com.1Revenger1.VoodooRMI</key>
 		<string>1.0</string>
 		<key>com.alexandred.VoodooI2C</key>
-		<string>2.0</string>
+		<string>2.5</string>
 		<key>com.apple.iokit.IOHIDFamily</key>
 		<string>2.0</string>
 		<key>com.apple.kpi.iokit</key>

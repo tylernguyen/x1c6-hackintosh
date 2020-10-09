@@ -85,7 +85,6 @@ The following are further optimization settings that can be figured once your BI
 |--------------|------------------------|------------------------------------|-----------------------------------|--------------------------|
 | Advanced Tab | >> Intel Advanced Menu | >> System Agent (SA) Configuration | >> Graphics Configuration         | DVMT Pre-Allocated `64M` |
 |              |                        | >> Power & Performance             | >> CPU - Power Management Control | >> CPU Lock Configuration (Last item, scroll up/down until you see it) CFG Lock `Disabled`|
-|              |                        | >> Thermal Configuration           | >> DPTF Configuration             | DPTF `Disabled` *I recommmend you only doing this after repasting. |
 
 * I also recommend undervolting your machine regarless of your usage, the following are stable settings for my x1c6 with `i7-8650U`, verified by stress testing with `Prime95` and `Heaven Benchmark`, your may be worse or better, please do your own testing. In addition, I suggest you repaste your machine with an aftermarket thermal paste for lower temps and a better undervolt.
 
@@ -125,3 +124,12 @@ The following are further optimization settings that can be figured once your BI
 | Advanced Tab | >> Intel Advanced Menu | >> Thunderbolt(TM) Configuration   | GPIO3 Force Pwr `Checked`                                              |
 |              |                        |                                    | GPIO3 Force Pwr for PR05 `Checked`                                     |
 |              |                        |                                    |                                                                        |
+
+* Native macOS Thunderbolt interfacing, at the expense of TB3 hotplugging on other OSes:
+If macOS is your only OS on the machine, or if you only need to use Thunderbolt 3 hotplug on macOS. There is a custom modded firmware that can be flashed onto the Thunderbolt 3 controller that allows for native Thunderbolt interfacing in macOS:  
+https://www.tonymacx86.com/threads/success-gigabyte-designare-z390-thunderbolt-3-i7-9700k-amd-rx-580.267551/page-2452#post-2160674
+![Native TB3 interface in macOS](https://user-images.githubusercontent.com/30384331/89741356-2a62ab80-da80-11ea-8c76-e1f3aaa1d41d.png)
+    - Screenshot/testing courtesy of @nottthebee
+* The Thunderbolt chip is located on the top right of the motherboard.
+* A note before you do this, however, the modded thunderbolt firmware will still require that you disable Thunderbolt BIOS assist, so again, TB3 hotplug will come at the cost of power consumption.
+* Secondly, as far as I can tell, this mod is really to make things look cleaner and more native within macOS, and doesn't have any real improvements versus the TB3 method currently in this repo.

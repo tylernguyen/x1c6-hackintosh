@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>17G14019</string>
+	<string>20A5384c</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -17,27 +17,29 @@
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.2</string>
+	<string>3.0</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2.2</string>
+	<string>3.0</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>9F2000</string>
+	<string>12A8179i</string>
+	<key>DTPlatformName</key>
+	<string>macosx</string>
 	<key>DTPlatformVersion</key>
-	<string>GM</string>
+	<string>11.0</string>
 	<key>DTSDKBuild</key>
-	<string>17E189</string>
+	<string>20A5343f</string>
 	<key>DTSDKName</key>
-	<string>macosx10.13</string>
+	<string>macosx11.0</string>
 	<key>DTXcode</key>
-	<string>0941</string>
+	<string>1200</string>
 	<key>DTXcodeBuild</key>
-	<string>9F2000</string>
+	<string>12A8179i</string>
 	<key>IOKitPersonalities</key>
 	<dict>
 		<key>VoodooSMBusControllerDriver</key>
@@ -51,10 +53,10 @@
 			<string>de.leo-labs.VoodooSMBus</string>
 			<key>IOClass</key>
 			<string>VoodooSMBusControllerDriver</string>
-			<key>IOPCIMatch</key>
-			<string>0x9d238086 0xa3238086</string>
+			<key>IOPCIClassMatch</key>
+			<string>0c050000&amp;0xffffff00</string>
 			<key>IOPCIMatchComment</key>
-			<string>Intel SMBus Controller i80 (9d23: Sunrise Point-LP (PCH), a323: Cannon Lake-H (PCH))</string>
+			<string>Intel SMBus Controller i801 (Class 0x0C05)</string>
 			<key>IOProbeScore</key>
 			<integer>400</integer>
 			<key>IOProviderClass</key>
@@ -76,10 +78,12 @@
 			<string>IOPCIDevice</string>
 		</dict>
 	</dict>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.11</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019 leo-labs. All rights reserved.</string>
 	<key>OSBundleCompatibleVersion</key>
-	<string>2.1</string>
+	<string>3.0</string>
 	<key>OSBundleLibraries</key>
 	<dict>
 		<key>com.apple.iokit.IOHIDFamily</key>

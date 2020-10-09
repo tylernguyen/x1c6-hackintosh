@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>17G14019</string>
+	<string>20A5384c</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -17,27 +17,29 @@
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.1</string>
+	<string>1.2</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0.1</string>
+	<string>1.2</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>9F2000</string>
+	<string>12A8179i</string>
+	<key>DTPlatformName</key>
+	<string>macosx</string>
 	<key>DTPlatformVersion</key>
-	<string>GM</string>
+	<string>11.0</string>
 	<key>DTSDKBuild</key>
-	<string>17E189</string>
+	<string>20A5343f</string>
 	<key>DTSDKName</key>
-	<string>macosx10.13</string>
+	<string>macosx11.0</string>
 	<key>DTXcode</key>
-	<string>0941</string>
+	<string>1200</string>
 	<key>DTXcodeBuild</key>
-	<string>9F2000</string>
+	<string>12A8179i</string>
 	<key>IOKitPersonalities</key>
 	<dict>
 		<key>RMIDevice</key>
@@ -46,6 +48,8 @@
 			<string>com.1Revenger1.VoodooRMI</string>
 			<key>Configuration</key>
 			<dict>
+				<key>DisableWhileTrackpointTimeout </key>
+				<integer>100</integer>
 				<key>DisableWhileTypingTimeout</key>
 				<integer>100</integer>
 				<key>ForceTouchEmulation</key>
@@ -54,14 +58,14 @@
 				<integer>90</integer>
 				<key>MinYDiffThumbDetection</key>
 				<integer>200</integer>
-				<key>TrackstickDeadzone</key>
+				<key>TrackpointDeadzone</key>
 				<integer>1</integer>
-				<key>TrackstickMultiplier</key>
-				<integer>20</integer>
-				<key>TrackstickScrollMultiplierX</key>
-				<integer>20</integer>
-				<key>TrackstickScrollMultiplierY</key>
-				<integer>20</integer>
+				<key>TrackpointMultiplier</key>
+				<integer>10</integer>
+				<key>TrackpointScrollMultiplierX</key>
+				<integer>30</integer>
+				<key>TrackpointScrollMultiplierY</key>
+				<integer>30</integer>
 			</dict>
 			<key>IOClass</key>
 			<string>RMIBus</string>
@@ -76,6 +80,8 @@
 			<string>RMITransport</string>
 		</dict>
 	</dict>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.11</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2020 1Revenger1. All rights reserved.</string>
 	<key>OSBundleCompatibleVersion</key>
@@ -85,11 +91,11 @@
 		<key>com.apple.iokit.IOHIDFamily</key>
 		<string>2.0</string>
 		<key>com.apple.kpi.iokit</key>
-		<string>18.5</string>
+		<string>14</string>
 		<key>com.apple.kpi.libkern</key>
-		<string>18.5</string>
+		<string>14</string>
 		<key>com.apple.kpi.mach</key>
-		<string>18.5</string>
+		<string>13.0</string>
 	</dict>
 	<key>OSBundleRequired</key>
 	<string>Console</string>

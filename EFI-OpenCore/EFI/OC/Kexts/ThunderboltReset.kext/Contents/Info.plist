@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>18G95</string>
+	<string>19G2021</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -27,20 +27,20 @@
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>11B52</string>
+	<string>11E708</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>19B81</string>
+	<string>19G68</string>
 	<key>DTSDKName</key>
 	<string>macosx10.15</string>
 	<key>DTXcode</key>
-	<string>1120</string>
+	<string>1160</string>
 	<key>DTXcodeBuild</key>
-	<string>11B52</string>
+	<string>11E708</string>
 	<key>IOKitPersonalities</key>
 	<dict>
-		<key>Polaris22Fixup</key>
+		<key>ThunderboltReset</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
 			<string>com.osy86.ThunderboltReset</string>
@@ -52,6 +52,23 @@
 			<string>IOResources</string>
 			<key>IOResourceMatch</key>
 			<string>IOKit</string>
+		</dict>
+		<key>ThunderboltWait</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.osy86.ThunderboltReset</string>
+			<key>IOClass</key>
+			<string>ThunderboltWait</string>
+			<key>IOPCIClassMatch</key>
+			<string>0x08800000&amp;0xffff0000</string>
+			<key>IOPCIMatch</key>
+			<string>0x15008086&amp;0xff00ffff</string>
+			<key>IOPCITunnelCompatible</key>
+			<true/>
+			<key>IOProbeScore</key>
+			<integer>500</integer>
+			<key>IOProviderClass</key>
+			<string>IOPCIDevice</string>
 		</dict>
 	</dict>
 	<key>LSMinimumSystemVersion</key>
@@ -76,6 +93,6 @@
 		<string>12.0.0</string>
 	</dict>
 	<key>OSBundleRequired</key>
-	<string>Root</string>
+	<string>Local-Root</string>
 </dict>
 </plist>

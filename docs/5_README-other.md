@@ -40,6 +40,10 @@ Summary, TB3 hotplug works perfectly, but with some caveats:
 - `Thunderbolt BIOS Assist` needs to be disabled which rises idle CPU power consumption to 2W as opposed to ~0.8W with the option enabled.
 - See the ongoing issue/discussion [Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24)
 
+With those done, there are two scenarios:
+- You want to use TB3 hotplug on both macOS and another OS, such as Linux or Windows. In this case, stick with the current TB3 hotplug setup in this repo. As my repo is currently designed around compatibility with other OSes as I need Windows for work.
+- You only need TB3 hotplug on macOS. In this case, it is possible to reflash the Thunderbolt controller chip on the machine with a modded firmware designed to allow native Thunderbolt interfacing with macOS. See [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md).
+
 > ## Multimedia Fn Keys:
 
 Since macOS doesn't not natively support some multimedia Fn key actions. [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant) is required for the Fn actions to be implemented. Additionally, my settings are:
@@ -57,14 +61,6 @@ Since macOS doesn't not natively support some multimedia Fn key actions. [Thinkp
 - In addition, I prefer to have tap to click on.  
   See my touchpad settings:  
   ![touchpad](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/touchpad.png)
-
-> ## Headphone Patch:
-
-- Installing ALCPlugFix addresses the following:
-  - Change output to headphones after being plugged in, and to change it back to speakers after being unplugged.
-  - Fix the rare condition that audio is messed up after waking from sleep.
-
-See `patches/ALCPlugFix/README.md` for more details.
 
 > ## Optimizations:
 

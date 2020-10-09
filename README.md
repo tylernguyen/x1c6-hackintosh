@@ -1,10 +1,10 @@
 ﻿# macOS on Thinkpad X1 Carbon 6th Generation, Model 20KH\*
 
 [![macOS](https://img.shields.io/badge/macOS-Catalina-yellow.svg)](https://www.apple.com/macos/catalina/)
-[![version](https://img.shields.io/badge/10.15.6-yellow)](https://support.apple.com/en-us/HT210642)
+[![version](https://img.shields.io/badge/10.15.7-yellow)](https://support.apple.com/en-us/HT210642)
 [![BIOS](https://img.shields.io/badge/BIOS-1.45-blue)](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-6th-gen-type-20kh-20kg/downloads/driver-list/component?name=BIOS%2FUEFI)
 [![MODEL](https://img.shields.io/badge/Model-20KH*-blue)](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf)
-[![OpenCore](https://img.shields.io/badge/OpenCore-0.5.9-green)](https://github.com/acidanthera/OpenCorePkg)
+[![OpenCore](https://img.shields.io/badge/OpenCore-0.6.2-green)](https://github.com/acidanthera/OpenCorePkg)
 [![LICENSE](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
 <img align="right" src="https://i.imgur.com/I3yUS4Q.png" alt="Critter" width="300">
@@ -12,7 +12,7 @@
 ### Check out my blog [tylerspaper.com](https://tylerspaper.com/)
 
 #### READ THE ENTIRE README.MD BEFORE YOU START.
-
+()
 #### I am not responsible for any damages you may cause.
 
 ### Should you find an error, or improve anything, be it in the config itself or in the my documentation, please consider opening an issue or a pull request to contribute.
@@ -25,23 +25,35 @@
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-> ### 2020-8-3
+> ### 2020-10-6
 
-#### Added
+#### Notice
 
-- Added macOS Boot chime support. Disabled by default, `PlayChime` to `Yes` if you want it.
-  - Boot chime was upsampled by me using Audacity, will use this upsampled file until `AudioDxe.efi` can upsample audio on the fly.
+- Just getting back to my rountine and maintaining this project. There has been many developments lately, especially with Thunderbolt 3 ACPI patches and [YogaSMC](https://github.com/zhen-zen/YogaSMC). It will take some time for me to review all these developments and understand them. Meanwhile, it seems @benbender has taken matters to his own hand while I was away :)
+- His experimental fork: https://github.com/benbender/x1c6-hackintosh
+- I will create an issue to specfically to discuss YogaSMC usage and config on this machine.
+- Looking forward, Big Sur is almost here so I want to get this project back onto the latest stable build before it comes out.
 
 #### Changed
 
-- OC to 0.6 and upgraded various acidanthera kexts.
-- [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md):
-  - BIOS modding instructions, confirmed working on `BIOS-v1.45`. Thanks @benbender for bringing this to my attention.
-  - CPU Performance/Battery configuration guidelines. A year and a half after [Issue #28](https://github.com/tylernguyen/x1c6-hackintosh/issues/28) is opened. Thank you to everyone in that issue.
-- Upgraded `VoodooRMI`, this kext is now stable.
-- Offloaded universally applicable parts of this guide to `dortania` as referring to their often updated content should be better.
-- `config.plist` is now defaulted to users with a BIOS mod, those without a BIOS mod will need to add `config_unmoddedBIOS.plist` to `config.plist` 
-- Enforces modeset to fix [Issue #69](https://github.com/tylernguyen/x1c6-hackintosh/issues/69)
+- Support for Hibernation Mode 25. As with normal macOS machines, mode 3 is default, but if you want, mode 25 is now also an option.
+- There seems to be a bug with the GitHub release version of `ThunderboltReset.kext` so I replaced it one built by @benbender. You can monitor the issue here [osy86/ThunderboltReset/issues/7](https://github.com/osy86/ThunderboltReset/issues/7). Thank you @benbender for noticing this.
+- OC to 0.6.2
+- Upgraded various Acidanthera kexts as well as `VoodooRMI`
+
+#### Added
+
+- Added `RTCMemoryFixUp` for support of Hibernation Mode 25.
+- OpenCore config patch for FHD Touchscreen.
+- OpenCore config patch for Intel wireless.
+
+#### Removed
+
+- ALCPlugFix is now deprecated and is replaced by new AppleALC (per issue #75). Please run `uninstall.sh` from the previous commit to remove ALCPlugFix. 
+- Delete legacy DiskImage voice from OC `Resources`
+- `GPRW` ACPI patch to fix Bluetooth wake. Make sure that your Wake-on-LAN is disabled in BIOS to prevent sleep problems.
+- Removed advice to disable DPTF in modded BIOS as it can break methods in ACPI. Thanks @benbender
+- `SMCSuperIO` as it was unnecessary.
 
 > # table of contents
  - [summary](#summary)
@@ -60,26 +72,29 @@
 
 | Fully functional                                                                                                                                                                                                               | Non-functional                                                                                               | Semi-functional. Additional pulls needed and welcomed.                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| Native Power Mangemenet ✅ \*need BIOS mod, see [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) | Hibernation mode 25 ❌ CMOS error, see [Issue #44](https://github.com/tylernguyen/x1c6-hackintosh/issues/44) | Thunderbolt 3 hotplug *with some caveats. See [docs/5_README-other.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/5_README-other.md) and [Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) ⚠️ |
+| Native Power Mangemenet ✅ \*need BIOS mod, see [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) | Wireless WAN ❌ (DISABLED at BIOS)     | Thunderbolt 3 hotplug *with some caveats. See [docs/5_README-other.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/5_README-other.md) and [Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) ⚠️ |
 | WiFi, Bluetooth, Apple Continuity, iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc...  ✅ \*need [network card replacement](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md)                                                            | Fingerprint Reader ❌ (not needed, DISABLED at BIOS)                                                          |                              |
-| USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad, MicroSD card reader ✅                                                                                                | Wireless WAN ❌ (DISABLED at BIOS)                                |  |
+| USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad, MicroSD card reader ✅                                                                                                |                             |  |
 | BIOS Mod, giving access to `Advance` menu.✅ See [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) and [Issue #68](https://github.com/tylernguyen/x1c6-hackintosh/issues/68)                                                                                                                                                            |  |                                                                                                                                              |
 | Multimedia Fn keys ✅ \*need [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant)                                                                                                                                 |                                                                                                              |                                                                                                                                              |
 | PM981 installation. ✅ See [Issue #43](https://github.com/tylernguyen/x1c6-hackintosh/issues/43)                                                                                                                               |                                                                                                              |                                                                                                                                              |
 | 4K UHD via HDMI/DisplayPort. ✅ Install `patches/OpenCore patches/4K-Output.plist` if your BIOS is unmodded (follow [Issue #40](https://github.com/tylernguyen/x1c6-hackintosh/issues/40#issuecomment-659370165) when upgrading macOS with this patch enabled). If you have a modded BIOS, simply set `DMVT Pre-Allocated` to `64M` (Refer to [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md))|                                                                                                              |                                                                                                                                              |
 | HDMI hotplug(requires a custom EDID override). ✅ See `patches/Internal Displays/` for pre-made ones and [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60) if one does not exist already for your display.|                                                                                                              |
+| Hibernation Mode 25 ✅||
 
 **For more information regarding certain features, please refer to [`docs/3_README-POSTinstallation.md`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-POSTinstallation.md)**
 
 > ## REFERENCES
 * Read these before you start:
 - [dortania's Hackintosh guides](https://github.com/dortania)
+- [dortania's OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/)
+- [dortania's OpenCore Post Install Guide](https://dortania.github.io/OpenCore-Post-Install/)
 - [dortania/ Getting Started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)
-- [dortania/ opencore `laptop` guide](https://dortania.github.io/oc-laptop-guide/)
-- [dortania/ opencore `desktop` guide](https://dortania.github.io/OpenCore-Desktop-Guide/)
 - [dortania/ opencore `multiboot`](https://github.com/dortania/OpenCore-Multiboot)
-- [dortania/ `USB map` guide](https://github.com/dortania/USB-Map-Guide)
+- [dortania/ `USB map` guide](https://dortania.github.io/OpenCore-Post-Install/usb/)
 - [WhateverGreen Intel HD Manual](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
+- `Configuration.pdf` and `Differences.pdf` in each `OpenCore` releases.
+- Additionally, references specific to the x1c6 are located in `docs/references/`
 
 * ### No seriously, please read those.  
 
@@ -154,7 +169,6 @@ https://tylerspaper.com/support/
 [@Colton-Ko](https://github.com/Colton-Ko/macOS-ThinkPad-X1C6) for the great features template.  
 [@stevezhengshiqi](https://github.com/stevezhengshiqi) for the one-key-cpufriend script.  
 [@corpnewt](https://github.com/corpnewt) for GibMacOS, EFIMount, and USBMap.  
-[@Sniki](https://github.com/Sniki) and [@goodwin](https://github.com/goodwin) for ALCPlugFix.  
 [@xzhih](https://github.com/xzhih) for one-key-hidpi.  
 [@daliansky](https://github.com/daliansky) for various hotpatches.  
 [@velaar](https://github.com/velaar) for your continual support and contributions.  

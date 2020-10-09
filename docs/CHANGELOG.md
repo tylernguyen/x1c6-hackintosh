@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-10-6
+
+#### Notice
+
+- Just getting back to my rountine and maintaining this project. There has been many developments lately, especially with Thunderbolt 3 ACPI patches and [YogaSMC](https://github.com/zhen-zen/YogaSMC). It will take some time for me to review all these developments and understand them. Meanwhile, it seems @benbender has taken matters to his own hand while I was away :)
+- His experimental fork: https://github.com/benbender/x1c6-hackintosh
+- I will create an issue to specfically to discuss YogaSMC usage and config on this machine.
+- Looking forward, Big Sur is almost here so I want to get this project back onto the latest stable build before it comes out.
+
+#### Changed
+
+- Support for Hibernation Mode 25. As with normal macOS machines, mode 3 is default, but if you want, mode 25 is now also an option.
+- There seems to be a bug with the GitHub release version of `ThunderboltReset.kext` so I replaced it one built by @benbender. You can monitor the issue here [osy86/ThunderboltReset/issues/7](https://github.com/osy86/ThunderboltReset/issues/7). Thank you @benbender for noticing this.
+- OC to 0.6.2
+- Upgraded various Acidanthera kexts as well as `VoodooRMI`
+
+#### Added
+
+- Added `RTCMemoryFixUp` for support of Hibernation Mode 25.
+- OpenCore config patch for FHD Touchscreen.
+- OpenCore config patch for Intel wireless.
+
+#### Removed
+
+- ALCPlugFix is now deprecated and is replaced by new AppleALC (per issue #75). Please run `uninstall.sh` from the previous commit to remove ALCPlugFix. 
+- Delete legacy DiskImage voice from OC `Resources`
+- `GPRW` ACPI patch to fix Bluetooth wake. Make sure that your Wake-on-LAN is disabled in BIOS to prevent sleep problems.
+- Removed advice to disable DPTF in modded BIOS as it can break methods in ACPI. Thanks @benbender
+- `SMCSuperIO` as it was unnecessary.
+
 > ### 2020-8-3
 
 #### Added
