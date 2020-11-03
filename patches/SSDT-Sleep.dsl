@@ -262,30 +262,6 @@ DefinitionBlock ("", "SSDT", 1, "tyler", "_Sleep", 0x00002000)
                 WK00 = One
             }
         }
-
-        Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake
-        {
-            // Lid-wake control power
-            Debug = "AC:_PRW() - LWCP = "
-            Debug = LWCP
-
-            If (OSDW () || \LWCP)
-            {
-                Return (Package (0x02)
-                {
-                    0x17, 
-                    0x04
-                })
-            }
-            Else
-            {
-                Return (Package (0x02)
-                {
-                    0x17, 
-                    0x03
-                })
-            }
-        }
     }
 }
 //EOF

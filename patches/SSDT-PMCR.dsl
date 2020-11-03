@@ -3,6 +3,7 @@
 DefinitionBlock ("", "SSDT", 2, "tyler", "_PMCR", 0)
 {
     External (OSDW, MethodObj)
+    External (_SB.PCI0.LPCB, DeviceObj)
     
     Scope (_SB.PCI0.LPCB)
     {

@@ -105,8 +105,8 @@
 > ### Input/ Output
 | Feature                              | Status | Dependency          | Remarks                      |
 | :----------------------------------- | ------ | ------------------- | ---------------------------- |
-| WiFi                                       | ✅ | Native with BCM94360CS2. See `/patches/ Network Patches/` otherwise. | See `/patches/OpenCore Patches/` for specific network card.        |
-| Bluetooth                                  | ✅ | Native with BCM94360CS2. See `/patches/ Network Patches/` otherwise. | See `/patches/Network Patches/` for specific network card.         |
+| WiFi                                       | ✅ | Native with BCM94360CS2.  | See `/patches/ Network Patches/` otherwise.        |
+| Bluetooth                                  | ✅ | Native with BCM94360CS2.  | See `/patches/ Network Patches/` otherwise.        |
 | Ethernet                                   | ✅ | `IntelMausi.kext` | Needs Lenovo Ethernet adapter: [Item page](https://www.lenovo.com/us/en/accessories-and-monitors/cables-and-adapters/adapters/CABLE-BO-Ethernet-Extension-Adapter-2/p/4X90Q84427) |
 | HDMI hotplug                               | ✅ | Custom EDID Override `/patches/Internal Displays/`                                                                  | Refer to [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60) if one does not exist already for your display. |
 | 4K UHD output via HDMI/ DisplayPort **(Modded BIOS)**  | ✅ | See `DMVT Pre-Allocated` to `64M`  | See [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) for information about modding the BIOS.           |

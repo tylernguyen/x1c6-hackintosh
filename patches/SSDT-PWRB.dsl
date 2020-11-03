@@ -1,5 +1,6 @@
 //Add PWRB
-DefinitionBlock("", "SSDT", 2, "tyler", "PNP0C0C", 0)
+
+DefinitionBlock("", "SSDT", 2, "tyler", "_PWRB", 0)
 {
     External (OSDW, MethodObj)
 
