@@ -18,9 +18,10 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_USBX", 0x00001000)
             {
                 Local0 = Package ()
                     {
-                        "kUSBSleepPortCurrentLimit", 1500,
+                        // Values from genuine macbook14,1 with same USB-controller
+                        "kUSBSleepPortCurrentLimit", 2100,
+                        "kUSBWakePortCurrentLimit", 2100,
                         "kUSBSleepPowerSupply", 9600,
-                        "kUSBWakePortCurrentLimit", 1500,
                         "kUSBWakePowerSupply", 9600,
                     }
                 DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))

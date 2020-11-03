@@ -53,8 +53,7 @@ DefinitionBlock ("", "SSDT", 1, "tyler", "_Sleep", 0x00002000)
     // Sleep-config from BIOS
     External (S0ID, FieldUnitObj) // S0 enabled
     External (STY0, FieldUnitObj) // S3 Enabled?
-    External (LWCP, FieldUnitObj) // LID control power
-
+    
     // Package to signal to OS S3-capability. We'll add it if missing.
     External (SS3, FieldUnitObj) // S3 Enabled?    
 
@@ -69,9 +68,6 @@ DefinitionBlock ("", "SSDT", 1, "tyler", "_Sleep", 0x00002000)
 
         // Disable S0 for now
         S0ID = Zero
-
-        // Enable LID control power
-        LWCP = One
 
         // This adds S3 for OSX, even when sleep=windows in bios.
         If (STY0 == Zero && !CondRefOf (\_S3))
@@ -213,8 +209,10 @@ DefinitionBlock ("", "SSDT", 1, "tyler", "_Sleep", 0x00002000)
         // Sync S0-state between BIOS and OS
         Method (LPS0, 0, NotSerialized)
         {
-            Debug = "LPS0 - S0ID: "
-            Debug = S0ID
+            If (S0ID == One)
+            {
+                Debug = "SLEEP: Enable S0-Sleep / DeepSleep"
+            }
 
             // If S0ID is enabled, enable deep-sleep in OSX. Can be set above.
             Return (S0ID)
@@ -242,105 +240,6 @@ DefinitionBlock ("", "SSDT", 1, "tyler", "_Sleep", 0x00002000)
             }
         }
     }
-
-
-    External (_SB.PCI0.LPCB, DeviceObj)
-    External (_SB.PCI0.LPCB.EC.LID, DeviceObj)
-    External (_SB.PCI0.LPCB.EC.LED, MethodObj) // 2 Arguments
-    External (_SB.PCI0.LPCB.EC._Q2A, MethodObj) // 0 Arguments
-    External (_SB.PCI0.LPCB.EC._Q2B, MethodObj) // 0 Arguments
-    
-
-    // Scope (_SB.PCI0.LPCB.EC.LID)
-    // {
-    //     Name (AOAC, Zero)
-    // }
-    
-    Scope (_SB.PCI0.LPCB)
-    {
-        Method (_PS0, 0, Serialized)
-        {
-            If (OSDW () && S0ID == One)
-            {
-                Debug = "LPCB:_PS0"
-                Debug = "LPCB:_PS0 - old lid state LIDS: "
-                Debug = \LIDS
-
-                Debug = "LPCB:_PS0 - hw lid state LIDS: "
-                Debug = \_SB.PCI0.LPCB.EC.HPLD
-
-                Local1 = \LIDS
-
-                \_SB.PCI0.LPCB.EC.LED (0x00, 0x80)
-                \_SB.PCI0.LPCB.EC.LED (0x0A, 0x80)
-                \_SB.PCI0.LPCB.EC.LED (0x07, 0x80)
-
-                // Update lid-state
-                \LIDS = \_SB.PCI0.LPCB.EC.HPLD
-                \_SB.PCI0.GFX0.CLID = LIDS
-
-                Debug = "LPCB:_PS0 - new lid state LIDS: "
-                Debug = \LIDS
-
-                // Fire missing lid-open event if lid was closed before. 
-                // Also notifies LID-device and sets LEDs to the right state on wake.
-                If (Local1 == Zero)
-                {
-                    Debug = "LPCB:_PS0 - fire lid open-event "
-
-                    // Lid-open Event
-                    \_SB.PCI0.LPCB.EC._Q2A ()
-                }
-
-                Sleep (200) /* Delay 200 */ 
-
-                // Update ac-state
-                \PWRS = \_SB.PCI0.LPCB.EC.AC._PSR ()
-
-                // Notify (\_SB.PWRB, 0x80)
-            }
-
-        }
-
-        Method (_PS3, 0, Serialized)
-        {
-            If (OSDW () && S0ID == One)
-            {
-                Debug = "LPCB:_PS3"
-
-                \_SB.PCI0.LPCB.EC.LED (0x07, 0xA0)
-                \_SB.PCI0.LPCB.EC.LED (0x00, 0xA0)
-                \_SB.PCI0.LPCB.EC.LED (0x0A, 0xA0)
-
-                // Update lid-state
-                \LIDS = \_SB.PCI0.LPCB.EC.HPLD
-                \_SB.PCI0.GFX0.CLID = LIDS
-
-                Debug = "LPCB:_PS3 - lid state LIDS: "
-                Debug = \LIDS
-
-                If (\LIDS == Zero)
-                {
-                    Debug = "LPCB:_PS3 - fire lid close-event "
-
-                    // Lid-open Event
-                    \_SB.PCI0.LPCB.EC._Q2B ()
-
-                    // \_SB.PCI0.LPCB.EC.LED (0x00, 0xA0)
-                }
-            }
-        }
-    }
-
-
-    External (_SB.PCI0.LPCB.EC, DeviceObj)
-
-    Scope (\_SB.PCI0.LPCB.EC)
-    {
-        Name (EWAI, Zero)
-        Name (EWAR, Zero)
-    }
-
 
     External (_SB.PCI0.LPCB.EC.AC, DeviceObj)
 

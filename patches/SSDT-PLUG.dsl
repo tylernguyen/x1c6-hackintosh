@@ -5,6 +5,8 @@
 DefinitionBlock ("", "SSDT", 2, "tyler", "_PLUG", 0x00001000)
 {
     External(_PR.PR00, ProcessorObj)
+    /* Support methods */
+    External (DTGP, MethodObj)    // 5 Arguments
 
     If (CondRefOf (\PR.PR00))
     {
@@ -12,20 +14,14 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_PLUG", 0x00001000)
         {
             Method (_DSM, 4, NotSerialized)
             {
-                If (LEqual (Arg2, Zero))
+                Local0 = Package ()
                     {
-                        Return (Buffer (One)
-                    {
-                        0x03                                           
-                    })
-                }
-
-                Return (Package (0x02)
-                {
-                    // Inject plugin-type = 0x01
-                    "plugin-type", 
-                    One
-                })
+                        // Inject plugin-type = 0x01
+                        "plugin-type", 
+                        One
+                    }
+                DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
+                Return (Local0)
             }
         }
     }
