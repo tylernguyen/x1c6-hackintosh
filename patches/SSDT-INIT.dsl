@@ -52,16 +52,10 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_INIT", 0x00001000)
     External (HPTE, FieldUnitObj) // HPET enabled?
     External (WNTF, FieldUnitObj) // DYTC enabled?
     External (DPTF, FieldUnitObj) // DPTF enabled?
-    External (GPEN, FieldUnitObj) // GPIO enabled?
-    External (SADE, FieldUnitObj) // B0D4 enabled?
-    External (ACC0, FieldUnitObj) // TPM enabled?
-
-    External (SDS8, FieldUnitObj)
-    External (SMD8, FieldUnitObj)
 
     If (OSDW ())
     {
-        Debug = "Set Variables..."
+        Debug = "INIT: Set Variables..."
 
         // Disable HPET. It shouldn't be needed on modern systems anyway and is also disabled in genuine OSX
         HPTE = Zero
@@ -71,15 +65,5 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_INIT", 0x00001000)
 
         // Disable DPTF, we use DYTC!
         DPTF = Zero
-
-        // Enable broadcom BLTH-uart
-        SDS8 = 0x02
-        SMD8 = 0x02
-
-        // Disable GPIO 
-        // GPEN = Zero
-
-        // Disable B0D4
-        // SADE = Zero
     }
 }

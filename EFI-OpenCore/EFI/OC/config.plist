@@ -1285,7 +1285,7 @@
 				Rg==
 				</data>
 				<key>boot-args</key>
-				<string>keepsyms=1 -hbfx-dump-nvram rtcfx_exclude=80-AB</string>
+				<string>rtcfx_exclude=80-AB</string>
 				<key>csr-active-config</key>
 				<data>
 				AAAAAA==
