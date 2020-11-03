@@ -4,7 +4,7 @@
 [![version](https://img.shields.io/badge/10.15.7-yellow)](https://support.apple.com/en-us/HT210642)
 [![BIOS](https://img.shields.io/badge/BIOS-1.45-blue)](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-6th-gen-type-20kh-20kg/downloads/driver-list/component?name=BIOS%2FUEFI)
 [![MODEL](https://img.shields.io/badge/Model-20KH*-blue)](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf)
-[![OpenCore](https://img.shields.io/badge/OpenCore-0.6.2-green)](https://github.com/acidanthera/OpenCorePkg)
+[![OpenCore](https://img.shields.io/badge/OpenCore-0.6.3-green)](https://github.com/acidanthera/OpenCorePkg)
 [![LICENSE](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
 <img align="right" src="https://i.imgur.com/I3yUS4Q.png" alt="Critter" width="300">
@@ -12,7 +12,7 @@
 ### Check out my blog [tylerspaper.com](https://tylerspaper.com/)
 
 #### READ THE ENTIRE README.MD BEFORE YOU START.
-()
+
 #### I am not responsible for any damages you may cause.
 
 ### Should you find an error, or improve anything, be it in the config itself or in the my documentation, please consider opening an issue or a pull request to contribute.
@@ -25,66 +25,127 @@
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-> ### 2020-10-6
-
-#### Notice
-
-- Just getting back to my rountine and maintaining this project. There has been many developments lately, especially with Thunderbolt 3 ACPI patches and [YogaSMC](https://github.com/zhen-zen/YogaSMC). It will take some time for me to review all these developments and understand them. Meanwhile, it seems @benbender has taken matters to his own hand while I was away :)
-- His experimental fork: https://github.com/benbender/x1c6-hackintosh
-- I will create an issue to specfically to discuss YogaSMC usage and config on this machine.
-- Looking forward, Big Sur is almost here so I want to get this project back onto the latest stable build before it comes out.
+> ### 2020-11-3
 
 #### Changed
 
-- Support for Hibernation Mode 25. As with normal macOS machines, mode 3 is default, but if you want, mode 25 is now also an option.
-- There seems to be a bug with the GitHub release version of `ThunderboltReset.kext` so I replaced it one built by @benbender. You can monitor the issue here [osy86/ThunderboltReset/issues/7](https://github.com/osy86/ThunderboltReset/issues/7). Thank you @benbender for noticing this.
-- OC to 0.6.2
-- Upgraded various Acidanthera kexts as well as `VoodooRMI`
+- OC to 0.6.3 and upgrade various Acidanthera kexts
+- Restructured docs: depricated legacy things and combined duplicates.
+- `YogaSMC` is now the preferred method to handle Fn keys instead of ThinkpadAssisstant.
+  - Note that `YogaSMC` is still in its infancy, so you still prefer ThinkpadAssistant, use `SSDT-Keyboard-Legacy.dsl` and `/patches/OpenCore Patches/ Keyboard-Legacy.plist`
+  - Thank you @zhen-zen for the great kext and app.
+- Updated `config.plsit`:
+  - Removed depricated ACPI renames in accordance with new ACPI patches.
+  - Added `Arch` value to each kext entry in accordance with new OpenCore doc.
+  - Added Thunderbolt 3 Device Properties.
+  - Added `ExtendBTFeatureFlags` value to replace `BT4LEContinuityFixup`
+- Reorganized subdirectories within `/patches/` to make things easier to find and understand.
+- Renamed `3_README-POSTinstallation.md` to `SUMMARY.md` since it's not really a step but more of an overview of what patches what.
+- More readble and better writing of `SSDT-Keyboard`
+- New `SSDT-PNLF` to accomodate `AppleBacklightSmoother.kext`
+- New battery patch `SSDT-Battery` that fixes accesses to 16byte-EC-field HWAC (Issue #82).
+- `SSDT-Sleep` is an all-in-one sleep patch over `SSDT-PTSWAK`, `SSDT-GPRW`, `SSDT-EXT*`
+  - It is no longer necessary to set sleep mode to `Linux` in BIOS as it is now indepently set by `SSDT-Sleep`
+- `If (_OSI ("Darwin"))` and `SSDT-DTPG` are now replaced in favor of `SSDT-Darwin` and `OSDW`, just like in genuine Macs.
+- Removed `USBPorts.kext` in favor of patching/mapping via ACPI with `SSDT-XHC1`, `SSDT-XHC2`, and `SSDT-USBX`
+- `README.md`:
+  - Turned different sections into menus for better readability.
+  - Merged `3_README-POSTinstallation.md` into the `SUMMARY` section.
+- Set `HibernateMode` to `NVRAM` instead of `Auto`
 
 #### Added
 
-- Added `RTCMemoryFixUp` for support of Hibernation Mode 25.
-- OpenCore config patch for FHD Touchscreen.
-- OpenCore config patch for Intel wireless.
+- `update.sh` script to automatically build and replace all ACPI patches
+- `SSDT-HWAC` to patch access to 16byte-EC-field HWAC
+- `SSDT-EC` to patch embedded controller for use with `YogaSMC`
+- `SSDT-Debug`, `SSDT-HOOKS`, and `Debug.plist` for debugging if needed
+- `SSDT-INIT` to configure system values: `HPET`, `DYTC`, and `DPTF`
+- `YogaSMC.kext` to interface with the device's EC. Make sure to also install the [app and pref pane](https://github.com/zhen-zen/YogaSMC/releases).
+- `AppleBacklightSmoother.kext` is just as its name implies.
+- `BrightnessKeys.kext` to handle Fn keys with ACPI renames.
+- Documentation of modding the Thunderbolt 3 controller.
 
 #### Removed
 
-- ALCPlugFix is now deprecated and is replaced by new AppleALC (per issue #75). Please run `uninstall.sh` from the previous commit to remove ALCPlugFix. 
-- Delete legacy DiskImage voice from OC `Resources`
-- `GPRW` ACPI patch to fix Bluetooth wake. Make sure that your Wake-on-LAN is disabled in BIOS to prevent sleep problems.
-- Removed advice to disable DPTF in modded BIOS as it can break methods in ACPI. Thanks @benbender
-- `SMCSuperIO` as it was unnecessary.
+- `SSDT-HPET`, similar to genuine Macs, HPET is now disabled within `SSDT-INIT`
 
-> # table of contents
- - [summary](#summary)
- - [before you start](#references)
- - [needed](#needed)
- - [my specs for comparison and ref](#specifications)
- - [getting started ](#start)
- - [other x1c6 repos](#other)
- - [contact](#contact)
- - [donate and support](#support)
- - [credits and thank you](#credits)
+#### Remark
+- A large of these changes are due to the hardwork of [@benbender](https://github.com/benbender), who debugged and authored many of the new ACPI patches. Thank you for your hard work!
 
-> ## SUMMARY
+<details>
+<summary><strong> SUMMARY </strong></summary>
+<br>
 
-**`In short, x1c6-hackintosh is very stable and is currently my daily driver. I fully recommend this project to anyone looking for a MacBook alternative.`**
+> ### Non-Fuctional:
+| Feature                              | Status | Dependency          | Remarks                      |
+| :----------------------------------- | ------ | ------------------- | ---------------------------- |
+| Fingerprint Reader   | ❌ | `DISABLED` in BIOS to save power if not used in other OSes.   | Linux support was only recently added    |
+| Wireless WAN   | ❌ | `DISABLED` in BIOS to save power if not used in other OSes.   | Unable to investigate as I have no need and my model did not come with WWAN. |
 
-| Fully functional                                                                                                                                                                                                               | Non-functional                                                                                               | Semi-functional. Additional pulls needed and welcomed.                                                                                       |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| Native Power Mangemenet ✅ \*need BIOS mod, see [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) | Wireless WAN ❌ (DISABLED at BIOS)     | Thunderbolt 3 hotplug *with some caveats. See [docs/5_README-other.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/5_README-other.md) and [Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) ⚠️ |
-| WiFi, Bluetooth, Apple Continuity, iCloud suite: App Store, iMessage, FaceTime, iCloud Drive, etc...  ✅ \*need [network card replacement](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md)                                                            | Fingerprint Reader ❌ (not needed, DISABLED at BIOS)                                                          |                              |
-| USB A, USB C, Webcam, Audio Playback/Recording Sleep, Ethernet, Intel Graphics, TrackPoint and Trackpad, MicroSD card reader ✅                                                                                                |                             |  |
-| BIOS Mod, giving access to `Advance` menu.✅ See [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) and [Issue #68](https://github.com/tylernguyen/x1c6-hackintosh/issues/68)                                                                                                                                                            |  |                                                                                                                                              |
-| Multimedia Fn keys ✅ \*need [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant)                                                                                                                                 |                                                                                                              |                                                                                                                                              |
-| PM981 installation. ✅ See [Issue #43](https://github.com/tylernguyen/x1c6-hackintosh/issues/43)                                                                                                                               |                                                                                                              |                                                                                                                                              |
-| 4K UHD via HDMI/DisplayPort. ✅ Install `patches/OpenCore patches/4K-Output.plist` if your BIOS is unmodded (follow [Issue #40](https://github.com/tylernguyen/x1c6-hackintosh/issues/40#issuecomment-659370165) when upgrading macOS with this patch enabled). If you have a modded BIOS, simply set `DMVT Pre-Allocated` to `64M` (Refer to [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md))|                                                                                                              |                                                                                                                                              |
-| HDMI hotplug(requires a custom EDID override). ✅ See `patches/Internal Displays/` for pre-made ones and [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60) if one does not exist already for your display.|                                                                                                              |
-| Hibernation Mode 25 ✅||
+> ### Video and Audio
+| Feature                              | Status | Dependency          | Remarks                      |
+| :----------------------------------- | ------ | ------------------- | ---------------------------- |
+| Full Graphics Accleration (QE/CI)    | ✅   | `WhateverGreen.kext`                   | -   |
+| Audio Recording                      | ✅   | `AppleALC.kext` with Layout ID = 21    | -   |
+| Audio Playback                       | ✅   | `AppleALC.kext` with Layout ID = 21    | -   |
+| Automatic Headphone Output Switching | ✅   | `AppleALC.kext` with Layout ID = 21    | -   |
 
-**For more information regarding certain features, please refer to [`docs/3_README-POSTinstallation.md`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-POSTinstallation.md)**
+> ### Power, Charge, Sleep and Hibernation
+| Feature                              | Status | Dependency          | Remarks                      |
+| :----------------------------------- | ------ | ------------------- | ---------------------------- |
+| Battery Percentage Indication | ✅    | `SSDT-Battery.aml` and `/patches/OpenCore Patches/Battery.plist`             | 
+| CPU Power Management (SpeedShift)    | ✅      | `XCPM` and `CPUFriend.kext`, generate your own `CPUFriendDataProvider` with [CPUFriendFriend](https://github.com/corpnewt/CPUFriendFriend_) or [one-key-cpufriend](https://github.com/stevezhengshiqi/one-key-cpufriend). |
+| iGPU Power Management        | ✅ | `XCPM`, enabled by `SSDT-PLUG.aml`                   | 
+| NVMe Drive Battery Management | ✅     | `NVMeFix.kext`  | In my experience, NVMe drives will drain more power than SATA drives.           |
+| S3 Sleep/ Hibernation Mode 3 | ✅ | `SSDT-Sleep.aml` | |
+| Hibernation Mode 25          | ✅ | `RTCMemoryFixup.kext` and `HibernationFixup.kext`      | Supported, macOS uses mode 3 by default. Change to mode 25 via `pmset`.     |   
+| Custom Charge Threshold      | ✅ | `SSDT-EC.aml`, [YogaSMC.kext](https://github.com/zhen-zen/YogaSMC), and [YogaSMCPane](https://github.com/zhen-zen/YogaSMC)| Adjust with YogaSMCPane in System Preferences
+| Battery Life                 | ✅ | Native, comparable to Windows/Linux. Biggest impact is TB3, see [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md)   | Will need a modded BIOS to disable `CFG Lock`
 
-> ## REFERENCES
+> ### Input/ Output
+| Feature                              | Status | Dependency          | Remarks                      |
+| :----------------------------------- | ------ | ------------------- | ---------------------------- |
+| WiFi                                       | ✅ | Native with BCM94360CS2. See `/patches/ Network Patches/` otherwise. | See `/patches/OpenCore Patches/` for specific network card.        |
+| Bluetooth                                  | ✅ | Native with BCM94360CS2. See `/patches/ Network Patches/` otherwise. | See `/patches/Network Patches/` for specific network card.         |
+| Ethernet                                   | ✅ | `IntelMausi.kext` | Needs Lenovo Ethernet adapter: [Item page](https://www.lenovo.com/us/en/accessories-and-monitors/cables-and-adapters/adapters/CABLE-BO-Ethernet-Extension-Adapter-2/p/4X90Q84427) |
+| HDMI hotplug                               | ✅ | Custom EDID Override `/patches/Internal Displays/`                                                                  | Refer to [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60) if one does not exist already for your display. |
+| 4K UHD output via HDMI/ DisplayPort **(Modded BIOS)**  | ✅ | See `DMVT Pre-Allocated` to `64M`  | See [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) for information about modding the BIOS.           |
+| 4K UHD output via HDMI/ DisplayPort **(Vanilla BIOS)** | ✅ | See `/patches/OpenCore Patches/4K-Output-wo-BIOSmod.plist`     | -           |
+| USB 2.0, USB 3.0, and Micro SD Card Reader | ✅ | `SSDT-XHC1.aml`    | -     |
+| USB 3.1                                    | ⚠️ | `SSDT-XHC2.aml`    | -     |
+| USB Power Properties in macOS              | ✅ | `SSDT-USBX.aml`    | -     |
+| Thunderbolt 3 **(Cold Boot)**                  | ✅ | `SSDT-TB3.aml`,    | TB3 device must be plugged in before boot.   |
+| Thunderbolt 3 Hotplug **(Modded Controller and BIOS)**  | ⚠️ | `SSDT-TB3.aml`    | [3_README-other.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-other.md), [Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) |
+| Thunderbolt 3 Hotplug **(Modded Controller and Vanilla BIOS)**  | ⚠️ | `SSDT-TB3.aml` | [3_README-other.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-other.md),[Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24) |
+| Thunderbolt 3 Hotplug **(Vanilla Controller and Modded BIOS)**  | ⚠️ | `SSDT-TB3.aml`, `ThunderboltReset.kext`, `GPIO3 Force Pwr` and `GPIO3 Force Pwr for PR05` checked in BIOS | [3_README-other.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-other.md),[Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24)   |
+| Thunderbolt 3 Hotplug **(Vanilla Controller and BIOS)** | ⚠️ | `SSDT-TB3.aml`, `ThunderboltReset.kext`, and `TbtForcePower.efi`    | [3_README-other.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-other.md),[Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24)   |
+
+> ### Display, TrackPad, TrackPoint, and Keyboard
+| Feature                              | Status | Dependency          | Remarks                      |
+| :----------------------------------- | ------ | ------------------- | ---------------------------- |
+| Brightness Adjustments | ✅  | `WhateverGreen.kext`, `SSDT-PNLF.aml`, `AppleBacklightSmoother.kext`, and `BrightnessKeys.kext`| `AppleBacklightSmoother.kext` is optional for smoother birghtness adjustments |
+| HiDPI _(Optional)_     | ✅  | [xzhih/one-key-hidpi](https://github.com/xzhih/one-key-hidpi)   | Scaling issues post-sleep fixed with AAPL, ig-platform `BAAnWQ==`     |
+| TrackPoint             | ✅  | `VoodooPS2Controller.kext`                                      | -       |
+| TrackPad               | ✅  | `VoodooPS2Controller.kext` or `VoodooSMBus.kext` and `VoodooRMI.kext`     | I prefer `VoodooRMI.kext` so that is the repository default. |
+| Built-in Keyboard      | ✅  | `VoodooPS2Controller.kext` | Optimizations recommended, see [`docs/3_README-other.md`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-other.md) |
+| Multimedia Keys        | ✅  | `BrightnessKeys.kext` and [YogaSMC](https://github.com/zhen-zen/YogaSMC) or [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant) with legacy patches | YogaSMC is the repo default, `SSDT-Keyboard-Legacy.aml`, `patches/OpenCore Patches/ Keyboard-Legacy.plist` if you want to use [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant) instead  | 
+
+> ### macOS Continuity
+| Feature                              | Status | Dependency          | Remarks                      |
+| :----------------------------------- | ------ | ------------------- | ---------------------------- |
+| iCloud, iMessage, FaceTime | ✅ | Whitelisted Apple ID, Valid SMBIOS   | See [dortania /OpenCore-Install-Guide](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html)  |
+| Continuty              | ✅     | Native with `BCM94360CS2`. `ExtendBTFeatureFlags` to `True` otherwise.       | See `/patches/Network Patches/` for specific network card.     |
+| AirDrop                | ✅     | Native with `BCM94360CS2`. `ExtendBTFeatureFlags` to `True` otherwise.       | See `/patches/Network Patches/` for specific network card.     |
+| Sidecar                | ✅     | Native with `BCM94360CS2`. `ExtendBTFeatureFlags` to `True` otherwise. iPad with >= `iPadOS 13`  | Tested with iPad Mini with iPadOS 13.1.2   |
+| FileVault | ✅ | as configured in `config.plsit` per [Dortania's Post-Install](https://dortania.github.io/OpenCore-Post-Install/universal/security/filevault.html)|  |
+| Time Machine           | ✅     | Native | TimeMachine only backups your Macintosh partition. Manually backup your EFI partition using another method.  |
+
+</details>
+
+<details>
+<summary><strong> REFERENCES </strong></summary>
+<br>
+
 * Read these before you start:
 - [dortania's Hackintosh guides](https://github.com/dortania)
 - [dortania's OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/)
@@ -96,64 +157,67 @@
 - `Configuration.pdf` and `Differences.pdf` in each `OpenCore` releases.
 - Additionally, references specific to the x1c6 are located in `docs/references/`
 
-* ### No seriously, please read those.  
+* ### No seriously, please read those.
+</details>  
 
-> ## NEEDED
+<details>
+<summary><strong> REQUIREMENTS </strong></summary>
+<br>
 
-A macOS machine would be VERY useful: to create install drives, and for when your ThinkPad cannot boot. Though it is not completely necessary.  
-Flash drive, 12GB or more.  
-Xcode works fine for editing plist files on macOS, but I prefer [PlistEdit Pro](https://www.fatcatsoftware.com/plisteditpro/).  
-[ProperTree](https://github.com/corpnewt/ProperTree) if you need to edit plist files on Windows.  
-[MaciASL](https://github.com/acidanthera/MaciASL), for patching ACPI tables.  
-[MountEFI](https://github.com/corpnewt/MountEFI) to quickly mount EFI partitions.  
-[IOJones](https://github.com/acidanthera/IOJones), for diagnosis.  
-[Hackintool](https://www.insanelymac.com/forum/topic/335018-hackintool-v286/), for diagnostic ONLY, Hackintool should not be used for patching, it is outdated.
+- A macOS machine(optional): to create the macOS installer.
+- Flash drive, 12GB or more, for the above purpose.  
+- Xcode works fine for editing plist files on macOS, but I prefer [PlistEdit Pro](https://www.fatcatsoftware.com/plisteditpro/).  
+- [ProperTree](https://github.com/corpnewt/ProperTree) if you need to edit plist files on Windows.  
+- [MaciASL](https://github.com/acidanthera/MaciASL), for patching ACPI tables and editing ACPI patches.
+- [MountEFI](https://github.com/corpnewt/MountEFI) to quickly mount EFI partitions.  
+- [IORegistryExplorer](https://developer.apple.com/downloads), for diagnosis.  
+- [Hackintool](https://www.insanelymac.com/forum/topic/335018-hackintool-v286/), for diagnostic ONLY, Hackintool should not be used for patching, it is outdated.
+- [SPI Programmer CH341a and SOIC8 connector](https://www.amazon.com/Organizer-Socket-Adpter-Programmer-CH341A/dp/B07R5LPTYM) are needed if you are going to mod your BIOS/TB3 controller for optimizations and a better and more native macOS experience.
+- Patience and time, especially if this is your first time Hackintosh-ing.
 
-> ## SPECIFICATIONS
+</details> 
 
-Refer to [x1c6-Platform_Specifications](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf) for possible stock ThinkPad X1 6th Gen configurations.
+<details>
+<summary><strong> HARDWARE </strong></summary>
+<br>
+- These are relevant components on my machine which may differ from yours, keep these in mind as you will need to adjust accordingly, depending on your machine's configuration.
 
-| Processor Number                                                                                                                   | # of Cores | # of Threads | Base Frequency | Max Turbo Frequency | Cache | Memory Types | Graphics      |
-| :--------------------------------------------------------------------------------------------------------------------------------- | :--------- | :----------- | :------------- | :------------------ | :---- | :----------- | :------------ |
-| [i7-8650U](https://ark.intel.com/content/www/us/en/ark/products/124968/intel-core-i7-8650u-processor-8m-cache-up-to-4-20-ghz.html) | 4          | 8            | 1.9 GHz        | 4.2 GHz             | 8 MB  | LPDDR3-2133  | Intel UHD 620 |
+| Category  | Component                            | Remarks |
+| --------- | ------------------------------------ | ------------ |
+| CPU       | [i7-8650U](https://ark.intel.com/content/www/us/en/ark/products/124968/intel-core-i7-8650u-processor-8m-cache-up-to-4-20-ghz.html) | Generate your own `CPUFriendDataProvider.kext`. See `SUMMARY`
+| SSD       | Seagate Firecuda 520 500GB           | [Dortania's Anti Hackintosh Buyers Guide](https://dortania.github.io/Anti-Hackintosh-Buyers-Guide/Storage.html) 
+| Display   | 14.0" (355mm) HDR WQHD (2560x1440)   | `/patches/ Internal Displays/` and [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60)
+| WiFi & BT | BCM94360CS2                          | `/patches/ Network Patches/` if non-native.
+| WWAN      | None | Unless needed in other OSes, disable at BIOS to save power
 
-**Peripherals:**
+- Refer to [/docs/references/x1c6-Platform_Specifications](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf) for possible stock ThinkPad X1 6th Gen configurations.
 
-```
-Two USB 3.1 Gen 1 (Right USB Always On)
-Two USB 3.1 Type-C Gen 2 / Thunderbolt 3 (Max 5120x2880 @60Hz)
-HDMI 1.4b (Max 4096x2160 @30Hz)
-Ethernet via ThinkPad Ethernet Extension Cable Gen 2: I219-LM Ethernet (vPro)
-No WWAN
-TrackPoint: PS/2
-TrackPad: PS/2
-```
+</details> 
 
-**Display:**  
-`14.0" (355mm) HDR WQHD (2560x1440)`  
-**Audio:**  
-`ALC285 Audio Codec`  
-**Thunderbolt:**  
-`Intel JHL6540 (Alpine Ridge 4C) Thunderbolt 3 Bridge`
+<details>
+<summary><strong> GETTING STARTED </strong></summary>
+<br>
 
-> ## START
+Before you do anything, please familiarize yourself with basic Hackintosh terminologies and the basic Hackintosh process by throughly reading Dortania guides as linked in `REFERENCES`
 
-Explore links included this README, especially those in references and other x1c6-hackintosh repos.
+- Creating a macOS installer: refer to [Dortania's OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/)
+- [**1_README-HARDWAREandBIOS**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md): Requirements before installing.  
+- [**2_README-ACPIpatching**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-ACPIpatching.md): Notes and explainations for ACPI hotpatches.
+- [**3_README-other.md**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/4_README-other.md): for post installation settings and other remarks.
 
-Once you are ready, follow the series of README files included `docs/`.  
-[**1_README-HARDWAREandBIOS**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md): Requirements before starting.  
-[**2_README-installMEDIA**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/2_README-installMEDIA.md): Creating the macOS install drive.  
-[**3_README-POSTinstallation**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-POSTinstallation.md): Settings and tweaks post installation.  
-[**4_README-ACPIpatching**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/4_README-ACPIpatching.md): The hardest and most time consuming part, patching the system ACPI table for battery status, brightness, sleep, thunderbolt, thunderbolt hotplugging, etc...  
-[**5_README-other.md**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/5_README-other.md): for other notices
+</details> 
 
-- While you can plug-and-play most of my hotpatches if you have an x1c6, I still suggest that you dump and disassemble your own DSDT. This is imprortant as your DSDT maybe different from mine. And furthermore, you get to learn more about what's actually going on.
+<details>
+<summary><strong> OTHER REPOSITORIES </strong></summary>
+<br>
 
-> ## OTHER
-
-[zhtengw/EFI-for-X1C6-hackintosh](https://github.com/zhtengw/EFI-for-X1C6-hackintosh)  
-[Colton-Ko/macOS-ThinkPad-X1C6](https://github.com/Colton-Ko/macOS-ThinkPad-X1C6)  
+- x1c6-hackintosh repositories:
+  - [benbender/x1c6-hackintosh](https://github.com/benbender/x1c6-hackintosh)
+  - [zhtengw/EFI-for-X1C6-hackintosh](https://github.com/zhtengw/EFI-for-X1C6-hackintosh)   
+- t480-hackintosh repositories:
+  - [EETagent/T480-OpenCore-Hackintosh](https://github.com/EETagent/T480-OpenCore-Hackintosh)
 Create a pull request if you like to be added, final decision at my discreation.
+</details> 
 
 > ## CONTACT
 
@@ -164,22 +228,28 @@ Signal: +1 (202)-644-9951 \*This is a Signal ONLY number. You will not get a rep
 
 https://tylerspaper.com/support/
 
-> ## CREDITS
+<details>
+<summary><strong> CREDITS </strong></summary>
+<br>
 
-[@Colton-Ko](https://github.com/Colton-Ko/macOS-ThinkPad-X1C6) for the great features template.  
-[@stevezhengshiqi](https://github.com/stevezhengshiqi) for the one-key-cpufriend script.  
-[@corpnewt](https://github.com/corpnewt) for GibMacOS, EFIMount, and USBMap.  
-[@xzhih](https://github.com/xzhih) for one-key-hidpi.  
-[@daliansky](https://github.com/daliansky) for various hotpatches.  
-[@velaar](https://github.com/velaar) for your continual support and contributions.  
-[@benbender](https://github.com/benbender) for your various issue contributions.   
-[@Porco-Rosso](https://github.com/Porco-Rosso) putting up with my requests to test repo changes.  
-[@MSzturc](https://github.com/MSzturc) for adding my requested features to ThinkpadAssistant.  
+- [@benbender](https://github.com/benbender) for your hardwork. Much of this repo comes from your research and code. Thank you!
+- [@Fewtarius](https://github.com/fewtarius) for your help with patching audio.
+- [@Colton-Ko](https://github.com/Colton-Ko/macOS-ThinkPad-X1C6) for the great features template.  
+- [@stevezhengshiqi](https://github.com/stevezhengshiqi) for the one-key-cpufriend script.  
+- [@corpnewt](https://github.com/corpnewt) for [GibMacOS](https://github.com/corpnewt/gibMacOS) and [EFIMount](https://github.com/corpnewt/MountEFI).
+- [@xzhih](https://github.com/xzhih) for one-key-hidpi.  
+- [daliansky/OC-little](https://github.com/daliansky/OC-little) for various ACPI hotpatch samples.  
+- [@velaar](https://github.com/velaar) for your continual support and contributions.     
+- [@Porco-Rosso](https://github.com/Porco-Rosso) putting up with my requests to test repo changes.  
+- [@MSzturc](https://github.com/MSzturc) for adding my requested features to ThinkpadAssistant.  
 paranoidbashthot and \x for the BIOS mod to unlocked Intel Advance Menu.
+- [@zhen-zen](https://github.com/zhen-zen) for YogaSMC
+- [CaseySJ](https://www.tonymacx86.com/members/caseysj.2134452/) for the custom modded Thunderbolt 3 firmware.
 
-
-The greatest thank you and appreciation to [@Acidanthera](https://github.com/acidanthera), without whom's work, none of this would be possible.
+The greatest thank you and appreciation to the [Acidanthera](https://github.com/acidanthera) team.
 
 And to everyone else who supports and uses my project.
 
 Please let me know if I missed you.
+
+</details> 

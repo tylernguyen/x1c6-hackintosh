@@ -28,6 +28,4 @@ Library/Extensions/SoftRAID.kext
 
 # Personal and Archive
 SMBIOS.plist
-unpatched-BIOS-v1.45.img
-v6patched-BIOS-v1.45.rom
-/patches/BIOS-mod/
+/patches/Mods/

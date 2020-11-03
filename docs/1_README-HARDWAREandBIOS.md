@@ -21,7 +21,6 @@ At the minimum, these BIOS settings must be made to install and run macOS withou
 
 | Main Menu | Sub 1       | Sub 2                                         | Sub 3                                                              |
 | --------- | ----------- | --------------------------------------------- | ------------------------------------------------------------------ |
-|           |             | >> Power                                      | Sleep State `Linux`                                                |
 |           | >> Security | >> Security Chip                              | Security Chip `DISABLED`                                           |
 |           |             | >> Fingerprint                                | Predesktop Authentication `DISABLED`                               |
 |           |             | >> Secure Boot Configuration                  | Secure Boot `DISABLED`                                             |
@@ -34,7 +33,7 @@ At the minimum, these BIOS settings must be made to install and run macOS withou
 |           | >> Startup  | UEFI/Legacy Boot `UEFI Only`                  |                                                                    |
 |           |             | CSM Support `No` (per OpenCore Documentation) |                                                                    |
 
-* You should also disable hardware devices you do not need to save power:
+* You should also disable hardware devices you do not need to save power, some examples are:
 
 | Main Menu | Sub 1       | Sub 2                                         | Sub 3                                                              |
 | --------- | ----------- | --------------------------------------------- | ------------------------------------------------------------------ |
@@ -58,20 +57,25 @@ At the minimum, these BIOS settings must be made to install and run macOS withou
 |           |             |                                               | Thunderbolt(TM) Device `Enabled`                                   |
 
 
-> ## Modding your BIOS:
+> ## Modding the BIOS:
 ### A modded BIOS will allow for more optimizations to be made for macOS and will overall make your hackintosh better. I am a BIOS modding novice myself, but with these instructions, I was able to mod my x1c6 BIOS in less than one hour. I fully recommend doing this for all who think themselves capable. Furthermore, the default `config.plist` for this repository is meant to accommodate a modded BIOS with appropriate settings. If you cannot mod your BIOS or is unwilling to do so, use `config_unmoddedBIOS.plist`.
+
+<img align="left" src="./Other/README_Resources/SPI_Programmer_CH341a.jpg" alt="SPI_Programmer_CH341a.jpg" width="220">
+[SPI Programmer CH341a and SOIC8 connector](https://www.amazon.com/Organizer-Socket-Adpter-Programmer-CH341A/dp/B07R5LPTYM) are needed.
 
 Here are the steps to mod your BIOS (credits to paranoidbashthot and \x):
 
-* Refer to http://paranoid.anal-slavery.com/biosmods/skylake.html
-* Use `xx_80_patches-v*.txt`, I commented out WWAN patches since I do not need it.
-* [@notthebee](https://github.com/notthebee) also has a useful video to follow: https://www.youtube.com/watch?v=ce7kqUEccUM
-* Confirmed working `BIOS-v1.45`, I cannot be sure about other BIOS versions. Though they will most likely work as well.
-* The modded BIOS does not need to be signed by `thinkpad-eufi-sign`. Just **remember to replace 4C 4E 56 42 42 53 45 43 FB with 4C 4E 56 42 42 53 45 43 FF on the patched BIOS.**
-* On the `x1c6`, the BIOS chip is located just on top of the CPU, under the sticker shield: ![IMG_0571-compressor](https://user-images.githubusercontent.com/3349081/87883762-38686380-c9cf-11ea-9e9d-c400f7b5407b.jpg)
-* Successfully modding your BIOS will reveal the `Advance Menu` tab: ![IMG_0572-compressor](https://user-images.githubusercontent.com/3349081/87883767-3d2d1780-c9cf-11ea-9fb0-f250590a3f28.jpg)   
-* It goes without saying, after doing this, do not update your BIOS unless you want to do this again.
-* **It is important that you backup your BIOS twice and `diff` the two dumps to make sure that it was done properly. Do not lose your backup! If anything ever goes wrong, you can flash this image and return to a vanilla state.**
+- Refer to http://paranoid.anal-slavery.com/biosmods/skylake.html
+- Use `xx_80_patches-v*.txt`, I commented out WWAN patches since I do not need it.
+- [@notthebee](https://github.com/notthebee) also has a useful video to follow: https://www.youtube.com/watch?v=ce7kqUEccUM
+- Remember to **dump the vanilla twice and use `diff` to make sure things were dumped properly**, store this backup somewhere safe.
+- Confirmed working `BIOS-v1.45`, I cannot be sure about other BIOS versions. Though they will most likely work as well.
+- The modded BIOS does not need to be signed by `thinkpad-eufi-sign`. Just **remember to replace 4C 4E 56 42 42 53 45 43 FB with 4C 4E 56 42 42 53 45 43 FF on the patched BIOS.**
+- The BIOS chip is located above the CPU, under the sticker shield:   
+<img align="center" src="https://user-images.githubusercontent.com/3349081/87883762-38686380-c9cf-11ea-9e9d-c400f7b5407b.jpg" alt="BIOS Chip" width="300">
+- Successfully modding your BIOS will reveal the `Advance Menu` tab:   
+<img align="center" src="https://user-images.githubusercontent.com/3349081/87883767-3d2d1780-c9cf-11ea-9fb0-f250590a3f28.jpg" alt="BIOS Advance Menu" width="300"> 
+- It goes without saying, after doing this, do not update your BIOS unless you want to do this again.
 
 
 ### Finally, make sure to backup your pre-modded BIOS twice and compare the two to make sure that it was dumped properly. Furthermore, attempt this at your own risk, I am not responsible for any damages you may cause.
@@ -128,8 +132,18 @@ The following are further optimization settings that can be figured once your BI
 * Native macOS Thunderbolt interfacing, at the expense of TB3 hotplugging on other OSes:
 If macOS is your only OS on the machine, or if you only need to use Thunderbolt 3 hotplug on macOS. There is a custom modded firmware that can be flashed onto the Thunderbolt 3 controller that allows for native Thunderbolt interfacing in macOS:  
 https://www.tonymacx86.com/threads/success-gigabyte-designare-z390-thunderbolt-3-i7-9700k-amd-rx-580.267551/page-2452#post-2160674
-![Native TB3 interface in macOS](https://user-images.githubusercontent.com/30384331/89741356-2a62ab80-da80-11ea-8c76-e1f3aaa1d41d.png)
+
     - Screenshot/testing courtesy of @nottthebee
 * The Thunderbolt chip is located on the top right of the motherboard.
 * A note before you do this, however, the modded thunderbolt firmware will still require that you disable Thunderbolt BIOS assist, so again, TB3 hotplug will come at the cost of power consumption.
 * Secondly, as far as I can tell, this mod is really to make things look cleaner and more native within macOS, and doesn't have any real improvements versus the TB3 method currently in this repo.
+
+> ## Modding the Thunderbolt 3 Controller:
+The `Intel JHL6540 (Alpine Ridge 4C)` TB3 chip is labeled as `Winbond` and `W25Q80DVS` is located on the top right of the motherboard.
+
+- Download [macOS compatible firmware](https://www.tonymacx86.com/attachments/lenovo-x1-carbon-nvm-43-mod-1-caseysj-bin-zip.483524/)
+- Again, [@notthebee](https://github.com/notthebee) also has a useful video to follow: https://www.youtube.com/watch?v=ce7kqUEccUM
+- Remember to dump the vanilla twice and use `diff` to make sure things were dumped properly, store this backup somewhere safe.
+- Once the vanilla firmware has been safely dumped and backed up, you can flash the custom firmware onto the controller.
+- Successfully modding your Thunderbolt 3 controller can be confirmed via macOS's System Report:
+<img align="center" src="https://user-images.githubusercontent.com/30384331/89741356-2a62ab80-da80-11ea-8c76-e1f3aaa1d41d.png" alt="macOS native TB3" width="300"> 

@@ -3,7 +3,8 @@
  * Here we create an Ambient Light Sensor ACPI Device, which can be used by SMCLightSensor kext
  * to report either dummy (when no device is present) or valid values through SMC interface.
  */
-DefinitionBlock ("", "SSDT", 2, "tyler", "ALS0", 0x00000000)
+
+DefinitionBlock ("", "SSDT", 2, "tyler", "_ALS0", 0x00000000)
 {
     Scope (_SB)
     {

@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-11-3
+
+#### Changed
+
+- OC to 0.6.3 and upgrade various Acidanthera kexts
+- Restructured docs: depricated legacy things and combined duplicates.
+- `YogaSMC` is now the preferred method to handle Fn keys instead of ThinkpadAssisstant.
+  - Note that `YogaSMC` is still in its infancy, so you still prefer ThinkpadAssistant, use `SSDT-Keyboard-Legacy.dsl` and `/patches/OpenCore Patches/ Keyboard-Legacy.plist`
+  - Thank you @zhen-zen for the great kext and app.
+- Updated `config.plsit`:
+  - Removed depricated ACPI renames in accordance with new ACPI patches.
+  - Added `Arch` value to each kext entry in accordance with new OpenCore doc.
+  - Added Thunderbolt 3 Device Properties.
+  - Added `ExtendBTFeatureFlags` value to replace `BT4LEContinuityFixup`
+- Reorganized subdirectories within `/patches/` to make things easier to find and understand.
+- Renamed `3_README-POSTinstallation.md` to `SUMMARY.md` since it's not really a step but more of an overview of what patches what.
+- More readble and better writing of `SSDT-Keyboard`
+- New `SSDT-PNLF` to accomodate `AppleBacklightSmoother.kext`
+- New battery patch `SSDT-Battery` that fixes accesses to 16byte-EC-field HWAC (Issue #82).
+- `SSDT-Sleep` is an all-in-one sleep patch over `SSDT-PTSWAK`, `SSDT-GPRW`, `SSDT-EXT*`
+  - It is no longer necessary to set sleep mode to `Linux` in BIOS as it is now indepently set by `SSDT-Sleep`
+- `If (_OSI ("Darwin"))` and `SSDT-DTPG` are now replaced in favor of `SSDT-Darwin` and `OSDW`, just like in genuine Macs.
+- Removed `USBPorts.kext` in favor of patching/mapping via ACPI with `SSDT-XHC1`, `SSDT-XHC2`, and `SSDT-USBX`
+- `README.md`:
+  - Turned different sections into menus for better readability.
+  - Merged `3_README-POSTinstallation.md` into the `SUMMARY` section.
+- Set `HibernateMode` to `NVRAM` instead of `Auto`
+
+#### Added
+
+- `update.sh` script to automatically build and replace all ACPI patches
+- `SSDT-HWAC` to patch access to 16byte-EC-field HWAC
+- `SSDT-EC` to patch embedded controller for use with `YogaSMC`
+- `SSDT-Debug`, `SSDT-HOOKS`, and `Debug.plist` for debugging if needed
+- `SSDT-INIT` to configure system values: `HPET`, `DYTC`, and `DPTF`
+- `YogaSMC.kext` to interface with the device's EC. Make sure to also install the [app and pref pane](https://github.com/zhen-zen/YogaSMC/releases).
+- `AppleBacklightSmoother.kext` is just as its name implies.
+- `BrightnessKeys.kext` to handle Fn keys with ACPI renames.
+- Documentation of modding the Thunderbolt 3 controller.
+
+#### Removed
+
+- `SSDT-HPET`, similar to genuine Macs, HPET is now disabled within `SSDT-INIT`
+
 > ### 2020-10-6
 
 #### Notice
