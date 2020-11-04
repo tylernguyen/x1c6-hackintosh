@@ -242,12 +242,14 @@ DefinitionBlock ("", "SSDT", 1, "tyler", "_Sleep", 0x00002000)
     }
 
     External (_SB.PCI0.LPCB.EC.AC, DeviceObj)
+    External (LWCP, FieldUnitObj)
 
     // Patching AC-Device so that AppleACPIACAdapter-driver loads.
     // Device named ADP1 on Mac
     // See https://github.com/khronokernel/DarwinDumped/blob/b6d91cf4a5bdf1d4860add87cf6464839b92d5bb/MacBookPro/MacBookPro14%2C1/ACPI%20Tables/DSL/DSDT.dsl#L7965
-    Scope (\_SB.PCI0.LPCB.EC.AC)
+    Scope (_SB.PCI0.LPCB.EC.AC)
     {
+        // Probably not needed, for completeness
         Name (WK00, One)
 
         Method (SWAK, 1, NotSerialized)
@@ -261,6 +263,28 @@ DefinitionBlock ("", "SSDT", 1, "tyler", "_Sleep", 0x00002000)
                 Debug = "AC:SWAK() - WK00 = One"
                 WK00 = One
             }
+        }
+
+        // Makes AppleACPIACAdapter load
+        Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake
+        {
+            // Lid-wake control power
+            Debug = Concatenate ("AC:_PRW() - LWCP: ", LWCP)
+
+            If (OSDW () || \LWCP)
+            {
+                Return (Package (0x02)
+                {
+                    0x17, 
+                    0x04
+                })
+            }
+
+            Return (Package (0x02)
+            {
+                0x17, 
+                0x03
+            })
         }
     }
 }
