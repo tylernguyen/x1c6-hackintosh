@@ -104,14 +104,6 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>PWRB</string>
-				<key>Enabled</key>
-				<true/>
-				<key>Path</key>
-				<string>SSDT-PWRB.aml</string>
-			</dict>
-			<dict>
-				<key>Comment</key>
 				<string>Thunderbolt 3: depends on / patches/ OpenCore Patches/ Thunderbolt3.plist</string>
 				<key>Enabled</key>
 				<true/>
