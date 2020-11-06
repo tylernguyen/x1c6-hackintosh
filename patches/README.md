@@ -2,7 +2,7 @@
 
 In the current directory are ACPI source files of patches in-use. 
 
-Please refer to [docs/3_README-ACPIpatching.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-ACPIpatching.md) for each of their specific usage and purposes. In addition, each patch have insightful comments in them, please read throughly read their source code.
+Please refer to [docs/2_README-ACPIpatching.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/2_README-ACPIpatching.md) for each of their specific usage and purposes. In addition, each patch have insightful comments in them, please read throughly read their source code.
 
 ## OpenCore Patches
 By default, the repo `config.plist` should have already have these patches included. These patches are mostly dependencies of various ACPI patches. They are here for reference patches.
