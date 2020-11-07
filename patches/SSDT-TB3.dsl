@@ -66,7 +66,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TB3", 0x00001000)
 
     External (TBSE, FieldUnitObj)   // TB root port number
     External (TBTS, FieldUnitObj)   // TB enabled?
-    External (SLTP, IntObj)
+    External (XLTP, IntObj)
 
     External (_GPE.XTFY, MethodObj)      // 1 Arguments
 
@@ -2721,7 +2721,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TB3", 0x00001000)
                         If (Arg0 == Zero)
                         {
                             XRTE = Zero
-                            If (SLTP == Zero)
+                            If (XLTP == Zero)
                             {
                                 // Debug = "TB:UPSB:NHI0:TRPE L23 Detect"
                                 \_SB.PCI0.RP09.L23R = One
@@ -2750,7 +2750,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TB3", 0x00001000)
                         ElseIf (Arg0 == One)
                         {
                             XRTE = One
-                            If (SLTP == Zero)
+                            If (XLTP == Zero)
                             {
                                 \_SB.PCI0.RP09.PSTX = 0x03
                                 If (\_SB.PCI0.RP09.LACR == One)
