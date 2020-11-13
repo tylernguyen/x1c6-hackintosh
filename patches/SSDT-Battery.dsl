@@ -1,50 +1,115 @@
+// Depends on /patches/OpenCore Patches/ Battery.plist
 //
 // SSDT-BATX
-// Revision 5
+// Revision 7
 //
 // Copyleft (c) 2020 by bb. No rights reserved.
 //
 //
 // Abstract:
+//
 // This SSDT is a complete, self-contained replacement for all battery-patches on Thinkpads which share
-// a common EC-layout for battery-handling. It should be compatible with all(?) T- and X-series Thinkpads and maybe even more.
+// a common EC-layout [1] for battery-handling. It should be compatible with all(?) T- and X-series Thinkpads which are using the basic H8-EC-Layout [2].
 //
-// It doesn't need any patches to the original DSDT, handles single- and dual-battery-systems gracefully and adds
-// support for `Battery Information Supplement` (see: https://github.com/acidanthera/VirtualSMC/blob/master/Docs/Battery%20Information%20Supplement.md).
+// Its designed for the requirements of VirtualSMC [3], leaves the original DSDT largely untouched, 
+// handles single- and dual-battery-systems gracefully and adds support for `Battery Information Supplement` [4].
 //
-// It is faster, more compatible and much more robust than existing patches as it doesn't relie on the original DSDT-implementation 
-// for battery-handling and EC-access. It eliminates the need to patch mutexes, notifies or EC-fields completely.
+// Sadly, it needs patching of battery-ACPI-notifies as the EC doesn't seem to be updated correctly by the firmware if they are missing.
+//
+// It is faster, more compatible and much more robust than existing patches as it doesn't rely on the original DSDT-implementation 
+// for battery-handling and EC-access. It eliminates the need to patch mutexes and EC-fields completely. Patching notify()'s is
+// not needed, but may be desireable for smoother operation - espacially on dual-battery-systems.
 //
 // It replaces any battery-related DSDT-patches and any SSDT like SSDT-BAT0, SSDT-BATT, SSDT-BATC, SSDT-BATN and similar.
 //
-// Its only dependency is the memory-layout of the Embedded Controller (EC), which is mostly the same for all decent modern thinkpads 
-// (at least T440/X440 upwards) and nothing else. Just drop the SSDT in and be done.
-// For most Thinkpads, this should be the only thing you need to handle your batteries. Nothing more, nothing less.
+// Because of its implementation, its only dependency is the memory-layout of the Embedded Controller (EC) [1],
+// which is mostly the same for all decent modern thinkpads (at least T440/X440 upwards) and nothing else.
+// Just drop the SSDT in and be done. For most Thinkpads, this should be the only thing you need to handle your batteries.
+// Nothing more, nothing less.
 //
 // But be aware: this is newly created stuff, not much tested or battle proven yet. May contain bugs and edgecases. 
-// If so, please open a bug @ https://github.com/benbender/x1c6-hackintosh/issues
+// If so, please open a bug @ https://github.com/benbender/x1c6-hackintosh/issues.
+// Additionally, as this implementation is more straight-forward and according to specs, it may reveal bugs and glitches
+// in other parts of the system.
+//
+// Compatibility:
+//
+// - Lenovo Thinkpad X1 Carbon generation 6 (X1C6)
+// - Lenovo Thinkpad T480 (T480)
+// - Lenovo Thinkpad T460 (T460)
+// - Lenovo Thinkpad T460 (T440)
+// - ... many more to be added as testing is done
+//
+//
+// Technical Background
+//
+// On genuine MacBooks batteries are connected via SBS (Smart Battery System [5]) to the 
+// SMC (System Management Controller) [6]. The SMC provides the battery-data via SMC-keys [7] to the OS.
+//
+// On Hackintoshes we "only" have an emulated SMC as substitute for the HW-SMC because of the missing hardware.
+// Our systems usually provide battery-data, read from an EC (Embedded Controller), via ACPI [8].
+//
+// In practice the OS reads SMC-keys provided by VirtualSMC which uses its SMCBatteryManager-plugin to poll those 
+// raw-data from ACPI which normally reads those data from the EC of the machine.
+//
+// Every part of the flow computes and interpretes the data. Therefor control in this SSDT is limited.
+//
+// As the ACPI-battery-interface is a proven standard and commonly implemented, this approach should, theoretically, 
+// work out of the box on most laptop-systems.
+//
+// In practice the AppleACPIPlatform.kext doesn't implement access to EC-fields larger than 8 bits and 
+// will crash on reading them. This limitation of the driver in OSX is the reason why all those battery-patching 
+// is neccessary in the first place. We need to ensure that every EC-field, accessed from OSX, is 8 bit at most.
+//
+// Additionally no such thing as dual-battery-systems exist in mac-world. OSX is able to recognize 
+// multiple batteries, but will only handle display of the data for the first battery. Therefor we need
+// to combine multiple batteries transperantly into one and hide additional batteries to the OS.
+//
+// Implementation-wise, the apple-approach is able to provide some more data to the OS in comparison to ACPI.
+// That might be the reason why apple opted for their implementation in the first place. To circumvent those 
+// limitations of the ACPI specification, VirtualSMC adds `Battery Information Supplement` (BIS).
+//
+// BIS tries to add the missing information normally provided on genuine MacBooks. Therefor it enables 
+// much more OSX-native handling of batteries but also may reveal glitches and bugs between implementations 
+// of OSX/ACPI/EC. Therefor its configureable in this SSDT.
 //
 // 
-// References:
-// https://github.com/coreboot/coreboot/blob/master/src/ec/quanta/it8518/acpi/ec.asl
-// https://uefi.org/sites/default/files/resources/ACPI_6_3_final_Jan30.pdf
-// https://github.com/acidanthera/VirtualSMC/blob/master/Docs/Battery%20Information%20Supplement.md
+// Known Issues:
+//
+// - no known issues atm
+//
+//
+// Links & References:
+//
+// [1] https://github.com/coreboot/coreboot/blob/master/src/ec/quanta/it8518/acpi/ec.asl
+// [2] https://en.wikipedia.org/wiki/H8_Family
+// [3] https://github.com/acidanthera/VirtualSMC
+// [4] https://github.com/acidanthera/VirtualSMC/blob/master/Docs/Battery%20Information%20Supplement.md
+// [5] https://en.wikipedia.org/wiki/Smart_Battery_System
+// [6] https://en.wikipedia.org/wiki/System_Management_Controller
+// [7] https://github.com/acidanthera/VirtualSMC/blob/master/Docs/SMCKeys.txt
+// [6] https://uefi.org/sites/default/files/resources/ACPI_6_3_final_Jan30.pdf
 //
 //
 // Changelog:
-// Revision 1 - Raised timeout for mutexes, factored bank-switching out, added sleep to bank-switching, moved HWAC to its own SSDT
-// Revision 2 - Prelimitary dual-battery-support, large refactoring
-// Revision 3 - Remove need of patched notifies, handle battery attach/detach inside, make the whole device self-contained (exept for the EC-helpers)
-// Revision 4 - Waits on initialization of the batts now. Besides that: Optimization, rework, cleanup, fixes. Truely self-contained now. And faster. 
-// Revision 5 - optimization, bug-fixing. Adds temp, concatenates string-data on combined batteries. 
-// 
 //
-// Add the following methods if didn't have them defined anyways:
+// Revision 7 - Smaller fixes, adds Notify-patches as EC won't update without them in edge-cases, replaces fake serials with battery-serial
+// Revision 6 - fixes, make the whole system more configureable, adds technical backround-documentation
+// Revision 5 - optimization, bug-fixing. Adds temp, concatenates string-data on combined batteries. 
+// Revision 4 - Waits on initialization of the batts now. Besides that: Optimization, rework, cleanup, fixes. Truely self-contained now. And faster. 
+// Revision 3 - Remove need of patched notifies, handle battery attach/detach inside, make the whole device self-contained (exept for the EC-helpers)
+// Revision 2 - Prelimitary dual-battery-support, large refactoring
+// Revision 1 - Raised timeout for mutexes, factored bank-switching out, added sleep to bank-switching, moved HWAC to its own SSDT
+// 
 //
 // Credits @benbender
 
-DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00001000)
+
+DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00007000)
 {
+    // Please ensure that your LPC bus-device is available at \_SB.PCI0.LPCB (check your DSDT). 
+    // Some older Thinkpads provide the LPC on \_SB.PCI0.LPC and if thats the case for you,
+    // you need to adjust the paths in the following line until the first "Scope ()".
     External (_SB.PCI0.LPCB.EC, DeviceObj)
 
     // @see https://en.wikipedia.org/wiki/Bank_switching
@@ -76,18 +141,46 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00001000)
         {
             /************************* Configuration *************************/
 
-            Name (BDBG, One)
+            //
+            // Enable debugging output
+            //
+            // Add https://github.com/acidanthera/DebugEnhancer to your kexts
+            // and add `debug=0x12a acpi_layer=0x8 acpi_level=0x2` to your boot-args
+            // to see the output in syslog/dmesg (f.e. via `sudo dmesg|egrep BATX`)
+            //
+            Name (BDBG, Zero) // possible values: One / Zero
+
+            //
+            // Enable Battery Information Supplement (BIS)
+            //
+            // BIS tries to add the missing information normally provided on genuine MacBooks
+            // but not available in the ACPI-specification. It enables much more OSX-native handling
+            // of batteries but also may reveal glitches and bugs between implementation of OSX/ACPI/EC.
+            //
+            // Therefor its configureable here.
+            //
+            // See https://github.com/acidanthera/VirtualSMC/blob/master/Docs/Battery%20Information%20Supplement.md
+            //
+            Name (BBIS, One) // possible values: One / Zero
+
+            //
+            // Disable quickpoll in VirtualSMC SMCBatteryManager
+            //
+            // Implicitly disabled if BBIS is disabled
+            //
+            Name (BDQP, One) // possible values: One / Zero
 
 
             /************************* Mutex **********************************/
 
+            // We reimplement the battery-mutex here to solve the need to patch the original mutex
+            // on older thinkpads where the mutex has a non-zero synclevel which isn't handled by OSX.
             Mutex (BAXM, 0x00)
 
 
             /************************* EC overlay *****************************/
 
-
-            Field(BRAM, ByteAcc, NoLock, Preserve)
+            Field (BRAM, ByteAcc, NoLock, Preserve)
             {
                 Offset (0x38),
                             // HB0S: [Battery 0 status (read only)]
@@ -106,8 +199,15 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00001000)
                 HB1S, 7,    /* Battery 1 state */
                 HB1A, 1,    /* Battery 1 present */
 
-                Offset (0xC9), 
-                HWAT, 8,    /* Wattage of AC/DC */
+                Offset (0x46), 
+                    ,   1, 
+                    ,   1, 
+                    ,   1, 
+                    ,   1, 
+                HPAC,   1, 
+
+                // Offset (0xC9), 
+                // HWAT, 8,    /* Wattage of AC/DC */
 
                 // Zero on the X1C6. Probably because of the charging is handled by the TI USB-C-PD-chip.
                 // Offset (0xCC), 
@@ -435,23 +535,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00001000)
              */
             Method (SBSN, 0, NotSerialized)
             {
-                Local0 = B1B2 (SN00, SN01)
-
-                Local3 = Buffer (0x06)
-                {
-                    "     "
-                }
-
-                Local2 = 0x04
-
-                While (Local0)
-                {
-                    Divide (Local0, 10, Local1, Local0)
-                    Local3 [Local2] = (Local1 + 0x30)
-                    Local2--
-                }
-
-                Return (ToString (Local3))
+                Return (B1B2 (SN00, SN01))
             }
 
             /**
@@ -610,7 +694,6 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00001000)
                 0x01,        // 0x00: BIXRevision - Revision - Integer
                 0x01,        // 0x01: BIXPowerUnit - Power Unit: mAh - Integer (DWORD)
                              //       ACPI spec     : 0 - mWh   : 1 - mAh                
-                             //       We are always outputting mAh.
                 0xFFFFFFFF,  // 0x02: BIXDesignCapacity - Design Capacity - Integer (DWORD)
                 0xFFFFFFFF,  // 0x03: BIXLastFullChargeCapacity - Last Full Charge Capacity - Integer (DWORD)
                 0x01,        // 0x04: BIXBatteryTechnology - Battery Technology: Rechargeable - Integer (DWORD)
@@ -766,7 +849,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00001000)
                 Arg1 [0x05] = SBDV /* \_SB_.PCI0.LPCB.EC__.BATX.SBDV */
 
                 // Serial Number
-                Arg1 [0x11] = SBSN /* \_SB_.PCI0.LPCB.EC__.BATX.SBSN */
+                Arg1 [0x11] = ToString (SBSN) /* \_SB_.PCI0.LPCB.EC__.BATX.SBSN */
 
 
                 //
@@ -811,7 +894,10 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00001000)
              */
             Method (_BIX, 0, NotSerialized)  // _BIX: Battery Information Extended
             {
-                Debug = "BATX:_BIX"
+                If (BDBG == One)
+                {
+                    Debug = "BATX:_BIX"
+                }
 
                 // needs to be run in any way as it waits for the bat-device to be available
                 BX0I = GBIX (0x00, PBIX)
@@ -974,19 +1060,45 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00001000)
                     Local6 = HB1S
                 }
 
-                // Not charging
-                Local0 = 0x00
-
-                If ((Local6 & 0x20) == 0x20)
+                If ((Local6 & 0x20))
                 {
                     // 2 = Charging
-                    Local0 = 0x02
+                    Local0 = 2
                 }
-                ElseIf ((Local6 & 0x40) == 0x40)
+                ElseIf ((Local6 & 0x40) )
                 {
                     // 1 = Discharging
-                    Local0 = 0x01
+                    Local0 = 1
                 }
+                Else
+                {
+                    // 0 = Not charging / Full
+                    Local0 = 0
+                }
+
+                // Set critical flag if battery is empty
+                If ((Local6 & 0x0F) == 0)
+                {
+                    Local6 = Local6 | 0x04
+                }
+
+                Store (Zero, Local1)
+
+                // Check if AC is present
+                If (HPAC)
+                {
+                    // Set only charging/discharging bits
+                    And (Local0, 0x03, Local1)
+                }
+                Else
+                {
+                    // Always discharging when on battery power
+                    Local0 = One
+                }
+
+                // Flag if the battery level is critical
+		        Local4 = Local0 & 0x04
+		        Local0 = Local1 | Local4
 
 
                 //
@@ -1019,17 +1131,18 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00001000)
                 If ((Local1 >= 0x8000))
                 {
                     // If discharging
-                    If ((Local0 & 0x01) == 0x01)
+                    If ((Local0 & 0x01))
                     {
                         // Negate present rate
                         Local1 = (0x00010000 - Local1)
                     }
                     Else
                     {
+                        // Error
                         Local1 = 0x00
                     }
                 }
-                ElseIf (!(Local0 & 0x02) == 0x02)
+                ElseIf (!(Local0 & 0x02))
                 {
                     Local1 = 0x00
                 }
@@ -1070,7 +1183,10 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00001000)
              */
             Method (_BST, 0, NotSerialized)  // _BST: Battery Status
             {
-                Debug = "BATX:_BST()"
+                If (BDBG == One)
+                {
+                    Debug = "BATX:_BST()"
+                }
 
                 // Check if battery is added or removed
                 Local3 = DerefOf (PBAI [0x00])
@@ -1146,18 +1262,18 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00001000)
                 Local4 = DerefOf (BT0P [0x00])
                 Local5 = DerefOf (BT1P [0x00])
 
-                If (Local4 != Local5)
+                // Discharging
+                Local0 [0x00] = 0
+
+                If ((Local4 == 2) || (Local5 == 2))
                 {
-                    If (((Local4 & 0x02) == 0x02) || ((Local5 & 0x02) == 0x02))
-                    {
-                        // 2 = Charging
-                        Local0 [0x00] = 0x02
-                    }
-                    ElseIf (((Local4 & 0x01) == 0x01) || ((Local5 & 0x01) == 0x01))
-                    {
-                        // 1 = Discharging
-                        Local0 [0x00] = 0x01
-                    }
+                    // 2 = Critical
+                    Local0 [0x00] = 2
+                }
+                ElseIf ((Local4 == 1) || (Local5 == 1))
+                {
+                    // 1 = Charging
+                    Local0 [0x00] = 1
                 }
 
                 // _BST 1 - Battery Present Rate - add BAT0 and BAT1 values
@@ -1182,205 +1298,221 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00001000)
             }
 
 
-
-            /**
-             *  Battery Status Supplement pack layout
-             */
-            Name (PBSS, Package (0x07)
+            // Provide the API for `Battery Information Supplement` if enabled in configuration above
+            If (BBIS)
             {
-                0xFFFFFFFF,  // 0x00: BSSTemperature - Temperature, AppleSmartBattery format
-                0xFFFFFFFF,  // 0x01: BSSTimeToFull - TimeToFull [minutes] (0xFF)
-                0xFFFFFFFF,  // 0x02: BSSTimeToEmpty - TimeToEmpty [minutes] (0)
-                0xFFFFFFFF,  // 0x03: BSSChargeLevel - ChargeLevel [percent]
-                0xFFFFFFFF,  // 0x04: BSSAverageRate - AverageRate [mA] (signed)
-                0xFFFFFFFF,  // 0x05: BSSChargingCurrent - ChargingCurrent [mA]
-                0xFFFFFFFF,  // 0x06: BSSChargingVoltage - ChargingVoltage [mV]
-            })
-
-            Name (PBS0, Package (0x07) {})
-            Name (PBS1, Package (0x07) {})
-
-            /**
-             * Get Battery Status Supplement per battery
-             *
-             * Arg0: Battery 0x00/0x10
-             * Arg1: package
-             */
-            Method (GBSS, 2, NotSerialized)
-            {
-                If (Acquire (BAXM, 65535))
+                /**
+                *  Battery Status Supplement pack layout
+                */
+                Name (PBSS, Package (0x07)
                 {
-                    Debug = "BATX:AcquireLock failed in GBSS"
+                    0xFFFFFFFF,  // 0x00: BSSTemperature - Temperature, AppleSmartBattery format
+                    0xFFFFFFFF,  // 0x01: BSSTimeToFull - TimeToFull [minutes] (0xFF)
+                    0xFFFFFFFF,  // 0x02: BSSTimeToEmpty - TimeToEmpty [minutes] (0)
+                    0xFFFFFFFF,  // 0x03: BSSChargeLevel - ChargeLevel [percent]
+                    0xFFFFFFFF,  // 0x04: BSSAverageRate - AverageRate [mA] (signed)
+                    0xFFFFFFFF,  // 0x05: BSSChargingCurrent - ChargingCurrent [mA]
+                    0xFFFFFFFF,  // 0x06: BSSChargingVoltage - ChargingVoltage [mV]
+                })
 
-                    Return (PBSS)
+                Name (PBS0, Package (0x07) {})
+                Name (PBS1, Package (0x07) {})
+
+                /**
+                * Get Battery Status Supplement per battery
+                *
+                * Arg0: Battery 0x00/0x10
+                * Arg1: package
+                */
+                Method (GBSS, 2, NotSerialized)
+                {
+                    If (Acquire (BAXM, 65535))
+                    {
+                        Debug = "BATX:AcquireLock failed in GBSS"
+
+                        Return (PBSS)
+                    }
+
+                    //
+                    // Information Page 0 -
+                    //
+                    HIID = Arg0
+
+                    // 0x01: TimeToFull (0x11), minutes (0xFF)
+                    Local6 = SBAF
+
+                    If (Local6 == 0xFFFF)
+                    {
+                        Local6 = 0
+                    }
+
+                    Arg1 [0x01] = Local6
+
+                    // 0x02: TimeToEmpty (0x12), minutes (0)
+                    Local6 = SBAE
+
+                    If (Local6 == 0xFFFF)
+                    {
+                        Local6 = 0
+                    }
+
+                    Arg1 [0x02] = Local6
+
+                    // 0x03: BSSChargeLevel - ChargeLevel, percentage
+                    Arg1 [0x03] = SBRS
+                    
+                    // 0x04: AverageRate (0x14), mA (signed)
+                    Arg1 [0x04] = SBAC
+
+                    // 0x05: ChargingCurrent (0x15), mA, seems to be unused anyways
+                    // Arg1 [0x05] = ???
+
+                    // 0x06: ChargingVoltage (0x16), mV, seems to be unused anyways
+                    // Arg1 [0x06] = ???
+
+                    // Fake Temperature (0x10) to 30C as it isn't available from the EC, AppleSmartBattery format
+                    Arg1 [0x00] = 0xBD7
+
+                    Release (BAXM)
+
+                    Return (Arg1)
                 }
 
-                //
-                // Information Page 0 -
-                //
-                HIID = Arg0
-
-                // 0x01: TimeToFull (0x11), minutes (0xFF)
-                Local6 = SBAF
-
-                If (Local6 == 0xFFFF)
+                /**
+                *  Battery Status Supplement
+                */
+                Method (CBSS, 0, NotSerialized)
                 {
-                    Local6 = 0
-                }
+                    If (BDBG == One)
+                    {
+                        Debug = "BATX:CBSS()"
+                    }
 
-                Arg1 [0x01] = Local6
+                    If (!H8DR)
+                    {
+                        Return (PBSS)
+                    }
 
-                // 0x02: TimeToEmpty (0x12), minutes (0)
-                Local6 = SBAE
+                    If (HB0A)
+                    {
+                        PBS0 = GBSS (0x00, PBSS)
 
-                If (Local6 == 0xFFFF)
-                {
-                    Local6 = 0
-                }
+                        If (BDBG == One)
+                        {
+                            Concatenate ("BATX:BSSTimeToFull: BAT0 ", ToDecimalString (DerefOf (PBS0 [0x01])), Debug)
+                            Concatenate ("BATX:BSSTimeToEmpty: BAT0 ", ToDecimalString (DerefOf (PBS0 [0x02])), Debug)
+                            Concatenate ("BATX:BSSChargeLevel: BAT0 ", ToDecimalString (DerefOf (PBS0 [0x03])), Debug)
+                            Concatenate ("BATX:BSSAverageRate: BAT0 ", ToDecimalString (DerefOf (PBS0 [0x04])), Debug)
+                        }
 
-                Arg1 [0x02] = Local6
+                        If (!HB1A)
+                        {
+                            Return (PBS0)
+                        }
+                    }
 
-                // 0x03: BSSChargeLevel - ChargeLevel, percentage
-                Arg1 [0x03] = SBRS
-                
-                // 0x04: AverageRate (0x14), mA (signed)
-                Arg1 [0x04] = SBAC
-
-                // 0x05: ChargingCurrent (0x15), mA, seems to be unused anyways
-                // Arg1 [0x05] = ???
-
-                // 0x06: ChargingVoltage (0x16), mV, seems to be unused anyways
-                // Arg1 [0x06] = ???
-
-                // Fake Temperature (0x10) to 30C as it isn't available from the EC, AppleSmartBattery format
-                Arg1 [0x00] = 0xBD7
-
-                Release (BAXM)
-
-                Return (Arg1)
-            }
-
-            /**
-             *  Battery Status Supplement
-             */
-            Method (CBSS, 0, NotSerialized)
-            {
-                Debug = "BATX:CBSS()"
-
-                If (!H8DR)
-                {
-                    Return (PBSS)
-                }
-
-                If (HB0A)
-                {
-                    PBS0 = GBSS (0x00, PBSS)
+                    // gather battery data from BAT1
+                    PBS1 = GBSS (0x10, PBSS)
 
                     If (BDBG == One)
                     {
-                        Concatenate ("BATX:BSSTimeToFull: BAT0 ", ToDecimalString (DerefOf (PBS0 [0x01])), Debug)
-                        Concatenate ("BATX:BSSTimeToEmpty: BAT0 ", ToDecimalString (DerefOf (PBS0 [0x02])), Debug)
-                        Concatenate ("BATX:BSSChargeLevel: BAT0 ", ToDecimalString (DerefOf (PBS0 [0x03])), Debug)
-                        Concatenate ("BATX:BSSAverageRate: BAT0 ", ToDecimalString (DerefOf (PBS0 [0x04])), Debug)
+                        Concatenate ("BATX:BSSTimeToFull: BAT1 ", ToDecimalString (DerefOf (PBS1 [0x01])), Debug)
+                        Concatenate ("BATX:BSSTimeToEmpty: BAT1 ", ToDecimalString (DerefOf (PBS1 [0x02])), Debug)
+                        Concatenate ("BATX:BSSChargeLevel: BAT1 ", ToDecimalString (DerefOf (PBS1 [0x03])), Debug)
+                        Concatenate ("BATX:BSSAverageRate: BAT1 ", ToDecimalString (DerefOf (PBS1 [0x04])), Debug)
                     }
 
-                    If (!HB1A)
+                    If (!HB0A)
                     {
-                        Return (PBS0)
+                        Return (PBS1)
                     }
+
+                    // combine batteries into Local0 result if possible
+                    Local0 = PBS0
+
+                    // 0x01: TimeToFull (0x11), minutes (0xFF), Valid integer in minutes
+                    Local0 [0x01] = (DerefOf (PBS0 [0x01]) + DerefOf (PBS1 [0x01]))
+
+                    // 0x02: BSSTimeToEmpty - TimeToEmpty, minutes (0), Valid integer in minutes
+                    Local0 [0x02] = (DerefOf (PBS0 [0x02]) + DerefOf (PBS1 [0x02]))
+
+                    // 0x03: BSSChargeLevel - ChargeLevel, percentage, 0 - 100 for percentage.
+                    Local0 [0x03] = (DerefOf (PBS0 [0x03]) + DerefOf (PBS1 [0x03])) / 2
+
+                    // 0x04: BSSAverageRate - AverageRate, mA (signed), Valid signed integer in mA.
+                    Local0 [0x04] = (DerefOf (PBS0 [0x04]) + DerefOf (PBS1 [0x04]))
+
+                    If (BDBG == One)
+                    {
+                        Concatenate ("BATX:BSSTimeToFull: BATX ", ToDecimalString (DerefOf (Local0 [0x01])), Debug)
+                        Concatenate ("BATX:BSSTimeToEmpty: BATX ", ToDecimalString (DerefOf (Local0 [0x02])), Debug)
+                        Concatenate ("BATX:BSSChargeLevel: BATX ", ToDecimalString (DerefOf (Local0 [0x03])), Debug)
+                        Concatenate ("BATX:BSSAverageRate: BATX ", ToDecimalString (DerefOf (Local0 [0x04])), Debug)
+                    }
+
+                    Return (Local0)
                 }
 
-                // gather battery data from BAT1
-                PBS1 = GBSS (0x10, PBSS)
 
-                If (BDBG == One)
+
+                /**
+                *  Battery Information Supplement pack layout
+                */
+                Name (PBIS, Package (0x07)
                 {
-                    Concatenate ("BATX:BSSTimeToFull: BAT1 ", ToDecimalString (DerefOf (PBS1 [0x01])), Debug)
-                    Concatenate ("BATX:BSSTimeToEmpty: BAT1 ", ToDecimalString (DerefOf (PBS1 [0x02])), Debug)
-                    Concatenate ("BATX:BSSChargeLevel: BAT1 ", ToDecimalString (DerefOf (PBS1 [0x03])), Debug)
-                    Concatenate ("BATX:BSSAverageRate: BAT1 ", ToDecimalString (DerefOf (PBS1 [0x04])), Debug)
-                }
+                    0x007F007F,  // 0x00: BISConfig - config
+                                 //   double check if you have valid AverageRate before disabling QuicPoll
+                                 //     - 0x007F007F - Quickpoll disabled, more native battery handling
+                                 //     - 0x006F007F - Quickpoll enabled, more robust battery handling
+                    0xFFFFFFFF,  // 0x01: BISManufactureDate - ManufactureDate (0x1), AppleSmartBattery format
+                    0x00002342,  // 0x02: BISPackLotCode - PackLotCode 
+                    0x00002342,  // 0x03: BISPCBLotCode - PCBLotCode
+                    0x00002342,  // 0x04: BISFirmwareVersion - FirmwareVersion
+                    0x00002342,  // 0x05: BISHardwareVersion - HardwareVersion
+                    0x00002342,  // 0x06: BISBatteryVersion - BatteryVersion 
+                })
 
-                If (!HB0A)
+                /**
+                *  Battery Information Supplement 
+                */
+                Method (CBIS, 0, NotSerialized)
                 {
-                    Return (PBS1)
-                }
+                    If (BDQP == One)
+                    {
+                        PBIS[0x00] = 0x006F007F
+                    }
 
-                // combine batteries into Local0 result if possible
-                Local0 = PBS0
+                    If (BDBG == One)
+                    {
+                        Debug = "BATX:CBIS()"
+                    }
 
-                // 0x01: TimeToFull (0x11), minutes (0xFF), Valid integer in minutes
-                Local0 [0x01] = (DerefOf (PBS0 [0x01]) + DerefOf (PBS1 [0x01]))
+                    If (Acquire (BAXM, 65535))
+                    {
+                        Debug = "BATX:AcquireLock failed in CBIS"
 
-                // 0x02: BSSTimeToEmpty - TimeToEmpty, minutes (0), Valid integer in minutes
-                Local0 [0x02] = (DerefOf (PBS0 [0x02]) + DerefOf (PBS1 [0x02]))
+                        Return (PBIS)
+                    }
 
-                // 0x03: BSSChargeLevel - ChargeLevel, percentage, 0 - 100 for percentage.
-                Local0 [0x03] = (DerefOf (PBS0 [0x03]) + DerefOf (PBS1 [0x03])) / 2
+                    //
+                    // Information Page 2 -
+                    //
+                    HIID = (0x00 | 0x02)
 
-                // 0x04: BSSAverageRate - AverageRate, mA (signed), Valid signed integer in mA.
-                Local0 [0x04] = (DerefOf (PBS0 [0x04]) + DerefOf (PBS1 [0x04]))
+                    // 0x01: ManufactureDate (0x1), AppleSmartBattery format
+                    PBIS [0x01] = SBDT
 
-                If (BDBG == One)
-                {
-                    Concatenate ("BATX:BSSTimeToFull: BATX ", ToDecimalString (DerefOf (Local0 [0x01])), Debug)
-                    Concatenate ("BATX:BSSTimeToEmpty: BATX ", ToDecimalString (DerefOf (Local0 [0x02])), Debug)
-                    Concatenate ("BATX:BSSChargeLevel: BATX ", ToDecimalString (DerefOf (Local0 [0x03])), Debug)
-                    Concatenate ("BATX:BSSAverageRate: BATX ", ToDecimalString (DerefOf (Local0 [0x04])), Debug)
-                }
+                    // Serial Number
+                    PBIS [0x02] = SBSN /* \_SB_.PCI0.LPCB.EC__.BATX.SBSN */
+                    PBIS [0x03] = SBSN /* \_SB_.PCI0.LPCB.EC__.BATX.SBSN */
+                    PBIS [0x04] = SBSN /* \_SB_.PCI0.LPCB.EC__.BATX.SBSN */
+                    PBIS [0x05] = SBSN /* \_SB_.PCI0.LPCB.EC__.BATX.SBSN */
+                    PBIS [0x06] = SBSN /* \_SB_.PCI0.LPCB.EC__.BATX.SBSN */
 
-                Return (Local0)
-            }
+                    Release (BAXM)
 
-
-
-            /**
-             *  Battery Information Supplement pack layout
-             */
-            Name (PBIS, Package (0x07)
-            {
-                // 0x006F007F,  // 0x00: BISConfig - config, double check if you have valid AverageRate before
-                             //       fliping that bit to 0x007F007F since it will disable quickPoll
-                0x007F007F, // disable quickpoll
-                0xFFFFFFFF,  // 0x01: BISManufactureDate - ManufactureDate (0x1), AppleSmartBattery format
-                0x00002342,  // 0x02: BISPackLotCode - PackLotCode 
-                0x00002342,  // 0x03: BISPCBLotCode - PCBLotCode
-                0x00002342,  // 0x04: BISFirmwareVersion - FirmwareVersion
-                0x00002342,  // 0x05: BISHardwareVersion - HardwareVersion
-                0x00002342,  // 0x06: BISBatteryVersion - BatteryVersion 
-            })
-
-            /**
-             *  Battery Information Supplement 
-             */
-            Method (CBIS, 0, NotSerialized)
-            {
-                Debug = "BATX:CBIS()"
-
-                If (!H8DR)
-                {
                     Return (PBIS)
                 }
-
-                If (Acquire (BAXM, 65535))
-                {
-                    Debug = "BATX:AcquireLock failed in CBIS"
-
-                    Return (PBIS)
-                }
-
-
-                //
-                // Information Page 2 -
-                //
-                HIID = (0x00 | 0x02)
-
-                // 0x01: ManufactureDate (0x1), AppleSmartBattery format
-                PBIS [0x01] = SBDT
-
-                Release (BAXM)
-
-                Return (PBIS)
             }
         }
     }

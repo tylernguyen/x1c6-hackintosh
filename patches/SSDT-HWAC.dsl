@@ -1,4 +1,6 @@
 /*
+ * Depends on /patches/OpenCore Patches/ HWAC.plist
+ *
  * On many modern hackintoshed thinkpads there are ofthen accesses to the 16-bit EC-field `HWAC`, which are mostly 
  * not handled by battery-patches (f.e. those currated by @daliansky). Those accesses are (mostly) located in the _OWAK() 
  * and/or _L17-ACPI-methods of the original DSDT.
@@ -26,7 +28,6 @@
  * This includes 16, 32, 64, and larger fields.`
  * - @Rehabman, https://www.tonymacx86.com/threads/guide-how-to-patch-dsdt-for-working-battery-status.116102/
  *
- * Depends on /patches/OpenCore Patches/ HWAC.plist
  */
 
 
@@ -37,9 +38,9 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_HWAC", 0x00001000)
 
     Scope (\_SB.PCI0.LPCB.EC)
     {
-        //
-        // EC region overlay.
-        //
+        /**
+         * EC region overlay.
+         */
         OperationRegion (ERAM, EmbeddedControl, 0x00, 0x0100)
         Field (ERAM, ByteAcc, NoLock, Preserve)
         {

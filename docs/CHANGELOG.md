@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-11-13
+
+#### Changed
+
+- Upgraded to Big Sur
+- Upgraded to BIOS-v1.50 and added corresponding ACPI dump.
+- Upgraded `YogaSMC` to stable build `1.3.0`
+- Compatibiltity and improvements on `SSDT-Battery`. Thanks @benbender
+- Experimental TB3 patch by @benbender:
+  - Complete hotplug and power management without modded TB3 controller firmware
+  - NOTE: Brokenb USB 3.1 Gen2 hotplug still, but everything else is amazing!
+  - Everyone thanks @benbender again! This would not have been possible without his hard work and research.
+
+#### Removed
+- Deprecated legacy keyboard patches. `YogaSMC` is now recommended and preferred.
+- `TbtForcePower.efi` as it is no longer needed.
+- `ThunderboltReset.kext` has it is no longer needed.
+
 > ### 2020-11-3
 
 #### Changed

@@ -1,6 +1,15 @@
-/*
- * USB 3.1
- */
+//
+// USB-C 3.1 Gen2-controller
+//
+// The controller is part of the alpine ridge Thunderbolt-controller.
+//
+// At the moment there is no known way to have - or at least I haven't found it yet -
+// to have native Thunderbolt incl. power-management and USB-C 3.1 Gen2-hotplug at the
+// same time. For the moment I opted for thunderbolt and the runtime power saving.
+//
+// So sadly, this is broken on runtime for the moment :(
+//
+// Credits @benbender
 
 DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC2", 0x00001000)
 {
@@ -9,8 +18,11 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC2", 0x00001000)
     External (OSDW, MethodObj)                        // OS Is Darwin?
 
     External (_SB.PCI0.RP09.RUSB, IntObj)
-    External (_SB.PCI0.RP09.GXCI, FieldUnitObj)
+    External (_SB.PCI0.RP09.RTBT, IntObj)
+    External (_SB.PCI0.RP09.GXCI, IntObj)
+    External (_SB.PCI0.RP09.GNHI, IntObj)
     External (_SB.PCI0.RP09.UGIO, MethodObj)
+    External (_SB.PCI0.RP09.TBST, MethodObj)
     External (_SB.PCI0.RP09.UPSB.DSB2, DeviceObj)
     External (_SB.PCI0.RP09.UPSB.PCED, MethodObj)
     External (_SB.PCI0.RP09.UPSB.MDUV, IntObj)
@@ -21,14 +33,12 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC2", 0x00001000)
     External (_SB.PCI0.RP09.UPSB.DSB2.LACT, FieldUnitObj)
     External (_SB.PCI0.RP09.UPSB.DSB2.LTRN, FieldUnitObj)
 
-    External (_SB.PCI0.RP09.PXSX.TBDU.XHC.RHUB.TPLD, MethodObj)
-    External (_SB.PCI0.RP09.PXSX.TBDU.XHC.RHUB.TUPC, MethodObj)
+    External (_SB.PCI0.RP09.UPN1, IntObj)
+    External (_SB.PCI0.RP09.UPN2, IntObj)
 
     External (TBSE, IntObj)
     External (TBTS, IntObj)
     External (TBAS, IntObj)
-    External (UPT1, IntObj)
-    External (UPT2, IntObj)
     External (USME, IntObj)
 
     Name (U2OP, One) // Companion controller present?
@@ -55,73 +65,68 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC2", 0x00001000)
             }
 
             /**
-             * PCI Enable downstream
-             */
+            * PCI Enable downstream
+            */
             Method (PCED, 0, Serialized)
             {
-                Debug = "TB:UPSB:DSB2:XHC2:PCED - PCI Enable downstream"
-                // Debug = "TB:UPSB:DSB2:XHC2:PCED - enable GPIO"
-
+                Debug = "TB:DSB2:XHC2:PCED"
+                Debug = "TB:DSB2:XHC2:PCED - Request USB-GPIO to be enabled & force TBT-GPIO"
                 \_SB.PCI0.RP09.GXCI = One
+                \_SB.PCI0.RP09.GNHI = One
 
                 // this powers up both TBT and USB when needed
                 If (\_SB.PCI0.RP09.UGIO () != Zero)
                 {
-                    // Debug = "TB:UPSB:DSB2:XHC2:PCED - GPIOs changed, restored = true"
+                    Debug = "TB:DSB2:XHC2:PCED - GPIOs changed, restored = true"
                     \_SB.PCI0.RP09.UPSB.DSB2.PRSR = One
                 }
 
-                // Do some link training
-                Local0 = Zero
-                Local1 = Zero
-                Local5 = (Timer + 10000000)
+                // Local0 = Zero
+                // Local1 = Zero
+                Local5 = (Timer + 0x00989680)
 
-                // Debug = "TB:UPSB:DSB2:XHC2:PCED - restored flag, THUNDERBOLT_PCI_LINK_MGMT_DEVICE.PRSR"
-                // Debug = \_SB.PCI0.RP09.UPSB.DSB2.PRSR
+                Debug = Concatenate ("TB:DSB2:XHC2:PCED - restored flag, THUNDERBOLT_PCI_LINK_MGMT_DEVICE.PRSR: ", \_SB.PCI0.RP09.UPSB.DSB2.PRSR)
 
                 If (\_SB.PCI0.RP09.UPSB.DSB2.PRSR != Zero)
                 {
-                    // Debug = "TB:UPSB:DSB2:XHC2:PCED - Wait for power up"
-                    // Debug = "TB:UPSB:DSB2:XHC2:PCED - Wait for downstream bridge to appear"
-
-                    Local5 = (Timer + 10000000)
-
+                    Debug = "TB:DSB2:XHC2:PCED - Wait for power up"
+                    Debug = "TB:DSB2:XHC2:PCED - Wait for downstream bridge to appear"
+                    Local5 = (Timer + 0x00989680)
                     While (Timer <= Local5)
                     {
-                        // Debug = "TB:UPSB:DSB2:XHC2:PCED - Wait for link training..."
+                        Debug = "TB:DSB2:XHC2:PCED - Wait for link training..."
                         If (\_SB.PCI0.RP09.UPSB.DSB2.LACR == Zero)
                         {
                             If (\_SB.PCI0.RP09.UPSB.DSB2.LTRN != One)
                             {
-                                // Debug = "TB:UPSB:DSB2:XHC2:PCED - Link training cleared"
+                                Debug = "TB:DSB2:XHC2:PCED - Link training cleared"
                                 Break
                             }
                         }
                         ElseIf ((\_SB.PCI0.RP09.UPSB.DSB2.LTRN != One) && (\_SB.PCI0.RP09.UPSB.DSB2.LACT == One))
                         {
-                            // Debug = "TB:UPSB:DSB2:XHC2:PCED - Link training cleared and link is active"
+                            Debug = "TB:DSB2:XHC2:PCED - Link training cleared and link is active"
                             Break
                         }
 
-                        Sleep (10)
+                        Sleep (0x0A)
                     }
 
-                    Sleep (150)
+                    Sleep (0x96)
                 }
 
                 \_SB.PCI0.RP09.UPSB.DSB2.PRSR = Zero
-
                 While (Timer <= Local5)
                 {
-                    // Debug = "TB:UPSB:DSB2:XHC2:PCED - Wait for config space..."
+                    Debug = "TB:DSB2:XHC2:PCED - Wait for config space..."
                     If (\_SB.PCI0.RP09.UPSB.DSB2.XHC2.AVND != 0xFFFFFFFF)
                     {
-                        // Debug = "TB:UPSB:DSB2:XHC2:PCED - Read VID/DID"
+                        Debug = "TB:DSB2:XHC2:PCED - DSB2 Up - Read VID/DID"
                         \_SB.PCI0.RP09.UPSB.DSB2.PCIA = One
                         Break
                     }
 
-                    Sleep (10)
+                    Sleep (0x0A)
                 }
 
                 \_SB.PCI0.RP09.UPSB.DSB2.IIP3 = Zero
@@ -129,28 +134,15 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC2", 0x00001000)
 
             Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
             {
-                If (U2OP == One)
-                {
-                    Local0 = Package (0x06)
-                        {
-                            "USBBusNumber", 
-                            Zero, 
-                            "AAPL,xhci-clock-id", 
-                            One, 
-                            "UsbCompanionControllerPresent", 
-                            One
-                        }
-                }
-                Else
-                {
-                    Local0 = Package (0x04)
-                        {
-                            "USBBusNumber", 
-                            Zero, 
-                            "AAPL,xhci-clock-id", 
-                            One
-                        }
-                }
+                Local0 = Package (0x06)
+                    {
+                        "USBBusNumber", 
+                        Zero, 
+                        "AAPL,xhci-clock-id", 
+                        One, 
+                        "UsbCompanionControllerPresent", 
+                        One
+                    }
 
                 DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
                 Return (Local0)
@@ -158,20 +150,22 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC2", 0x00001000)
 
             Name (HS, Package (0x01)
             {
-                "XHC1"
+                "XHC"
             })
+
             Name (FS, Package (0x01)
             {
-                "XHC1"
+                "XHC"
             })
+
             Name (LS, Package (0x01)
             {
-                "XHC1"
+                "XHC"
             })
 
             Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake
             {
-                Return (Package (0x02)
+                Return (Package ()
                 {
                     0x6D, 
                     0x03
@@ -180,53 +174,45 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC2", 0x00001000)
 
             Method (_PS0, 0, Serialized)  // _PS0: Power State 0
             {
-                Debug = "TB:UPSB:DSB2:XHC2:_PS0"
-                // Debug = "TB:UPSB:DSB2:XHC2:_PS0 - USME: " // One
-                // Debug = USME
-                // Debug = "TB:UPSB:DSB2:XHC2:_PS0 - TBTS: " // One
-                // Debug = TBTS
-                // Debug = "TB:UPSB:DSB2:XHC2:_PS0 - TBSE: " // 0x09
-                // Debug = TBSE
-                // Debug = "TB:UPSB:DSB2:XHC2:_PS0 - TBAS: " // Zero
-                // Debug = TBAS
+                Debug = "TB:DSB2:XHC2:_PS0"
 
                 If (OSDW ())
                 {
                     PCED ()
+
+                    \_SB.PCI0.RP09.TBST ()
                 }
             }
 
             Method (_PS3, 0, Serialized)  // _PS3: Power State 3
             {
-                Debug = "TB:UPSB:DSB2:XHC2:_PS3"
+                Debug = "TB:DSB2:XHC2:_PS3"
+
+                If (OSDW ())
+                {
+                    \_SB.PCI0.RP09.TBST ()
+                }
             }
 
             /**
-             * Run Time Power Check
-             * Called by XHC driver when idle
-             */
+            * Run Time Power Check
+            * Called by XHC driver when idle
+            */
             Method (RTPC, 1, Serialized)
             {
-                If (OSDW ())
+                Debug = Concatenate ("TB:DSB2:XHC2:RTPC called with Arg0: ", Arg0)
+
+                If (Arg0 <= One)
                 {
-                    If (Arg0 <= One)
-                    {
-                        If (Arg0 == One)
-                        {
-                            Debug = "TB:UPSB:DSB2:XHC2:RTPC - USB3.2 Run Time Power Check - Enabling"
-                        }
+                    Debug = Concatenate ("TB:NHI0:RTPC setting RUSB to: ", Arg0)
 
-                        If (Arg0 == Zero)
-                        {
-                            Debug = "TB:UPSB:DSB2:XHC2:RTPC - USB3.2 Run Time Power Check - Disabling"    
-                        }
+                    \_SB.PCI0.RP09.RUSB = Arg0
 
-                        \_SB.PCI0.RP09.RUSB = Arg0
-                    }
-                    Else
+                    // Force TB on 
+                    If (Arg0 == One)
                     {
-                        Debug = "TB:UPSB:DSB2:XHC2:RTPC - USB3.2 Run Time Power Check - ??? - Arg0: "
-                        Debug = Arg0
+                        Debug = Concatenate ("TB:NHI0:RTPC forcing RTBT to: ", Arg0)
+                        \_SB.PCI0.RP09.RTBT = One
                     }
                 }
 
@@ -234,25 +220,17 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC2", 0x00001000)
             }
 
             /**
-             * USB cable check
-             * Called by XHC driver to check cable status
-             * Used as idle hint.
-             */
+            * USB cable check
+            * Called by XHC driver to check cable status
+            * Used as idle hint.
+            *
+            * Return:
+            *    kUSBTypeCCableTypeNone              = 0,
+            *    kUSBTypeCCableTypeUSB               = 1,
+            */
             Method (MODU, 0, Serialized)
             {
-                If (\_SB.PCI0.RP09.UPSB.MDUV == Zero)
-                {
-                    Debug = "TB:UPSB:DSB2:XHC2:MODU - USB cable check - unplugged (MDUV = Zero)"
-                }
-                ElseIf (\_SB.PCI0.RP09.UPSB.MDUV == One)
-                {
-                    Debug = "TB:UPSB:DSB2:XHC2:MODU - USB cable check - plugged (MDUV = One)"
-                }
-                Else
-                {
-                    Debug = "TB:UPSB:DSB2:XHC2:MODU - USB cable check - ??? - MDUV: "
-                    Debug = \_SB.PCI0.RP09.UPSB.MDUV
-                }
+                Debug = Concatenate ("TB:DSB2:XHC2:MODU - return: ", \_SB.PCI0.RP09.UPSB.MDUV)
 
                 Return (\_SB.PCI0.RP09.UPSB.MDUV)
             }
@@ -264,31 +242,6 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC2", 0x00001000)
                 Device (SSP1)
                 {
                     Name (_ADR, 0x03)  // _ADR: Address
-
-                    // Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-                    // {
-                    //     If ((USME == Zero))
-                    //     {
-                    //         Return (\_SB.PCI0.RP09.PXSX.TBDU.XHC.RHUB.TUPC (One, 0x09))
-                    //     }
-                    //     Else
-                    //     {
-                    //         Return (\_SB.PCI0.RP09.PXSX.TBDU.XHC.RHUB.TUPC (One, 0x0A))
-                    //     }
-                    // }
-
-                    // Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-                    // {
-                    //     If ((USME == Zero))
-                    //     {
-                    //         Return (\_SB.PCI0.RP09.PXSX.TBDU.XHC.RHUB.TPLD (One, One))
-                    //     }
-                    //     Else
-                    //     {
-                    //         Return (\_SB.PCI0.RP09.PXSX.TBDU.XHC.RHUB.TPLD (One, UPT1))
-                    //     }
-                    // }
-
                     Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
                     {
                         0xFF, 
@@ -296,72 +249,34 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC2", 0x00001000)
                         Zero, 
                         Zero
                     })
-                    Name (_PLD, Package (0x01)  // _PLD: Physical Location of Device
+
+                    Name (HS, Package ()
                     {
-                        ToPLD (
-                            PLD_Revision           = 0x1,
-                            PLD_IgnoreColor        = 0x1,
-                            PLD_Red                = 0x0,
-                            PLD_Green              = 0x0,
-                            PLD_Blue               = 0x0,
-                            PLD_Width              = 0x0,
-                            PLD_Height             = 0x0,
-                            PLD_UserVisible        = 0x1,
-                            PLD_Dock               = 0x0,
-                            PLD_Lid                = 0x0,
-                            PLD_Panel              = "UNKNOWN",
-                            PLD_VerticalPosition   = "UPPER",
-                            PLD_HorizontalPosition = "LEFT",
-                            PLD_Shape              = "UNKNOWN",
-                            PLD_GroupOrientation   = 0x0,
-                            PLD_GroupToken         = 0x0,
-                            PLD_GroupPosition      = 0x0,
-                            PLD_Bay                = 0x0,
-                            PLD_Ejectable          = 0x0,
-                            PLD_EjectRequired      = 0x0,
-                            PLD_CabinetNumber      = 0x0,
-                            PLD_CardCageNumber     = 0x0,
-                            PLD_Reference          = 0x0,
-                            PLD_Rotation           = 0x0,
-                            PLD_Order              = 0x0,
-                            PLD_VerticalOffset     = 0x0,
-                            PLD_HorizontalOffset   = 0x0)
-                    })
-                    Name (HS, Package (0x02)
-                    {
-                        "XHC1", 
+                        "XHC", 
                         0x03
                     })
-                    Name (FS, Package (0x02)
+
+                    Name (FS, Package ()
                     {
-                        "XHC1", 
+                        "XHC", 
                         0x03
                     })
-                    Name (LS, Package (0x02)
+
+                    Name (LS, Package ()
                     {
-                        "XHC1", 
+                        "XHC", 
                         0x03
                     })
+
                     Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
                     {
-                        If (U2OP == One)
-                        {
-                            Local0 = Package (0x04)
-                                {
-                                    "UsbCPortNumber", 
-                                    0x02, 
-                                    "UsbCompanionPortPresent", 
-                                    One
-                                }
-                        }
-                        Else
-                        {
-                            Local0 = Package (0x02)
-                                {
-                                    "UsbCPortNumber", 
-                                    0x02, 
-                                }
-                        }
+                        Local0 = Package ()
+                            {
+                                "UsbCPortNumber", 
+                                \_SB.PCI0.RP09.UPN1,
+                                "UsbCompanionPortPresent", 
+                                One
+                            }
 
                         DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
                         Return (Local0)
@@ -371,31 +286,6 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC2", 0x00001000)
                 Device (SSP2)
                 {
                     Name (_ADR, 0x04)  // _ADR: Address
-
-                    // Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
-                    // {
-                    //     If ((USME == Zero))
-                    //     {
-                    //         Return (\_SB.PCI0.RP09.PXSX.TBDU.XHC.RHUB.TUPC (One, 0x09))
-                    //     }
-                    //     Else
-                    //     {
-                    //         Return (\_SB.PCI0.RP09.PXSX.TBDU.XHC.RHUB.TUPC (One, 0x0A))
-                    //     }
-                    // }
-
-                    // Method (_PLD, 0, NotSerialized)  // _PLD: Physical Location of Device
-                    // {
-                    //     If ((USME == Zero))
-                    //     {
-                    //         Return (\_SB.PCI0.RP09.PXSX.TBDU.XHC.RHUB.TPLD (One, 0x02))
-                    //     }
-                    //     Else
-                    //     {
-                    //         Return (\_SB.PCI0.RP09.PXSX.TBDU.XHC.RHUB.TPLD (One, UPT2))
-                    //     }
-                    // }
-
                     Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
                     {
                         0xFF, 
@@ -403,74 +293,34 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC2", 0x00001000)
                         Zero, 
                         Zero
                     })
-                    Name (_PLD, Package (0x01)  // _PLD: Physical Location of Device
+
+                    Name (HS, Package ()
                     {
-                        ToPLD (
-                            PLD_Revision           = 0x1,
-                            PLD_IgnoreColor        = 0x1,
-                            PLD_Red                = 0x0,
-                            PLD_Green              = 0x0,
-                            PLD_Blue               = 0x0,
-                            PLD_Width              = 0x0,
-                            PLD_Height             = 0x0,
-                            PLD_UserVisible        = 0x1,
-                            PLD_Dock               = 0x0,
-                            PLD_Lid                = 0x0,
-                            PLD_Panel              = "UNKNOWN",
-                            PLD_VerticalPosition   = "LOWER",
-                            PLD_HorizontalPosition = "LEFT",
-                            PLD_Shape              = "UNKNOWN",
-                            PLD_GroupOrientation   = 0x0,
-                            PLD_GroupToken         = 0x0,
-                            PLD_GroupPosition      = 0x0,
-                            PLD_Bay                = 0x0,
-                            PLD_Ejectable          = 0x0,
-                            PLD_EjectRequired      = 0x0,
-                            PLD_CabinetNumber      = 0x0,
-                            PLD_CardCageNumber     = 0x0,
-                            PLD_Reference          = 0x0,
-                            PLD_Rotation           = 0x0,
-                            PLD_Order              = 0x0,
-                            PLD_VerticalOffset     = 0x0,
-                            PLD_HorizontalOffset   = 0x0)
+                        "XHC", 
+                        0x04
                     })
 
-                    Name (HS, Package (0x02)
+                    Name (FS, Package ()
                     {
-                        "XHC1",
+                        "XHC", 
                         0x04
                     })
-                    Name (FS, Package (0x02)
+
+                    Name (LS, Package ()
                     {
-                        "XHC1", 
-                        0x04
-                    })
-                    Name (LS, Package (0x02)
-                    {
-                        "XHC1", 
+                        "XHC", 
                         0x04
                     })
 
                     Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
                     {
-                        If (U2OP == One)
-                        {
-                            Local0 = Package (0x04)
-                                {
-                                    "UsbCPortNumber", 
-                                    One, 
-                                    "UsbCompanionPortPresent", 
-                                    One
-                                }
-                        }
-                        Else
-                        {
-                            Local0 = Package (0x02)
-                                {
-                                    "UsbCPortNumber", 
-                                    One, 
-                                }
-                        }
+                        Local0 = Package ()
+                            {
+                                "UsbCPortNumber", 
+                                \_SB.PCI0.RP09.UPN2,
+                                "UsbCompanionPortPresent", 
+                                One
+                            }
 
                         DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
                         Return (Local0)
@@ -479,4 +329,5 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC2", 0x00001000)
             }
         }
     }
+
 }

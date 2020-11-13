@@ -54,7 +54,7 @@ At the minimum, these BIOS settings must be made to install and run macOS withou
 | Main Menu | Sub 1       | Sub 2                                         | Sub 3                                                              |
 | --------- | ----------- | --------------------------------------------- | ------------------------------------------------------------------ |
 |           | >> Config   | >> Thunderbolt (TM) 3                         | Thunderbolt BIOS Assist Mode `Disabled`                            |
-|           |             |                                               | Thunderbolt(TM) Device `Enabled`                                   |
+|           |             |                                               | Thunderbolt(TM) Device `Disabled`                                  |
 
 
 > ## Modding the BIOS:
@@ -121,29 +121,3 @@ The following are further optimization settings that can be figured once your BI
 | Advanced Tab | >> Power & Performance | >> CPU - Power Management Control  | Boot performance mode `Max Battery`                                    |                          |
 |              |                        |                                    | >> Config TDP Configurations                                           | `Down`                   |
 |              |                        |                                    |                                                                        |                          |
- * If you do do want to use Thunderbolt 3 hotplug on macOS (at the expense of idle power consumption):
-
-| Main Menu    | Sub 1                  | Sub 2                              | Sub 3                                                                  |
-|--------------|------------------------|------------------------------------|------------------------------------------------------------------------|
-| Advanced Tab | >> Intel Advanced Menu | >> Thunderbolt(TM) Configuration   | GPIO3 Force Pwr `Checked`                                              |
-|              |                        |                                    | GPIO3 Force Pwr for PR05 `Checked`                                     |
-|              |                        |                                    |                                                                        |
-
-* Native macOS Thunderbolt interfacing, at the expense of TB3 hotplugging on other OSes:
-If macOS is your only OS on the machine, or if you only need to use Thunderbolt 3 hotplug on macOS. There is a custom modded firmware that can be flashed onto the Thunderbolt 3 controller that allows for native Thunderbolt interfacing in macOS:  
-https://www.tonymacx86.com/threads/success-gigabyte-designare-z390-thunderbolt-3-i7-9700k-amd-rx-580.267551/page-2452#post-2160674
-
-    - Screenshot/testing courtesy of @nottthebee
-* The Thunderbolt chip is located on the top right of the motherboard.
-* A note before you do this, however, the modded thunderbolt firmware will still require that you disable Thunderbolt BIOS assist, so again, TB3 hotplug will come at the cost of power consumption.
-* Secondly, as far as I can tell, this mod is really to make things look cleaner and more native within macOS, and doesn't have any real improvements versus the TB3 method currently in this repo.
-
-> ## Modding the Thunderbolt 3 Controller:
-The `Intel JHL6540 (Alpine Ridge 4C)` TB3 chip is labeled as `Winbond` and `W25Q80DVS` is located on the top right of the motherboard.
-
-- Download [macOS compatible firmware](https://www.tonymacx86.com/attachments/lenovo-x1-carbon-nvm-43-mod-1-caseysj-bin-zip.483524/)
-- Again, [@notthebee](https://github.com/notthebee) also has a useful video to follow: https://www.youtube.com/watch?v=ce7kqUEccUM
-- Remember to dump the vanilla twice and use `diff` to make sure things were dumped properly, store this backup somewhere safe.
-- Once the vanilla firmware has been safely dumped and backed up, you can flash the custom firmware onto the controller.
-- Successfully modding your Thunderbolt 3 controller can be confirmed via macOS's System Report:
-<img align="center" src="https://user-images.githubusercontent.com/30384331/89741356-2a62ab80-da80-11ea-8c76-e1f3aaa1d41d.png" alt="macOS native TB3" width="300"> 

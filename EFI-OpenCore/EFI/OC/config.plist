@@ -126,19 +126,81 @@
 				<key>Path</key>
 				<string>SSDT-XHC1.aml</string>
 			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Patch USB Power</string>
-				<key>Enabled</key>
-				<true/>
-				<key>Path</key>
-				<string>SSDT-USBX.aml</string>
-			</dict>
 		</array>
 		<key>Delete</key>
 		<array/>
 		<key>Patch</key>
 		<array>
+			<dict>
+				<key>Comment</key>
+				<string>INIT: OINIT to ZINI</string>
+				<key>Count</key>
+				<integer>0</integer>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				FEcaT0lOSQ==
+				</data>
+				<key>Limit</key>
+				<integer>0</integer>
+				<key>Mask</key>
+				<data>
+				</data>
+				<key>OemTableId</key>
+				<data>
+				</data>
+				<key>Replace</key>
+				<data>
+				FEcaWklOSQ==
+				</data>
+				<key>ReplaceMask</key>
+				<data>
+				</data>
+				<key>Skip</key>
+				<integer>0</integer>
+				<key>TableLength</key>
+				<integer>0</integer>
+				<key>TableSignature</key>
+				<data>
+				RFNEVA==
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Battery: BAT0 to BATX</string>
+				<key>Count</key>
+				<integer>0</integer>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				hkJBVDA=
+				</data>
+				<key>Limit</key>
+				<integer>0</integer>
+				<key>Mask</key>
+				<data>
+				</data>
+				<key>OemTableId</key>
+				<data>
+				</data>
+				<key>Replace</key>
+				<data>
+				hkJBVFg=
+				</data>
+				<key>ReplaceMask</key>
+				<data>
+				</data>
+				<key>Skip</key>
+				<integer>0</integer>
+				<key>TableLength</key>
+				<integer>0</integer>
+				<key>TableSignature</key>
+				<data>
+				RFNEVA==
+				</data>
+			</dict>
 			<dict>
 				<key>Comment</key>
 				<string>Battery: Change HWAC to XWAC EC reads</string>
@@ -183,7 +245,7 @@
 				<true/>
 				<key>Find</key>
 				<data>
-				BkdQUlcCcA==
+				R1BSVwI=
 				</data>
 				<key>Limit</key>
 				<integer>0</integer>
@@ -195,7 +257,7 @@
 				</data>
 				<key>Replace</key>
 				<data>
-				BlpQUlcCcA==
+				WlBSVwI=
 				</data>
 				<key>ReplaceMask</key>
 				<data>
@@ -246,14 +308,14 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>XHC1: Notify(XHC_, 0x02) to XHC1</string>
+				<string>S3 Sleep: _PTS to ZPTS</string>
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
 				<data>
-				hlhIQ18K
+				X1BUUw==
 				</data>
 				<key>Limit</key>
 				<integer>0</integer>
@@ -265,42 +327,7 @@
 				</data>
 				<key>Replace</key>
 				<data>
-				hlhIQzEK
-				</data>
-				<key>ReplaceMask</key>
-				<data>
-				</data>
-				<key>Skip</key>
-				<integer>0</integer>
-				<key>TableLength</key>
-				<integer>0</integer>
-				<key>TableSignature</key>
-				<data>
-				RFNEVA==
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Thunderbolt 3:  _L27 to XL27</string>
-				<key>Count</key>
-				<integer>0</integer>
-				<key>Enabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				X0wyNw==
-				</data>
-				<key>Limit</key>
-				<integer>0</integer>
-				<key>Mask</key>
-				<data>
-				</data>
-				<key>OemTableId</key>
-				<data>
-				</data>
-				<key>Replace</key>
-				<data>
-				WEwyNw==
+				WlBUUw==
 				</data>
 				<key>ReplaceMask</key>
 				<data>
@@ -388,41 +415,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Thunderbolt 3: _L6F to XL6F (Thunderbolt 3 Hotplug GPE)</string>
-				<key>Count</key>
-				<integer>0</integer>
-				<key>Enabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				X0w2Rg==
-				</data>
-				<key>Limit</key>
-				<integer>0</integer>
-				<key>Mask</key>
-				<data>
-				</data>
-				<key>OemTableId</key>
-				<data>
-				</data>
-				<key>Replace</key>
-				<data>
-				WEw2Rg==
-				</data>
-				<key>ReplaceMask</key>
-				<data>
-				</data>
-				<key>Skip</key>
-				<integer>0</integer>
-				<key>TableLength</key>
-				<integer>0</integer>
-				<key>TableSignature</key>
-				<data>
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Thunderbolt 3: RP09._INI to RP09.XINI for ICM disable (ThunderboltReset.kext)</string>
+				<string>Thunderbolt 3: RP09._INI to RP09.XINI for ICM disable</string>
 				<key>Count</key>
 				<integer>1</integer>
 				<key>Enabled</key>
@@ -456,14 +449,14 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Thunderbolt 3: _PTS to ZPTS(1,N)</string>
+				<string>Thunderbolt 3: NTFY to XTFY</string>
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
 				<data>
-				X1BUUwE=
+				FENHTlRGWQk=
 				</data>
 				<key>Limit</key>
 				<integer>0</integer>
@@ -475,7 +468,112 @@
 				</data>
 				<key>Replace</key>
 				<data>
-				WlBUUwE=
+				FENHWFRGWQk=
+				</data>
+				<key>ReplaceMask</key>
+				<data>
+				</data>
+				<key>Skip</key>
+				<integer>0</integer>
+				<key>TableLength</key>
+				<integer>0</integer>
+				<key>TableSignature</key>
+				<data>
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>XHC1: _UPC to XUPC</string>
+				<key>Count</key>
+				<integer>0</integer>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				X1VQQw==
+				</data>
+				<key>Limit</key>
+				<integer>0</integer>
+				<key>Mask</key>
+				<data>
+				</data>
+				<key>OemTableId</key>
+				<data>
+				UHJvalNzZHQ=
+				</data>
+				<key>Replace</key>
+				<data>
+				WFVQQw==
+				</data>
+				<key>ReplaceMask</key>
+				<data>
+				</data>
+				<key>Skip</key>
+				<integer>0</integer>
+				<key>TableLength</key>
+				<integer>6103</integer>
+				<key>TableSignature</key>
+				<data>
+				U1NEVA==
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>XHC1: _PS0 to XPS0</string>
+				<key>Count</key>
+				<integer>0</integer>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				FEIQX1BTMAg=
+				</data>
+				<key>Limit</key>
+				<integer>0</integer>
+				<key>Mask</key>
+				<data>
+				</data>
+				<key>OemTableId</key>
+				<data>
+				</data>
+				<key>Replace</key>
+				<data>
+				FEIQWFBTMAg=
+				</data>
+				<key>ReplaceMask</key>
+				<data>
+				</data>
+				<key>Skip</key>
+				<integer>0</integer>
+				<key>TableLength</key>
+				<integer>0</integer>
+				<key>TableSignature</key>
+				<data>
+				RFNEVA==
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>XHC1: _PS3 to XPS3</string>
+				<key>Count</key>
+				<integer>0</integer>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				FEY/X1BTMwg=
+				</data>
+				<key>Limit</key>
+				<integer>0</integer>
+				<key>Mask</key>
+				<data>
+				</data>
+				<key>OemTableId</key>
+				<data>
+				</data>
+				<key>Replace</key>
+				<data>
+				FEY/WFBTMwg=
 				</data>
 				<key>ReplaceMask</key>
 				<data>
@@ -550,22 +648,58 @@
 	<dict>
 		<key>Add</key>
 		<dict>
+			<key>PciRoot(0x0)/Pci(0x14,0x0)</key>
+			<dict>
+				<key>acpi-wake-type</key>
+				<data>
+				AQAAAA==
+				</data>
+				<key>device_type</key>
+				<string>USB controller</string>
+				<key>model</key>
+				<string>Sunrise Point-LP USB 3.0 xHCI Controller</string>
+			</dict>
+			<key>PciRoot(0x0)/Pci(0x1C,0x0)</key>
+			<dict>
+				<key>device_type</key>
+				<string>PCI bridge</string>
+				<key>model</key>
+				<string>Sunrise Point-LP PCI Express Root Port #1</string>
+				<key>reg-ltrovr</key>
+				<data>
+				AAQAAAAAAAA=
+				</data>
+			</dict>
+			<key>PciRoot(0x0)/Pci(0x1C,0x4)</key>
+			<dict>
+				<key>device_type</key>
+				<string>PCI bridge</string>
+				<key>model</key>
+				<string>Sunrise Point-LP PCI Express Root Port #5</string>
+				<key>reg-ltrovr</key>
+				<data>
+				AAQAAAAAAAA=
+				</data>
+			</dict>
+			<key>PciRoot(0x0)/Pci(0x1D,0x0)</key>
+			<dict>
+				<key>device_type</key>
+				<string>PCI bridge</string>
+				<key>model</key>
+				<string>Sunrise Point-LP PCI Express Root Port #9</string>
+				<key>reg-ltrovr</key>
+				<data>
+				AAQAAAAAAAA=
+				</data>
+			</dict>
 			<key>PciRoot(0x0)/Pci(0x1D,0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)</key>
 			<dict>
 				<key>ThunderboltUUID</key>
 				<data>
 				bYT/DabNYl2Vq0VgT/Xr3w==
 				</data>
-				<key>built-in</key>
-				<data>
-				AA==
-				</data>
 				<key>device_type</key>
-				<string>Thunderbolt 3 Controller</string>
-				<key>linkDetails</key>
-				<data>
-				CAAAAAMAAAA=
-				</data>
+				<string>System peripheral</string>
 				<key>model</key>
 				<string>JHL6540 Thunderbolt 3 NHI (C step) [Alpine Ridge 4C 2016]</string>
 			</dict>
@@ -1041,24 +1175,6 @@
 				<key>Arch</key>
 				<string>x86_64</string>
 				<key>BundlePath</key>
-				<string>ThunderboltReset.kext</string>
-				<key>Comment</key>
-				<string></string>
-				<key>Enabled</key>
-				<true/>
-				<key>ExecutablePath</key>
-				<string>Contents/MacOS/ThunderboltReset</string>
-				<key>MaxKernel</key>
-				<string></string>
-				<key>MinKernel</key>
-				<string></string>
-				<key>PlistPath</key>
-				<string>Contents/Info.plist</string>
-			</dict>
-			<dict>
-				<key>Arch</key>
-				<string>x86_64</string>
-				<key>BundlePath</key>
 				<string>RTCMemoryFixup.kext</string>
 				<key>Comment</key>
 				<string>For support of Hibernation Mode 25</string>
@@ -1337,6 +1453,8 @@
 	<dict>
 		<key>Automatic</key>
 		<true/>
+		<key>CustomMemory</key>
+		<false/>
 		<key>Generic</key>
 		<dict>
 			<key>AdviseWindows</key>

@@ -35,35 +35,13 @@
 - See current available patches in `/patches/Internal Displays/`, merge them with `config.plist`
 - If a patch is not yet created for your display model. Please see [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60) to create your own EDID override. Please create a pull request to add your EDID override for different displays.
 
-> ## Thunderbolt 3 Hotplug a.k.a The Big Boss (Work in Progress):
+> ## Thunderbolt 3 Hotplug
 
-Summary, TB3 hotplug works perfectly, but with some caveats:
-- Firstly, refer to [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) for BIOS configurations having to do with TB3 hotplug.
-- `Thunderbolt BIOS Assist` needs to be disabled which raises idle CPU power consumption to 2W as opposed to ~0.8W with the option enabled.
-- See the ongoing issue/discussion [Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24)
-
-With those done, there are two scenarios:
-- You want to use TB3 hotplug on both macOS and another OS, such as Linux or Windows. In this case, stick with the current TB3 hotplug setup in this repo. As my repo is currently designed around compatibility with other OSes as I need Windows for work.
-- You only need TB3 hotplug on macOS. In this case, it is possible to reflash the Thunderbolt controller chip on the machine with a modded firmware designed to allow native Thunderbolt interfacing with macOS. See [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md).
-
-With Thunderbolt 3 Hotplug, these are the possible scenarios:
-- **Modded Controller and BIOS:**
-  - No additional kexts or drivers needed. (You can remove TB3 related kexts and drivers from your EFI)
-  - TB3 Hotplug will work natively in macOS.
-  - TB3 Hotplug will NOT work in Windows or other OS'es.
-- **Modded Controller and Vanilla BIOS:**
-  - No additional kexts or drivers needed. (You can remove TB3 related kexts and drivers from your EFI)
-  - TB3 Hotplug will work natively in macOS.
-  - TB3 Hotplug will NOT work in Windows or other OS'es.
-- **Vanilla Controller and Modded BIOS:**
-  - Use `ThunderboltReset.kext`
-  - Use modded BIOS to force power on `PR09` and `PR05`
-- **Vanilla Controller and BIOS:**
-  - Use `ThunderboltReset.kext` and `TbtForcePower.efi`
-  - Hotplug will not work on Power port (`PR05`)
-
-- Regardless, current TB3 hotplug implementations are not perfect. Current conflicts include getting USB 3.1 gen2, pm, tb - in osx + win all working at the same time.
-For a more detailed, and better explaination, refer to [osy86's Thunderbolt Hotplug Docs](https://github.com/osy86/HaC-Mini/tree/master/details)
+- Native-like integration with macOS in System Report without the need of flashing a modded firmware. Thank you @benbender
+- Please make sure of these settings in BIOS:
+  -  Thunderbolt BIOS Assist Mode `Disabled`
+  -  Thunderbolt(TM) Device `Disabled`   
+- USB 3.1 Gen2 hotplug still WIP.
 
 > ## Keyboard:
 

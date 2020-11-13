@@ -1,8 +1,8 @@
 ﻿# macOS on Thinkpad X1 Carbon 6th Generation, Model 20KH\*
 
-[![macOS](https://img.shields.io/badge/macOS-Catalina-yellow.svg)](https://www.apple.com/macos/catalina/)
-[![version](https://img.shields.io/badge/10.15.7-yellow)](https://support.apple.com/en-us/HT210642)
-[![BIOS](https://img.shields.io/badge/BIOS-1.45-blue)](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-6th-gen-type-20kh-20kg/downloads/driver-list/component?name=BIOS%2FUEFI)
+[![macOS](https://img.shields.io/badge/macOS-Big_Sur-yellow.svg)](https://www.apple.com/macos/catalina/)
+[![version](https://img.shields.io/badge/11.0.1-yellow)](https://support.apple.com/en-us/HT210642)
+[![BIOS](https://img.shields.io/badge/BIOS-1.50-blue)](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-6th-gen-type-20kh-20kg/downloads/driver-list/component?name=BIOS%2FUEFI)
 [![MODEL](https://img.shields.io/badge/Model-20KH*-blue)](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf)
 [![OpenCore](https://img.shields.io/badge/OpenCore-0.6.3-green)](https://github.com/acidanthera/OpenCorePkg)
 [![LICENSE](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
@@ -25,52 +25,23 @@
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-> ### 2020-11-3
+> ### 2020-11-13
 
 #### Changed
 
-- OC to 0.6.3 and upgrade various Acidanthera kexts
-- Restructured docs: depricated legacy things and combined duplicates.
-- `YogaSMC` is now the preferred method to handle Fn keys instead of ThinkpadAssisstant.
-  - Note that `YogaSMC` is still in its infancy, so you still prefer ThinkpadAssistant, use `SSDT-Keyboard-Legacy.dsl` and `/patches/OpenCore Patches/ Keyboard-Legacy.plist`
-  - Thank you @zhen-zen for the great kext and app.
-- Updated `config.plsit`:
-  - Removed depricated ACPI renames in accordance with new ACPI patches.
-  - Added `Arch` value to each kext entry in accordance with new OpenCore doc.
-  - Added Thunderbolt 3 Device Properties.
-  - Added `ExtendBTFeatureFlags` value to replace `BT4LEContinuityFixup`
-- Reorganized subdirectories within `/patches/` to make things easier to find and understand.
-- Renamed `3_README-POSTinstallation.md` to `SUMMARY.md` since it's not really a step but more of an overview of what patches what.
-- More readble and better writing of `SSDT-Keyboard`
-- New `SSDT-PNLF` to accomodate `AppleBacklightSmoother.kext`
-- New battery patch `SSDT-Battery` that fixes accesses to 16byte-EC-field HWAC (Issue #82).
-- `SSDT-Sleep` is an all-in-one sleep patch over `SSDT-PTSWAK`, `SSDT-GPRW`, `SSDT-EXT*`
-  - It is no longer necessary to set sleep mode to `Linux` in BIOS as it is now indepently set by `SSDT-Sleep`
-- `If (_OSI ("Darwin"))` and `SSDT-DTPG` are now replaced in favor of `SSDT-Darwin` and `OSDW`, just like in genuine Macs.
-- Removed `USBPorts.kext` in favor of patching/mapping via ACPI with `SSDT-XHC1`, `SSDT-XHC2`, and `SSDT-USBX`
-- `README.md`:
-  - Turned different sections into menus for better readability.
-  - Merged `3_README-POSTinstallation.md` into the `SUMMARY` section.
-- Set `HibernateMode` to `NVRAM` instead of `Auto`
-
-#### Added
-
-- `update.sh` script to automatically build and replace all ACPI patches
-- `SSDT-HWAC` to patch access to 16byte-EC-field HWAC
-- `SSDT-EC` to patch embedded controller for use with `YogaSMC`
-- `SSDT-Debug`, `SSDT-HOOKS`, and `Debug.plist` for debugging if needed
-- `SSDT-INIT` to configure system values: `HPET`, `DYTC`, and `DPTF`
-- `YogaSMC.kext` to interface with the device's EC. Make sure to also install the [app and pref pane](https://github.com/zhen-zen/YogaSMC/releases).
-- `AppleBacklightSmoother.kext` is just as its name implies.
-- `BrightnessKeys.kext` to handle Fn keys with ACPI renames.
-- Documentation of modding the Thunderbolt 3 controller.
+- Upgraded to Big Sur
+- Upgraded to BIOS-v1.50 and added corresponding ACPI dump.
+- Upgraded `YogaSMC` to stable build `1.3.0`
+- Compatibiltity and improvements on `SSDT-Battery`. Thanks @benbender
+- Experimental TB3 patch by @benbender:
+  - Complete hotplug and power management without modded TB3 controller firmware
+  - NOTE: Brokenb USB 3.1 Gen2 hotplug still, but everything else is amazing!
+  - Everyone thanks @benbender again! This would not have been possible without his hard work and research.
 
 #### Removed
-
-- `SSDT-HPET`, similar to genuine Macs, HPET is now disabled within `SSDT-INIT`
-
-#### Remark
-- A large of these changes are due to the hardwork of [@benbender](https://github.com/benbender), who debugged and authored many of the new ACPI patches. Thank you for your hard work!
+- Deprecated legacy keyboard patches. `YogaSMC` is now recommended and preferred.
+- `TbtForcePower.efi` as it is no longer needed.
+- `ThunderboltReset.kext` has it is no longer needed.
 
 <details>
 <summary><strong> SUMMARY </strong></summary>
@@ -112,13 +83,9 @@
 | 4K UHD output via HDMI/ DisplayPort **(Modded BIOS)**  | ✅ | See `DMVT Pre-Allocated` to `64M`  | See [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) for information about modding the BIOS.           |
 | 4K UHD output via HDMI/ DisplayPort **(Vanilla BIOS)** | ✅ | See `/patches/OpenCore Patches/4K-Output-wo-BIOSmod.plist`     | -           |
 | USB 2.0, USB 3.0, and Micro SD Card Reader | ✅ | `SSDT-XHC1.aml`    | -     |
-| USB 3.1                                    | ⚠️ | `SSDT-XHC2.aml`    | -     |
+| USB 3.1                                    | ⚠️ | `SSDT-XHC2.aml`    | Hotplug WIP     |
 | USB Power Properties in macOS              | ✅ | `SSDT-USBX.aml`    | -     |
-| Thunderbolt 3 **(Cold Boot)**                  | ✅ | `SSDT-TB3.aml`,    | TB3 device must be plugged in before boot.   |
-| Thunderbolt 3 Hotplug **(Modded Controller and BIOS)**  | ⚠️ | `SSDT-TB3.aml`    | [3_README-other.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-other.md), [Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24#issuecomment-603183002) |
-| Thunderbolt 3 Hotplug **(Modded Controller and Vanilla BIOS)**  | ⚠️ | `SSDT-TB3.aml` | [3_README-other.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-other.md),[Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24) |
-| Thunderbolt 3 Hotplug **(Vanilla Controller and Modded BIOS)**  | ⚠️ | `SSDT-TB3.aml`, `ThunderboltReset.kext`, `GPIO3 Force Pwr` and `GPIO3 Force Pwr for PR05` checked in BIOS | [3_README-other.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-other.md),[Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24)   |
-| Thunderbolt 3 Hotplug **(Vanilla Controller and BIOS)** | ⚠️ | `SSDT-TB3.aml`, `ThunderboltReset.kext`, and `TbtForcePower.efi`    | [3_README-other.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-other.md),[Issue #24](https://github.com/tylernguyen/x1c6-hackintosh/issues/24)   |
+| Thunderbolt 3 Hotplug                      | ✅ | `SSDT-TB3.aml`     | Native interface within System Report   |
 
 > ### Display, TrackPad, TrackPoint, and Keyboard
 | Feature                              | Status | Dependency          | Remarks                      |
@@ -126,9 +93,9 @@
 | Brightness Adjustments | ✅  | `WhateverGreen.kext`, `SSDT-PNLF.aml`, `AppleBacklightSmoother.kext`, and `BrightnessKeys.kext`| `AppleBacklightSmoother.kext` is optional for smoother birghtness adjustments |
 | HiDPI _(Optional)_     | ✅  | [xzhih/one-key-hidpi](https://github.com/xzhih/one-key-hidpi)   | Scaling issues post-sleep fixed with AAPL, ig-platform `BAAnWQ==`     |
 | TrackPoint             | ✅  | `VoodooPS2Controller.kext`                                      | -       |
-| TrackPad               | ✅  | `VoodooPS2Controller.kext` or `VoodooSMBus.kext` and `VoodooRMI.kext`     | I prefer `VoodooRMI.kext` so that is the repository default. |
+| TrackPad               | ✅  | `VoodooPS2Controller.kext` or `VoodooSMBus.kext` and `VoodooRMI.kext`     | `VoodooRMI.kext` is recommended and preferred over `VoodooPS2`. |
 | Built-in Keyboard      | ✅  | `VoodooPS2Controller.kext` | Optimizations recommended, see [`docs/3_README-other.md`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-other.md) |
-| Multimedia Keys        | ✅  | `BrightnessKeys.kext` and [YogaSMC](https://github.com/zhen-zen/YogaSMC) or [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant) with legacy patches | YogaSMC is the repo default, `SSDT-Keyboard-Legacy.aml`, `patches/OpenCore Patches/ Keyboard-Legacy.plist` if you want to use [ThinkpadAssistant](https://github.com/MSzturc/ThinkpadAssistant) instead  | 
+| Multimedia Keys        | ✅  | `BrightnessKeys.kext` and [YogaSMC](https://github.com/zhen-zen/YogaSMC) | `YogaSMC` is recommended and preferred over ThinkpadAssisstant  | 
 
 > ### macOS Continuity
 | Feature                              | Status | Dependency          | Remarks                      |

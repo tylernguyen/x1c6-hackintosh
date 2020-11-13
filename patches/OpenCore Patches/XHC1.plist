@@ -8,14 +8,50 @@
 		<array>
 			<dict>
 				<key>Comment</key>
-				<string>XHC1: Notify(XHC_, 0x02) to XHC1 (Fix Restart on Shutdown)</string>
+				<string>XHC1: _UPC to XUPC</string>
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
 				<data>
-				hlhIQ18K
+				X1VQQw==
+				</data>
+				<key>Limit</key>
+				<integer>0</integer>
+				<key>Mask</key>
+				<data>
+				</data>
+				<key>OemTableId</key>
+				<data>
+				UHJvalNzZHQ=
+				</data>
+				<key>Replace</key>
+				<data>
+				WFVQQw==
+				</data>
+				<key>ReplaceMask</key>
+				<data>
+				</data>
+				<key>Skip</key>
+				<integer>0</integer>
+				<key>TableLength</key>
+				<integer>6103</integer>
+				<key>TableSignature</key>
+				<data>
+				U1NEVA==
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>XHC1: _PS0 to XPS0</string>
+				<key>Count</key>
+				<integer>0</integer>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				FEIQX1BTMAg=
 				</data>
 				<key>Limit</key>
 				<integer>0</integer>
@@ -27,7 +63,42 @@
 				</data>
 				<key>Replace</key>
 				<data>
-				hlhIQzEK
+				FEIQWFBTMAg=
+				</data>
+				<key>ReplaceMask</key>
+				<data>
+				</data>
+				<key>Skip</key>
+				<integer>0</integer>
+				<key>TableLength</key>
+				<integer>0</integer>
+				<key>TableSignature</key>
+				<data>
+				RFNEVA==
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>XHC1: _PS3 to XPS3</string>
+				<key>Count</key>
+				<integer>0</integer>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				FEY/X1BTMwg=
+				</data>
+				<key>Limit</key>
+				<integer>0</integer>
+				<key>Mask</key>
+				<data>
+				</data>
+				<key>OemTableId</key>
+				<data>
+				</data>
+				<key>Replace</key>
+				<data>
+				FEY/WFBTMwg=
 				</data>
 				<key>ReplaceMask</key>
 				<data>
