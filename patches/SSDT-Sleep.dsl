@@ -1,4 +1,6 @@
-/*
+/**
+ * Depends on /patches/OpenCore Patches/ Sleep.plist
+ *
  * # Comprehensive Sleep-patches for modern thinkpads.
  *
  * ## Abstract
@@ -8,6 +10,7 @@
  * It immitates the behaviour of a macbookpro14,1 which is perfectly adequate for modern, kabylake-based Thinkpads.
  *
  * For X1C6 its perfectly possible to set SleepType=Windows in BIOS while getting perfect S3-Standby in OSX. 
+ * That's the recommended setting as it enables "modern standby" in Windows for dual-boot-systems.
  *
  * With this SSDT it is perfectly possible to have ACPI-sleepstates S0 (DeepIde), S3 (Standby) & S4 (Hibernation) working.
  * So generally hibernatemode 0, 3 & 25 in OSX' terms are possible. There might be smaller bugs and hickups though. 
@@ -40,26 +43,27 @@
  * Please remove every GPRW-, Name6x-, PTSWAK-, FixShutdown-, WakeScren-Patches or similar prior using.
  * If you adapt this patches to other models, check the occurence of the used variables and methods on your own DSDT beforehand.
  *
- * Depends on /patches/OpenCore Patches/ Sleep.plist
+ *
  */
 
-DefinitionBlock ("", "SSDT", 1, "tyler", "_Sleep", 0x00002000)
+DefinitionBlock ("", "SSDT", 2, "tyler", "_Sleep", 0x00001000)
 {
     // Common utils from SSDT-Darwin.dsl
     External (DTGP, MethodObj) // 5 Arguments
     External (OSDW, MethodObj) // 0 Arguments
 
-
     // Sleep-config from BIOS
     External (S0ID, FieldUnitObj) // S0 enabled
     External (STY0, FieldUnitObj) // S3 Enabled?
-    
+
     // Package to signal to OS S3-capability. We'll add it if missing.
     External (SS3, FieldUnitObj) // S3 Enabled?    
+    External (_S3) 
 
+    // This make OSX independent of the BIOS-sleep-setting on X1C6 and force-enable S3
     If (OSDW ())
     {
-        Debug = "Enabling comprehensive S3-patching..."
+        Debug = "SLEEP: Enabling comprehensive S3-patching..."
 
         // Enable S3
         //   0x00 enables S3
@@ -85,128 +89,228 @@ DefinitionBlock ("", "SSDT", 1, "tyler", "_Sleep", 0x00002000)
     }
 
 
+    // SLTP named on OSX but already taken on X1C6. Therefor named XLTP.
+    Name (XLTP, Zero)  
+
+    // Save sleep-state in XLTP on transition. Like a genuine Mac.
+    Method (_TTS, 1, NotSerialized)  // _TTS: Transition To State
+    {
+        Debug = Concatenate ("SLEEP:_TTS() called with Arg0 = ", Arg0)
+
+        XLTP = Arg0
+    }
+
+
+    // @SEE https://github.com/tianocore/edk2-platforms/blob/master/Platform/Intel/KabylakeOpenBoardPkg/Acpi/BoardAcpiDxe/Dsdt/Gpe.asl
+    // @SEE https://pikeralpha.wordpress.com/2017/01/12/debugging-sleep-issues/
     Scope (_GPE)
     {
         // This tells xnu to evaluate _GPE.Lxx methods on resume
         Method (LXEN, 0, NotSerialized)
         {
-            Debug = "LXEN()"
-
             Return (One)
         }
     }
 
+    External (_SB.PCI0.LPCB, DeviceObj)
+    External (_SB.PCI0.LPCB.EC, DeviceObj)
+    External (_SB.LID, DeviceObj)
 
     External (_SB.PCI0.LPCB.EC.AC._PSR, MethodObj) // 0 Arguments
-    External (_SB.PCI0.LPCB.EC._Q2A, MethodObj) // 0 Arguments
-    External (_SB.LID._LID, MethodObj) // 0 Arguments
+    External (_SB.PCI0.RP09.UPSB.LSTX, MethodObj) // 2 Arguments
+    External (_SB.PCI0.LPCB.EC.LED, MethodObj) // 2 Arguments
+    External (_SB.PCI0.XHC.USBM, MethodObj) // 0 Arguments
     External (ZPRW, MethodObj) // 2 ARguments
+    External (ZPTS, MethodObj) // 1 Arguments
     External (ZWAK, MethodObj) // 1 Arguments
+
+    External (_SB.PCI0.XHC.PMEE, FieldUnitObj)
+    External (_SB.PCI0.XDCI.PMEE, FieldUnitObj)
+    External (_SB.PCI0.HDAS.PMEE, FieldUnitObj)
+    External (_SB.PCI0.GLAN.PMEE, FieldUnitObj)
+    External (_SB.SCGE, FieldUnitObj)
 
     External (_SB.PCI0.LPCB.EC.HPLD, FieldUnitObj)
     External (_SB.PCI0.GFX0.CLID, FieldUnitObj)
     External (LIDS, FieldUnitObj)
     External (PWRS, FieldUnitObj)
-
-    // SLTP named on OSX but already taken on X1C6. Therefor named XLTP.
-    Name (XLTP, Zero)  
-
-    // Save sleep-state in SLTP on transition. Like a genuine Mac.
-    Method (_TTS, 1, NotSerialized)  // _TTS: Transition To State
-    {
-        Debug = "_TTS() called with Arg0:"
-        Debug = Arg0
-
-        XLTP = Arg0
-    }
+    External (TBTS, FieldUnitObj)
 
     Scope (\)
     {
+        // Fix sleep
+        Method (SPTS, 0, NotSerialized)
+        {
+            Debug = "SLEEP:SPTS"
+
+            If (\LIDS != \_SB.PCI0.LPCB.EC.HPLD)
+            {
+                Debug = "SLEEP:SPTS - lid-state unsync."
+
+                \LIDS = \_SB.PCI0.LPCB.EC.HPLD
+                \_SB.PCI0.GFX0.CLID = LIDS
+            }
+
+            // Force-update LEDs, mainly used in ACPI-S0
+            \_SB.PCI0.LPCB.EC.LED (0x07, 0xA0)
+            \_SB.PCI0.LPCB.EC.LED (0x00, 0xA0)
+            \_SB.PCI0.LPCB.EC.LED (0x0A, 0xA0)
+        }
+
+        // Fix wake
+        Method (SWAK, 0, NotSerialized)
+        {
+            Debug = "SLEEP:SWAK"
+
+            If (\LIDS != \_SB.PCI0.LPCB.EC.HPLD)
+            {
+                Debug = "SLEEP:SWAK - lid-state unsync."
+
+                \LIDS = \_SB.PCI0.LPCB.EC.HPLD
+                \_SB.PCI0.GFX0.CLID = LIDS
+            }
+
+            // Wake screen on wake
+            Notify (\_SB.LID, 0x80)
+
+            // Force-update LEDs, just to be sure ;)
+            \_SB.PCI0.LPCB.EC.LED (0x00, 0x80)
+            \_SB.PCI0.LPCB.EC.LED (0x0A, 0x80)
+            \_SB.PCI0.LPCB.EC.LED (0x07, 0x80)
+
+            // Update ac-state
+            \PWRS = \_SB.PCI0.LPCB.EC.AC._PSR ()
+
+            // DYTC (0000000000000002)
+
+            \_SB.SCGE = One
+        }
+
+
+        If (CondRefOf (\ZPTS))
+        {
+            Method (_PTS, 1, NotSerialized)  // _PTS: Prepare To Sleep
+            {
+                Debug = Concatenate ("SLEEP:_PTS called - Arg0 = ", Arg0)
+
+                // On sleep
+                If (OSDW () && (Arg0 < 0x05))
+                {
+                    SPTS ()
+                }
+
+                ZPTS (Arg0)
+
+                // On shutdown
+                If (OSDW () && (Arg0 == 0x05))
+                {
+                    If (CondRefOf (\_SB.PCI0.XHC.PMEE))
+                    {
+                        \_SB.PCI0.XHC.PMEE = Zero
+                    }
+
+                    If (CondRefOf (\_SB.PCI0.XDCI.PMEE))
+                    {
+                        \_SB.PCI0.XDCI.PMEE = Zero
+                    }
+
+                    If (CondRefOf (\_SB.PCI0.GLAN.PMEE))
+                    {
+                        \_SB.PCI0.GLAN.PMEE = Zero
+                    }
+
+                    If (CondRefOf (\_SB.PCI0.HDAS.PMEE))
+                    {
+                        \_SB.PCI0.HDAS.PMEE = Zero
+                    }
+
+                    If (CondRefOf (\_SB.PCI0.XHC.USBM))
+                    {
+                        \_SB.PCI0.XHC.USBM ()
+                    }
+
+                    If (CondRefOf (\_SB.PCI0.RP09.UPSB.LSTX))
+                    {
+                        Debug = "SLEEP:_PTS: Call TB-LSTX"
+                        \_SB.PCI0.RP09.UPSB.LSTX (Zero, One)
+                        \_SB.PCI0.RP09.UPSB.LSTX (One, One)
+                    }
+                }
+            }
+        }
+
+        If (CondRefOf (\ZWAK))
+        {
+            // Patch _WAK to fire missing LID-Open event and update AC-state
+            Method (_WAK, 1, Serialized)
+            {
+                Debug = Concatenate ("SLEEP:_WAK - called Arg0: ", Arg0)
+
+                // On Wake
+                If (OSDW () && (Arg0 < 0x05))
+                {
+                    SWAK ()
+                }
+
+                Local0 = ZWAK(Arg0)
+
+                Return (Local0)
+            }
+        }
+
         // Patch _PRW-returns to match the original as closely as possible
-        // and remove instant wakeups and similar sleep-probs
-        Method (GPRW, 2, NotSerialized)
+        // and should remove instant wakeups and similar sleep-probs
+        Method (GPRW, 2, Serialized)
         {
             If (OSDW ())
             {
                 Local0 = Package (0x02)
                 {
-                    Zero, 
-                    Zero
+                    0x00, 
+                    0x00
                 }
 
-                Local0[Zero] = Arg0
+                Local0[0x00] = Arg0
 
-                If (Arg1 > 0x04)
+                If (Arg1 >= 0x04)
                 {
-                    Local0[One] = 0x04
+                    Debug = Concatenate ("SLEEP: GPRW patched to 0x00: ", Arg1)
+
+                    Local0[0x01] = 0x00
                 }
 
                 Return (Local0)
             }
-            Else 
+
+            Return (ZPRW (Arg0, Arg1))
+        }
+    }
+
+
+    // Handles sleep/wake on ACPI-S0-DeepIdle
+    Scope (_SB.PCI0.LPCB)
+    {
+        Method (_PS0, 0, Serialized)
+        {
+            If (OSDW () && S0ID == One)
             {
-                Return (ZPRW (Arg0, Arg1))
+                \SWAK ()
             }
         }
 
-        // Patch _WAK to fire missing LID-Open event and update AC-state
-        Method (_WAK, 1, Serialized)
+        Method (_PS3, 0, Serialized)
         {
-            Debug = "_WAK start: Arg0"
-            Debug = Arg0
-
-            // Save old lid-state
-            Local1 = \LIDS
-
-            Debug = "_WAK - old lid state LIDS: "
-            Debug = \LIDS
-
-            Local0 = ZWAK(Arg0)
-
-            If (OSDW ())
+            If (OSDW () && S0ID == One)
             {
-                // Update lid-state
-                \LIDS = \_SB.PCI0.LPCB.EC.HPLD
-                \_SB.PCI0.GFX0.CLID = LIDS
-
-                Debug = "_WAK - new lid state LIDS: "
-                Debug = \LIDS
-
-                // Fire missing lid-open event if lid was closed before. 
-                // Also notifies LID-device and sets LEDs to the right state on wake.
-                If (Local1 == Zero)
-                {
-                    Debug = "_WAK - fire lid open-event "
-
-                    // Lid-open Event
-                    \_SB.PCI0.LPCB.EC._Q2A ()
-                }
-
-                // Update ac-state
-                \PWRS = \_SB.PCI0.LPCB.EC.AC._PSR ()
-            }
-
-            Debug = "_WAK end - return Local0: "
-            Debug = Local0
-
-            If (OSDW ())
-            {
-                Return (Package (0x02)
-                {
-                    Zero, 
-                    Zero
-                })
-            }
-            Else 
-            {
-                Return (Local0)
+                \SPTS ()
             }
         }
     }
 
+
     Scope (_SB)
     {
-        // Sync S0-state between BIOS and OS
+        // Enable ACPI-S0-DeepIdle, unused atm
         Method (LPS0, 0, NotSerialized)
         {
             If (S0ID == One)
@@ -216,75 +320,6 @@ DefinitionBlock ("", "SSDT", 1, "tyler", "_Sleep", 0x00002000)
 
             // If S0ID is enabled, enable deep-sleep in OSX. Can be set above.
             Return (S0ID)
-        }
-
-        // Adds ACPI power-button-device
-        // https://github.com/daliansky/OC-little/blob/master/06-%E6%B7%BB%E5%8A%A0%E7%BC%BA%E5%A4%B1%E7%9A%84%E9%83%A8%E4%BB%B6/SSDT-PWRB.dsl
-        Device (PWRB)
-        {
-            Name (_HID, EisaId ("PNP0C0C") /* Power Button Device */)  // _HID: Hardware ID
-
-            Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
-            {
-                Return (Zero)
-            }
-
-            Method (_STA, 0, NotSerialized)  // _STA: Status
-            {
-                If (OSDW ())
-                {
-                    Return (0x0B)
-                }
-
-                Return (Zero)
-            }
-        }
-    }
-
-    External (_SB.PCI0.LPCB.EC.AC, DeviceObj)
-    External (LWCP, FieldUnitObj)
-
-    // Patching AC-Device so that AppleACPIACAdapter-driver loads.
-    // Device named ADP1 on Mac
-    // See https://github.com/khronokernel/DarwinDumped/blob/b6d91cf4a5bdf1d4860add87cf6464839b92d5bb/MacBookPro/MacBookPro14%2C1/ACPI%20Tables/DSL/DSDT.dsl#L7965
-    Scope (_SB.PCI0.LPCB.EC.AC)
-    {
-        // Probably not needed, for completeness
-        Name (WK00, One)
-
-        Method (SWAK, 1, NotSerialized)
-        {
-            Debug = "AC:SWAK()"
-
-            WK00 = (Arg0 & 0x03)
-
-            If (!WK00)
-            {
-                Debug = "AC:SWAK() - WK00 = One"
-                WK00 = One
-            }
-        }
-
-        // Makes AppleACPIACAdapter load
-        Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake
-        {
-            // Lid-wake control power
-            Debug = Concatenate ("AC:_PRW() - LWCP: ", LWCP)
-
-            If (OSDW () || \LWCP)
-            {
-                Return (Package (0x02)
-                {
-                    0x17, 
-                    0x04
-                })
-            }
-
-            Return (Package (0x02)
-            {
-                0x17, 
-                0x03
-            })
         }
     }
 }
