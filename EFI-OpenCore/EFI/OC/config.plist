@@ -24,6 +24,14 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
+				<string>Patch AC: Load AppleACPIACAdapter</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-AC.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
 				<string>Patch Battery</string>
 				<key>Enabled</key>
 				<true/>
