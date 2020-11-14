@@ -1,7 +1,7 @@
 ﻿# macOS on Thinkpad X1 Carbon 6th Generation, Model 20KH\*
 
-[![macOS](https://img.shields.io/badge/macOS-Big_Sur-yellow.svg)](https://www.apple.com/macos/catalina/)
-[![version](https://img.shields.io/badge/11.0.1-yellow)](https://support.apple.com/en-us/HT210642)
+[![macOS](https://img.shields.io/badge/macOS-Big_Sur-yellow.svg)](https://www.apple.com/macos/big-sur/)
+[![version](https://img.shields.io/badge/11.0.1-yellow)](https://www.apple.com/newsroom/2020/11/macos-big-sur-is-here/)
 [![BIOS](https://img.shields.io/badge/BIOS-1.50-blue)](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-6th-gen-type-20kh-20kg/downloads/driver-list/component?name=BIOS%2FUEFI)
 [![MODEL](https://img.shields.io/badge/Model-20KH*-blue)](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf)
 [![OpenCore](https://img.shields.io/badge/OpenCore-0.6.3-green)](https://github.com/acidanthera/OpenCorePkg)
@@ -25,23 +25,19 @@
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-> ### 2020-11-13
+> ### 2020-11-14
+
+#### Added
+
+- `SSDT-PWRB` to patch power button.
 
 #### Changed
 
-- Upgraded to Big Sur
-- Upgraded to BIOS-v1.50 and added corresponding ACPI dump.
-- Upgraded `YogaSMC` to stable build `1.3.0`
-- Compatibiltity and improvements on `SSDT-Battery`. Thanks @benbender
-- Experimental TB3 patch by @benbender:
-  - Complete hotplug and power management without modded TB3 controller firmware
-  - NOTE: Brokenb USB 3.1 Gen2 hotplug still, but everything else is amazing!
-  - Everyone thanks @benbender again! This would not have been possible without his hard work and research.
-
-#### Removed
-- Deprecated legacy keyboard patches. `YogaSMC` is now recommended and preferred.
-- `TbtForcePower.efi` as it is no longer needed.
-- `ThunderboltReset.kext` has it is no longer needed.
+- Parition TB3 patch into smaller, more readable chunks.
+  - `SSDT-XHC2` is also now apart of this.
+- Removed experimental stuff from `SSDT-Sleep`
+- Updated to `SSDT-Battery` to rev8, thanks @benbender
+- Updated some documenation, with more detailed documentation coming.
 
 <details>
 <summary><strong> SUMMARY </strong></summary>
@@ -51,7 +47,7 @@
 | Feature                              | Status | Dependency          | Remarks                      |
 | :----------------------------------- | ------ | ------------------- | ---------------------------- |
 | Fingerprint Reader   | ❌ | `DISABLED` in BIOS to save power if not used in other OSes.   | Linux support was only recently added    |
-| Wireless WAN   | ❌ | `DISABLED` in BIOS to save power if not used in other OSes.   | Unable to investigate as I have no need and my model did not come with WWAN. |
+| Wireless WAN         | ❌ | `DISABLED` in BIOS to save power if not used in other OSes.   | Unable to investigate as I have no need and my model did not come with WWAN. |
 
 > ### Video and Audio
 | Feature                              | Status | Dependency          | Remarks                      |
@@ -104,7 +100,7 @@
 | Continuty              | ✅     | Native with `BCM94360CS2`. `ExtendBTFeatureFlags` to `True` otherwise.       | See `/patches/Network Patches/` for specific network card.     |
 | AirDrop                | ✅     | Native with `BCM94360CS2`. `ExtendBTFeatureFlags` to `True` otherwise.       | See `/patches/Network Patches/` for specific network card.     |
 | Sidecar                | ✅     | Native with `BCM94360CS2`. `ExtendBTFeatureFlags` to `True` otherwise. iPad with >= `iPadOS 13`  | Tested with iPad Mini with iPadOS 13.1.2   |
-| FileVault | ✅ | as configured in `config.plsit` per [Dortania's Post-Install](https://dortania.github.io/OpenCore-Post-Install/universal/security/filevault.html)|  |
+| FileVault              | ✅ | as configured in `config.plsit` per [Dortania's Post-Install](https://dortania.github.io/OpenCore-Post-Install/universal/security/filevault.html)|  |
 | Time Machine           | ✅     | Native | TimeMachine only backups your Macintosh partition. Manually backup your EFI partition using another method.  |
 
 </details>
@@ -139,7 +135,7 @@
 - [MountEFI](https://github.com/corpnewt/MountEFI) to quickly mount EFI partitions.  
 - [IORegistryExplorer](https://developer.apple.com/downloads), for diagnosis.  
 - [Hackintool](https://www.insanelymac.com/forum/topic/335018-hackintool-v286/), for diagnostic ONLY, Hackintool should not be used for patching, it is outdated.
-- [SPI Programmer CH341a and SOIC8 connector](https://www.amazon.com/Organizer-Socket-Adpter-Programmer-CH341A/dp/B07R5LPTYM) are needed if you are going to mod your BIOS/TB3 controller for optimizations and a better and more native macOS experience.
+- [SPI Programmer CH341a and SOIC8 connector](https://www.amazon.com/Organizer-Socket-Adpter-Programmer-CH341A/dp/B07R5LPTYM) are needed if you are going to mod your BIOS for optimizations and a better and more native macOS experience.
 - Patience and time, especially if this is your first time Hackintosh-ing.
 
 </details> 
@@ -211,7 +207,6 @@ https://tylerspaper.com/support/
 - [@MSzturc](https://github.com/MSzturc) for adding my requested features to ThinkpadAssistant.  
 paranoidbashthot and \x for the BIOS mod to unlocked Intel Advance Menu.
 - [@zhen-zen](https://github.com/zhen-zen) for YogaSMC
-- [CaseySJ](https://www.tonymacx86.com/members/caseysj.2134452/) for the custom modded Thunderbolt 3 firmware.
 
 The greatest thank you and appreciation to the [Acidanthera](https://github.com/acidanthera) team.
 

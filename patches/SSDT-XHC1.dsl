@@ -1,6 +1,5 @@
 // Depends on /patches/OpenCore Patches/ XHC1.plist
 //
-//
 // Native ACPI-setup for the USB2/3-controller on x80-series Thinkpads
 //
 // This enables all ports to be as native as possible on OSX and only disables those devices which
@@ -63,6 +62,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
 
     Scope (\_SB)
     {
+        // kUSBPlatformProperties
         Device (USBX)
         {
             Name (_ADR, Zero)  // _ADR: Address
@@ -75,10 +75,10 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                         3000, 
                         "kUSBWakePortCurrentLimit", 
                         3000,
-                        // "kUSBSleepPowerSupply", 
-                        // 9600, 
-                        // "kUSBWakePowerSupply", 
-                        // 9600, 
+                        "kUSBSleepPowerSupply", 
+                        9600, 
+                        "kUSBWakePowerSupply", 
+                        9600, 
                     }
                 DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
                 Return (Local0)
@@ -97,50 +97,51 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
  
         Scope (PCI0.XHC_)
         {
-            Name (SDPC, Zero)
+            // Name (SDPC, Zero)
             Name (_GPE, 0x6D)  // _GPE: General Purpose Events
 
-            Name (SBAR, Zero)
-            OperationRegion (XPRX, PCI_Config, Zero, 0x0100)
-            Field (XPRX, AnyAcc, NoLock, Preserve)
-            {
-                DVIX,   16, 
-                Offset (0x40), 
-                    ,   11, 
-                SWAI,   1, 
-                Offset (0x44), 
-                    ,   12, 
-                SAIP,   2, 
-                Offset (0x48), 
-                Offset (0x50), 
-                    ,   2, 
-                STGX,   1, 
-                Offset (0x74), 
-                D03X,   2, 
-                Offset (0x75), 
-                PXEE,   1, 
-                    ,   6, 
-                PXES,   1, 
-                Offset (0xA2), 
-                    ,   2, 
-                D3HX,   1, 
-                Offset (0xA8), 
-                    ,   13, 
-                MW13,   1, 
-                MW14,   1, 
-                Offset (0xAC), 
-                Offset (0xB0), 
-                    ,   13, 
-                MB13,   1, 
-                MB14,   1, 
-                Offset (0xB4), 
-                Offset (0xD0), 
-                PR2,    32, 
-                PR2M,   32, 
-                PR3,    32, 
-                PR3M,   32
-            }
+            // Name (SBAR, Zero)
+            // OperationRegion (XPRX, PCI_Config, Zero, 0x0100)
+            // Field (XPRX, AnyAcc, NoLock, Preserve)
+            // {
+            //     DVIX,   16, 
+            //     Offset (0x40), 
+            //         ,   11, 
+            //     SWAI,   1, 
+            //     Offset (0x44), 
+            //         ,   12, 
+            //     SAIP,   2, 
+            //     Offset (0x48), 
+            //     Offset (0x50), 
+            //         ,   2, 
+            //     STGX,   1, 
+            //     Offset (0x74), 
+            //     D03X,   2, 
+            //     Offset (0x75), 
+            //     PXEE,   1, 
+            //         ,   6, 
+            //     PXES,   1, 
+            //     Offset (0xA2), 
+            //         ,   2, 
+            //     D3HX,   1, 
+            //     Offset (0xA8), 
+            //         ,   13, 
+            //     MW13,   1, 
+            //     MW14,   1, 
+            //     Offset (0xAC), 
+            //     Offset (0xB0), 
+            //         ,   13, 
+            //     MB13,   1, 
+            //     MB14,   1, 
+            //     Offset (0xB4), 
+            //     Offset (0xD0), 
+            //     PR2,    32, 
+            //     PR2M,   32, 
+            //     PR3,    32, 
+            //     PR3M,   32
+            // }
 
+            // kUSBTypeCCableDetectACPIMethodSupported
             Method (RTPC, 1, Serialized)
             {
                 Debug = Concatenate ("XHC:RTPC called with args: ", Arg0)
@@ -149,6 +150,8 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
             }
 
             /**
+             * kUSBTypeCCableDetectACPIMethod
+             *
              * Return:
              *    kUSBTypeCCableTypeNone              = 0,
              *    kUSBTypeCCableTypeUSB               = 1,
@@ -191,197 +194,197 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                 Return (Local0)
             }
 
-            Method (USBM, 0, Serialized)
-            {
-                ^D03X = Zero
-                Local1 = ^PDBM /* \_SB_.PCI0.XHC1.PDBM */
-                Local2 = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
-                ^PDBM = (Local1 | 0x02)
-                Local0 = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
-                Local0 &= 0xFFFFFFFFFFFFFFF0
-                OperationRegion (PSCA, SystemMemory, Local0, 0x0600)
-                Field (PSCA, DWordAcc, NoLock, Preserve)
-                {
-                    Offset (0x480), 
-                    PC01,   32, 
-                    Offset (0x490), 
-                    PC02,   32, 
-                    Offset (0x4A0), 
-                    PC03,   32, 
-                    Offset (0x4B0), 
-                    PC04,   32
-                }
+            // Method (USBM, 0, Serialized)
+            // {
+            //     ^D03X = Zero
+            //     Local1 = ^PDBM /* \_SB_.PCI0.XHC1.PDBM */
+            //     Local2 = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
+            //     ^PDBM = (Local1 | 0x02)
+            //     Local0 = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
+            //     Local0 &= 0xFFFFFFFFFFFFFFF0
+            //     OperationRegion (PSCA, SystemMemory, Local0, 0x0600)
+            //     Field (PSCA, DWordAcc, NoLock, Preserve)
+            //     {
+            //         Offset (0x480), 
+            //         PC01,   32, 
+            //         Offset (0x490), 
+            //         PC02,   32, 
+            //         Offset (0x4A0), 
+            //         PC03,   32, 
+            //         Offset (0x4B0), 
+            //         PC04,   32
+            //     }
 
-                Local6 = PC03 /* \_SB_.PCI0.XHC1.USBM.PC03 */
-                Local6 = (PC03 & 0xFFFFFFFFFFFFFFFD)
-                PC03 = (Local6 & 0xFFFFFFFFFFFFFDFF)
-                Sleep (0x32)
-                Local6 = PC03 /* \_SB_.PCI0.XHC1.USBM.PC03 */
-                ^PDBM &= 0xFFFFFFFFFFFFFFF9
-                ^D03X = 0x03
-                ^MEMB = Local2
-                ^PDBM = Local1
-                Return (Zero)
-            }
+            //     Local6 = PC03 /* \_SB_.PCI0.XHC1.USBM.PC03 */
+            //     Local6 = (PC03 & 0xFFFFFFFFFFFFFFFD)
+            //     PC03 = (Local6 & 0xFFFFFFFFFFFFFDFF)
+            //     Sleep (0x32)
+            //     Local6 = PC03 /* \_SB_.PCI0.XHC1.USBM.PC03 */
+            //     ^PDBM &= 0xFFFFFFFFFFFFFFF9
+            //     ^D03X = 0x03
+            //     ^MEMB = Local2
+            //     ^PDBM = Local1
+            //     Return (Zero)
+            // }
 
-            Method (_PS0, 0, Serialized)  // _PS0: Power State 0
-            {
-                If (OSDW ())
-                {
-                    Local2 = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
-                    Local1 = ^PDBM /* \_SB_.PCI0.XHC1.PDBM */
-                    ^PDBM &= 0xFFFFFFFFFFFFFFF9
-                    ^D03X = Zero
+            // Method (_PS0, 0, Serialized)  // _PS0: Power State 0
+            // {
+            //     If (OSDW ())
+            //     {
+            //         Local2 = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
+            //         Local1 = ^PDBM /* \_SB_.PCI0.XHC1.PDBM */
+            //         ^PDBM &= 0xFFFFFFFFFFFFFFF9
+            //         ^D03X = Zero
 
-                    If (SBAR == Zero)
-                    {
-                        Local7 = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
-                        Local7 &= 0xFFFFFFFFFFFFFFF0
+            //         If (SBAR == Zero)
+            //         {
+            //             Local7 = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
+            //             Local7 &= 0xFFFFFFFFFFFFFFF0
 
-                        If ((Local7 == Zero) || (Local7 == 0xFFFFFFFFFFFFFFF0))
-                        {
-                            ^MEMB = 0xFEAF0000
-                        }
-                    }
-                    Else
-                    {
-                        ^MEMB = SBAR /* \_SB_.PCI0.XHC1.SBAR */
-                    }
+            //             If ((Local7 == Zero) || (Local7 == 0xFFFFFFFFFFFFFFF0))
+            //             {
+            //                 ^MEMB = 0xFEAF0000
+            //             }
+            //         }
+            //         Else
+            //         {
+            //             ^MEMB = SBAR /* \_SB_.PCI0.XHC1.SBAR */
+            //         }
 
-                    ^PDBM = (Local1 | 0x02)
-                    Local0 = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
-                    Local0 &= 0xFFFFFFFFFFFFFFF0
+            //         ^PDBM = (Local1 | 0x02)
+            //         Local0 = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
+            //         Local0 &= 0xFFFFFFFFFFFFFFF0
 
-                    OperationRegion (MCA1, SystemMemory, Local0, 0x9000)
-                    Field (MCA1, DWordAcc, NoLock, Preserve)
-                    {
-                        Offset (0x80A4), 
-                            ,   28, 
-                        AX28,   1, 
-                        Offset (0x80C0), 
-                            ,   10, 
-                        S0IX,   1, 
-                        Offset (0x81C4), 
-                            ,   2, 
-                        CLK0,   1, 
-                            ,   3, 
-                        CLK1,   1
-                    }
+            //         OperationRegion (MCA1, SystemMemory, Local0, 0x9000)
+            //         Field (MCA1, DWordAcc, NoLock, Preserve)
+            //         {
+            //             Offset (0x80A4), 
+            //                 ,   28, 
+            //             AX28,   1, 
+            //             Offset (0x80C0), 
+            //                 ,   10, 
+            //             S0IX,   1, 
+            //             Offset (0x81C4), 
+            //                 ,   2, 
+            //             CLK0,   1, 
+            //                 ,   3, 
+            //             CLK1,   1
+            //         }
 
-                    S0IX = Zero
+            //         S0IX = Zero
 
-                    AX28 = One
-                    Stall (0x33)
-                    AX28 = Zero
-                    CLK0 = Zero
-                    CLK1 = Zero
-                    ^PDBM &= 0xFFFFFFFFFFFFFFFD
-                    ^MEMB = Local2
-                    ^PDBM = Local1
+            //         AX28 = One
+            //         Stall (0x33)
+            //         AX28 = Zero
+            //         CLK0 = Zero
+            //         CLK1 = Zero
+            //         ^PDBM &= 0xFFFFFFFFFFFFFFFD
+            //         ^MEMB = Local2
+            //         ^PDBM = Local1
 
-                    If (UWAB && (D03X == Zero))
-                    {
-                        MPMC = One
-                        Local0 = (Timer + 0x00989680)
-                        While (Timer <= Local0)
-                        {
-                            If (PMFS == Zero)
-                            {
-                                Break
-                            }
+            //         If (UWAB && (D03X == Zero))
+            //         {
+            //             MPMC = One
+            //             Local0 = (Timer + 0x00989680)
+            //             While (Timer <= Local0)
+            //             {
+            //                 If (PMFS == Zero)
+            //                 {
+            //                     Break
+            //                 }
 
-                            Sleep (0x0A)
-                        }
-                    }
-                }
-                Else
-                {
-                    // NON-OSX
-                    \_SB.PCI0.XHC_.XPS0 ()
-                }
-            }
+            //                 Sleep (0x0A)
+            //             }
+            //         }
+            //     }
+            //     Else
+            //     {
+            //         // NON-OSX
+            //         \_SB.PCI0.XHC_.XPS0 ()
+            //     }
+            // }
 
-            Method (_PS3, 0, Serialized)  // _PS3: Power State 3
-            {
-                If (OSDW ())
-                {
-                    Local1 = ^PDBM /* \_SB_.PCI0.XHC1.PDBM */
-                    Local2 = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
-                    ^PDBM &= 0xFFFFFFFFFFFFFFF9
+            // Method (_PS3, 0, Serialized)  // _PS3: Power State 3
+            // {
+            //     If (OSDW ())
+            //     {
+            //         Local1 = ^PDBM /* \_SB_.PCI0.XHC1.PDBM */
+            //         Local2 = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
+            //         ^PDBM &= 0xFFFFFFFFFFFFFFF9
 
-                    If (XLTP == Zero)
-                    {
-                        ^D03X = 0x03
-                        Stall (0x1E)
-                    }
+            //         If (XLTP == Zero)
+            //         {
+            //             ^D03X = 0x03
+            //             Stall (0x1E)
+            //         }
 
-                    ^D03X = Zero
-                    ^PDBM = (Local1 | 0x02)
-                    SBAR = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
-                    If (SBAR == Zero)
-                    {
-                        Local7 = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
-                        Local7 &= 0xFFFFFFFFFFFFFFF0
+            //         ^D03X = Zero
+            //         ^PDBM = (Local1 | 0x02)
+            //         SBAR = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
+            //         If (SBAR == Zero)
+            //         {
+            //             Local7 = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
+            //             Local7 &= 0xFFFFFFFFFFFFFFF0
 
-                        If ((Local7 == Zero) || (Local7 == 0xFFFFFFFFFFFFFFF0))
-                        {
-                            ^MEMB = 0xFEAF0000
-                        }
-                    }
+            //             If ((Local7 == Zero) || (Local7 == 0xFFFFFFFFFFFFFFF0))
+            //             {
+            //                 ^MEMB = 0xFEAF0000
+            //             }
+            //         }
 
-                    Local0 = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
-                    Local0 &= 0xFFFFFFFFFFFFFFF0
+            //         Local0 = ^MEMB /* \_SB_.PCI0.XHC1.MEMB */
+            //         Local0 &= 0xFFFFFFFFFFFFFFF0
 
-                    OperationRegion (MCA1, SystemMemory, Local0, 0x9000)
-                    Field (MCA1, DWordAcc, NoLock, Preserve)
-                    {
-                        Offset (0x80A4), 
-                            ,   28, 
-                        AX28,   1, 
-                        Offset (0x80C0), 
-                            ,   10, 
-                        S0IX,   1, 
-                        Offset (0x81C4), 
-                            ,   2, 
-                        CLK0,   1, 
-                            ,   3, 
-                        CLK1,   1
-                    }
+            //         OperationRegion (MCA1, SystemMemory, Local0, 0x9000)
+            //         Field (MCA1, DWordAcc, NoLock, Preserve)
+            //         {
+            //             Offset (0x80A4), 
+            //                 ,   28, 
+            //             AX28,   1, 
+            //             Offset (0x80C0), 
+            //                 ,   10, 
+            //             S0IX,   1, 
+            //             Offset (0x81C4), 
+            //                 ,   2, 
+            //             CLK0,   1, 
+            //                 ,   3, 
+            //             CLK1,   1
+            //         }
 
-                    If (XLTP == Zero)
-                    {
-                        S0IX = One
-                        Stall (0x14)
-                    }
+            //         If (XLTP == Zero)
+            //         {
+            //             S0IX = One
+            //             Stall (0x14)
+            //         }
 
-                    CLK0 = Zero
-                    CLK1 = One
-                    ^PDBM = Local1
-                    ^D03X = 0x03
-                    ^MEMB = Local2
-                    ^PDBM = Local1
+            //         CLK0 = Zero
+            //         CLK1 = One
+            //         ^PDBM = Local1
+            //         ^D03X = 0x03
+            //         ^MEMB = Local2
+            //         ^PDBM = Local1
 
-                    If (UWAB && (D03X == 0x03))
-                    {
-                        MPMC = 0x03
-                        Local0 = (Timer + 0x00989680)
-                        While (Timer <= Local0)
-                        {
-                            If (PMFS == Zero)
-                            {
-                                Break
-                            }
+            //         If (UWAB && (D03X == 0x03))
+            //         {
+            //             MPMC = 0x03
+            //             Local0 = (Timer + 0x00989680)
+            //             While (Timer <= Local0)
+            //             {
+            //                 If (PMFS == Zero)
+            //                 {
+            //                     Break
+            //                 }
 
-                            Sleep (0x0A)
-                        }
-                    }
-                }
-                Else
-                {
-                    // NON-OSX
-                    \_SB.PCI0.XHC_.XPS3 ()
-                }
-            }
+            //                 Sleep (0x0A)
+            //             }
+            //         }
+            //     }
+            //     Else
+            //     {
+            //         // NON-OSX
+            //         \_SB.PCI0.XHC_.XPS3 ()
+            //     }
+            // }
 
             Scope (RHUB)
             {
@@ -430,11 +433,23 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                             Debug = "XHC:U2OP - companion ports enabled"
                         }
 
-                        Local0 = Package (0x04) {
-                            0xFF,
-                            0x09,
-                            Zero,
-                            Zero
+                        If (\TBAS)
+                        {
+                            Local0 = Package (0x04) {
+                                0xFF,
+                                0x08,
+                                Zero,
+                                Zero
+                            }
+                        }
+                        Else
+                        {
+                            Local0 = Package (0x04) {
+                                One,
+                                0x09,
+                                Zero,
+                                Zero
+                            }
                         }
 
                         Return (Local0)
@@ -475,11 +490,23 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                 {
                     Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        Local0 = Package (0x04) {
-                            0xFF,
-                            0x09,
-                            Zero,
-                            Zero
+                        If (\TBAS)
+                        {
+                            Local0 = Package (0x04) {
+                                0xFF,
+                                0x08,
+                                Zero,
+                                Zero
+                            }
+                        }
+                        Else
+                        {
+                            Local0 = Package (0x04) {
+                                One,
+                                0x09,
+                                Zero,
+                                Zero
+                            }
                         }
 
                         Return (Local0)
@@ -708,8 +735,8 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                         Return (0x00)
                     }
 
-                    Name (BERT, 0x0C)
                     Name (IGNR, 0x00)
+
                     Method (SBHV, 1, Serialized)
                     {
                         If (Arg0)
@@ -722,16 +749,14 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                         }
                     }
 
+                    // kGetBehaviorACPIMethod
                     Method (GBHV, 0, Serialized)
                     {
                         Return (IGNR)
                     }
 
+                    // kSDControllerCaptiveUSB3ReaderKey
                     Name (U3SD, 0x0FBE)
-                    Name (S104, 0x00)
-                    Name (S050, 0x00)
-                    Name (S025, 0x00)
-                    Name (_GPE, 0x3B)  // _GPE: General Purpose Events
 
                     Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
                     {
@@ -796,6 +821,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                 }
             }
 
+            // system support SuperDrive
             Method (MBSD, 0, NotSerialized)
             {
                 Return (One)

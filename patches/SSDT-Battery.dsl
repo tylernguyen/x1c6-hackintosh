@@ -1,7 +1,7 @@
 // Depends on /patches/OpenCore Patches/ Battery.plist
 //
 // SSDT-BATX
-// Revision 7
+// Revision 8
 //
 // Copyleft (c) 2020 by bb. No rights reserved.
 //
@@ -31,6 +31,7 @@
 // If so, please open a bug @ https://github.com/benbender/x1c6-hackintosh/issues.
 // Additionally, as this implementation is more straight-forward and according to specs, it may reveal bugs and glitches
 // in other parts of the system.
+//
 //
 // Compatibility:
 //
@@ -93,6 +94,7 @@
 //
 // Changelog:
 //
+// Revision 8 - Fix battery-state handling, small corrections
 // Revision 7 - Smaller fixes, adds Notify-patches as EC won't update without them in edge-cases, replaces fake serials with battery-serial
 // Revision 6 - fixes, make the whole system more configureable, adds technical backround-documentation
 // Revision 5 - optimization, bug-fixing. Adds temp, concatenates string-data on combined batteries. 
@@ -104,8 +106,7 @@
 //
 // Credits @benbender
 
-
-DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00007000)
+DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00008000)
 {
     // Please ensure that your LPC bus-device is available at \_SB.PCI0.LPCB (check your DSDT). 
     // Some older Thinkpads provide the LPC on \_SB.PCI0.LPC and if thats the case for you,
@@ -123,8 +124,6 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00007000)
 
     External (_SB.PCI0.LPCB.EC.BAT1._STA, MethodObj)
     External (_SB.PCI0.LPCB.EC.BAT1._HID, IntObj)
-
-    External (H8DR, FieldUnitObj)
 
 
     Scope (\_SB.PCI0.LPCB.EC)
@@ -168,7 +167,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00007000)
             //
             // Implicitly disabled if BBIS is disabled
             //
-            Name (BDQP, One) // possible values: One / Zero
+            Name (BDQP, Zero) // possible values: One / Zero
 
 
             /************************* Mutex **********************************/
@@ -198,21 +197,6 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00007000)
                 // Offset (0x39),
                 HB1S, 7,    /* Battery 1 state */
                 HB1A, 1,    /* Battery 1 present */
-
-                Offset (0x46), 
-                    ,   1, 
-                    ,   1, 
-                    ,   1, 
-                    ,   1, 
-                HPAC,   1, 
-
-                // Offset (0xC9), 
-                // HWAT, 8,    /* Wattage of AC/DC */
-
-                // Zero on the X1C6. Probably because of the charging is handled by the TI USB-C-PD-chip.
-                // Offset (0xCC), 
-                // PWMH, 8,    /* CC : AC Power Consumption (MSB) */
-                // PWML, 8,    /* CD : AC Power Consumption (LSB) - unit: 100mW */
             }
 
             //
@@ -686,7 +670,6 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00007000)
             }
 
 
-
             /**
              *  Extended Battery Static Information pack layout
              */
@@ -1017,16 +1000,15 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00007000)
                 Return (Local0)
             }
 
-
             /**
              *  Battery Real-time Information pack layout
              */
             Name (PBST, Package (0x04)
             {
                 0x00000000,  // 0x00: BSTState - Battery State
-                             //       Bit 0 - discharge
-                             //       Bit 1 - charge
-                             //       Bit 2 - critical state
+                             //       0 - Not charging / Full
+                             //       1 - Discharge
+                             //       2 - Charging
                 0,           // 0x01: BSTPresentRate - Battery Present Rate [mW], 0xFFFFFFFF if unknown rate
                 0,           // 0x02: BSTRemainingCapacity - Battery Remaining Capacity [mWh], 0xFFFFFFFF if unknown capacity
                 0,           // 0x03: BSTPresentVoltage - Battery Present Voltage [mV], 0xFFFFFFFF if unknown voltage
@@ -1076,30 +1058,6 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00007000)
                     Local0 = 0
                 }
 
-                // Set critical flag if battery is empty
-                If ((Local6 & 0x0F) == 0)
-                {
-                    Local6 = Local6 | 0x04
-                }
-
-                Store (Zero, Local1)
-
-                // Check if AC is present
-                If (HPAC)
-                {
-                    // Set only charging/discharging bits
-                    And (Local0, 0x03, Local1)
-                }
-                Else
-                {
-                    // Always discharging when on battery power
-                    Local0 = One
-                }
-
-                // Flag if the battery level is critical
-		        Local4 = Local0 & 0x04
-		        Local0 = Local1 | Local4
-
 
                 //
                 // Information Page 1 -
@@ -1128,21 +1086,16 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00007000)
                 // and negative while discharging.
                 Local1 = SBAC /* \_SB_.PCI0.LPCB.EC__.BATX.SBAC */
 
-                If ((Local1 >= 0x8000))
+                // If discharging
+                If (Local0 == 1)
                 {
-                    // If discharging
-                    If ((Local0 & 0x01))
+                    If ((Local1 >= 0x8000))
                     {
                         // Negate present rate
                         Local1 = (0x00010000 - Local1)
                     }
-                    Else
-                    {
-                        // Error
-                        Local1 = 0x00
-                    }
                 }
-                ElseIf (!(Local0 & 0x02))
+                Else
                 {
                     Local1 = 0x00
                 }
@@ -1262,17 +1215,17 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00007000)
                 Local4 = DerefOf (BT0P [0x00])
                 Local5 = DerefOf (BT1P [0x00])
 
-                // Discharging
+                // Not charging / Full
                 Local0 [0x00] = 0
 
                 If ((Local4 == 2) || (Local5 == 2))
                 {
-                    // 2 = Critical
+                    // 2 = Charging
                     Local0 [0x00] = 2
                 }
                 ElseIf ((Local4 == 1) || (Local5 == 1))
                 {
-                    // 1 = Charging
+                    // 1 = Discharging
                     Local0 [0x00] = 1
                 }
 
@@ -1388,11 +1341,6 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00007000)
                         Debug = "BATX:CBSS()"
                     }
 
-                    If (!H8DR)
-                    {
-                        Return (PBSS)
-                    }
-
                     If (HB0A)
                     {
                         PBS0 = GBSS (0x00, PBSS)
@@ -1454,7 +1402,6 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00007000)
                 }
 
 
-
                 /**
                 *  Battery Information Supplement pack layout
                 */
@@ -1510,6 +1457,13 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00007000)
                     PBIS [0x06] = SBSN /* \_SB_.PCI0.LPCB.EC__.BATX.SBSN */
 
                     Release (BAXM)
+
+                    If (BDBG == One)
+                    {
+                        Concatenate ("BATX:CBIS:BISConfig BATX ", PBIS [0x00], Debug)
+                        Concatenate ("BATX:CBIS:BISManufactureDate BATX ", PBIS [0x01], Debug)
+                        Concatenate ("BATX:CBIS:BISPackLotCode BATX ", PBIS [0x02], Debug)
+                    }
 
                     Return (PBIS)
                 }

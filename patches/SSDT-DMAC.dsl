@@ -1,6 +1,4 @@
-/*
- * Fix up memory controller
- */
+// Fix up memory controller
 
 DefinitionBlock ("", "SSDT", 2, "tyler", "_DMAC", 0x00001000)
 {

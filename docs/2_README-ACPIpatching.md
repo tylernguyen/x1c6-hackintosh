@@ -43,15 +43,16 @@ See highlighted example:
 
 > ### SSDT-Darwin - Detects macOS to enable other patches
 
-> ### SSDT-Battery-Legacy - Enables Battery Status in macOS (Lgeacy)
-**Need `OpenCore Patches/ Battery-Legacy.plist`**  
+> ### SSDT-AC - Patch to load AppleACPIACAdapter
+
+> ### SSDT-Battery - Enables Battery Status in macOS
 
 - Single battery system: only `BAT0` in ACPI, no `BAT1`.
 
 > ### SSDT-HWAC - Fix axxess to 16byte-EC-field HWAC
 - Thanks @benbender
 
-> ### SSDT-PLUG - Enables Native Intel Power Managements
+> ### SSDT-PM - Enables Native Intel Power Managements
 
 Why?: `Processor` search in DSDT, rename `PR` to other variables as needed.
 
@@ -93,40 +94,15 @@ Enables:
 
 > ### SSDT-Keyboard - Remap PS2 Keys, EC Keys are handled by `BrightnessKeys.kext`
 
-- Configures TrackPoint
-- Configures TrackPad (if handled by `VoodooPS2Controller.kext`)
 - Remap 1: PrtSc to F13
 - Remap 2: Fn + K to Deadkey
 - Remap 3: Fn + P to Deadkey
   For Fn 1-12 functions, check the following option within `Preferences/Keyboard`:  
   ![Fn keys](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/fnkeys.png)
 
-<details>
-<summary><strong> SSDT-Keyboard-Legacy </strong></summary>
-<br>
-
-**Needs `OpenCore Patches/ Keyboard-Legacy.plist`**
-- Legacy patch to be used if you prefer [ThinkpadAssisstant](https://github.com/MSzturc/ThinkpadAssistant) over [YogaSMC](https://github.com/zhen-zen/YogaSMC) and `BrightnessKeys.kext`
-- Keyboard path is `\ _SB.PCI0.LPCB.KBD`.    
-- For multimedia functions:
-  - Remap 1: F4 (Network) to F20 (for use with ThinkpadAssistant)
-  - Remap 2: F5 (Brightness Down)
-  - Remap 3: F6 (Brightness Up)
-  - Remap 4: F7 (Dual Display) to F16 (for use with ThinkpadAssistant)
-  - Remap 5: F8 (Network) to F17 (for use with ThinkpadAssistant)
-  - Remap 6: F9 (Settings) to F18 (for use with ThinkpadAssistant)
-  - Remap 7: F10 (Bluetooth) to [Left Shift + F8] ((for use with ThinkpadAssistant))
-  - Remap 8: F11 (Keyboard) to [Shift+Up]
-  - Remap 9: F12 (Star) to F19 (for use with ThinkpadAssistant)
-  - Remap 10: PrtSc to F13
-  - Remap 11: Fn + K to Deadkey
-  - Remap 12: Fn + P to Deadkey
-- For Fn 1-12 functions, check the following option within `Preferences/Keyboard`:  
-  ![Fn keys](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/fnkeys.png)
-</details>
-
 > ### SSDT-Sleep - Patch macOS Sleep, S3
 - Comprehensive sleep/wake patch.  
+- Fixes restart on shutdown.
 **Needs `OpenCore Patches/ Sleep.plist`**
 
 > ### SSDT-EC - Alow Reads/Write and Provide an Interface with Embedded Controller via YogaSMC
@@ -137,12 +113,13 @@ Two parts:
 > ### SSDT-XHC1 - USB 2.0/3.0 
 **Needs `OpenCore Patches/ XHC1.plist`**
 - Map USB 2.0/3.0
-- Fix Restart on Shutdown
+- Patch USB Power Properties
 
-> ### SSDT-XHC2 - USB 3.1
+> ### SSDT-TB-DSB0 to SSDT-TB-DSB6
 - Patch USB 3.1
-
-> ### SSDT-USBX - USB Power Properties
+- Patch Thunderbolt 3 Hotplug
+- Patch Thunderbolt 3 Power Management
+- Patch Thunderbolt 3 native interfacing with macOS's System Report 
 
 > ### SSDT-DMAC - Patch Memory Controller
 
@@ -155,6 +132,7 @@ Why?: `PMCR`,`APP9876` missing in DSDT.
 > ### SSDT-PWRB
 
 Why?: `PNP0C0C` missing in DSDT.
+- Patch power button.
 
 > ### SSDT-ALS0
 

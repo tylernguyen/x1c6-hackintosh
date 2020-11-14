@@ -43,7 +43,7 @@
  * Please remove every GPRW-, Name6x-, PTSWAK-, FixShutdown-, WakeScren-Patches or similar prior using.
  * If you adapt this patches to other models, check the occurence of the used variables and methods on your own DSDT beforehand.
  *
- *
+ * Credits @benbender
  */
 
 DefinitionBlock ("", "SSDT", 2, "tyler", "_Sleep", 0x00001000)
@@ -53,12 +53,15 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Sleep", 0x00001000)
     External (OSDW, MethodObj) // 0 Arguments
 
     // Sleep-config from BIOS
-    External (S0ID, FieldUnitObj) // S0 enabled
+    External (S0ID, FieldUnitObj) // BIOS-S0 enabled, "Windows Modern Standby"
     External (STY0, FieldUnitObj) // S3 Enabled?
 
     // Package to signal to OS S3-capability. We'll add it if missing.
     External (SS3, FieldUnitObj) // S3 Enabled?    
     External (_S3) 
+
+    Name (DIEN, Zero) // DeepIdle (ACPI-S0) enabled
+    Name (INIB, One) // Initial BootUp
 
     // This make OSX independent of the BIOS-sleep-setting on X1C6 and force-enable S3
     If (OSDW ())
@@ -181,8 +184,6 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Sleep", 0x00001000)
             // Update ac-state
             \PWRS = \_SB.PCI0.LPCB.EC.AC._PSR ()
 
-            // DYTC (0000000000000002)
-
             \_SB.SCGE = One
         }
 
@@ -224,17 +225,17 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Sleep", 0x00001000)
                         \_SB.PCI0.HDAS.PMEE = Zero
                     }
 
-                    If (CondRefOf (\_SB.PCI0.XHC.USBM))
-                    {
-                        \_SB.PCI0.XHC.USBM ()
-                    }
+                    // If (CondRefOf (\_SB.PCI0.XHC.USBM))
+                    // {
+                    //     \_SB.PCI0.XHC.USBM ()
+                    // }
 
-                    If (CondRefOf (\_SB.PCI0.RP09.UPSB.LSTX))
-                    {
-                        Debug = "SLEEP:_PTS: Call TB-LSTX"
-                        \_SB.PCI0.RP09.UPSB.LSTX (Zero, One)
-                        \_SB.PCI0.RP09.UPSB.LSTX (One, One)
-                    }
+                    // If (CondRefOf (\_SB.PCI0.RP09.UPSB.LSTX))
+                    // {
+                    //     Debug = "SLEEP:_PTS: Call TB-LSTX"
+                    //     \_SB.PCI0.RP09.UPSB.LSTX (Zero, One)
+                    //     \_SB.PCI0.RP09.UPSB.LSTX (One, One)
+                    // }
                 }
             }
         }
@@ -274,7 +275,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Sleep", 0x00001000)
 
                 If (Arg1 >= 0x04)
                 {
-                    Debug = Concatenate ("SLEEP: GPRW patched to 0x00: ", Arg1)
+                    // Debug = Concatenate ("SLEEP: GPRW patched to 0x00: ", Arg1)
 
                     Local0[0x01] = 0x00
                 }
@@ -292,15 +293,20 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Sleep", 0x00001000)
     {
         Method (_PS0, 0, Serialized)
         {
-            If (OSDW () && S0ID == One)
+            If (OSDW () && DIEN == One && INIB == Zero)
             {
                 \SWAK ()
+            }
+
+            If (INIB == One)
+            {
+                INIB = Zero
             }
         }
 
         Method (_PS3, 0, Serialized)
         {
-            If (OSDW () && S0ID == One)
+            If (OSDW () && DIEN == One)
             {
                 \SPTS ()
             }
@@ -310,16 +316,17 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Sleep", 0x00001000)
 
     Scope (_SB)
     {
-        // Enable ACPI-S0-DeepIdle, unused atm
+        // Enable ACPI-S0-DeepIdle
         Method (LPS0, 0, NotSerialized)
         {
-            If (S0ID == One)
+            If (DIEN == One)
             {
                 Debug = "SLEEP: Enable S0-Sleep / DeepSleep"
             }
 
             // If S0ID is enabled, enable deep-sleep in OSX. Can be set above.
-            Return (S0ID)
+            // Return (S0ID)
+            Return (DIEN)
         }
     }
 }

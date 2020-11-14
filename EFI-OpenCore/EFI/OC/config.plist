@@ -96,6 +96,14 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
+				<string>ACPI-Powerbutton</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-PWRB.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
 				<string>Fake DMAC (Fix up memory controller)</string>
 				<key>Enabled</key>
 				<true/>
@@ -116,7 +124,23 @@
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
-				<string>SSDT-TB3.aml</string>
+				<string>SSDT-TB-DSB0.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Partition and continuation of Thunderbolt 3 patch.</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-TB-DSB1.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Partition and continuation of Thunderbolt 3 patch.</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-TB-DSB2.aml</string>
 			</dict>
 			<dict>
 				<key>Comment</key>
@@ -124,7 +148,39 @@
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
-				<string>SSDT-XHC2.aml</string>
+				<string>SSDT-TB-DSB2-XHC2.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Partition and continuation of Thunderbolt 3 patch.</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-TB-DSB3.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Partition and continuation of Thunderbolt 3 patch.</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-TB-DSB4.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Partition and continuation of Thunderbolt 3 patch.</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-TB-DSB5.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Partition and continuation of Thunderbolt 3 patch.</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-TB-DSB6.aml</string>
 			</dict>
 			<dict>
 				<key>Comment</key>

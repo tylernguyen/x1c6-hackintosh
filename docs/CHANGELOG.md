@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-11-14
+
+#### Added
+
+- `SSDT-PWRB` to patch power button.
+
+#### Changed
+
+- Parition TB3 patch into smaller, more readable chunks.
+  - `SSDT-XHC2` is also now apart of this.
+- Removed experimental stuff from `SSDT-Sleep`
+- Updated to `SSDT-Battery` to rev8, thanks @benbender
+- Updated some documenation, with more detailed documentation coming.
+
 > ### 2020-11-13
 
 #### Changed
