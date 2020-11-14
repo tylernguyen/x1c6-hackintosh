@@ -1,4 +1,4 @@
-﻿# macOS on Thinkpad X1 Carbon 6th Generation, Model 20KH\*
+# macOS on Thinkpad X1 Carbon 6th Generation, Model 20KH\*
 
 [![macOS](https://img.shields.io/badge/macOS-Catalina-yellow.svg)](https://www.apple.com/macos/catalina/)
 [![version](https://img.shields.io/badge/10.15.7-yellow)](https://support.apple.com/en-us/HT210642)
