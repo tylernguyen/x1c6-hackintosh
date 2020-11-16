@@ -418,12 +418,12 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBXHC2", 0x00003000)
 
                         Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
                         {
-                            If (CondRefOf (\_SB.PCI0.RP09.PXSX.DSB0.NHI0) && CondRefOf (\_SB.PCI0.RP09.UPN1) && \USME == One)
+                            If (CondRefOf (\_SB.PCI0.RP09.PXSX.DSB0.NHI0) && CondRefOf (\_SB.PCI0.RP09.UPN2) && \USME == One)
                             {
                                 Local0 = Package ()
                                     {
                                         "UsbCPortNumber", 
-                                        \_SB.PCI0.RP09.UPN1,
+                                        \_SB.PCI0.RP09.UPN2,
                                         "UsbCompanionPortPresent", 
                                         One
                                     }
