@@ -1,5 +1,5 @@
 /*
- * Depends on /patches/Debug Patches/ Debug.plist
+ * Redirect ACPI's native ADGB()-helper to syslog for reading in macOS
  */
 
 DefinitionBlock ("", "SSDT", 0, "X1C6", "_Debug", 0x00001000)

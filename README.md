@@ -5,7 +5,8 @@
 [![BIOS](https://img.shields.io/badge/BIOS-1.50-blue)](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-6th-gen-type-20kh-20kg/downloads/driver-list/component?name=BIOS%2FUEFI)
 [![MODEL](https://img.shields.io/badge/Model-20KH*-blue)](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf)
 [![OpenCore](https://img.shields.io/badge/OpenCore-0.6.3-green)](https://github.com/acidanthera/OpenCorePkg)
-[![LICENSE](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+<a href="https://github.com/tylernguyen/x1c6-hackintosh/issues"> <img src="https://img.shields.io/github/issues/tylernguyen/x1c6-hackintosh"/> </a>
+<a href="https://github.com/tylernguyen/x1c6-hackintosh/commits/master"> <img src="https://img.shields.io/github/last-commit/tylernguyen/x1c6-hackintosh"/> </a>
 
 <img align="right" src="https://i.imgur.com/I3yUS4Q.png" alt="Critter" width="300">
 
@@ -67,7 +68,9 @@
 | S3 Sleep/ Hibernation Mode 3 | ✅ | `SSDT-Sleep.aml` | |
 | Hibernation Mode 25          | ✅ | `RTCMemoryFixup.kext` and `HibernationFixup.kext`      | Supported, macOS uses mode 3 by default. Change to mode 25 via `pmset`.     |   
 | Custom Charge Threshold      | ✅ | `SSDT-EC.aml`, [YogaSMC.kext](https://github.com/zhen-zen/YogaSMC), and [YogaSMCPane](https://github.com/zhen-zen/YogaSMC)| Adjust with YogaSMCPane in System Preferences
+| Fan Control                  | ✅ | `SSDT-EC.aml`, [YogaSMC.kext](https://github.com/zhen-zen/YogaSMC), and [YogaSMCPane](https://github.com/zhen-zen/YogaSMC)| Adjust with YogaSMC App.
 | Battery Life                 | ✅ | Native, comparable to Windows/Linux. Biggest impact is TB3, see [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md)   | Will need a modded BIOS to disable `CFG Lock`
+
 
 > ### Input/ Output
 | Feature                              | Status | Dependency          | Remarks                      |
@@ -79,9 +82,9 @@
 | 4K UHD output via HDMI/ DisplayPort **(Modded BIOS)**  | ✅ | See `DMVT Pre-Allocated` to `64M`  | See [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) for information about modding the BIOS.           |
 | 4K UHD output via HDMI/ DisplayPort **(Vanilla BIOS)** | ✅ | See `/patches/OpenCore Patches/4K-Output-wo-BIOSmod.plist`     | -           |
 | USB 2.0, USB 3.0, and Micro SD Card Reader | ✅ | `SSDT-XHC1.aml`    | -     |
-| USB 3.1                                    | ⚠️ | `SSDT-XHC2.aml`    | Hotplug WIP     |
-| USB Power Properties in macOS              | ✅ | `SSDT-USBX.aml`    | -     |
-| Thunderbolt 3 Hotplug                      | ✅ | `SSDT-TB3.aml`     | Native interface within System Report   |
+| USB 3.1                                    | ⚠️ | `SSDT-TB-DSB2-XHC2.aml`    | Hotplug WIP     |
+| USB Power Properties in macOS              | ✅ | `SSDT-XHC1.aml`    | -     |
+| Thunderbolt 3 Hotplug                      | ✅ | `SSDT-TB-*`     | Native interface within System Report   |
 
 > ### Display, TrackPad, TrackPoint, and Keyboard
 | Feature                              | Status | Dependency          | Remarks                      |
