@@ -26,19 +26,12 @@
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-> ### 2020-11-14
-
-#### Added
-
-- `SSDT-PWRB` to patch power button.
+> ### 2020-11-17
 
 #### Changed
 
-- Parition TB3 patch into smaller, more readable chunks.
-  - `SSDT-XHC2` is also now apart of this.
-- Removed experimental stuff from `SSDT-Sleep`
-- Updated to `SSDT-Battery` to rev8, thanks @benbender
-- Updated some documenation, with more detailed documentation coming.
+- Updated various TB3 patches and instructions.
+- Added misc. DeviceProperties to `config.plist`
 
 <details>
 <summary><strong> SUMMARY </strong></summary>

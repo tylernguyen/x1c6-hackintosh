@@ -1,7 +1,7 @@
 // Depends on /patches/OpenCore Patches/ Battery.plist
 //
 // SSDT-BATX
-// Revision 8
+// Revision 10
 //
 // Copyleft (c) 2020 by bb. No rights reserved.
 //
@@ -31,7 +31,6 @@
 // If so, please open a bug @ https://github.com/benbender/x1c6-hackintosh/issues.
 // Additionally, as this implementation is more straight-forward and according to specs, it may reveal bugs and glitches
 // in other parts of the system.
-//
 //
 // Compatibility:
 //
@@ -94,6 +93,8 @@
 //
 // Changelog:
 //
+// Revision 10 - Maybe fix that stupid race condition which leads to 20hrs battery time, fix quickpoll-handling
+// Revision 9 - Fix serials for batteries with broken values
 // Revision 8 - Fix battery-state handling, small corrections
 // Revision 7 - Smaller fixes, adds Notify-patches as EC won't update without them in edge-cases, replaces fake serials with battery-serial
 // Revision 6 - fixes, make the whole system more configureable, adds technical backround-documentation
@@ -106,7 +107,7 @@
 //
 // Credits @benbender
 
-DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00008000)
+DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00010000)
 {
     // Please ensure that your LPC bus-device is available at \_SB.PCI0.LPCB (check your DSDT). 
     // Some older Thinkpads provide the LPC on \_SB.PCI0.LPC and if thats the case for you,
@@ -125,6 +126,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00008000)
     External (_SB.PCI0.LPCB.EC.BAT1._STA, MethodObj)
     External (_SB.PCI0.LPCB.EC.BAT1._HID, IntObj)
 
+    External (H8DR, FieldUnitObj)
 
     Scope (\_SB.PCI0.LPCB.EC)
     {
@@ -519,7 +521,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00008000)
              */
             Method (SBSN, 0, NotSerialized)
             {
-                Return (B1B2 (SN00, SN01))
+                Return (ToDecimalString (B1B2 (SN00, SN01)))
             }
 
             /**
@@ -631,21 +633,36 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00008000)
              */
             Method (_STA, 0, NotSerialized)
             {
+                Local0 = Zero
+
                 // call original _STA for BAT0 and BAT1
                 // result is bitwise OR between them
                 If (_OSI ("Darwin"))
                 {
-                    If (CondRefOf (^^BAT1._STA) && CondRefOf (^^BAT1._STA))
-                    {
-                        Return (^^BAT0._STA() | ^^BAT1._STA())
-                    }
-                    
                     If (CondRefOf (^^BAT1._STA))
                     {
-                        Return (^^BAT1._STA())
+                        If (CondRefOf (^^BAT0._STA))
+                        {
+                            Local0 = (^^BAT0._STA () | ^^BAT1._STA ())
+                        }
+                        Else
+                        {
+                            Local0 = (^^BAT1._STA ())
+                        }
+                    }
+                    Else 
+                    {
+                        Local0 = (^^BAT0._STA ())
                     }
 
-                    Return (^^BAT0._STA())
+                    If (\H8DR)
+                    {
+                        Return (Local0)
+                    }
+                    Else
+                    {
+                        Return (0x0F)
+                    }
                 }
 
                 Return (Zero)
@@ -732,7 +749,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00008000)
                     // If battery available
                     If (Local5)
                     {
-                        // If battery ok
+                        // If battery not ok, wait
                         If (((Local4 & 0x07) == 0x07))
                         {
                             // decrease timer and wait for battery to be ready
@@ -741,7 +758,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00008000)
                         }
                         Else
                         {
-                            // Battery error
+                            // Battery ok
                             Local7 = One
                         }
                     }
@@ -832,7 +849,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00008000)
                 Arg1 [0x05] = SBDV /* \_SB_.PCI0.LPCB.EC__.BATX.SBDV */
 
                 // Serial Number
-                Arg1 [0x11] = ToString (SBSN) /* \_SB_.PCI0.LPCB.EC__.BATX.SBSN */
+                Arg1 [0x11] = SBSN /* \_SB_.PCI0.LPCB.EC__.BATX.SBSN */
 
 
                 //
@@ -1405,7 +1422,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00008000)
                 /**
                 *  Battery Information Supplement pack layout
                 */
-                Name (PBIS, Package (0x07)
+                Name (PBIS, Package ()
                 {
                     0x007F007F,  // 0x00: BISConfig - config
                                  //   double check if you have valid AverageRate before disabling QuicPoll
@@ -1441,20 +1458,30 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_Battery", 0x00008000)
                         Return (PBIS)
                     }
 
+                    // Check your _BST method for similiar condition of EC accessibility
+                    If (!HB0A)
+                    {
+                        Debug = "BATX:CBIS - Error HB0A not ready yet. Returning defaults."
+
+                        Return (PBIS)
+                    }
+
                     //
                     // Information Page 2 -
                     //
-                    HIID = (0x00 | 0x02)
+                    HIID = (0x02)
 
                     // 0x01: ManufactureDate (0x1), AppleSmartBattery format
                     PBIS [0x01] = SBDT
 
+                    Local6 = ToDecimalString (SBSN) /* \_SB_.PCI0.LPCB.EC__.BATX.SBSN */
+
                     // Serial Number
-                    PBIS [0x02] = SBSN /* \_SB_.PCI0.LPCB.EC__.BATX.SBSN */
-                    PBIS [0x03] = SBSN /* \_SB_.PCI0.LPCB.EC__.BATX.SBSN */
-                    PBIS [0x04] = SBSN /* \_SB_.PCI0.LPCB.EC__.BATX.SBSN */
-                    PBIS [0x05] = SBSN /* \_SB_.PCI0.LPCB.EC__.BATX.SBSN */
-                    PBIS [0x06] = SBSN /* \_SB_.PCI0.LPCB.EC__.BATX.SBSN */
+                    PBIS [0x02] = Local6
+                    PBIS [0x03] = Local6
+                    PBIS [0x04] = Local6
+                    PBIS [0x05] = Local6
+                    PBIS [0x06] = Local6
 
                     Release (BAXM)
 

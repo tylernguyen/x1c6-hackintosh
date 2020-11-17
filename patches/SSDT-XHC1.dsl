@@ -18,28 +18,44 @@
 
 DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
 {
-    // External method from SSDT-UTILS.dsl
+    // External method from SSDT-Darwin.dsl
     External (OSDW, MethodObj) // 0 Arguments
     External (DTGP, MethodObj) // 5 Arguments
 
     External (_SB.PCI0.XHC_, DeviceObj)
     External (_SB.PCI0.XHC_.RHUB, DeviceObj)
     External (_SB.PCI0.XHC_.RHUB.HS01, DeviceObj)
+    External (_SB.PCI0.XHC_.RHUB.HS01.XUPC, MethodObj)
     External (_SB.PCI0.XHC_.RHUB.HS02, DeviceObj)
+    External (_SB.PCI0.XHC_.RHUB.HS02.XUPC, MethodObj)
     External (_SB.PCI0.XHC_.RHUB.HS03, DeviceObj)
+    External (_SB.PCI0.XHC_.RHUB.HS03.XUPC, MethodObj)
     External (_SB.PCI0.XHC_.RHUB.HS04, DeviceObj)
+    External (_SB.PCI0.XHC_.RHUB.HS04.XUPC, MethodObj)
     External (_SB.PCI0.XHC_.RHUB.HS05, DeviceObj)
+    External (_SB.PCI0.XHC_.RHUB.HS05.XUPC, MethodObj)
     External (_SB.PCI0.XHC_.RHUB.HS06, DeviceObj)
+    External (_SB.PCI0.XHC_.RHUB.HS06.XUPC, MethodObj)
     External (_SB.PCI0.XHC_.RHUB.HS07, DeviceObj)
+    External (_SB.PCI0.XHC_.RHUB.HS07.XUPC, MethodObj)
     External (_SB.PCI0.XHC_.RHUB.HS08, DeviceObj)
+    External (_SB.PCI0.XHC_.RHUB.HS08.XUPC, MethodObj)
     External (_SB.PCI0.XHC_.RHUB.HS09, DeviceObj)
+    External (_SB.PCI0.XHC_.RHUB.HS09.XUPC, MethodObj)
     External (_SB.PCI0.XHC_.RHUB.HS10, DeviceObj)
+    External (_SB.PCI0.XHC_.RHUB.HS10.XUPC, MethodObj)
     External (_SB.PCI0.XHC_.RHUB.SS01, DeviceObj)
+    External (_SB.PCI0.XHC_.RHUB.SS01.XUPC, MethodObj)
     External (_SB.PCI0.XHC_.RHUB.SS02, DeviceObj)
+    External (_SB.PCI0.XHC_.RHUB.SS02.XUPC, MethodObj)
     External (_SB.PCI0.XHC_.RHUB.SS03, DeviceObj)
+    External (_SB.PCI0.XHC_.RHUB.SS03.XUPC, MethodObj)
     External (_SB.PCI0.XHC_.RHUB.SS04, DeviceObj)
+    External (_SB.PCI0.XHC_.RHUB.SS04.XUPC, MethodObj)
     External (_SB.PCI0.XHC_.RHUB.SS05, DeviceObj)
+    External (_SB.PCI0.XHC_.RHUB.SS05.XUPC, MethodObj)
     External (_SB.PCI0.XHC_.RHUB.SS06, DeviceObj)
+    External (_SB.PCI0.XHC_.RHUB.SS06.XUPC, MethodObj)
 
     External (_SB.PCI0.XHC_.PDBM, FieldUnitObj)
     External (_SB.PCI0.XHC_.MEMB, FieldUnitObj)
@@ -72,13 +88,13 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                 Local0 = Package ()
                     {
                         "kUSBSleepPortCurrentLimit", 
-                        3000, 
+                        2100, 
                         "kUSBWakePortCurrentLimit", 
-                        3000,
+                        2100,
                         "kUSBSleepPowerSupply", 
-                        9600, 
+                        5100, 
                         "kUSBWakePowerSupply", 
-                        9600, 
+                        5100, 
                     }
                 DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
                 Return (Local0)
@@ -390,13 +406,23 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
             {
                 Scope (HS01) // Right USB-A-Port, 480 Mbit/s
                 {
-                    Name (_UPC, Package ()  // _UPC: USB Port Capabilities
+                    Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        0xFF,
-                        0x03, 
-                        Zero, 
-                        Zero
-                    })
+                        If (OSDW ())
+                        {
+                            Return (Package ()  // _UPC: USB Port Capabilities
+                            {
+                                0xFF,
+                                0x03, 
+                                Zero, 
+                                Zero
+                            })
+                        }
+                        Else
+                        {
+                            Return (^XUPC ())
+                        }
+                    }
 
                     Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
                     {
@@ -408,13 +434,23 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
 
                 Scope (HS02) // Left USB-A-Port, 480 Mbit/s
                 {
-                    Name (_UPC, Package ()  // _UPC: USB Port Capabilities
+                    Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        0xFF,
-                        0x03, 
-                        Zero, 
-                        Zero
-                    })
+                        If (OSDW ())
+                        {
+                            Return (Package ()  // _UPC: USB Port Capabilities
+                            {
+                                0xFF,
+                                0x03, 
+                                Zero, 
+                                Zero
+                            })
+                        }
+                        Else
+                        {
+                            Return (^XUPC ())
+                        }
+                    }
 
                     Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
                     {
@@ -426,33 +462,28 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
 
                 Scope (HS03) // Upper USB-C-Port, weired config, needs investigation
                 {
+
                     Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        If (CondRefOf (\_SB_.PCI0.RP09.PXSX.DSB2.XHC2))
+                        If (OSDW ())
                         {
-                            Debug = "XHC:U2OP - companion ports enabled"
-                        }
-
-                        If (\TBAS)
-                        {
-                            Local0 = Package (0x04) {
-                                0xFF,
-                                0x08,
-                                Zero,
-                                Zero
+                            If (CondRefOf (\_SB_.PCI0.RP09.PXSX.DSB2.XHC2))
+                            {
+                                Debug = "XHC:U2OP - companion ports enabled"
                             }
+
+                            Return (Package ()  // _UPC: USB Port Capabilities
+                            {
+                                0xFF,
+                                0x08, 
+                                Zero, 
+                                Zero
+                            })
                         }
                         Else
                         {
-                            Local0 = Package (0x04) {
-                                One,
-                                0x09,
-                                Zero,
-                                Zero
-                            }
+                            Return (^XUPC ())
                         }
-
-                        Return (Local0)
                     }
 
                     If (CondRefOf (\_SB_.PCI0.RP09.PXSX.DSB2.XHC2))
@@ -490,26 +521,20 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                 {
                     Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        If (\TBAS)
+                        If (OSDW ())
                         {
-                            Local0 = Package (0x04) {
+                            Return (Package ()  // _UPC: USB Port Capabilities
+                            {
                                 0xFF,
-                                0x08,
-                                Zero,
+                                0x08, 
+                                Zero, 
                                 Zero
-                            }
+                            })
                         }
                         Else
                         {
-                            Local0 = Package (0x04) {
-                                One,
-                                0x09,
-                                Zero,
-                                Zero
-                            }
+                            Return (^XUPC ())
                         }
-
-                        Return (Local0)
                     }
 
                     If (CondRefOf (\_SB_.PCI0.RP09.PXSX.DSB2.XHC2))
@@ -548,12 +573,20 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                 {
                     Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        Return (Package (0x04) {
-                            0xFF,
-                            0xFF,
-                            Zero, 
-                            Zero
-                        })
+                        If (OSDW ())
+                        {
+                            Return (Package ()  // _UPC: USB Port Capabilities
+                            {
+                                0xFF,
+                                0xFF, 
+                                Zero, 
+                                Zero
+                            })
+                        }
+                        Else
+                        {
+                            Return (^XUPC ())
+                        }
                     }
 
                     Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -578,12 +611,20 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                 {
                     Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        Return (Package (0x04) {
-                            0xFF,
-                            0xFF,
-                            Zero, 
-                            Zero
-                        })
+                        If (OSDW ())
+                        {
+                            Return (Package ()  // _UPC: USB Port Capabilities
+                            {
+                                0xFF,
+                                0xFF,
+                                Zero, 
+                                Zero
+                            })
+                        }
+                        Else
+                        {
+                            Return (^XUPC ())
+                        }
                     }
 
                     Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
@@ -598,12 +639,20 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                 {
                     Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        Return (Package (0x04) {
-                            0xFF,
-                            0xFF,
-                            Zero, 
-                            Zero
-                        })
+                        If (OSDW ())
+                        {
+                            Return (Package ()  // _UPC: USB Port Capabilities
+                            {
+                                0xFF,
+                                0xFF, 
+                                Zero, 
+                                Zero
+                            })
+                        }
+                        Else
+                        {
+                            Return (^XUPC ())
+                        }
                     }
 
                     Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
@@ -618,12 +667,20 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                 {
                     Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        Return (Package (0x04) {
-                            0xFF,
-                            0xFF,
-                            Zero, 
-                            Zero
-                        })
+                        If (OSDW ())
+                        {
+                            Return (Package ()  // _UPC: USB Port Capabilities
+                            {
+                                0xFF,
+                                0xFF, 
+                                Zero, 
+                                Zero
+                            })
+                        }
+                        Else
+                        {
+                            Return (^XUPC ())
+                        }
                     }
 
                     Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
@@ -638,12 +695,20 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                 {
                     Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        Return (Package (0x04) {
-                            0xFF,
-                            0xFF,
-                            Zero, 
-                            Zero
-                        })
+                        If (OSDW ())
+                        {
+                            Return (Package ()  // _UPC: USB Port Capabilities
+                            {
+                                0xFF,
+                                0xFF, 
+                                Zero, 
+                                Zero
+                            })
+                        }
+                        Else
+                        {
+                            Return (^XUPC ())
+                        }
                     }
 
                     Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -668,12 +733,20 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                 {
                     Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        Return (Package (0x04) {
-                            0xFF,
-                            0xFF,
-                            Zero, 
-                            Zero
-                        })
+                        If (OSDW ())
+                        {
+                            Return (Package ()  // _UPC: USB Port Capabilities
+                            {
+                                0xFF,
+                                0xFF, 
+                                Zero, 
+                                Zero
+                            })
+                        }
+                        Else
+                        {
+                            Return (^XUPC ())
+                        }
                     }
 
                     Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
@@ -686,13 +759,23 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
 
                 Scope (SS01) // Right USB-A-Port, 5 Gbit/s
                 {
-                    Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
+                    Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        0xFF,
-                        0x03, 
-                        Zero, 
-                        Zero
-                    })
+                        If (OSDW ())
+                        {
+                            Return (Package ()  // _UPC: USB Port Capabilities
+                            {
+                                0xFF,
+                                0x03, 
+                                Zero, 
+                                Zero
+                            })
+                        }
+                        Else
+                        {
+                            Return (^XUPC ())
+                        }
+                    }
 
                     Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
                     {
@@ -704,13 +787,23 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
 
                 Scope (SS02) // Left USB-A-Port, 5 Gbit/s
                 {
-                    Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
+                    Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        0xFF,
-                        0x03, 
-                        Zero, 
-                        Zero
-                    })
+                        If (OSDW ())
+                        {
+                            Return (Package ()  // _UPC: USB Port Capabilities
+                            {
+                                0xFF,
+                                0x03, 
+                                Zero, 
+                                Zero
+                            })
+                        }
+                        Else
+                        {
+                            Return (^XUPC ())
+                        }
+                    }
 
                     Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
                     {
@@ -722,13 +815,23 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
 
                 Scope (SS03) // Cardreader, internal
                 {
-                    Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
+                    Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        0xFF,
-                        0xFF,
-                        Zero, 
-                        Zero
-                    })
+                        If (OSDW ())
+                        {
+                            Return (Package ()  // _UPC: USB Port Capabilities
+                            {
+                                0xFF,
+                                0xFF, 
+                                Zero, 
+                                Zero
+                            })
+                        }
+                        Else
+                        {
+                            Return (^XUPC ())
+                        }
+                    }
 
                     Method (_RMV, 0, NotSerialized)  // _RMV: Removal Status
                     {
@@ -768,13 +871,23 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
 
                 Scope (SS04) // Unused, internal
                 {
-                    Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
+                    Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        0xFF,
-                        0xFF,
-                        Zero, 
-                        Zero
-                    })
+                        If (OSDW ())
+                        {
+                            Return (Package ()  // _UPC: USB Port Capabilities
+                            {
+                                0xFF,
+                                0xFF, 
+                                Zero, 
+                                Zero
+                            })
+                        }
+                        Else
+                        {
+                            Return (^XUPC ())
+                        }
+                    }
 
                     Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
                     {
@@ -786,13 +899,23 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
 
                 Scope (SS05) // Unused, internal
                 {
-                    Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
+                    Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        0xFF,
-                        0xFF,
-                        Zero, 
-                        Zero
-                    })
+                        If (OSDW ())
+                        {
+                            Return (Package ()  // _UPC: USB Port Capabilities
+                            {
+                                0xFF,
+                                0xFF, 
+                                Zero, 
+                                Zero
+                            })
+                        }
+                        Else
+                        {
+                            Return (^XUPC ())
+                        }
+                    }
 
                     Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
                     {
@@ -804,13 +927,23 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
 
                 Scope (SS06) // Unused, internal
                 {
-                    Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
+                    Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        0xFF,
-                        0xFF,
-                        Zero, 
-                        Zero
-                    })
+                        If (OSDW ())
+                        {
+                            Return (Package ()  // _UPC: USB Port Capabilities
+                            {
+                                0xFF,
+                                0xFF, 
+                                Zero, 
+                                Zero
+                            })
+                        }
+                        Else
+                        {
+                            Return (^XUPC ())
+                        }
+                    }
 
                     Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
                     {

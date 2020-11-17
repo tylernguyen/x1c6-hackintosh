@@ -2,7 +2,7 @@
  * Part of a series of patches: DSB0 - DSB6
  * Depends on /patches/OpenCore Patches/ Thunderbolt3.plist
  *
- * Thunderbolt For Alpine Ridge on X1C6:
+ * Thunderbolt For Alpine Ridge on X1C6
  * 
  * Large parts (link training and enumeration) 
  * taken from decompiled Mac AML.
@@ -42,10 +42,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB0", 0x00002000)
 
     External (_SB.PCI0.GPCB, MethodObj)              // 0 Arguments
 
-    External (_GPE.TBFF, MethodObj)                  // detect TB root port
-    External (_GPE.TFPS, MethodObj)                  // TB force status
     External (_GPE.XTFY, MethodObj)                  // Notify TB-controller on hotplug
-    External (_SB.TBFP, MethodObj)                   // 1 Arguments
     External (MMRP, MethodObj)                       // Memory mapped root port
     External (MMTB, MethodObj)                       // Memory mapped TB port
 
@@ -112,8 +109,8 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB0", 0x00002000)
     {
         Scope (\_SB.PCI0.RP09)
         {
-            Name (UPN1, 0x02)                                // USBCPortNumber of SSP1/HS03
-            Name (UPN2, 0x01)                                // USBCPortNumber of SSP2/HS04
+            Name (UPN1, 0x01)                                // USBCPortNumber of SSP1/HS03
+            Name (UPN2, 0x02)                                // USBCPortNumber of SSP2/HS04
 
             Name (R020, Zero)
             Name (R024, Zero)
@@ -449,27 +446,6 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB0", 0x00002000)
                     Else
                     {
                         Debug = "TB:INIT: TB bios-assist enabled"
-
-                        If (\_GPE.TFPS ())
-                        {
-                            Debug = "TB:INIT: TB Force Power alread enabled"
-                        }
-                        Else
-                        {
-                            Debug = "TB:INIT: enabling TB Force Power"
-
-                            \_SB.TBFP (One) // force power
-
-                            Local0 = 10000 // 10 seconds
-                            While (Local0 > 0 && RPVD == 0xFFFFFFFF)
-                            {
-                                Sleep (1)
-                                Local0--
-                            }
-
-                            Debug = Concatenate ("TB:INIT: TB-Controller root-port RPVD: ", RPVD)
-                            Debug = Concatenate ("TB:INIT: ms waited:  ", (10000 - Local0))
-                        }
                     }
                 }
             }
@@ -1353,7 +1329,6 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB0", 0x00002000)
                         // CIO force power back to 0
                         // SGOV (0x02060000, Zero)
                         // SGDO (0x02060000)
-                        // \_SB.TBFP (Zero)
 
                         Sleep (0x03E8)
                     }
@@ -1929,10 +1904,6 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB0", 0x00002000)
                 {
                     Local1 = One
 
-                    // If (((GGDV (0x02060000) == One) || (GGDV (0x02060001) == One)) && 
-                    // If (((GGDV (0x02060000) == One)) && 
-                    //      (\_SB.PCI0.RP09.PXSX.AVND != 0xFFFFFFFF))
-                    // If ((\_GPE.TFPS () == One) && (\_SB.PCI0.RP09.PXSX.AVND != 0xFFFFFFFF))
                     If (\_SB.PCI0.RP09.PSTA () == One && AVND != 0xFFFFFFFF)
                     {
                         Local3 = Zero
@@ -2439,7 +2410,6 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB0", 0x00002000)
 
                                     // SGOV (0x02060000, Zero)
                                     // SGDO (0x02060000)
-                                    // \_SB.TBFP (Zero)
                                 }
                                 Else
                                 {
@@ -2460,7 +2430,6 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB0", 0x00002000)
                                             \_SB.PCI0.RP09.PON ()
 
                                             // SGDI (0x02060000)
-                                            // \_SB.TBFP (One)
                                             Local1 = Zero
                                             Local2 = (Timer + 0x00989680)
                                             While (Timer <= Local2)
@@ -2507,7 +2476,6 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB0", 0x00002000)
 
                                             // SGOV (0x02060000, Zero)
                                             // SGDO (0x02060000)
-                                            // \_SB.TBFP (Zero)
                                             Sleep (0x03E8)
                                         }
 
@@ -2590,6 +2558,15 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB0", 0x00002000)
                                         /* 0x63   2 */  0x0c, 0x02, 0x58, 0x31, 0x20, 0x43, 0x61, 0x72, 0x62, 0x6f, 0x6e, 0x00, // Device Name: "X1 Carbon"
                                     },
 
+                                    "ThunderboltConfig", 
+                                    Buffer (0x20)
+                                    {
+                                        /* 0000 */  0x00, 0x02, 0x1C, 0x00, 0x02, 0x00, 0x05, 0x03,  // ........
+                                        /* 0008 */  0x01, 0x00, 0x04, 0x00, 0x05, 0x03, 0x02, 0x00,  // ........
+                                        /* 0010 */  0x03, 0x00, 0x05, 0x03, 0x01, 0x00, 0x00, 0x00,  // ........
+                                        /* 0018 */  0x03, 0x03, 0x02, 0x00, 0x01, 0x00, 0x02, 0x00   // ........
+                                    }, 
+
                                     "TBTDPLowToHigh",
                                     Buffer (One)
                                     {
@@ -2612,7 +2589,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB0", 0x00002000)
                                     Buffer ()
                                     {
                                         0x08, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
-                                    }, 
+                                    },
 
                                     "power-save", 
                                     One, 

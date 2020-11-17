@@ -79,7 +79,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB4", 0x00001000)
 
                 Method (_BBN, 0, NotSerialized)  // _BBN: BIOS Bus Number
                 {
-                    Return (SECB) /* \_SB_.PCI0.RP09.UPSB.DSB4.SECB */
+                    Return (SECB) /* \_SB_.PCI0.RP09.PXSX.DSB4.SECB */
                 }
 
                 Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -133,7 +133,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB4", 0x00001000)
 
                         Method (_BBN, 0, NotSerialized)  // _BBN: BIOS Bus Number
                         {
-                            Return (SECB) /* \_SB_.PCI0.RP09.UPSB.DSB4.UPS0.DSB0.SECB */
+                            Return (SECB) /* \_SB_.PCI0.RP09.PXSX.DSB4.UPS0.DSB0.SECB */
                         }
 
                         Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -180,7 +180,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB4", 0x00001000)
 
                         Method (_BBN, 0, NotSerialized)  // _BBN: BIOS Bus Number
                         {
-                            Return (SECB) /* \_SB_.PCI0.RP09.UPSB.DSB4.UPS0.DSB3.SECB */
+                            Return (SECB) /* \_SB_.PCI0.RP09.PXSX.DSB4.UPS0.DSB3.SECB */
                         }
 
                         Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -229,7 +229,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB4", 0x00001000)
 
                                 Method (_BBN, 0, NotSerialized)  // _BBN: BIOS Bus Number
                                 {
-                                    Return (SECB) /* \_SB_.PCI0.RP09.UPSB.DSB4.UPS0.DSB3.UPS0.DSB0.SECB */
+                                    Return (SECB) /* \_SB_.PCI0.RP09.PXSX.DSB4.UPS0.DSB3.UPS0.DSB0.SECB */
                                 }
 
                                 Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -266,7 +266,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB4", 0x00001000)
 
                                 Method (_BBN, 0, NotSerialized)  // _BBN: BIOS Bus Number
                                 {
-                                    Return (SECB) /* \_SB_.PCI0.RP09.UPSB.DSB4.UPS0.DSB3.UPS0.DSB3.SECB */
+                                    Return (SECB) /* \_SB_.PCI0.RP09.PXSX.DSB4.UPS0.DSB3.UPS0.DSB3.SECB */
                                 }
 
                                 Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -313,7 +313,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB4", 0x00001000)
 
                                 Method (_BBN, 0, NotSerialized)  // _BBN: BIOS Bus Number
                                 {
-                                    Return (SECB) /* \_SB_.PCI0.RP09.UPSB.DSB4.UPS0.DSB3.UPS0.DSB4.SECB */
+                                    Return (SECB) /* \_SB_.PCI0.RP09.PXSX.DSB4.UPS0.DSB3.UPS0.DSB4.SECB */
                                 }
 
                                 Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -360,7 +360,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB4", 0x00001000)
 
                                 Method (_BBN, 0, NotSerialized)  // _BBN: BIOS Bus Number
                                 {
-                                    Return (SECB) /* \_SB_.PCI0.RP09.UPSB.DSB4.UPS0.DSB3.UPS0.DSB5.SECB */
+                                    Return (SECB) /* \_SB_.PCI0.RP09.PXSX.DSB4.UPS0.DSB3.UPS0.DSB5.SECB */
                                 }
 
                                 Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -393,7 +393,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB4", 0x00001000)
 
                                 Method (_BBN, 0, NotSerialized)  // _BBN: BIOS Bus Number
                                 {
-                                    Return (SECB) /* \_SB_.PCI0.RP09.UPSB.DSB4.UPS0.DSB3.UPS0.DSB6.SECB */
+                                    Return (SECB) /* \_SB_.PCI0.RP09.PXSX.DSB4.UPS0.DSB3.UPS0.DSB6.SECB */
                                 }
 
                                 Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -428,7 +428,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB4", 0x00001000)
 
                         Method (_BBN, 0, NotSerialized)  // _BBN: BIOS Bus Number
                         {
-                            Return (SECB) /* \_SB_.PCI0.RP09.UPSB.DSB4.UPS0.DSB4.SECB */
+                            Return (SECB) /* \_SB_.PCI0.RP09.PXSX.DSB4.UPS0.DSB4.SECB */
                         }
 
                         Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -477,7 +477,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB4", 0x00001000)
 
                                 Method (_BBN, 0, NotSerialized)  // _BBN: BIOS Bus Number
                                 {
-                                    Return (SECB) /* \_SB_.PCI0.RP09.UPSB.DSB4.UPS0.DSB4.UPS0.DSB0.SECB */
+                                    Return (SECB) /* \_SB_.PCI0.RP09.PXSX.DSB4.UPS0.DSB4.UPS0.DSB0.SECB */
                                 }
 
                                 Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -519,7 +519,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB4", 0x00001000)
 
                                 Method (_BBN, 0, NotSerialized)  // _BBN: BIOS Bus Number
                                 {
-                                    Return (SECB) /* \_SB_.PCI0.RP09.UPSB.DSB4.UPS0.DSB4.UPS0.DSB3.SECB */
+                                    Return (SECB) /* \_SB_.PCI0.RP09.PXSX.DSB4.UPS0.DSB4.UPS0.DSB3.SECB */
                                 }
 
                                 Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -566,7 +566,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB4", 0x00001000)
 
                                 Method (_BBN, 0, NotSerialized)  // _BBN: BIOS Bus Number
                                 {
-                                    Return (SECB) /* \_SB_.PCI0.RP09.UPSB.DSB4.UPS0.DSB4.UPS0.DSB4.SECB */
+                                    Return (SECB) /* \_SB_.PCI0.RP09.PXSX.DSB4.UPS0.DSB4.UPS0.DSB4.SECB */
                                 }
 
                                 Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -613,7 +613,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB4", 0x00001000)
 
                                 Method (_BBN, 0, NotSerialized)  // _BBN: BIOS Bus Number
                                 {
-                                    Return (SECB) /* \_SB_.PCI0.RP09.UPSB.DSB4.UPS0.DSB4.UPS0.DSB5.SECB */
+                                    Return (SECB) /* \_SB_.PCI0.RP09.PXSX.DSB4.UPS0.DSB4.UPS0.DSB5.SECB */
                                 }
 
                                 Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -646,7 +646,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB4", 0x00001000)
 
                                 Method (_BBN, 0, NotSerialized)  // _BBN: BIOS Bus Number
                                 {
-                                    Return (SECB) /* \_SB_.PCI0.RP09.UPSB.DSB4.UPS0.DSB4.UPS0.DSB6.SECB */
+                                    Return (SECB) /* \_SB_.PCI0.RP09.PXSX.DSB4.UPS0.DSB4.UPS0.DSB6.SECB */
                                 }
 
                                 Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -681,7 +681,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB4", 0x00001000)
 
                         Method (_BBN, 0, NotSerialized)  // _BBN: BIOS Bus Number
                         {
-                            Return (SECB) /* \_SB_.PCI0.RP09.UPSB.DSB4.UPS0.DSB5.SECB */
+                            Return (SECB) /* \_SB_.PCI0.RP09.PXSX.DSB4.UPS0.DSB5.SECB */
                         }
 
                         Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -714,7 +714,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_TBDSB4", 0x00001000)
 
                         Method (_BBN, 0, NotSerialized)  // _BBN: BIOS Bus Number
                         {
-                            Return (SECB) /* \_SB_.PCI0.RP09.UPSB.DSB4.UPS0.DSB6.SECB */
+                            Return (SECB) /* \_SB_.PCI0.RP09.PXSX.DSB4.UPS0.DSB6.SECB */
                         }
 
                         Method (_STA, 0, NotSerialized)  // _STA: Status

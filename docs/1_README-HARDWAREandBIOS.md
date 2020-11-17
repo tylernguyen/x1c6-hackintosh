@@ -50,11 +50,13 @@ At the minimum, these BIOS settings must be made to install and run macOS withou
 |           |             |                                               | Thunderbolt(TM) Device `Enabled`                                   |
 
 * If you do do want to use Thunderbolt 3 hotplug in macOS (at the expense of idle power consumption):
+- NOTE: If you do have a modded BIOS firmware, please reset all settings relating to Thunderbolt 3 to default, all that's needed are settings detailed below or in [1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md)
 
 | Main Menu | Sub 1       | Sub 2                                         | Sub 3                                                              |
 | --------- | ----------- | --------------------------------------------- | ------------------------------------------------------------------ |
 |           | >> Config   | >> Thunderbolt (TM) 3                         | Thunderbolt BIOS Assist Mode `Disabled`                            |
-|           |             |                                               | Thunderbolt(TM) Device `Disabled`                                  |
+|           |             |                                               | Security Level `No Security`                                       |
+|           |             |                                               | Support in Pre Boot Environment: Thunderbolt(TM) Device `Disabled` |
 
 
 > ## Modding the BIOS:
