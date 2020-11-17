@@ -47,8 +47,8 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
     External (_SB.PCI0.XHC_.XPS0, MethodObj)
     External (_SB.PCI0.XHC_.XPS3, MethodObj)
 
-    External (_SB.PCI0.RP09.UPSB.DSB2.XHC2, DeviceObj)
-    External (_SB.PCI0.RP09.UPSB.DSB2.XHC2.MODU, MethodObj)    // 0 Arguments
+    External (_SB.PCI0.RP09.PXSX.DSB2.XHC2, DeviceObj)
+    External (_SB.PCI0.RP09.PXSX.DSB2.XHC2.MODU, MethodObj)    // 0 Arguments
     External (_SB.PCI0.RP09.UPN1, IntObj)
     External (_SB.PCI0.RP09.UPN2, IntObj)
 
@@ -158,9 +158,9 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
              */
             Method (MODU, 0, Serialized)
             {
-                // If (CondRefOf (\_SB.PCI0.RP09.UPSB.DSB2.XHC2.MODU, Local0))
+                // If (CondRefOf (\_SB.PCI0.RP09.PXSX.DSB2.XHC2.MODU, Local0))
                 // {
-                //     Local0 = \_SB.PCI0.RP09.UPSB.DSB2.XHC2.MODU ()
+                //     Local0 = \_SB.PCI0.RP09.PXSX.DSB2.XHC2.MODU ()
                 // }
 
                 // Local1 = Zero
@@ -184,9 +184,9 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
 
                 Local0 = One
 
-                If (CondRefOf (\_SB.PCI0.RP09.UPSB.DSB2.XHC2.MODU))
+                If (CondRefOf (\_SB.PCI0.RP09.PXSX.DSB2.XHC2.MODU))
                 {
-                    Local0 = (\_SB.PCI0.RP09.UPSB.DSB2.XHC2.MODU ())
+                    Local0 = (\_SB.PCI0.RP09.PXSX.DSB2.XHC2.MODU ())
                 }
 
                 Debug = Concatenate ("XHC:MODU - Result: ", Local0)
@@ -428,7 +428,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                 {
                     Method (_UPC, 0, NotSerialized)  // _UPC: USB Port Capabilities
                     {
-                        If (CondRefOf (\_SB_.PCI0.RP09.UPSB.DSB2.XHC2))
+                        If (CondRefOf (\_SB_.PCI0.RP09.PXSX.DSB2.XHC2))
                         {
                             Debug = "XHC:U2OP - companion ports enabled"
                         }
@@ -455,7 +455,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                         Return (Local0)
                     }
 
-                    If (CondRefOf (\_SB_.PCI0.RP09.UPSB.DSB2.XHC2))
+                    If (CondRefOf (\_SB_.PCI0.RP09.PXSX.DSB2.XHC2))
                     {
                         Name (SSP, Package (0x02)
                         {
@@ -512,7 +512,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                         Return (Local0)
                     }
 
-                    If (CondRefOf (\_SB_.PCI0.RP09.UPSB.DSB2.XHC2))
+                    If (CondRefOf (\_SB_.PCI0.RP09.PXSX.DSB2.XHC2))
                     {
                         Name (SSP, Package (0x02)
                         {
@@ -827,7 +827,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_XHC1", 0x00001000)
                 Return (One)
             }
 
-            If (CondRefOf (\_SB_.PCI0.RP09.UPSB.DSB2.XHC2))
+            If (CondRefOf (\_SB_.PCI0.RP09.PXSX.DSB2.XHC2))
             {
                 Name (SSP, Package (0x01)
                 {
