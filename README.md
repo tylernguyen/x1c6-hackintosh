@@ -26,12 +26,13 @@
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-> ### 2020-11-17
+> ### 2020-12-26
 
 #### Changed
 
-- Updated various TB3 patches and instructions.
-- Added misc. DeviceProperties to `config.plist`
+- OC to 0.6.4 and upgraded various Acidanthera kexts
+- YogaSMC to 1.4.1 (Remember to upgrade your YogaSMC App and PrefPane)
+  - YogaSMC implementation on this machine is now considered stable.
 
 <details>
 <summary><strong> SUMMARY </strong></summary>

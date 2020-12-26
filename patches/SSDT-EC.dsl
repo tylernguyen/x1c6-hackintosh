@@ -417,7 +417,7 @@ DefinitionBlock ("", "SSDT", 2, "tyler", "_EC", 0)
     }
 
     /*
-     * Optional: Write access to fan control register
+     * Deprecated: Write access to fan control register
      */
     Scope (\_SB.PCI0.LPCB.EC.HKEY)
     {

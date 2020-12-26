@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-12-26
+
+#### Changed
+
+- OC to 0.6.4 and upgraded various Acidanthera kexts
+- YogaSMC to 1.4.1 (Remember to upgrade your YogaSMC App and PrefPane)
+  - YogaSMC implementation on this machine is now considered stable.
+
 > ### 2020-11-17
 
 #### Changed

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>20A5395g</string>
+	<string>20B29</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -17,27 +17,29 @@
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3.0</string>
+	<string>1.4.1</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.3.0</string>
+	<string>1.4.1</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>11E801a</string>
+	<string>12B45b</string>
+	<key>DTPlatformName</key>
+	<string>macosx</string>
 	<key>DTPlatformVersion</key>
-	<string>GM</string>
+	<string>11.0</string>
 	<key>DTSDKBuild</key>
-	<string>19G68</string>
+	<string>20A2408</string>
 	<key>DTSDKName</key>
-	<string>macosx10.15</string>
+	<string>macosx11.0</string>
 	<key>DTXcode</key>
-	<string>1170</string>
+	<string>1220</string>
 	<key>DTXcodeBuild</key>
-	<string>11E801a</string>
+	<string>12B45b</string>
 	<key>IOKitPersonalities</key>
 	<dict>
 		<key>IdeaVPC</key>
@@ -59,6 +61,12 @@
 				<key>Airflow Left</key>
 				<false/>
 				<key>Airflow Right</key>
+				<false/>
+				<key>Battery</key>
+				<false/>
+				<key>Battery Sensor 1</key>
+				<string>TBAT</string>
+				<key>Battery Sensor 2</key>
 				<false/>
 				<key>CPU Core PECI</key>
 				<string>CPEC</string>
@@ -106,6 +114,12 @@
 				<key>Airflow Left</key>
 				<false/>
 				<key>Airflow Right</key>
+				<false/>
+				<key>Battery</key>
+				<false/>
+				<key>Battery Sensor 1</key>
+				<false/>
+				<key>Battery Sensor 2</key>
 				<false/>
 				<key>CPU Core PECI</key>
 				<false/>
