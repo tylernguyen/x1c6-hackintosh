@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-1-5
+
+#### Changed
+
+- OC to 0.6.5 and upgraded various Acidanthera kexts
+- Added `ocvalidate` (0.6.5) in `OC` to easily check and validate `config.plist` changes.
+
 > ### 2020-12-26
 
 #### Changed

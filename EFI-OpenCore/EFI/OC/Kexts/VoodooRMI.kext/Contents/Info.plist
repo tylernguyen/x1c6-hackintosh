@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>20A5384c</string>
+	<string>20C69</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -17,29 +17,29 @@
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2</string>
+	<string>1.3</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.2</string>
+	<string>1.3</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>12A8179i</string>
+	<string>12C33</string>
 	<key>DTPlatformName</key>
 	<string>macosx</string>
 	<key>DTPlatformVersion</key>
-	<string>11.0</string>
+	<string>11.1</string>
 	<key>DTSDKBuild</key>
-	<string>20A5343f</string>
+	<string>20C63</string>
 	<key>DTSDKName</key>
-	<string>macosx11.0</string>
+	<string>macosx11.1</string>
 	<key>DTXcode</key>
-	<string>1200</string>
+	<string>1230</string>
 	<key>DTXcodeBuild</key>
-	<string>12A8179i</string>
+	<string>12C33</string>
 	<key>IOKitPersonalities</key>
 	<dict>
 		<key>RMIDevice</key>
@@ -49,9 +49,11 @@
 			<key>Configuration</key>
 			<dict>
 				<key>DisableWhileTrackpointTimeout </key>
-				<integer>100</integer>
+				<integer>2000</integer>
 				<key>DisableWhileTypingTimeout</key>
-				<integer>100</integer>
+				<integer>2000</integer>
+				<key>FingerMajorMinorDiffMax</key>
+				<integer>3</integer>
 				<key>ForceTouchEmulation</key>
 				<true/>
 				<key>ForceTouchMinPressure</key>
@@ -83,19 +85,17 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>10.11</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2020 1Revenger1. All rights reserved.</string>
+	<string>Copyright © 2021 1Revenger1. All rights reserved.</string>
 	<key>OSBundleCompatibleVersion</key>
 	<string>1.0.0</string>
 	<key>OSBundleLibraries</key>
 	<dict>
-		<key>com.apple.iokit.IOHIDFamily</key>
-		<string>2.0</string>
 		<key>com.apple.kpi.iokit</key>
-		<string>14</string>
+		<string>15</string>
 		<key>com.apple.kpi.libkern</key>
-		<string>14</string>
+		<string>15</string>
 		<key>com.apple.kpi.mach</key>
-		<string>13.0</string>
+		<string>15</string>
 	</dict>
 	<key>OSBundleRequired</key>
 	<string>Console</string>

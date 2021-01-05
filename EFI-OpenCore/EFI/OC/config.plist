@@ -120,6 +120,14 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
+				<string>USB 2.0/3.0: depends on / patches/ OpenCore Patches/ XHC1.plist</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-XHC1.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
 				<string>Thunderbolt 3: depends on / patches/ OpenCore Patches/ Thunderbolt3.plist</string>
 				<key>Enabled</key>
 				<true/>
@@ -181,14 +189,6 @@
 				<true/>
 				<key>Path</key>
 				<string>SSDT-TB-DSB6.aml</string>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>USB 2.0/3.0: depends on / patches/ OpenCore Patches/ XHC1.plist</string>
-				<key>Enabled</key>
-				<true/>
-				<key>Path</key>
-				<string>SSDT-XHC1.aml</string>
 			</dict>
 		</array>
 		<key>Delete</key>
@@ -1144,24 +1144,6 @@
 				<key>Arch</key>
 				<string>x86_64</string>
 				<key>BundlePath</key>
-				<string>VoodooRMI.kext/Contents/PlugIns/VoodooTrackpoint.kext</string>
-				<key>Comment</key>
-				<string>Generic trackpoint input handler</string>
-				<key>Enabled</key>
-				<true/>
-				<key>ExecutablePath</key>
-				<string>Contents/MacOS/VoodooTrackpoint</string>
-				<key>MaxKernel</key>
-				<string></string>
-				<key>MinKernel</key>
-				<string></string>
-				<key>PlistPath</key>
-				<string>Contents/Info.plist</string>
-			</dict>
-			<dict>
-				<key>Arch</key>
-				<string>x86_64</string>
-				<key>BundlePath</key>
 				<string>VoodooRMI.kext/Contents/PlugIns/RMII2C.kext</string>
 				<key>Comment</key>
 				<string>Support for I2C touchpad input</string>
@@ -1443,6 +1425,8 @@
 			<key>CustomSMBIOSGuid</key>
 			<false/>
 			<key>DisableIoMapper</key>
+			<true/>
+			<key>DisableLinkeditJettison</key>
 			<true/>
 			<key>DisableRtcChecksum</key>
 			<false/>
@@ -1733,7 +1717,7 @@
 			<key>Resolution</key>
 			<string>Max</string>
 			<key>SanitiseClearScreen</key>
-			<true/>
+			<false/>
 			<key>TextRenderer</key>
 			<string>BuiltinGraphics</string>
 			<key>UgaPassThrough</key>
@@ -1780,8 +1764,6 @@
 		</dict>
 		<key>Quirks</key>
 		<dict>
-			<key>DeduplicateBootOrder</key>
-			<true/>
 			<key>ExitBootServicesDelay</key>
 			<integer>0</integer>
 			<key>IgnoreInvalidFlexRatio</key>

@@ -16,7 +16,10 @@
 
 > ## Checking your OpenCore config.plist
 
-It is important to keep your OpenCore config.plist properly up-to-spec, as OpenCore configurations tend to change accordingly with OpenCore versions. A good resource to check your config plist is https://opencore.slowgeek.com/.
+It is important to keep your OpenCore config.plist properly up-to-spec, as OpenCore configurations tend to change accordingly with OpenCore versions. 
+- A good resource to check your config plist is https://opencore.slowgeek.com/.
+- Additionally, the included `ocvalidate` binary in the `OC` folder is the official in-house utility to check your `config.plist`
+If both validators give positive results, your `config.plist` should be good.
 
 > ## `config.plist` Comments:
 * There are two `plist` files. Default `config.plist` is meant who those with a modded BIOS and have made the approiate settings as detailed in [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) while `config_unmoddedBIOS.plist` is meant for those without a modded BIOS. If you have a modded BIOS and have made the adjustments detailed in my docs, `config.plist` should suffice. If your BIOS is unmodded, simply add the contents of `config_unmoddedBIOS.plist` to the main `config.plist`.
