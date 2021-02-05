@@ -1446,6 +1446,8 @@
 			<true/>
 			<key>PowerTimeoutKernelPanic</key>
 			<true/>
+			<key>SetApfsTrimTimeout</key>
+			<integer>-1</integer>
 			<key>ThirdPartyDrives</key>
 			<false/>
 			<key>XhciPortLimit</key>
@@ -1464,6 +1466,8 @@
 			<string>NVRAM</string>
 			<key>HideAuxiliary</key>
 			<false/>
+			<key>LauncherPath</key>
+			<string>Default</string>
 			<key>PickerAudioAssist</key>
 			<false/>
 			<key>PickerMode</key>
@@ -1506,8 +1510,6 @@
 			<true/>
 			<key>BlacklistAppleUpdate</key>
 			<true/>
-			<key>BootProtect</key>
-			<string>None</string>
 			<key>DmgLoading</key>
 			<string>Signed</string>
 			<key>EnablePassword</key>
@@ -1613,6 +1615,8 @@
 		<key>Generic</key>
 		<dict>
 			<key>AdviseWindows</key>
+			<false/>
+			<key>MaxBIOSVersion</key>
 			<false/>
 			<key>ProcessorType</key>
 			<integer>0</integer>
