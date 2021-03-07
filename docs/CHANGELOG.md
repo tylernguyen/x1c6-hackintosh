@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-3-6
+
+#### Changed
+
+- OC to 0.6.7 and upgraded various Acidanthera kexts.
+- YogaSMC to `1.4.3`
+- Depricate some `SSDT-Keyboard` patches now that YogaSMC partially handles keyboard locale.
+- Added note on flashing Macronix BIOS chip.
+
 > ### 2020-2-4
 
 #### Changed

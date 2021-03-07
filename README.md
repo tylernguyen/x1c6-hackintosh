@@ -1,10 +1,10 @@
 ﻿# macOS on Thinkpad X1 Carbon 6th Generation, Model 20KH\*
 
 [![macOS](https://img.shields.io/badge/macOS-Big_Sur-yellow.svg)](https://www.apple.com/macos/big-sur/)
-[![version](https://img.shields.io/badge/11.0.1-yellow)](https://www.apple.com/newsroom/2020/11/macos-big-sur-is-here/)
+[![version](https://img.shields.io/badge/11.2.1-yellow)](https://www.apple.com/newsroom/2020/11/macos-big-sur-is-here/)
 [![BIOS](https://img.shields.io/badge/BIOS-1.50-blue)](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-6th-gen-type-20kh-20kg/downloads/driver-list/component?name=BIOS%2FUEFI)
 [![MODEL](https://img.shields.io/badge/Model-20KH*-blue)](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf)
-[![OpenCore](https://img.shields.io/badge/OpenCore-0.6.6-green)](https://github.com/acidanthera/OpenCorePkg)
+[![OpenCore](https://img.shields.io/badge/OpenCore-0.6.7-green)](https://github.com/acidanthera/OpenCorePkg)
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/issues"> <img src="https://img.shields.io/github/issues/tylernguyen/x1c6-hackintosh"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/commits/master"> <img src="https://img.shields.io/github/last-commit/tylernguyen/x1c6-hackintosh"/> </a>
 
@@ -26,12 +26,14 @@
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-> ### 2020-2-4
+> ### 2020-3-6
 
 #### Changed
 
-- OC to 0.6.6 and upgraded various Acidanthera kexts
-- Upgraded `Resources` with latest `OCBinaryData`
+- OC to 0.6.7 and upgraded various Acidanthera kexts.
+- YogaSMC to `1.4.3`
+- Depricate some `SSDT-Keyboard` patches now that YogaSMC partially handles keyboard locale.
+- Added note on flashing Macronix BIOS chip.
 
 <details>
 <summary><strong> SUMMARY </strong></summary>
