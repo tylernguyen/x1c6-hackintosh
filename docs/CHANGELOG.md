@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2020-4-7
+
+#### Changed
+
+- OC to 0.6.8 and upgraded various Acidanthera kexts.
+- OC `Resources` per master repo update.
+
+#### Removed
+
+- AppleBacklightSmoother.kext per [Issue #122](https://github.com/tylernguyen/x1c6-hackintosh/issues/122), will readd to the repo once the issue is resolved.
+
 > ### 2020-3-6
 
 #### Changed

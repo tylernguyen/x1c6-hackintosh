@@ -4,13 +4,13 @@
 [![version](https://img.shields.io/badge/11.2.1-yellow)](https://www.apple.com/newsroom/2020/11/macos-big-sur-is-here/)
 [![BIOS](https://img.shields.io/badge/BIOS-1.50-blue)](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-6th-gen-type-20kh-20kg/downloads/driver-list/component?name=BIOS%2FUEFI)
 [![MODEL](https://img.shields.io/badge/Model-20KH*-blue)](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf)
-[![OpenCore](https://img.shields.io/badge/OpenCore-0.6.7-green)](https://github.com/acidanthera/OpenCorePkg)
+[![OpenCore](https://img.shields.io/badge/OpenCore-0.6.8-green)](https://github.com/acidanthera/OpenCorePkg)
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/issues"> <img src="https://img.shields.io/github/issues/tylernguyen/x1c6-hackintosh"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/commits/master"> <img src="https://img.shields.io/github/last-commit/tylernguyen/x1c6-hackintosh"/> </a>
 
 <img align="right" src="https://i.imgur.com/I3yUS4Q.png" alt="Critter" width="300">
 
-### Check out my blog [tylerspaper.com](https://tylerspaper.com/)
+### Follow my website [damnthattelevision.com](https://damnthattelevision.com/)
 
 #### READ THE ENTIRE README.MD BEFORE YOU START.
 
@@ -26,14 +26,16 @@
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-> ### 2020-3-6
+> ### 2020-4-7
 
 #### Changed
 
-- OC to 0.6.7 and upgraded various Acidanthera kexts.
-- YogaSMC to `1.4.3`
-- Depricate some `SSDT-Keyboard` patches now that YogaSMC partially handles keyboard locale.
-- Added note on flashing Macronix BIOS chip.
+- OC to 0.6.8 and upgraded various Acidanthera kexts.
+- OC `Resources` per master repo update.
+
+#### Removed
+
+- AppleBacklightSmoother.kext per [Issue #122](https://github.com/tylernguyen/x1c6-hackintosh/issues/122), will readd to the repo once the issue is resolved.
 
 <details>
 <summary><strong> SUMMARY </strong></summary>
@@ -182,12 +184,12 @@ Create a pull request if you like to be added, final decision at my discreation.
 
 > ## CONTACT
 
-https://tylerspaper.com/contact  
+https://damnthattelevision.com/contact  
 Signal: +1 (202)-644-9951 \*This is a Signal ONLY number. You will not get a reply of you text me at this number.
 
 > ## SUPPORT
 
-https://tylerspaper.com/support/
+https://damnthattelevision.com/support/
 
 <details>
 <summary><strong> CREDITS </strong></summary>
