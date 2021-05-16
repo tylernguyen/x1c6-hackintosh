@@ -26,16 +26,15 @@
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-> ### 2020-4-7
+> ### 2021-5-15
 
 #### Changed
 
-- OC to 0.6.8 and upgraded various Acidanthera kexts.
-- OC `Resources` per master repo update.
+- OC to 0.6.9 and upgraded various Acidanthera kexts.
 
 #### Removed
 
-- AppleBacklightSmoother.kext per [Issue #122](https://github.com/tylernguyen/x1c6-hackintosh/issues/122), will readd to the repo once the issue is resolved.
+- ACTUALLY AppleBacklightSmoother.kext per [Issue #122](https://github.com/tylernguyen/x1c6-hackintosh/issues/122), will readd to the repo once the issue is resolved.
 
 <details>
 <summary><strong> SUMMARY </strong></summary>

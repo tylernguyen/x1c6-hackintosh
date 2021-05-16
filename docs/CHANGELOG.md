@@ -3,7 +3,17 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-> ### 2020-4-7
+> ### 2021-5-15
+
+#### Changed
+
+- OC to 0.6.9 and upgraded various Acidanthera kexts.
+
+#### Removed
+
+- ACTUALLY AppleBacklightSmoother.kext per [Issue #122](https://github.com/tylernguyen/x1c6-hackintosh/issues/122), will readd to the repo once the issue is resolved.
+
+> ### 2021-4-7
 
 #### Changed
 
@@ -14,7 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - AppleBacklightSmoother.kext per [Issue #122](https://github.com/tylernguyen/x1c6-hackintosh/issues/122), will readd to the repo once the issue is resolved.
 
-> ### 2020-3-6
+> ### 2021-3-6
 
 #### Changed
 
@@ -23,14 +33,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Depricate some `SSDT-Keyboard` patches now that YogaSMC partially handles keyboard locale.
 - Added note on flashing Macronix BIOS chip.
 
-> ### 2020-2-4
+> ### 2021-2-4
 
 #### Changed
 
 - OC to 0.6.6 and upgraded various Acidanthera kexts
 - Upgraded `Resources` with latest `OCBinaryData
 
-> ### 2020-1-5
+> ### 2021-1-5
 
 #### Changed
 
