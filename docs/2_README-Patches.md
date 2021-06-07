@@ -8,9 +8,9 @@
 
 4. Source SSDT\*.dsl patch files are located in `patches` folder.
 5. Refer to my `EFI-OpenCore` folder to see which patches are currently being used by me.
-6. If your x1c6's model is 20KH*, most of my compiled hotpatches and can likely be copied straight to your setup. However, some patches may require certain directories or variables to be changed depending on your hardware (examine your own disasemebled DSDT). For these, edit the .dsl patch files. Also, note that some SSDT patches also require accompanying OpenCore/ Clover ACPI patches to work.
+6. If your x1c6's model is 20KH*, most of my compiled hotpatches and can likely be copied straight to your setup. However, some patches may require certain directories or variables to be changed depending on your hardware (examine your own disassemebled DSDT). For these, edit the .dsl patch files. Also, note that some SSDT patches also require accompanying OpenCore/ Clover ACPI patches to work.
 
-A good way to see if you need to edit and compile your own SSDT patches is to compare your DSDT.dsl with mine of the same BIOS version. You can find my disasemebled DSDT file in `ACPI/Disassembled ACPI/BIOS-v*`.
+A good way to see if you need to edit and compile your own SSDT patches is to compare your DSDT.dsl with mine of the same BIOS version. You can find my disassemebled DSDT file in `ACPI/Disassembled ACPI/BIOS-v*`.
 
 Should your source DSDT be similar enough (in regards to certain items in these ACPI patches)to mine. Congrats! You can simply try my compiled patches. Should it differ however, please carefully examine these notes and create your own SSDT patches.  
 
