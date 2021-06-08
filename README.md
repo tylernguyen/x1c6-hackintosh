@@ -168,8 +168,8 @@ Before you do anything, please familiarize yourself with basic Hackintosh termin
 
 - Creating a macOS installer: refer to [Dortania's OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/)
 - [**1_README-HARDWAREandBIOS**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md): Requirements before installing.  
-- [**2_README-ACPIpatching**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-ACPIpatching.md): Notes and explainations for ACPI hotpatches.
-- [**3_README-other.md**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/4_README-other.md): for post installation settings and other remarks.
+- [**2_README-Patches**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/2_README-Patches.md): Notes and explainations for ACPI hotpatches.
+- [**3_README-other.md**](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-other.md): for post installation settings and other remarks.
 
 </details> 
 
