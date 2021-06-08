@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2021-6-8
+
+#### Changed
+
+- OC to 0.7.0 and upgraded various Acidanthera kexts.
+- Big Sur to 11.
+- Deprecate `SSDT-Battery` in favor of `ECEnabler.kext`
+- Fixed Brightness Adjustment issue (forgot to add patch entry when removing AppleBacklightSmoother.kext two commits back)
+
+#### Notice
+- This will likely be the last repo update until macOS Monterey is stable. At which I plan:
+  - Implement AX200 is the network card with the OpenIntelWireless kexts.
+
 > ### 2021-5-15
 
 #### Changed

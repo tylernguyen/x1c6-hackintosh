@@ -1,10 +1,10 @@
 ﻿# macOS on Thinkpad X1 Carbon 6th Generation, Model 20KH\*
 
 [![macOS](https://img.shields.io/badge/macOS-Big_Sur-yellow.svg)](https://www.apple.com/macos/big-sur/)
-[![version](https://img.shields.io/badge/11.2.1-yellow)](https://www.apple.com/newsroom/2020/11/macos-big-sur-is-here/)
+[![version](https://img.shields.io/badge/11.4-yellow)](https://www.apple.com/newsroom/2020/11/macos-big-sur-is-here/)
 [![BIOS](https://img.shields.io/badge/BIOS-1.50-blue)](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-6th-gen-type-20kh-20kg/downloads/driver-list/component?name=BIOS%2FUEFI)
 [![MODEL](https://img.shields.io/badge/Model-20KH*-blue)](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf)
-[![OpenCore](https://img.shields.io/badge/OpenCore-0.6.8-green)](https://github.com/acidanthera/OpenCorePkg)
+[![OpenCore](https://img.shields.io/badge/OpenCore-0.7.0-green)](https://github.com/acidanthera/OpenCorePkg)
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/issues"> <img src="https://img.shields.io/github/issues/tylernguyen/x1c6-hackintosh"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/commits/master"> <img src="https://img.shields.io/github/last-commit/tylernguyen/x1c6-hackintosh"/> </a>
 
@@ -26,15 +26,19 @@
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-> ### 2021-5-15
+> ### 2021-6-8
 
 #### Changed
 
-- OC to 0.6.9 and upgraded various Acidanthera kexts.
+- OC to 0.7.0 and upgraded various Acidanthera kexts.
+- Big Sur to 11.4
+- Deprecate `SSDT-Battery` in favor of `ECEnabler.kext`
+- Fixed Brightness Adjustment issue (forgot to add patch entry when removing AppleBacklightSmoother.kext two commits back)
 
-#### Removed
+#### Notice
+- This will likely be the last repo update until macOS Monterey is stable. At which I plan:
+  - Implement AX200 is the network card with the OpenIntelWireless kexts.
 
-- ACTUALLY AppleBacklightSmoother.kext per [Issue #122](https://github.com/tylernguyen/x1c6-hackintosh/issues/122), will readd to the repo once the issue is resolved.
 
 <details>
 <summary><strong> SUMMARY </strong></summary>
