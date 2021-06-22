@@ -26,14 +26,13 @@
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-> ### 2021-6-8
+> ### 2021-6-21
 
 #### Changed
 
-- OC to 0.7.0 and upgraded various Acidanthera kexts.
-- Big Sur to 11.4
-- Deprecate `SSDT-Battery` in favor of `ECEnabler.kext`
-- Fixed Brightness Adjustment issue (forgot to add patch entry when removing AppleBacklightSmoother.kext two commits back)
+- Fixed `Resources` folder structuring and added new support files.
+- Revert `ECEnabler.kext` in favor of `SSDT-Battery` (`ECEnabler` had some trouble updating charge level for me).
+- Fix brightness adjustment patch.
 
 #### Notice
 - This will likely be the last repo update until macOS Monterey is stable. At which I plan:

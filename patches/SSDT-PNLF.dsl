@@ -41,7 +41,7 @@ DefinitionBlock("", "SSDT", 2, "tyler", "_PNLF", 0)
             //  0x11 - 17: custom LMAX=0x7a1
             //  0x12 - 18: custom LMAX=0x1499
             //  0x13 - 19: CoffeeLake 0xffff
-            Name (_UID, 0x16)  // _UID: Unique ID
+            Name (_UID, 0x10)  // _UID: Unique ID
 
             Method (_STA, 0, NotSerialized)
             {

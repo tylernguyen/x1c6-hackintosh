@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+> ### 2021-6-21
+
+#### Changed
+
+- Fixed `Resources` folder structuring and added new support files.
+- Revert `ECEnabler.kext` in favor of `SSDT-Battery` (`ECEnabler` had some trouble updating charge level for me).
+- Fix brightness adjustment patch.
+
+#### Notice
+- This will likely be the last repo update until macOS Monterey is stable. At which I plan:
+  - Implement AX200 is the network card with the OpenIntelWireless kexts.
+
 > ### 2021-6-8
 
 #### Changed
