@@ -1,0 +1,6 @@
+site_name: X1C6 Hackintosh
+site_url: https://tylernguyen.github.io/x1c6-hackintosh/
+nav:
+    - Home: Index.md
+theme:
+  name: material
