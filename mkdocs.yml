@@ -1,6 +1,16 @@
-site_name: X1C6 Hackintosh
+site_name: Hackintosh the Thinkpad X1 Carbon 6th Gen
 site_url: https://tylernguyen.github.io/x1c6-hackintosh/
 nav:
     - Home: Index.md
+    - Summary: Summary.md
+    - Hardware: Hardware.md 
+    - BIOS: BIOS.md
+    - Getting Started: Getting-Started.md
+    - Patches: Patches.md
+    - Post Installation: Post-Installation.md
+    - Issues: Issues.md
 theme:
   name: material
+markdown_extensions:
+  - admonition
+  
