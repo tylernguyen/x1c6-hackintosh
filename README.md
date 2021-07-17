@@ -1,26 +1,45 @@
 ﻿# macOS on Thinkpad X1 Carbon 6th Generation, Model 20KH\*
 
-[![macOS](https://img.shields.io/badge/macOS-Big_Sur-yellow.svg)](https://www.apple.com/macos/big-sur/)
-[![version](https://img.shields.io/badge/11.4-yellow)](https://www.apple.com/newsroom/2020/11/macos-big-sur-is-here/)
-[![BIOS](https://img.shields.io/badge/BIOS-1.50-blue)](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-6th-gen-type-20kh-20kg/downloads/driver-list/component?name=BIOS%2FUEFI)
-[![MODEL](https://img.shields.io/badge/Model-20KH*-blue)](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf)
-[![OpenCore](https://img.shields.io/badge/OpenCore-0.7.0-green)](https://github.com/acidanthera/OpenCorePkg)
-<a href="https://github.com/tylernguyen/x1c6-hackintosh/issues"> <img src="https://img.shields.io/github/issues/tylernguyen/x1c6-hackintosh"/> </a>
-<a href="https://github.com/tylernguyen/x1c6-hackintosh/commits/master"> <img src="https://img.shields.io/github/last-commit/tylernguyen/x1c6-hackintosh"/> </a>
+<p align="center">
+<img src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/master/docs/assets/img/x1c6.png" alt="Thinkpad X1 Carbon 6th Gen" width="400">
+</p>
 
-<img align="right" src="https://i.imgur.com/I3yUS4Q.png" alt="Critter" width="300">
+<p align="center">
+<a href="https://www.apple.com/macos/big-sur/">
+  <img src="https://img.shields.io/badge/macOS-Big_Sur_v11.4-red.svg"/> </a>
+<a href="https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-6th-gen-type-20kh-20kg/downloads/driver-list/component?name=BIOS%2FUEFI">
+  <img src="https://img.shields.io/badge/BIOS-Modded_1.50-blue"/> </a>
+<a href="https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf">
+  <img src="https://img.shields.io/badge/Model-20KH*-9cf"/> </a>
+<a href="https://github.com/acidanthera/OpenCorePkg">
+  <img src="https://img.shields.io/badge/OpenCore-0.7.0-12AED6"/> </a>
+<a href="https://github.com/tylernguyen/x1c6-hackintosh/issues"> 
+  <img src="https://img.shields.io/github/issues/tylernguyen/x1c6-hackintosh"/> </a>
+<a href="https://github.com/tylernguyen/x1c6-hackintosh/commits/master"> 
+  <img src="https://img.shields.io/github/last-commit/tylernguyen/x1c6-hackintosh"/> </a>
+<a href="https://github.com/tylernguyen/obsidian-horizon/blob/main/LICENSE">
+   <img src="https://img.shields.io/badge/License-The%20Unlicense-informational.svg"> </a>
+</p>
 
-### Follow my website [damnthattelevision.com](https://damnthattelevision.com/)
+<p align="center">
+<a href="https://damnthattelevision.com/Contact">
+   <img src="https://img.shields.io/badge/%40-Contact-FFF27D"> </a>
+<a href="https://damnthattelevision.com/Support">
+   <img src="https://img.shields.io/badge/%24-Support-ff69b4.svg"> </a>
+<a href="">
+   <img src="https://img.shields.io/badge/Contributions-Welcome-orange.svg"> </a>
+</p>
 
-#### READ THE ENTIRE README.MD BEFORE YOU START.
+<p>
+<h2 align="center"> READ THE ENTIRE README.MD BEFORE YOU START. </h2>
+</p>
+
+July 16th, 2021,  
+I consider the state of this project to be **very stable**. Everything works the way it should, or at least the things I notice. There will likely never be major changes coming unless a new macOS version break something severely (which I doubt). I will continue to maintain this project with every OpenCore releases, up until it's (MacBookPro14,1) official out of service/support from Apple.
 
 #### I am not responsible for any damages you may cause.
 
-### Should you find an error, or improve anything, be it in the config itself or in the my documentation, please consider opening an issue or a pull request to contribute.
-
-`I AM A ONE MAN TEAM, AND A FULL TIME STUDENT. SO, I MIGHT NOT BE ABLE TO RESPOND OR HELP YOU IN A TIMELY MANNER. BUT, I PROMISE I WILL GET TO YOU EVENTUALLY. PLEASE UNDERSTAND.`
-
-`Lastly, if my work here helped you. Please consider donating, it would mean a lot to me.`
+#### If my work here helped you. Please consider donating, it would mean a lot to me.
 
 > ## Update
 
@@ -28,15 +47,15 @@
 
 > ### 2021-6-21
 
-#### Changed
+#### Added
+- A notice in the doc that warns: "modding the BIOS will break TPM and thus, Windows 11. Consider this before you proceed with BIOS modding."
 
-- Fixed `Resources` folder structuring and added new support files.
-- Revert `ECEnabler.kext` in favor of `SSDT-Battery` (`ECEnabler` had some trouble updating charge level for me).
-- Fix brightness adjustment patch.
+#### Removed
+- The `GitHub-pages` of this project, it was pretty useless since it's just a mirror of the `README.md`.
 
 #### Notice
 - This will likely be the last repo update until macOS Monterey is stable. At which I plan:
-  - Implement AX200 is the network card with the OpenIntelWireless kexts.
+  - Implement AX200 as the network card with the OpenIntelWireless kexts.
 
 
 <details>
@@ -120,9 +139,10 @@
 - [dortania/ `USB map` guide](https://dortania.github.io/OpenCore-Post-Install/usb/)
 - [WhateverGreen Intel HD Manual](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
 - `Configuration.pdf` and `Differences.pdf` in each `OpenCore` releases.
+- In short, if I missed something here, refer to official OpenCore docs first, then Dortania's docs. Only then, if you still haven't found what you're looking for, seek Google or forum help.
 - Additionally, references specific to the x1c6 are located in `docs/references/`
 
-* ### No seriously, please read those.
+* ### No seriously, please review those resources to get an idea of what's going on before proceeding.
 </details>  
 
 <details>
@@ -183,15 +203,6 @@ Before you do anything, please familiarize yourself with basic Hackintosh termin
   - [EETagent/T480-OpenCore-Hackintosh](https://github.com/EETagent/T480-OpenCore-Hackintosh)
 Create a pull request if you like to be added, final decision at my discreation.
 </details> 
-
-> ## CONTACT
-
-https://damnthattelevision.com/contact  
-Signal: +1 (202)-644-9951 \*This is a Signal ONLY number. You will not get a reply of you text me at this number.
-
-> ## SUPPORT
-
-https://damnthattelevision.com/support/
 
 <details>
 <summary><strong> CREDITS </strong></summary>
