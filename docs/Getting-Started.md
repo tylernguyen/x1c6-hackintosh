@@ -11,7 +11,7 @@ Please refer to [Dortania's Creating the USB](https://dortania.github.io/OpenCor
 
 1. With the macOS installer has been created, you can use the `EFI` inside `EFI-install_USB` to install macOS onto your drive.
 2. Once macOS has been installed, boot the installed macOS paritition with the existing installer USB and complete new user setup.
-3. Use the `EFI` inside `EFI-OpenCore` for the macOS drive's EFI partition.
+3. Use the `EFI` inside `EFI-OpenCore` for the macOS drive's EFI partition. If your BIOS is unmodded, add the contents of `config_unmoddedBIOS.plist` to the main `config.plist`.
 
 !!! success
     At this point, your machine should boot into macOS without anything attached.

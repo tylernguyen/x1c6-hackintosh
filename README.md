@@ -1,10 +1,6 @@
 ﻿# Hackintosh the Thinkpad X1 Carbon 6th Generation
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/master/docs/assets/img/x1c6.png" alt="Thinkpad X1 Carbon 6th Gen" width="400">
-</p>
-
-<p align="center">
 <a href="https://www.apple.com/macos/big-sur/">
   <img src="https://img.shields.io/badge/macOS-Big_Sur_v11.4-red.svg"/> </a>
 <a href="https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-6th-gen-type-20kh-20kg/downloads/driver-list/component?name=BIOS%2FUEFI">
@@ -30,6 +26,15 @@
    <img src="https://img.shields.io/badge/Contributions-Welcome-orange.svg"> </a>
 </p>
 
+<p align="center">
+<img src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/master/docs/assets/img/x1c6.png" alt="Thinkpad X1 Carbon 6th Gen" width="400">
+</p>
+
+<p align="center">
+<a href="https://tylernguyen.github.io/x1c6-hackintosh/">
+   <img src="https://img.shields.io/badge/-Start%20Here-E95678?style=for-the-badge"> </a>
+</p>
+
 **July 16th, 2021,**  
 I consider the state of this project to be **very stable**. Everything works the way it should, or at least the things I notice. There will likely never be major changes coming unless a new macOS version break something severely (which I doubt). I will continue to maintain this project with every OpenCore releases, up until it's (MacBookPro14,1) official out of service/support from Apple.
 
@@ -37,11 +42,11 @@ I consider the state of this project to be **very stable**. Everything works the
 
 #### If my work here helped you. Please consider donating, it would mean a lot to me.
 
-> ## Update
+## Update
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-> ### 2021-6-21
+### 2021-6-21
 
 #### Added
 - A notice in the doc that warns: "modding the BIOS will break TPM and thus, Windows 11. Consider this before you proceed with BIOS modding."

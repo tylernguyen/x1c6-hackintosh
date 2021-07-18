@@ -1,4 +1,4 @@
-## ACPI Patching:
+## ACPI Patches
 
 1. Download and install [MaciASL](https://github.com/acidanthera/MaciASL/releases) if you do not have it already.
 2. Dump your original ACPI tables. There are a number of ways to do this, using Clover, Hackintool, Linux. See [here](https://khronokernel.github.io/Getting-Started-With-ACPI/Manual/dump.html).  
@@ -22,7 +22,8 @@ Should your source DSDT be similar enough (in regards to certain items in these 
 - Compiled ACPI patches are `.aml` Once compiled, these belong to `EFI/OC/ACPI`.
 - OpenCore Patches are patches for `config.plist` in their respective level.
 
-## Some patches here may be unused. Refer to the current OpenCore-EFI folder to see which one I am currently using. While other patches may be needed case-by-case, such as the WiFi/Bluetooth patches.
+!!! note
+    Refer to the current `EFI-OpenCore` to see which patches are being used.
 
 ## Important Note:
 
@@ -31,13 +32,16 @@ See highlighted example:
 
 ![OpenCore SSDT patching notice](https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/master/docs/assets/img/OpenCore%20SSDT%20patching%20notice.png)
 
-## Some Thinkpad machines are `LPC` and some are`LPCB`. Please examine your own DSDT and modify patches as needed.
+## Some Thinkpad machines are `LPC` and some are `LPCB`. Please examine your own DSDT and modify patches as needed.
+
+!!! note
+    Network and Display patches are on a case-by-case basis and may differ for everyone.
 
 ### Non-native WiFi and Bluetooth
 
-`/patches/Network Patches/ DW1560.plist` for DW1560 model cards.  
-`/patches/Network Patches/ DW1820A.plist` for WD1820A model cards.
-`/patches/Network Patches/ Intel.plist` for Intel branded cards.
+- `/patches/Network Patches/ DW1560.plist` for DW1560 model cards.  
+- `/patches/Network Patches/ DW1820A.plist` for WD1820A model cards.
+- `/patches/Network Patches/ Intel.plist` for Intel branded cards.
 
 \*Notice that these patches require additional kexts to be installed. See them in `Kernel/Add/`
 
@@ -97,7 +101,7 @@ Enables:
 - Remap 1: PrtSc to F13
 - Remap 2: Fn + K to Deadkey
 - Remap 3: Fn + P to Deadkey
-  For Fn 1-12 functions, check the following option within `Preferences/Keyboard`:  
+- For Fn 1-12 functions, check the following option within `Preferences/Keyboard`:  
   ![Fn keys](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/fnkeys.png)
 
 ### SSDT-Sleep - Patch macOS Sleep, S3

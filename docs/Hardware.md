@@ -30,6 +30,13 @@ Replace factory Intel WiFi module with a macOS compatible one. Make sure that th
 
 However, there exists other alternatives with better WiFi and Bluetooth standards, but additional kexts are required. See [`dortania/Wireless-Buyers-Guide`](https://dortania.github.io/Wireless-Buyers-Guide/).  
 
+## Optimizations (Optional):
+
+- Repaste the machine with thermal [Grizzly Kryonaut](https://www.thermal-grizzly.com/en/products/16-kryonaut-en).
+- If you're experienced or would to try liquid metal, use [Grizzly Conductonaut](https://www.thermal-grizzly.com/produkte/25-conductonaut). Though I've found that in my expereience, [Grizzly Kryonaut](https://www.thermal-grizzly.com/en/products/16-kryonaut-en) is enough.
+- Replace your machine's fan (if applicable). See https://www.reddit.com/r/thinkpad/comments/c7zpah/x1_carbon_6th_gen_horrible_cooling_fan_design/
+- Mod the BIOS the unlock Intel Advance Menu. see [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md)
+
 ## Differing Models
 - These are relevant components on my machine which may differ from yours, keep these in mind as you will need to adjust accordingly, depending on your machine's configuration.
 

@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-> ### 2021-6-21
+### 2021-6-21
 
 #### Changed
 
@@ -15,7 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - This will likely be the last repo update until macOS Monterey is stable. At which I plan:
   - Implement AX200 is the network card with the OpenIntelWireless kexts.
 
-> ### 2021-6-8
+### 2021-6-8
 
 #### Changed
 
@@ -28,7 +28,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - This will likely be the last repo update until macOS Monterey is stable. At which I plan:
   - Implement AX200 is the network card with the OpenIntelWireless kexts.
 
-> ### 2021-5-15
+### 2021-5-15
 
 #### Changed
 
@@ -38,7 +38,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - ACTUALLY AppleBacklightSmoother.kext per [Issue #122](https://github.com/tylernguyen/x1c6-hackintosh/issues/122), will readd to the repo once the issue is resolved.
 
-> ### 2021-4-7
+### 2021-4-7
 
 #### Changed
 
@@ -49,7 +49,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - AppleBacklightSmoother.kext per [Issue #122](https://github.com/tylernguyen/x1c6-hackintosh/issues/122), will readd to the repo once the issue is resolved.
 
-> ### 2021-3-6
+### 2021-3-6
 
 #### Changed
 
@@ -58,21 +58,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Depricate some `SSDT-Keyboard` patches now that YogaSMC partially handles keyboard locale.
 - Added note on flashing Macronix BIOS chip.
 
-> ### 2021-2-4
+### 2021-2-4
 
 #### Changed
 
 - OC to 0.6.6 and upgraded various Acidanthera kexts
 - Upgraded `Resources` with latest `OCBinaryData
 
-> ### 2021-1-5
+### 2021-1-5
 
 #### Changed
 
 - OC to 0.6.5 and upgraded various Acidanthera kexts
 - Added `ocvalidate` (0.6.5) in `OC` to easily check and validate `config.plist` changes.
 
-> ### 2020-12-26
+### 2020-12-26
 
 #### Changed
 
@@ -80,14 +80,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - YogaSMC to 1.4.1 (Remember to upgrade your YogaSMC App and PrefPane)
   - YogaSMC implementation on this machine is now considered stable.
 
-> ### 2020-11-17
+### 2020-11-17
 
 #### Changed
 
 - Updated various TB3 patches and instructions.
 - Added misc. DeviceProperties to `config.plist`
 
-> ### 2020-11-14
+### 2020-11-14
 
 #### Added
 
@@ -101,7 +101,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Updated to `SSDT-Battery` to rev8, thanks @benbender
 - Updated some documenation, with more detailed documentation coming.
 
-> ### 2020-11-13
+### 2020-11-13
 
 #### Changed
 
@@ -119,7 +119,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `TbtForcePower.efi` as it is no longer needed.
 - `ThunderboltReset.kext` has it is no longer needed.
 
-> ### 2020-11-3
+### 2020-11-3
 
 #### Changed
 
@@ -163,7 +163,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - `SSDT-HPET`, similar to genuine Macs, HPET is now disabled within `SSDT-INIT`
 
-> ### 2020-10-6
+### 2020-10-6
 
 #### Notice
 
@@ -193,7 +193,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Removed advice to disable DPTF in modded BIOS as it can break methods in ACPI. Thanks @benbender
 - `SMCSuperIO` as it was unnecessary.
 
-> ### 2020-8-3
+### 2020-8-3
 
 #### Added
 
@@ -211,7 +211,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `config.plist` is now defaulted to users with a BIOS mod, those without a BIOS mod will need to add `config_unmoddedBIOS.plist` to `config.plist` 
 - Enforces modeset to fix [Issue #69](https://github.com/tylernguyen/x1c6-hackintosh/issues/69)
 
-> ### 2020-7-18
+### 2020-7-18
 
 #### Added
 
@@ -223,7 +223,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Upgraded `VoodooRMI`
 - Documentation changes for readability. 
 
-> ### 2020-6-29
+### 2020-6-29
 
 #### Added
 
@@ -239,7 +239,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Reverted to previous, simpler iGPU framebuffer patches.
 
-> ### 2020-6-26
+### 2020-6-26
 
 #### Added
 
@@ -261,7 +261,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Unnecessary Mutex OpenCore patches, all Mutex are already 0 in stock `DSDT`.
 - `SSDT-MCHC` and `SSDT-SBUS` for `VoodooRMI` compatibility.
 
-> ### 2020-6-1
+### 2020-6-1
 
 #### Changed
 
@@ -271,7 +271,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Replaced `SSDT-EXT3` with `SSDT-LED`
 - Change SSDT OEM ID to `tyler` to somewhat track distributions and usage across various projects
 
-> ### 2020-5-27
+### 2020-5-27
 
 #### Changed
 
@@ -279,7 +279,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - SSDT-keyboard to support ThinkpadAssistant 1.7.0
 - Honestly, what's even left to improve on the keyboard? Open an issue.
 
-> ### 2020-5-24
+### 2020-5-24
 
 #### Added
 - Setting instructions better sleep in 5_README-other.md
@@ -293,7 +293,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - BetterTouchTool is no longer needed for Fn key functions and has been removed.
 - `SMCLightSensor.kext` has been removed as the x1c6 has no ambient light sensor.
 
-> ### 2020-5-22
+### 2020-5-22
 
 - Further SSDT-Keyboard tweaks:
     - Windows (mismapped to Left Alt by default) is now properly mapped to Left GUI
@@ -302,7 +302,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - This means that Karabiner-Elements is no longer a necessary for this project. Once less program! unless you need it for other purposes (like a hyper key). 
 - *Similarly, once Bluetooth toggle is implemented in ThinkpadAssistant, BetterTouchTool can also go away.
 
-> ### 2020-5-21
+### 2020-5-21
 
 #### Changed
 
@@ -313,7 +313,7 @@ Keyboard Perfection is almost here!
     - Mirror with F7
     - Bluetooth, F10 still has to be handled by BetterTouchTool, but hopefully supported will be added soon. See my [request](https://github.com/MSzturc/ThinkpadAssistant/issues/9)
 
-> ### 2020-5-9
+### 2020-5-9
 
 #### Changed
 
@@ -324,7 +324,7 @@ Keyboard Perfection is almost here!
 - Added PM981 install suggestions per [Issue #43](https://github.com/tylernguyen/x1c6-hackintosh/issues/43)
 - Changed ScanPolicy of `install_USB` to 0. 
 
-> ### 2020-4-6 (#2)
+### 2020-4-6 (#2)
 
 #### Added
 
@@ -336,7 +336,7 @@ Keyboard Perfection is almost here!
 - Upgraded various kexts.  
 
 
-> ### 2020-4-6 (#1)
+### 2020-4-6 (#1)
 
 #### Added
 
@@ -348,7 +348,7 @@ Keyboard Perfection is almost here!
 - Modularized each needed OpenCore config patches.  
 
 
-> ### 2020-4-1
+### 2020-4-1
 
 #### Added
 
@@ -359,7 +359,7 @@ Keyboard Perfection is almost here!
 
 - More documentation about recommended macOS settings.
 
-> ### 2020-3-31
+### 2020-3-31
 
 #### Added
 
@@ -371,7 +371,7 @@ Keyboard Perfection is almost here!
 - All Fn keys now have have an assigned key, remap as needed.
 - Keyboard map is now in markdown.
 
-> ### 2020-3-30
+### 2020-3-30
 
 #### Added
 
@@ -390,7 +390,7 @@ Keyboard Perfection is almost here!
 
 - Removed EC related patches from `config.plist` as they are unnecessary.
 
-> ### 2020-3-29
+### 2020-3-29
 
 #### Added
 
@@ -407,33 +407,33 @@ Keyboard Perfection is almost here!
 
 - Some unused patches within OpenCore config.plist has now been removed.
 
-> ### 2020-3-26
+### 2020-3-26
 
 #### Changed
 
 - Switched to AppleALC layout 21.
 
-> ### 2020-3-23
+### 2020-3-23
 
 #### Changed
 
 - Upgraded OpenCore to 0.5.6
 
-> ### 2020-2-04
+### 2020-2-04
 
 #### Changed
 
 - Upgraded OpenCore to 0.5.5
 - Upgraded kexts.
 
-> ### 2020-1-18
+### 2020-1-18
 
 #### Changed
 
 - Upgraded OpenCore to 0.5.4
 - Upgraded kexts.
 
-> ### 2019-12-22
+### 2019-12-22
 
 #### Added
 

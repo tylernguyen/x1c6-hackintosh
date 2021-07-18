@@ -53,18 +53,19 @@
 
 - PrtSc (remapped to F13) = I use it for Screen Capture (Set in `System Preferences/Keyboard/Shortcuts`)
 - Check `Use F1, F2, etc. keys as standard function keys` in `System Preferences/Keyboard` to gain access to standard F keys:  
-  ![fnkeys](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/fnkeys.png)
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/main/docs/assets/img/macOS%20Settings/fnkeys.png" width="400">
+</p>
+
 - Additionally, [Karabiner-Elements](https://karabiner-elements.pqrs.org/) and [BetterTouchTool](https://folivora.ai/) are great productivty tools to remap and/or add functions to your keyboard.
 
 ## Touchpad:
 
 - Force Click is enabled by default, which turns any click on the trackpad into a force touch. I suggest you turn this off.
 - In addition, I prefer to have tap to click on:  
-  ![touchpad](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/touchpad.png)
 
-## Optimizations:
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/main/docs/assets/img/macOS%20Settings/touchpad.png" width="400">
+</p>
 
-- Repaste the machine with thermal [Grizzly Kryonaut](https://www.thermal-grizzly.com/en/products/16-kryonaut-en).
-- For those willing to risk permanently damaging your machine for the best thermal, repaste the machine with liquid metal [Grizzly Conductonaut](https://www.thermal-grizzly.com/produkte/25-conductonaut). For the majority however, I recommend using [Grizzly Kryonaut](https://www.thermal-grizzly.com/en/products/16-kryonaut-en).
-- Replace your machine's fan (if applicable). See https://www.reddit.com/r/thinkpad/comments/c7zpah/x1_carbon_6th_gen_horrible_cooling_fan_design/
-- Mod the BIOS the unlock Intel Advance Menu, see [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md)

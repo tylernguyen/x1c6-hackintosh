@@ -1,27 +1,17 @@
-﻿# Configurating OpenCore for your x1c6
+﻿# `config.plist`
 
-<img align="right" src="https://i.imgur.com/u2Nukp7.png" alt="Critter" width="200">
+<img align="right" src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/main/docs/assets/img/opencore.png" alt="Critter" width="200">
 
-## Even though I have posted my OpenCore EFI folder here, there are still some work which you have to do before you are able to get it working on your machine. It is **NEVER** a good idea to use someone else's EFI without throughly examining it.
-
-```
-* SystemUUID: Can be generated with MacSerial or use pervious from Clover's config.plist.
-* MLB: Can be generated with MacSerial or use pervious from Clover's config.plist.
-* ROM: ROM must either be Apple ROM (dumped from a real Mac), or your NIC MAC address, or any random MAC address (could be just 6 random bytes) - Vit9696
-* SystemSerialNumber: Can be generated with MacSerial or use pervious from Clover's config.plist.
-```
+Even though I have posted my OpenCore EFI folder here, there are still some work which you have to do before you are able to get it working on your machine. It is **NEVER** a good idea to use someone else's EFI without throughly examining it.
 
 - See [`docs/3_README-other`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-other.md) for more details regarding PlatformInfo settings.
 - `CPUFriendDataProvider` can be generated with [CPUFriendFriend](https://github.com/corpnewt/CPUFriendFriend_) or [one-key-cpufriend](https://github.com/stevezhengshiqi/one-key-cpufriend). This is especially important if you have a different CPU than mine. Even if you have the same CPU as me, you may prefer a different Energy Performance Preference (EPP) so do generate your own CPUFriendDataProvider.  
 
-> ## Checking your OpenCore config.plist
+## Checking your OpenCore config.plist
 
-It is important to keep your OpenCore config.plist properly up-to-spec, as OpenCore configurations tend to change accordingly with OpenCore versions. 
-- A good resource to check your config plist is https://opencore.slowgeek.com/.
-- Additionally, the included `ocvalidate` binary in the `OC` folder is the official in-house utility to check your `config.plist`
-If both validators give positive results, your `config.plist` should be good.
+It is important to keep your OpenCore `config.plist` properly up-to-spec, as OpenCore configurations tend to change accordingly with OpenCore versions. A good resource to check your `config.plist` is the `ocvalidate` binary that is bundled with every OpenCore releases.
 
-> ## `config.plist` Comments:
+## `config.plist` Comments:
 * There are two `plist` files. Default `config.plist` is meant who those with a modded BIOS and have made the approiate settings as detailed in [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) while `config_unmoddedBIOS.plist` is meant for those without a modded BIOS. If you have a modded BIOS and have made the adjustments detailed in my docs, `config.plist` should suffice. If your BIOS is unmodded, simply add the contents of `config_unmoddedBIOS.plist` to the main `config.plist`.
 * Notes on kexts and ACPI patches are on the respective OpenCore entries. Additionally, notes on ACPI patches can be found in [docs/2_README-ACPIpatching.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/2_README-ACPIpatching.md) as well as comments inside the patch.
 * Audio patches:   
@@ -72,6 +62,6 @@ I prefer OpenCanopy for its looks. However, it is completely optional and can ta
 
 * OpenCore tools and utilities are removed for a clean setup and can be added when needed.
 
-> ## Updating:
+## Updating:
 
 To update your OpenCore folder to my current version, simply backup your `PlatformInfo` information and move it to the new OpenCore config. Keep in mind that, depending on your setup, you may wish to keep other settings you've made so make sure to note your OpenCore `config.plist` changes as you make them.

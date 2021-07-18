@@ -1,11 +1,20 @@
+# Project information
 site_name: Hackintosh the Thinkpad X1 Carbon 6th Gen
 site_url: https://tylernguyen.github.io/x1c6-hackintosh/
+site_author: Tyler Nguyen
+
+# Repository
+repo_name: tylernguyen/x1c6-hackintosh
+repo_url: https://github.com/tylernguyen/x1c6-hackintosh
+edit_uri: ""
+
 nav:
-    - Home: Index.md
+    - Home: index.md
     - Summary: Summary.md
     - Hardware: Hardware.md 
     - BIOS: BIOS.md
     - Getting Started: Getting-Started.md
+    - config.plist: config.plist.md
     - Patches: Patches.md
     - Post Installation: Post-Installation.md
     - Issues: Issues.md
@@ -13,4 +22,6 @@ theme:
   name: material
 markdown_extensions:
   - admonition
-  
+plugins:
+  - minify:
+      minify_html: true
