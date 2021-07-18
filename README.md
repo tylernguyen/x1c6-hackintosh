@@ -1,4 +1,4 @@
-﻿# Hackintosh the Thinkpad X1 Carbon 6th Generation
+﻿<h1 align="center"> Hackintosh the Thinkpad X1 Carbon 6th Generation </h1>
 
 <p align="center">
 <a href="https://www.apple.com/macos/big-sur/">

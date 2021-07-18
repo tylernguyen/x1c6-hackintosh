@@ -9,7 +9,7 @@ repo_url: https://github.com/tylernguyen/x1c6-hackintosh
 edit_uri: ""
 
 nav:
-    - Home: index.md
+    - Home: 'Index.md'
     - Summary: Summary.md
     - Hardware: Hardware.md 
     - BIOS: BIOS.md
