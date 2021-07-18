@@ -29,7 +29,8 @@ theme:
 plugins:
   - minify:
       minify_html: true
+  - search
 
 markdown_extensions:
   - admonition
-  - search
+
