@@ -5,6 +5,7 @@
 | :----------------------------------- | ------ | ------------------- | ---------------------------- |
 | Fingerprint Reader   | ❌ | `DISABLED` in BIOS to save power if not used in other OSes.   | Linux support was only recently added    |
 | Wireless WAN         | ❌ | `DISABLED` in BIOS to save power if not used in other OSes.   | Unable to investigate as I have no need and my model did not come with WWAN. |
+| Load Apple's Graphics Micro Code (GuC) | ❌ | | See [Issue #103](https://github.com/tylernguyen/x1c6-hackintosh/issues/103). Will never work AFAIK due to inherent incompatibility. |
 
 ### Video and Audio
 | Feature                              | Status | Dependency          | Remarks                      |
@@ -25,7 +26,7 @@
 | Hibernation Mode 25          | ✅ | `RTCMemoryFixup.kext` and `HibernationFixup.kext`      | Supported, macOS uses mode 3 by default. Change to mode 25 via `pmset`.     |   
 | Custom Charge Threshold      | ✅ | `SSDT-EC.aml`, [YogaSMC.kext](https://github.com/zhen-zen/YogaSMC), and [YogaSMCPane](https://github.com/zhen-zen/YogaSMC)| Adjust with YogaSMCPane in System Preferences
 | Fan Control                  | ✅ | `SSDT-EC.aml`, [YogaSMC.kext](https://github.com/zhen-zen/YogaSMC), and [YogaSMCPane](https://github.com/zhen-zen/YogaSMC)| Adjust with YogaSMC App.
-| Battery Life                 | ✅ | Native, comparable to Windows/Linux. Biggest impact is TB3, see [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md)   | Will need a modded BIOS to disable `CFG Lock`
+| Battery Life                 | ✅ | Native, comparable to Windows/Linux. Biggest impact is TB3, see [docs/BIOS.md](https://tylernguyen.github.io/x1c6-hackintosh/BIOS/)   | Will need a modded BIOS to disable `CFG Lock`
 
 
 ### Input/ Output
@@ -35,7 +36,7 @@
 | Bluetooth                                  | ✅ | Native with BCM94360CS2.  | See `/patches/ Network Patches/` otherwise.        |
 | Ethernet                                   | ✅ | `IntelMausi.kext` | Needs Lenovo Ethernet adapter: [Item page](https://www.lenovo.com/us/en/accessories-and-monitors/cables-and-adapters/adapters/CABLE-BO-Ethernet-Extension-Adapter-2/p/4X90Q84427) |
 | HDMI hotplug                               | ✅ | Custom EDID Override `/patches/Internal Displays/`                                                                  | Refer to [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60) if one does not exist already for your display. |
-| 4K UHD output via HDMI/ DisplayPort **(Modded BIOS)**  | ✅ | See `DMVT Pre-Allocated` to `64M`  | See [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) for information about modding the BIOS.           |
+| 4K UHD output via HDMI/ DisplayPort **(Modded BIOS)**  | ✅ | See `DMVT Pre-Allocated` to `64M`  | See [docs/BIOS.md](https://tylernguyen.github.io/x1c6-hackintosh/BIOS/) for information about modding the BIOS.           |
 | 4K UHD output via HDMI/ DisplayPort **(Vanilla BIOS)** | ✅ | See `/patches/OpenCore Patches/4K-Output-wo-BIOSmod.plist`     | -           |
 | USB 2.0, USB 3.0, and Micro SD Card Reader | ✅ | `SSDT-XHC1.aml`    | -     |
 | USB 3.1                                    | ⚠️ | `SSDT-TB-DSB2-XHC2.aml`    | Hotplug WIP     |
@@ -45,11 +46,11 @@
 ### Display, TrackPad, TrackPoint, and Keyboard
 | Feature                              | Status | Dependency          | Remarks                      |
 | :----------------------------------- | ------ | ------------------- | ---------------------------- |
-| Brightness Adjustments | ✅  | `WhateverGreen.kext`, `SSDT-PNLF.aml`, `AppleBacklightSmoother.kext`, and `BrightnessKeys.kext`| `AppleBacklightSmoother.kext` is optional for smoother birghtness adjustments |
+| Brightness Adjustments | ✅  | `WhateverGreen.kext`, `SSDT-PNLF.aml`, and `BrightnessKeys.kext`| |
 | HiDPI _(Optional)_     | ✅  | [xzhih/one-key-hidpi](https://github.com/xzhih/one-key-hidpi)   | Scaling issues post-sleep fixed with AAPL, ig-platform `BAAnWQ==`     |
 | TrackPoint             | ✅  | `VoodooPS2Controller.kext`                                      | -       |
 | TrackPad               | ✅  | `VoodooPS2Controller.kext` or `VoodooSMBus.kext` and `VoodooRMI.kext`     | `VoodooRMI.kext` is recommended and preferred over `VoodooPS2`. |
-| Built-in Keyboard      | ✅  | `VoodooPS2Controller.kext` | Optimizations recommended, see [`docs/3_README-other.md`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-other.md) |
+| Built-in Keyboard      | ✅  | `VoodooPS2Controller.kext` | Optimizations recommended, see [`docs/Post-Installation.md`](https://tylernguyen.github.io/x1c6-hackintosh/Post-Installation/) |
 | Multimedia Keys        | ✅  | `BrightnessKeys.kext` and [YogaSMC](https://github.com/zhen-zen/YogaSMC) | `YogaSMC` is recommended and preferred over ThinkpadAssisstant  | 
 
 ### macOS Continuity

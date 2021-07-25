@@ -18,9 +18,9 @@
 
 ## Sleep:
 
-- Disable Power Nap for both [`Battery`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/Battery_powernap.png) and [`Power Adapter`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/Poweradt_powernap.png).
-- Disable [`Wake for Network Access`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/Poweradt_powernap.png) in `Power Adapter`.
-- Uncheck [`Allow Bluetooth devices to wake this computer`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/Bluetooth_wake.png) if you do not need it.
+- Disable Power Nap for both [`Battery`](https://github.com/tylernguyen/x1c6-hackintosh/blob/main/docs/assets/img/macOS%20Settings/Battery_powernap.png) and [`Power Adapter`](https://github.com/tylernguyen/x1c6-hackintosh/blob/main/docs/assets/img/macOS%20Settings/Poweradt_powernap.png).
+- Disable [`Wake for Network Access`](https://github.com/tylernguyen/x1c6-hackintosh/blob/main/docs/assets/img/macOS%20Settings/Poweradt_powernap.png) in `Power Adapter`.
+- Uncheck [`Allow Bluetooth devices to wake this computer`](https://github.com/tylernguyen/x1c6-hackintosh/blob/main/docs/assets/img/macOS%20Settings/Bluetooth_wake.png) if you do not need it.
 - Do not disable `hibernatefile`.
 - `sudo pmset -a tcpkeepalive 0` to disable Network while sleeping.
 - `sudo pmset -a proximitywake 0` to disable peripheral wake agent.
@@ -38,7 +38,7 @@
 ## Thunderbolt 3 Hotplug
 
 - Native-like integration with macOS in System Report without the need of flashing a modded firmware. Thank you @benbender
-- NOTE: If you do have a modded BIOS firmware, please reset all settings relating to Thunderbolt 3 to default, all that's needed are settings detailed below or in [1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md)  
+- NOTE: If you do have a modded BIOS firmware, please reset all settings relating to Thunderbolt 3 to default, all that's needed are settings detailed below or in [1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/main/docs/1_README-HARDWAREandBIOS.md)  
 - Please make sure of these settings in BIOS:  
 
 | Main Menu | Sub 1       | Sub 2                                         | Sub 3                                                              |

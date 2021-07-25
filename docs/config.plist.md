@@ -4,7 +4,7 @@
 
 Even though I have posted my OpenCore EFI folder here, there are still some work which you have to do before you are able to get it working on your machine. It is **NEVER** a good idea to use someone else's EFI without throughly examining it.
 
-- See [`docs/3_README-other`](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/3_README-other.md) for more details regarding PlatformInfo settings.
+- See [`docs/3_README-other`](https://github.com/tylernguyen/x1c6-hackintosh/blob/main/docs/3_README-other.md) for more details regarding PlatformInfo settings.
 - `CPUFriendDataProvider` can be generated with [CPUFriendFriend](https://github.com/corpnewt/CPUFriendFriend_) or [one-key-cpufriend](https://github.com/stevezhengshiqi/one-key-cpufriend). This is especially important if you have a different CPU than mine. Even if you have the same CPU as me, you may prefer a different Energy Performance Preference (EPP) so do generate your own CPUFriendDataProvider.  
 
 ## Checking your OpenCore config.plist
@@ -12,13 +12,13 @@ Even though I have posted my OpenCore EFI folder here, there are still some work
 It is important to keep your OpenCore `config.plist` properly up-to-spec, as OpenCore configurations tend to change accordingly with OpenCore versions. A good resource to check your `config.plist` is the `ocvalidate` binary that is bundled with every OpenCore releases.
 
 ## `config.plist` Comments:
-* There are two `plist` files. Default `config.plist` is meant who those with a modded BIOS and have made the approiate settings as detailed in [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md) while `config_unmoddedBIOS.plist` is meant for those without a modded BIOS. If you have a modded BIOS and have made the adjustments detailed in my docs, `config.plist` should suffice. If your BIOS is unmodded, simply add the contents of `config_unmoddedBIOS.plist` to the main `config.plist`.
-* Notes on kexts and ACPI patches are on the respective OpenCore entries. Additionally, notes on ACPI patches can be found in [docs/2_README-ACPIpatching.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/2_README-ACPIpatching.md) as well as comments inside the patch.
+* There are two `plist` files. Default `config.plist` is meant who those with a modded BIOS and have made the approiate settings as detailed in [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/main/docs/1_README-HARDWAREandBIOS.md) while `config_unmoddedBIOS.plist` is meant for those without a modded BIOS. If you have a modded BIOS and have made the adjustments detailed in my docs, `config.plist` should suffice. If your BIOS is unmodded, simply add the contents of `config_unmoddedBIOS.plist` to the main `config.plist`.
+* Notes on kexts and ACPI patches are on the respective OpenCore entries. Additionally, notes on ACPI patches can be found in [docs/2_README-ACPIpatching.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/main/docs/2_README-ACPIpatching.md) as well as comments inside the patch.
 * Audio patches:   
 `Device Properties` > `PciRoot(0x0)/Pci(0x1f,0x3)` > `layout-id`: Injects AppleALC layout-id `21`
 * Intel iGPU and HDMI patches:
 `Device Properties` > `PciRoot(0x0)/Pci(0x2,0x0)` >  
-    * `device-id` = `16590000` per [WhateverGreen/IntelHD.en.md](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
+    * `device-id` = `16590000` per [WhateverGreen/IntelHD.en.md](https://github.com/acidanthera/WhateverGreen/blob/main/Manual/FAQ.IntelHD.en.md)
     * `AAPL,ig-platform-id` = This is negotiable. In the future, I will test different variables for optimization. For now, `04002759` works well enough. 
     * `AAPL00,override-no-connect` = EDID override to fix HDMI hotplug. Search for yours at `patches/Internal Displays/` or see [Issue #60](https://github.com/tylernguyen/x1c6-hackintosh/issues/60) to create one for your display model.
     * `framebuffer-con1-enable` to enable framebuffer patching by WEG on connector 1.

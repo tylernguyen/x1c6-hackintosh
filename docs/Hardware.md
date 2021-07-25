@@ -35,7 +35,7 @@ However, there exists other alternatives with better WiFi and Bluetooth standard
 - Repaste the machine with thermal [Grizzly Kryonaut](https://www.thermal-grizzly.com/en/products/16-kryonaut-en).
 - If you're experienced or would to try liquid metal, use [Grizzly Conductonaut](https://www.thermal-grizzly.com/produkte/25-conductonaut). Though I've found that in my expereience, [Grizzly Kryonaut](https://www.thermal-grizzly.com/en/products/16-kryonaut-en) is enough.
 - Replace your machine's fan (if applicable). See https://www.reddit.com/r/thinkpad/comments/c7zpah/x1_carbon_6th_gen_horrible_cooling_fan_design/
-- Mod the BIOS the unlock Intel Advance Menu. see [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md)
+- Mod the BIOS the unlock Intel Advance Menu. see [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/main/docs/1_README-HARDWAREandBIOS.md)
 
 ## Differing Models
 - These are relevant components on my machine which may differ from yours, keep these in mind as you will need to adjust accordingly, depending on your machine's configuration.
@@ -48,5 +48,5 @@ However, there exists other alternatives with better WiFi and Bluetooth standard
 | WiFi & BT | BCM94360CS2                          | `/patches/ Network Patches/` if non-native.
 | WWAN      | None | Unless needed in other OSes, disable at BIOS to save power
 
-- Refer to [/docs/references/x1c6-Platform_Specifications](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf) for possible stock ThinkPad X1 6th Gen configurations.
+- Refer to [/docs/references/x1c6-Platform_Specifications](https://github.com/tylernguyen/x1c6-hackintosh/blob/main/docs/references/x1c6-Platform_Specifications.pdf) for possible stock ThinkPad X1 6th Gen configurations.
 

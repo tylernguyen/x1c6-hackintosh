@@ -16,7 +16,8 @@ At the minimum, these BIOS settings must be made to install and run macOS withou
 |           | >> Startup  | UEFI/Legacy Boot `UEFI Only`                  |                                                                    |
 |           |             | CSM Support `No` (per OpenCore Documentation) |                                                                    |
 
-* You should also disable hardware devices you do not need to save power, some examples are:
+!!! tip
+   You can also disable hardware/features you do not need to save power, some examples are:
 
 | Main Menu | Sub 1       | Sub 2                                         | Sub 3                                                              |
 | --------- | ----------- | --------------------------------------------- | ------------------------------------------------------------------ |
@@ -25,15 +26,14 @@ At the minimum, these BIOS settings must be made to install and run macOS withou
 |           |             |                                               | Memory Card Slot `DISABLED`                                        |
 |           | >> Config   | >> USB                                        | Always On USB `DISABLED`                                           |
 
-* If you do not use Thunderbolt 3 hotplug in macOS (don't mind shutting down the machine to connect TB3 devices), this will drastically lower power consumption:
+* If you **DO NOT use Thunderbolt 3 hotplug** in macOS (don't mind shutting down the machine to connect TB3 devices), this will drastically lower power consumption:
 
 | Main Menu | Sub 1       | Sub 2                                         | Sub 3                                                              |
 | --------- | ----------- | --------------------------------------------- | ------------------------------------------------------------------ |
 |           | >> Config   | >> Thunderbolt (TM) 3                         | Thunderbolt BIOS Assist Mode `Enabled`                             |
 |           |             |                                               | Thunderbolt(TM) Device `Enabled`                                   |
 
-* If you do do want to use Thunderbolt 3 hotplug in macOS (at the expense of idle power consumption):
-- NOTE: If you do have a modded BIOS firmware, please reset all settings relating to Thunderbolt 3 to default, all that's needed are settings detailed below or in [1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md)
+* If you **DO use Thunderbolt 3 hotplug in macOS** (at the expense of idle power consumption):
 
 | Main Menu | Sub 1       | Sub 2                                         | Sub 3                                                              |
 | --------- | ----------- | --------------------------------------------- | ------------------------------------------------------------------ |
@@ -78,7 +78,7 @@ Here are the steps to mod your BIOS (credits to paranoidbashthot and \x). Attemp
 ## Modded BIOS Settings
 The following are further optimization settings that can be figured once your BIOS is modded.
 
-> * These settings are universally recommended optimizations for your hackintosh:
+* These settings are universally recommended optimizations for your hackintosh:
 
 | Main Menu    | Sub 1                  | Sub 2                              | Sub 3                             | Sub 4                    |
 |--------------|------------------------|------------------------------------|-----------------------------------|--------------------------|
@@ -100,7 +100,7 @@ The following are further optimization settings that can be figured once your BI
 |              |                        |                                    |                                                                        | Offset Prefix `-`         |
 |              |                        |                                    |                                                                        |                           |
 
-> * The following settings depend on your own personal preference:
+* The following settings depend on your own personal preference:
 
  * If you want to optimize CPU **performance** at the cost of battery:
 

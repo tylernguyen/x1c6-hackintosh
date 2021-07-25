@@ -16,23 +16,12 @@ Should your source DSDT be similar enough (in regards to certain items in these 
 
 7. Once you have the compiled ACPI patches, place them in `EFI/OC/ACPI/` and make sure to create matching entries within OpenCore's `config.plist`'s `ACPI/Add/` section.
 
-# Hotpatching Notes
-
-- Source ACPI patches are `.dsl` Edit these as needed.
-- Compiled ACPI patches are `.aml` Once compiled, these belong to `EFI/OC/ACPI`.
-- OpenCore Patches are patches for `config.plist` in their respective level.
-
-!!! note
-    Refer to the current `EFI-OpenCore` to see which patches are being used.
-
 ## Important Note:
 
 Unlike Clover, where SSDT patches are only being applied when booting macOS. OpenCore will apply SSDT patches regardless of the operating system. This is critical when multi-booting, since Windows and Linux do not need the additional patches that macOS does. In many cases, if Windows/Linux fails to boot under OpenCore, it is likely that your macOS intended SSDT patch(s) is being applied universally. To prevent OpenCore from doing this, it is important that your SSDT patches specify its intended OS, which in our case is "Darwin."  
 See highlighted example:
 
-![OpenCore SSDT patching notice](https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/master/docs/assets/img/OpenCore%20SSDT%20patching%20notice.png)
-
-## Some Thinkpad machines are `LPC` and some are `LPCB`. Please examine your own DSDT and modify patches as needed.
+![OpenCore SSDT patching notice](https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/main/docs/assets/img/OpenCore%20SSDT%20patching%20notice.png)
 
 !!! note
     Network and Display patches are on a case-by-case basis and may differ for everyone.
@@ -45,16 +34,50 @@ See highlighted example:
 
 \*Notice that these patches require additional kexts to be installed. See them in `Kernel/Add/`
 
-### SSDT-Darwin - Detects macOS to enable other patches
+# ACPI Patches In-Use:
+!!! note
+    The following patches are arranged alphabetically for easy cross-referencing. For the loading order, please refer to the main EFI's `config.plist`.
 
-### SSDT-AC - Patch to load AppleACPIACAdapter
+### SSDT-AC - Load AppleACPIACAdapter
+
+### SSDT-ALS0 - Fake Ambient Light Sensor
+
+Starting with Catalina, an ambient light sensor device is required for brightness preservation. This patch fakes an ambient light sensor device `ALS0` since the x1c6 does not have one.  
+Why?: `ACPI0008` missing in DSDT.
 
 ### SSDT-Battery - Enables Battery Status in macOS
 
 - Single battery system: only `BAT0` in ACPI, no `BAT1`.
 
+### SSDT-DMAC - Patch Memory Controller
+
+Why?: `PNP0200` is missing in DSDT.
+
+### SSDT-Darwin - Detects macOS to enable other patches
+
+### SSDT-EC - Alow Reads/Write and Provide an Interface with Embedded Controller via YogaSMC
+Two parts:
+- Allow access to EC
+- Sample SSDT from YogaSMC
+
 ### SSDT-HWAC - Fix axxess to 16byte-EC-field HWAC
 - Thanks @benbender
+
+### SSDT-INIT - Initialize System Variables
+
+Disables:
+- HPET
+- DPTF
+Enables:
+- DYTC
+
+### SSDT-Keyboard - Remap PS2 Keys, EC Keys are handled by `BrightnessKeys.kext`
+
+- Remap 1: PrtSc to F13
+- Remap 2: Fn + K to Deadkey
+- Remap 3: Fn + P to Deadkey
+- For Fn 1-12 functions, check the following option within `Preferences/Keyboard`:  
+  ![Fn keys](https://github.com/tylernguyen/x1c6-hackintosh/blob/main/docs/assets/img/macOS%20Settings/fnkeys.png)
 
 ### SSDT-PM - Enables Native Intel Power Managements
 
@@ -82,42 +105,25 @@ Why?: `Processor` search in DSDT, rename `PR` to other variables as needed.
     }
 ```
 
+### SSDT-PMCR
+
+Why?: `PMCR`,`APP9876` missing in DSDT.
+
 ### SSDT-PNLF - Enables Brightness Management in macOS and Smooth Adjustments with AppleBacklightSmoother.kext
 
 iGPU is `PCI0.GFX0`  
 Why?: `Skylake/ KabyLake/ KabyLake-R` CPU.  
-Used in conjunction with `WhateverGreen.kext` and `AppleBacklightSmoother.kext` (Optional)
+Used in conjunction with `WhateverGreen.kext`.
 
-### SSDT-INIT - Initialize System Variables
+### SSDT-PWRB
 
-Disables:
-- HPET
-- DPTF
-Enables:
-- DYTC
-
-### SSDT-Keyboard - Remap PS2 Keys, EC Keys are handled by `BrightnessKeys.kext`
-
-- Remap 1: PrtSc to F13
-- Remap 2: Fn + K to Deadkey
-- Remap 3: Fn + P to Deadkey
-- For Fn 1-12 functions, check the following option within `Preferences/Keyboard`:  
-  ![Fn keys](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/assets/img/macOS%20Settings/fnkeys.png)
+Why?: `PNP0C0C` missing in DSDT.
+- Patch power button.
 
 ### SSDT-Sleep - Patch macOS Sleep, S3
 - Comprehensive sleep/wake patch.  
 - Fixes restart on shutdown.
 **Needs `OpenCore Patches/ Sleep.plist`**
-
-### SSDT-EC - Alow Reads/Write and Provide an Interface with Embedded Controller via YogaSMC
-Two parts:
-- Allow access to EC
-- Sample SSDT from YogaSMC
-
-### SSDT-XHC1 - USB 2.0/3.0 
-**Needs `OpenCore Patches/ XHC1.plist`**
-- Map USB 2.0/3.0
-- Patch USB Power Properties
 
 ### SSDT-TB-DSB0 to SSDT-TB-DSB6
 - Patch USB 3.1
@@ -125,23 +131,10 @@ Two parts:
 - Patch Thunderbolt 3 Power Management
 - Patch Thunderbolt 3 native interfacing with macOS's System Report 
 
-### SSDT-DMAC - Patch Memory Controller
-
-Why?: `PNP0200` is missing in DSDT.
-
-### SSDT-PMCR
-
-Why?: `PMCR`,`APP9876` missing in DSDT.
-
-### SSDT-PWRB
-
-Why?: `PNP0C0C` missing in DSDT.
-- Patch power button.
-
-### SSDT-ALS0
-
-Starting with Catalina, an ambient light sensor device is required for brightness preservation. This patch fakes an ambient light sensor device `ALS0` since the x1c6 does not have one.  
-Why?: `ACPI0008` missing in DSDT.
+### SSDT-XHC1 - USB 2.0/3.0 
+**Needs `OpenCore Patches/ XHC1.plist`**
+- Map USB 2.0/3.0
+- Patch USB Power Properties
 
 ```
 Special thanks to [@benbender](https://github.com/benbender) and [@daliansky](https://github.com/daliansky).

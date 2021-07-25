@@ -32,7 +32,7 @@
 
 <p align="center">
 <a href="https://tylernguyen.github.io/x1c6-hackintosh/">
-   <img src="https://img.shields.io/badge/-Start%20Here-E95678?style=for-the-badge"> </a>
+   <img src="https://img.shields.io/badge/-Click%20Here%20to%20Start-E95678?style=for-the-badge"> </a>
 </p>
 
 **July 16th, 2021,**  
