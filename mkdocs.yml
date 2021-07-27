@@ -22,11 +22,16 @@ nav:
       - Keyboard Map: references/Keyboard.md
       - ALC285 Codec: references/ALC285.md
       - EC Queries: references/EC_queries.md
+      - ASL Tutorial: https://acpica.org/sites/acpica/files/asl_tutorial_v20190625.pdf
+      - ACPI Tips and Tricks: https://wiki.ubuntu.com/Kernel/Reference/ACPITricksAndTips
       - WhateverGreen Intel HD Manual: https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md
       - UEFI Secure Boot: https://osy.gitbook.io/hac-mini-guide/details/secure-boot
+      - HDA Fix: https://osy.gitbook.io/hac-mini-guide/details/hda-fix
       - Thunderbolt 3 (Part 1): https://osy.gitbook.io/hac-mini-guide/details/thunderbolt-3-fix
       - Thunderbolt 3 (Part 2): https://osy.gitbook.io/hac-mini-guide/details/thunderbolt-3-fix-part-2
       - Thunderbolt 3 (Part 3): https://osy.gitbook.io/hac-mini-guide/details/thunderbolt-3-fix-part-3
+      - MacbookPro14,1 ACPI: https://github.com/khronokernel/DarwinDumped/tree/master/MacBookPro/MacBookPro14%2C1
+      - KabylakeOpenBoardPkg: https://github.com/tianocore/edk2-platforms/tree/master/Platform/Intel/KabylakeOpenBoardPkg
 
 theme:
   name: material
@@ -37,6 +42,8 @@ theme:
     - header.autohide
     - search.highlight
     - search.suggest
+    - navigation.tabs
+    - navigation.expand
 
 plugins:
   - minify:
