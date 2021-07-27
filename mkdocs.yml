@@ -19,6 +19,7 @@ nav:
     - Technical Details:
       - config.plist: config.plist.md
       - Patches: Patches.md
+      - ACPI Patch Snippets: https://github.com/5T33Z0/OC-Little-Translated
       - Keyboard Map: references/Keyboard.md
       - ALC285 Codec: references/ALC285.md
       - EC Queries: references/EC_queries.md
@@ -42,8 +43,9 @@ theme:
     - header.autohide
     - search.highlight
     - search.suggest
-    - navigation.tabs
-    - navigation.expand
+    - navigation.sections
+    - navigation.tracking
+  
 
 plugins:
   - minify:
