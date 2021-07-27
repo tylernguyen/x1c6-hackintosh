@@ -27,7 +27,7 @@
 </p>
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/master/docs/assets/img/x1c6.png" alt="Thinkpad X1 Carbon 6th Gen" width="400">
+<img src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/master/docs/assets/x1c6.png" alt="Thinkpad X1 Carbon 6th Gen" width="400">
 </p>
 
 <p align="center">
