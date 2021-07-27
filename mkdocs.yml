@@ -19,8 +19,9 @@ nav:
     - Technical Details:
       - config.plist: config.plist.md
       - Patches: Patches.md
-      - Keyboard Map: references/keyboard.md
+      - Keyboard Map: references/Keyboard.md
       - ALC285 Codec: references/ALC285.md
+      - EC Queries: references/EC_queries.md
       - WhateverGreen Intel HD Manual: https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md
       - UEFI Secure Boot: https://osy.gitbook.io/hac-mini-guide/details/secure-boot
       - Thunderbolt 3 (Part 1): https://osy.gitbook.io/hac-mini-guide/details/thunderbolt-3-fix
@@ -44,4 +45,5 @@ plugins:
 
 markdown_extensions:
   - admonition
+  - footnotes
 
