@@ -38,6 +38,7 @@ However, there exists other alternatives with better WiFi and Bluetooth standard
 - Mod the BIOS the unlock Intel Advance Menu. see [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/main/docs/1_README-HARDWAREandBIOS.md)
 
 ## Differing Models
+
 - These are relevant components on my machine which may differ from yours, keep these in mind as you will need to adjust accordingly, depending on your machine's configuration.
 
 | Category  | Component                            | Remarks |

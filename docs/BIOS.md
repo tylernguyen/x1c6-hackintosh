@@ -1,5 +1,7 @@
 # BIOS
 
+## Vanilla BIOS Settings
+
 At the minimum, these BIOS settings must be made to install and run macOS without any problems:
 
 | Main Menu | Sub 1       | Sub 2                                         | Sub 3                                                              |
@@ -49,7 +51,7 @@ At the minimum, these BIOS settings must be made to install and run macOS withou
 
 A modded BIOS will allow for more optimizations to be made for macOS and will overall make your hackintosh better. I am a BIOS modding novice myself, but with these instructions, I was able to mod my x1c6 BIOS in less than one hour. I fully recommend doing this for all who think themselves capable. Furthermore, the default `config.plist` for this repository is meant to accommodate a modded BIOS with appropriate settings. If you cannot mod your BIOS or is unwilling to do so, use `config_unmoddedBIOS.plist`.
 
-<img align="center" src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/main/docs/assets/img/SPI_Programmer_CH341a.png" alt="SPI_Programmer_CH341a.jpg" width="250">
+<img align="center" src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/main/docs/assets/SPI_Programmer_CH341a.png" alt="SPI_Programmer_CH341a.jpg" width="250">
 [SPI Programmer CH341a and SOIC8 connector](https://www.amazon.com/Organizer-Socket-Adpter-Programmer-CH341A/dp/B07R5LPTYM) are needed.
 
 Here are the steps to mod your BIOS (credits to paranoidbashthot and \x). Attempt this at your own risk.
