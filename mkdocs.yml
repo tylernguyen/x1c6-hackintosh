@@ -28,7 +28,6 @@ nav:
 theme:
   name: material
   palette:
-    scheme: slate
     primary: red
     accent: yellow
   features:
