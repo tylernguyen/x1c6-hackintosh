@@ -14,13 +14,23 @@ nav:
     - Hardware: Hardware.md 
     - BIOS: BIOS.md
     - Getting Started: Getting-Started.md
-    - config.plist: config.plist.md
-    - Patches: Patches.md
     - Post Installation: Post-Installation.md
     - Issues: Issues.md
+    - Technical Details:
+      - config.plist: config.plist.md
+      - Patches: Patches.md
+      - WhateverGreen Intel HD Manual: https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md
+      - UEFI Secure Boot: https://osy.gitbook.io/hac-mini-guide/details/secure-boot
+      - Thunderbolt 3 (Part 1): https://osy.gitbook.io/hac-mini-guide/details/thunderbolt-3-fix
+      - Thunderbolt 3 (Part 2): https://osy.gitbook.io/hac-mini-guide/details/thunderbolt-3-fix-part-2
+      - Thunderbolt 3 (Part 3): https://osy.gitbook.io/hac-mini-guide/details/thunderbolt-3-fix-part-3
 
 theme:
   name: material
+  palette:
+    scheme: slate
+    primary: red
+    accent: yellow
   features:
     - header.autohide
     - search.highlight

@@ -26,7 +26,6 @@ Currently, there is no automatic solution available. For now, I recommend you cr
 - [dortania/ Getting Started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)
 - [dortania/ opencore `multiboot`](https://dortania.github.io/OpenCore-Multiboot/)
 - [dortania/ `USB map` guide](https://dortania.github.io/OpenCore-Post-Install/usb/)
-- [WhateverGreen Intel HD Manual](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
 - `Configuration.pdf` and `Differences.pdf` in each `OpenCore` releases.
 
 !!! tip

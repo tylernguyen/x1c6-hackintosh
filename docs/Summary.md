@@ -20,7 +20,7 @@
 | :----------------------------------- | ------ | ------------------- | ---------------------------- |
 | Battery Percentage Indication | ✅    | `SSDT-Battery.aml` and `/patches/OpenCore Patches/Battery.plist`             | 
 | CPU Power Management (SpeedShift)    | ✅      | `XCPM` and `CPUFriend.kext`, generate your own `CPUFriendDataProvider` with [CPUFriendFriend](https://github.com/corpnewt/CPUFriendFriend_) or [one-key-cpufriend](https://github.com/stevezhengshiqi/one-key-cpufriend). |
-| iGPU Power Management        | ✅ | `XCPM`, enabled by `SSDT-PLUG.aml`                   | 
+| iGPU Power Management        | ✅ | `XCPM`, enabled by `SSDT-PM.aml`                   | 
 | NVMe Drive Battery Management | ✅     | `NVMeFix.kext`  | In my experience, NVMe drives will drain more power than SATA drives.           |
 | S3 Sleep/ Hibernation Mode 3 | ✅ | `SSDT-Sleep.aml` | |
 | Hibernation Mode 25          | ✅ | `RTCMemoryFixup.kext` and `HibernationFixup.kext`      | Supported, macOS uses mode 3 by default. Change to mode 25 via `pmset`.     |   

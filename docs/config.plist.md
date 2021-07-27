@@ -1,12 +1,5 @@
 ﻿# `config.plist`
 
-<img align="right" src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/main/docs/assets/img/opencore.png" alt="Critter" width="200">
-
-Even though I have posted my OpenCore EFI folder here, there are still some work which you have to do before you are able to get it working on your machine. It is **NEVER** a good idea to use someone else's EFI without throughly examining it.
-
-- See [`docs/3_README-other`](https://github.com/tylernguyen/x1c6-hackintosh/blob/main/docs/3_README-other.md) for more details regarding PlatformInfo settings.
-- `CPUFriendDataProvider` can be generated with [CPUFriendFriend](https://github.com/corpnewt/CPUFriendFriend_) or [one-key-cpufriend](https://github.com/stevezhengshiqi/one-key-cpufriend). This is especially important if you have a different CPU than mine. Even if you have the same CPU as me, you may prefer a different Energy Performance Preference (EPP) so do generate your own CPUFriendDataProvider.  
-
 ## Checking your OpenCore config.plist
 
 It is important to keep your OpenCore `config.plist` properly up-to-spec, as OpenCore configurations tend to change accordingly with OpenCore versions. A good resource to check your `config.plist` is the `ocvalidate` binary that is bundled with every OpenCore releases.

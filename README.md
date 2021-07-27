@@ -80,7 +80,7 @@ Create a pull request if you like to be added, final decision at my discreation.
 - [@velaar](https://github.com/velaar) for your continual support and contributions.     
 - [@Porco-Rosso](https://github.com/Porco-Rosso) putting up with my requests to test repo changes.  
 - [@MSzturc](https://github.com/MSzturc) for adding my requested features to ThinkpadAssistant.  
-paranoidbashthot and \x for the BIOS mod to unlocked Intel Advance Menu.
+- paranoidbashthot and \x for the BIOS mod.
 - [@zhen-zen](https://github.com/zhen-zen) for YogaSMC
 
 The greatest thank you and appreciation to the [Acidanthera](https://github.com/acidanthera) team.
