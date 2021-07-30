@@ -13,11 +13,13 @@
   <img src="https://img.shields.io/github/issues/tylernguyen/x1c6-hackintosh"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/commits/master"> 
   <img src="https://img.shields.io/github/last-commit/tylernguyen/x1c6-hackintosh"/> </a>
-<a href="https://github.com/tylernguyen/obsidian-horizon/blob/main/LICENSE">
-   <img src="https://img.shields.io/badge/License-The%20Unlicense-informational.svg"> </a>
+<a href="https://github.com/tylernguyen/x1c6-hackintosh/issues?q=is%3Aissue+label%3A%22help+wanted%22+is%3Aclosed">
+  <img src="https://img.shields.io/badge/need%20help-2-blue"/> </a>
 </p>
 
 <p align="center">
+<a href="https://github.com/tylernguyen/obsidian-horizon/blob/main/LICENSE">
+   <img src="https://img.shields.io/badge/License-The%20Unlicense-informational.svg"> </a>
 <a href="https://damnthattelevision.com/Contact">
    <img src="https://img.shields.io/badge/%40-Contact-FFF27D"> </a>
 <a href="https://damnthattelevision.com/Support">
