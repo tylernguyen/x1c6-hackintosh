@@ -37,7 +37,6 @@ nav:
 theme:
   name: material
   palette:
-    scheme: slate
     primary: blue grey
     accent: yellow
   features:
@@ -47,6 +46,10 @@ theme:
     - navigation.sections
     - navigation.tracking
   
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/tylernguyen
 
 plugins:
   - minify:
