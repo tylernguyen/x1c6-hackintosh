@@ -2,7 +2,7 @@
 
 ## FAQ
 
-!!! warning
+!!! Warning
     None of this applies to you if your machine is not an X1C6, or similar models such as the T480. You're on your own there.
 
 #### "My X isn't working!"
@@ -13,5 +13,5 @@
 ## Troubleshooting
 Defer to [Dortania's General Troubleshooting](https://dortania.github.io/OpenCore-Install-Guide/troubleshooting/troubleshooting.html).
 
-!!! bug
+!!! Bug
     You may find the patches under `/patches/Debug Patches/` useful in getting logs.

@@ -18,7 +18,7 @@ At the minimum, these BIOS settings must be made to install and run macOS withou
 |           | >> Startup  | UEFI/Legacy Boot `UEFI Only`                  |                                                                    |
 |           |             | CSM Support `No` (per OpenCore Documentation) |                                                                    |
 
-!!! tip
+!!! Tip
    You can also disable hardware/features you do not need to save power, some examples are:
 
 | Main Menu | Sub 1       | Sub 2                                         | Sub 3                                                              |

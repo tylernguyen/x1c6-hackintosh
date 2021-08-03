@@ -38,7 +38,7 @@ theme:
   name: material
   palette:
     primary: blue grey
-    accent: yellow
+    accent: red
   features:
     - header.autohide
     - search.highlight

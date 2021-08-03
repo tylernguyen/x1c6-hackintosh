@@ -23,7 +23,7 @@ See highlighted example:
 
 ![OpenCore SSDT patching notice](https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/main/docs/assets/OpenCore%20SSDT%20patching%20notice.png)
 
-!!! note
+!!! Note
     Network and Display patches are on a case-by-case basis and may differ for everyone.
 
 ### Non-native WiFi and Bluetooth

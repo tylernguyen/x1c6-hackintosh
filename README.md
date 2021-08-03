@@ -8,7 +8,7 @@
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf">
   <img src="https://img.shields.io/badge/Model-20KH*-9cf"/> </a>
 <a href="https://github.com/acidanthera/OpenCorePkg">
-  <img src="https://img.shields.io/badge/OpenCore-0.7.0-12AED6"/> </a>
+  <img src="https://img.shields.io/badge/OpenCore-0.7.2-12AED6"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/issues"> 
   <img src="https://img.shields.io/github/issues/tylernguyen/x1c6-hackintosh"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/commits/master"> 
@@ -48,18 +48,15 @@ I consider the state of this project to be **very stable**. Everything works the
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-### 2021-6-21
-
-#### Added
-- A notice in the doc that warns: "modding the BIOS will break TPM and thus, Windows 11. Consider this before you proceed with BIOS modding."
-
-#### Removed
-- The `GitHub-pages` of this project, it was pretty useless since it's just a mirror of the `README.md`.
+### 2021-8-3
 
 #### Notice
-- This will likely be the last repo update until macOS Monterey is stable. At which I plan:
-  - Implement AX200 as the network card with the OpenIntelWireless kexts.
+- AX200 is now my wireless card. However, I'll continue to manintain a vanilla repo.
 
+#### Changed
+- OC to 0.7.2
+- Upgraded various Acidanthera kexts.
+- `docs/Hardware.md` no longer requires a wireless card change. The recommendaiton/preferred card is now AX200.
 
 # Other Respositories
 

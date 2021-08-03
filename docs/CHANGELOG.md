@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+### 2021-8-3
+
+#### Notice
+- AX200 is now my wireless card. However, I'll continue to manintain a vanilla repo.
+
+#### Changed
+- OC to 0.7.2
+- Upgraded various Acidanthera kexts.
+- `docs/Hardware.md` no longer requires a wireless card change. The recommendaiton/preferred card is now AX200.
+
 ### 2021-6-21
 
 #### Changed
