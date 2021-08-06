@@ -1,7 +1,7 @@
 # FAQ
 
 #### "Does everything work?"
-Not everything, some features will inherently never work under macOS. The most needed, day-to-day features, however, work as they do in a real Mac.
+Not everything, some features will inherently never work under macOS. The most needed, day-to-day features, however, work as they do in a real Mac. See [Summary](https://tylernguyen.github.io/x1c6-hackintosh/Summary/).
 
 #### "Is this project maintained?"
 Yes, until eventually my x1c6 dies or macOS phases out update (even then, it'll likely last a few more years).

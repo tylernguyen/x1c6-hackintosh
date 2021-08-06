@@ -39,6 +39,7 @@ theme:
   palette:
     primary: blue grey
     accent: red
+  logo: docs/assets/logo.png
   features:
     - header.autohide
     - search.highlight
@@ -59,4 +60,8 @@ plugins:
 markdown_extensions:
   - admonition
   - footnotes
-
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format

@@ -21,7 +21,7 @@ This is very useful if you intend to also use Windows/Linux, as partitioning a s
 ## WiFi and Bluetooth
 
 !!! Tip
-    If your laptop did not come with WWAN, you can purchase additional antennas to add to your laptop. This is useful when using WiFi/Bluetooth cards that have 3 antennas.**
+    If your laptop did not come with WWAN, you can purchase additional antennas to add to your laptop. This is useful when using WiFi/Bluetooth cards that have 3 antennas.
 
 - The laptop's default wireless card should work via the [OpenIntelWireless](https://github.com/OpenIntelWireless) kexts.
 - For a vanilla and native experience, you may wish to buy a BCM94360CS2 card, along with a M.2 NGFF adapter. 
@@ -37,7 +37,7 @@ This is very useful if you intend to also use Windows/Linux, as partitioning a s
 - Repaste the machine with thermal [Grizzly Kryonaut](https://www.thermal-grizzly.com/en/products/16-kryonaut-en).
 - If you're experienced or would to try liquid metal, use [Grizzly Conductonaut](https://www.thermal-grizzly.com/produkte/25-conductonaut). Though I've found that in my expereience, [Grizzly Kryonaut](https://www.thermal-grizzly.com/en/products/16-kryonaut-en) is enough.
 - Replace your machine's fan (if applicable). See https://www.reddit.com/r/thinkpad/comments/c7zpah/x1_carbon_6th_gen_horrible_cooling_fan_design/
-- Mod the BIOS the unlock Intel Advance Menu. see [docs/1_README-HARDWAREandBIOS.md](https://github.com/tylernguyen/x1c6-hackintosh/blob/main/docs/1_README-HARDWAREandBIOS.md)
+- Mod the BIOS the unlock Intel Advance Menu. see [BIOS.md](https://tylernguyen.github.io/x1c6-hackintosh/BIOS/)
 
 ## Differing Models
 
