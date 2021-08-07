@@ -5,7 +5,7 @@
 At the minimum, these BIOS settings must be made to install and run macOS without any problems:
 
 ``` mermaid
-graph LR;
+graph LR
     id1[Main Menu]-->Security;
     id1-->Config;
     id1-->Startup;
@@ -25,10 +25,10 @@ graph LR;
 ```
 
 !!! Tip
-   You can also disable hardware/features you do not need to save power, some examples are:
+    You can also disable hardware/features you do not need to save power, some examples are:
 
 ``` mermaid
-graph LR;
+graph LR
     id1[Main Menu]-->Security;
     id1-->Config;
     Security-->id2[I/O Port Access];
@@ -42,22 +42,22 @@ graph LR;
 * If you **DO NOT use Thunderbolt 3 hotplug** in macOS (don't mind shutting down the machine to connect TB3 devices), this will drastically lower power consumption:
 
 ``` mermaid
-graph LR;
+graph LR
     id1[Main Menu]-->Config;
     Config-->id2[Thunderbolt 3];
-    id2-->|Thunderbolt BIOS Assist Mode|Enabled
-    id2-->|Thunderbolt Device|Enabled
+    id2-->|Thunderbolt BIOS Assist Mode|Enabled;
+    id2-->|Thunderbolt Device|Enabled;
 ```
 
 * If you **DO use Thunderbolt 3 hotplug in macOS** (at the expense of idle power consumption):
 
 ``` mermaid
-graph LR;
+graph LR
     id1[Main Menu]-->Config;
     Config-->id2[Thunderbolt 3];
-    id2-->|Thunderbolt BIOS Assist Mode|Disabled
-    id2-->|Security Level|id3[No Security]
-    id2-->|Support in Pre Boot Environment: Thunderbolt Device|Disabled
+    id2-->|Thunderbolt BIOS Assist Mode|Disabled;
+    id2-->|Security Level|id3[No Security];
+    id2-->|Support in Pre Boot Environment: Thunderbolt Device|Disabled;
 ```
 
 ## Modding the BIOS
@@ -99,7 +99,7 @@ The following are further optimization settings that can be figured once your BI
 * These settings are universally recommended optimizations for your hackintosh:
 
 ``` mermaid
-graph TD;
+graph TD
     id1[Advance Tab]-->id2[Intel Advanced Menu];
     id2-->id3[System Agent Configuration];
     id2-->id4[Power & Performance];
@@ -113,7 +113,7 @@ graph TD;
 * I also recommend undervolting your machine regarless of your usage, the following are stable settings for my x1c6 with `i7-8650U`, verified by stress testing with `Prime95` and `Heaven Benchmark`, your may be worse or better, please do your own testing. In addition, I suggest you repaste your machine with an aftermarket thermal paste for lower temps and a better undervolt.
 
 ``` mermaid
-graph TD;
+graph TD
     id1[Advance Tab]-->id2[Intel Advanced Menu];
     id2-->id3[OverClocking Performance Menu];
     id3-->|OverClocking Feature|Enabled;
@@ -135,7 +135,7 @@ graph TD;
  * If you want to optimize CPU **performance** at the cost of battery:
 
 ``` mermaid
-graph LR;
+graph LR
     id1[Advance Tab]-->id2[Power & Performance];
     id2-->id3[CPU - Power Management Control];
     id3-->|Boot Performance Mode|id4[Turbo Performance];
@@ -145,7 +145,7 @@ graph LR;
  * If you want to optimize **battery time** at the cost of performance:
 
 ``` mermaid
-graph LR;
+graph LR
     id1[Advance Tab]-->id2[Power & Performance];
     id2-->id3[CPU - Power Management Control];
     id3-->|Boot Performance Mode|id4[Max Battery];
