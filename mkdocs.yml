@@ -39,7 +39,7 @@ theme:
   palette:
     primary: blue grey
     accent: red
-  logo: docs/assets/logo.png
+  logo: assets/logo.png
   features:
     - header.autohide
     - search.highlight
