@@ -40,7 +40,6 @@ theme:
   palette:
     primary: blue grey
     accent: red
-  logo: assets/x1c6.png
   features:
     - header.autohide
     - search.highlight
