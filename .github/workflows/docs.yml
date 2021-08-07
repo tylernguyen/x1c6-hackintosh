@@ -12,11 +12,6 @@ jobs:
       - name: Checkout main
         uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: |
-          python3 -m pip install --upgrade pip
-          python3 -m pip install mkdocs-mermaid2-plugin
-
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
         env:
