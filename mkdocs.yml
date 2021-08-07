@@ -33,13 +33,14 @@ nav:
       - Thunderbolt 3 (Part 3): https://osy.gitbook.io/hac-mini-guide/details/thunderbolt-3-fix-part-3
       - MacbookPro14,1 ACPI: https://github.com/khronokernel/DarwinDumped/tree/master/MacBookPro/MacBookPro14%2C1
       - KabylakeOpenBoardPkg: https://github.com/tianocore/edk2-platforms/tree/master/Platform/Intel/KabylakeOpenBoardPkg
+      - CFG Unlock without BIOS Mod: https://www.reddit.com/r/hackintosh/comments/hz2rtm/cfg_lockunlocking_alternative_method/
 
 theme:
   name: material
   palette:
     primary: blue grey
     accent: red
-  logo: assets/logo.png
+  logo: assets/x1c6.png
   features:
     - header.autohide
     - search.highlight
