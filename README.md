@@ -8,7 +8,7 @@
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf">
   <img src="https://img.shields.io/badge/Model-20KH*-9cf"/> </a>
 <a href="https://github.com/acidanthera/OpenCorePkg">
-  <img src="https://img.shields.io/badge/OpenCore-0.7.2-12AED6"/> </a>
+  <img src="https://img.shields.io/badge/OpenCore-0.7.3-12AED6"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/issues"> 
   <img src="https://img.shields.io/github/issues/tylernguyen/x1c6-hackintosh"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/commits/master"> 
