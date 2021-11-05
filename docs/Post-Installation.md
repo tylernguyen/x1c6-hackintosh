@@ -55,7 +55,7 @@
 - Check `Use F1, F2, etc. keys as standard function keys` in `System Preferences/Keyboard` to gain access to standard F keys:  
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/main/docs/assets/img/macOS%20Settings/fnkeys.png" width="400">
+  <img src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/main/docs/assets/macOS%20Settings/fnkeys.png" width="400">
 </p>
 
 - Additionally, [Karabiner-Elements](https://karabiner-elements.pqrs.org/) and [BetterTouchTool](https://folivora.ai/) are great productivty tools to remap and/or add functions to your keyboard.
@@ -66,6 +66,6 @@
 - In addition, I prefer to have tap to click on:  
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/main/docs/assets/img/macOS%20Settings/touchpad.png" width="400">
+  <img src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/main/docs/assets/macOS%20Settings/touchpad.png" width="400">
 </p>
 

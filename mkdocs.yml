@@ -26,7 +26,8 @@ nav:
       - ASL Tutorial: https://acpica.org/sites/acpica/files/asl_tutorial_v20190625.pdf
       - ACPI Tips and Tricks: https://wiki.ubuntu.com/Kernel/Reference/ACPITricksAndTips
       - WhateverGreen Intel HD Manual: https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md
-      - UEFI Secure Boot: https://osy.gitbook.io/hac-mini-guide/details/secure-boot
+      - UEFI Secure Boot Explaination: https://osy.gitbook.io/hac-mini-guide/details/secure-boot
+      - Custom Secure Boot Keys and Signing OpenCore Binaries: https://github.com/profzei/Matebook-X-Pro-2018/wiki/Enable-BIOS-Secure-Boot-with-OpenCore
       - HDA Fix: https://osy.gitbook.io/hac-mini-guide/details/hda-fix
       - Thunderbolt 3 (Part 1): https://osy.gitbook.io/hac-mini-guide/details/thunderbolt-3-fix
       - Thunderbolt 3 (Part 2): https://osy.gitbook.io/hac-mini-guide/details/thunderbolt-3-fix-part-2
