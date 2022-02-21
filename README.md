@@ -2,13 +2,13 @@
 
 <p align="center">
 <a href="https://www.apple.com/macos/big-sur/">
-  <img src="https://img.shields.io/badge/macOS-Monterey_v12.0.1 -red.svg"/> </a>
+  <img src="https://img.shields.io/badge/macOS-Monterey_v12.2-red.svg"/> </a>
 <a href="https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-6th-gen-type-20kh-20kg/downloads/driver-list/component?name=BIOS%2FUEFI">
   <img src="https://img.shields.io/badge/BIOS-Modded_1.50-blue"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf">
   <img src="https://img.shields.io/badge/Model-20KH*-9cf"/> </a>
 <a href="https://github.com/acidanthera/OpenCorePkg">
-  <img src="https://img.shields.io/badge/OpenCore-0.7.5-12AED6"/> </a>
+  <img src="https://img.shields.io/badge/OpenCore-0.7.8-12AED6"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/issues"> 
   <img src="https://img.shields.io/github/issues/tylernguyen/x1c6-hackintosh"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/commits/master"> 
@@ -35,7 +35,7 @@
 
 <p align="center">
 <a href="https://tylernguyen.github.io/x1c6-hackintosh/">
-   <img src="https://img.shields.io/badge/-Click%20Here%20to%20Start-E95678?style=for-the-badge"> </a>
+   <img src="https://img.shields.io/badge/-Documentation-E95678?style=for-the-badge"> </a>
 </p>
 
 **July 16th, 2021,**  
@@ -49,17 +49,17 @@ I consider the state of this project to be **very stable**. Everything works the
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-### 2021-11-5
+### 2022-2-21
 
 #### Added
-- `BluetToolFixup.kext` to fix Bluetooth stack in macOS Monterey. (It should on load on macOS Monterey).
 
 #### Changed
-- OC to 0.7.5
-- macOS to Monterey 12.0.1
-- Upgraded various Acidanthera kexts.
-- Upgraded `HFSPlus.efi`
-- `install EFI` is now deprecated. Use the main `EFI` to install macOS (You may also wish to enable `ShowPicker`, as well as  `-v` in `boot-args`)
+- OC to 0.7.8
+- macOS to Monterey 12.2.1
+- Upgraded various Acidanthera kexts
+
+#### Deleted
+- `RTCMemoryFixup.kext`
 
 # Other Respositories
 

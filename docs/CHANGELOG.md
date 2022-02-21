@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+### 2022-2-21
+
+#### Added
+
+#### Changed
+- OC to 0.7.8
+- macOS to Monterey 12.2.1
+- Upgraded various Acidanthera kexts
+
+#### Deleted
+- `RTCMemoryFixup.kext`
+
+### 2021-11-5
+
+#### Added
+- `BluetToolFixup.kext` to fix Bluetooth stack in macOS Monterey. (It should on load on macOS Monterey).
+
+#### Changed
+- OC to 0.7.5
+- macOS to Monterey 12.0.1
+- Upgraded various Acidanthera kexts.
+- Upgraded `HFSPlus.efi`
+- `install EFI` is now deprecated. Use the main `EFI` to install macOS (You may also wish to enable `ShowPicker`, as well as  `-v` in `boot-args`)
+
 ### 2021-8-3
 
 #### Notice

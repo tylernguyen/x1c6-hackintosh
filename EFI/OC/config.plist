@@ -1384,24 +1384,6 @@
 				<key>Arch</key>
 				<string>x86_64</string>
 				<key>BundlePath</key>
-				<string>RTCMemoryFixup.kext</string>
-				<key>Comment</key>
-				<string>For support of Hibernation Mode 25</string>
-				<key>Enabled</key>
-				<true/>
-				<key>ExecutablePath</key>
-				<string>Contents/MacOS/RTCMemoryFixup</string>
-				<key>MaxKernel</key>
-				<string></string>
-				<key>MinKernel</key>
-				<string></string>
-				<key>PlistPath</key>
-				<string>Contents/Info.plist</string>
-			</dict>
-			<dict>
-				<key>Arch</key>
-				<string>x86_64</string>
-				<key>BundlePath</key>
 				<string>YogaSMC.kext</string>
 				<key>Comment</key>
 				<string>System Management Controller (SMC) Driver</string>
@@ -1621,15 +1603,17 @@
 		<dict>
 			<key>4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14</key>
 			<dict>
-				<key>UIScale</key>
+				<key>DefaultBackgroundColor</key>
 				<data>
-				Ag==
+				AAAAAA==
 				</data>
 			</dict>
 			<key>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102</key>
 			<dict>
 				<key>rtc-blacklist</key>
 				<data>
+				q6qpqKempaSjoqGgn56dnJuamZiXlpWUk5KRkI+OjYyL
+				iomIh4aFhIOCgYA=
 				</data>
 			</dict>
 			<key>7C436110-AB2A-4BBB-A880-FE41995C9F82</key>
@@ -1639,7 +1623,7 @@
 				Rg==
 				</data>
 				<key>boot-args</key>
-				<string>rtcfx_exclude=80-AB</string>
+				<string></string>
 				<key>csr-active-config</key>
 				<data>
 				AAAAAA==
@@ -1756,6 +1740,12 @@
 			<integer>0</integer>
 			<key>KeySubsequentDelay</key>
 			<integer>5</integer>
+			<key>PointerPollMask</key>
+			<integer>-1</integer>
+			<key>PointerPollMax</key>
+			<integer>80</integer>
+			<key>PointerPollMin</key>
+			<integer>10</integer>
 			<key>PointerSpeedDiv</key>
 			<integer>1</integer>
 			<key>PointerSpeedMul</key>
@@ -1767,19 +1757,23 @@
 			<integer>0</integer>
 			<key>AudioDevice</key>
 			<string>PciRoot(0x0)/Pci(0x1f,0x3)</string>
-			<key>AudioOut</key>
-			<integer>0</integer>
+			<key>AudioOutMask</key>
+			<integer>1</integer>
 			<key>AudioSupport</key>
 			<true/>
-			<key>MinimumVolume</key>
-			<integer>20</integer>
+			<key>DisconnectHda</key>
+			<false/>
+			<key>MaximumGain</key>
+			<integer>-15</integer>
+			<key>MinimumAssistGain</key>
+			<integer>-30</integer>
+			<key>MinimumAudibleGain</key>
+			<integer>-55</integer>
 			<key>PlayChime</key>
 			<string>Auto</string>
 			<key>ResetTrafficClass</key>
 			<false/>
 			<key>SetupDelay</key>
-			<integer>0</integer>
-			<key>VolumeAmplifier</key>
 			<integer>0</integer>
 		</dict>
 		<key>ConnectDrivers</key>
@@ -1794,7 +1788,7 @@
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
-				<string>HFSPlus.efi</string>
+				<string>HfsPlus.efi</string>
 			</dict>
 			<dict>
 				<key>Arguments</key>
@@ -1862,6 +1856,8 @@
 			<false/>
 			<key>ProvideConsoleGop</key>
 			<true/>
+			<key>ReconnectGraphicsOnConnect</key>
+			<false/>
 			<key>ReconnectOnResChange</key>
 			<false/>
 			<key>ReplaceTabWithSpace</key>
@@ -1872,6 +1868,8 @@
 			<false/>
 			<key>TextRenderer</key>
 			<string>BuiltinGraphics</string>
+			<key>UIScale</key>
+			<integer>2</integer>
 			<key>UgaPassThrough</key>
 			<false/>
 		</dict>
@@ -1894,7 +1892,7 @@
 			<key>AppleKeyMap</key>
 			<false/>
 			<key>AppleRtcRam</key>
-			<false/>
+			<true/>
 			<key>AppleSecureBoot</key>
 			<false/>
 			<key>AppleSmcIo</key>
@@ -1922,6 +1920,8 @@
 			<false/>
 			<key>EnableVectorAcceleration</key>
 			<true/>
+			<key>EnableVmx</key>
+			<false/>
 			<key>ExitBootServicesDelay</key>
 			<integer>0</integer>
 			<key>ForceOcWriteFlash</key>
