@@ -1,1 +1,0 @@
-mkdocs-mermaid2-plugin
