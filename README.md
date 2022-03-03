@@ -2,7 +2,7 @@
 
 <p align="center">
 <a href="https://www.apple.com/macos/big-sur/">
-  <img src="https://img.shields.io/badge/macOS-Monterey_v12.2-red.svg"/> </a>
+  <img src="https://img.shields.io/badge/macOS-Monterey_v12.2.1-red.svg"/> </a>
 <a href="https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-6th-gen-type-20kh-20kg/downloads/driver-list/component?name=BIOS%2FUEFI">
   <img src="https://img.shields.io/badge/BIOS-Modded_1.50-blue"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf">
@@ -30,7 +30,7 @@
 
 <p align="center">
 <a href="https://tylernguyen.github.io/x1c6-hackintosh/">
-  <img src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/master/docs/assets/x1c6.png" alt="Thinkpad X1 Carbon 6th Gen" width="400">
+  <img src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/master/docs/img/x1c6.png" alt="Thinkpad X1 Carbon 6th Gen" width="400">
 </p>
 
 <p align="center">

@@ -8,7 +8,18 @@ hide:
 !!! Warning
     None of this applies to you if your machine is not an X1C6, or similar models such as the T480. You're on your own there.
 
-#### "My X isn't working!"
+
+#### Machine boots to black/BIOS, and/or selector
+
+- Double check your EFI paritiion dirrectory structure. It should look as `/Volumes/EFI/EFI/`
+  - `OC`
+  - `BOOT`
+
+#### macOS Sierra, High Sierra, Catalina, and Big Sur
+
+- These were all working on the machine at one point. They should still working with some minor tweaks to the EFI. They won't be supported by me, however. You'll have to do this yourself.
+
+#### My X isn't working!
 
 - Was it supposed to work? Check Summary
 - Have you applied the needed patch? Check Summary, `/patches/Network Patches` and `/patches/Display Patches`.
