@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+### 2022-4-20
+
+#### Added
+
+#### Changed
+- OC to 0.8.0
+- macOS to Monterey 12.3.1
+- Upgraded various Acidanthera kexts
+
 ### 2022-2-21
 
 #### Added

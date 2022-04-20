@@ -8,10 +8,11 @@ site_description: >-
 # ANCHOR Repository
 repo_name: tylernguyen/x1c6-hackintosh
 repo_url: https://github.com/tylernguyen/x1c6-hackintosh
-edit_uri: ""
+edit_uri: "edit/main/docs/"
 
 theme:
   name: material
+  custom_dir: overrides
   icon:
     repo: fontawesome/brands/git
     logo: material/laptop
@@ -19,15 +20,13 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: red
-      accent: yellow
+      accent: deep orange
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: red
-      accent: yellow
+      accent: amber
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
@@ -47,8 +46,7 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/tylernguyen
   # NOTE Hide "Made with Material for MkDocs"
-  extra:
-    generator: false
+  generator: false
 
 extra_css:
   - stylesheets/extra.css
@@ -83,6 +81,8 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true 
 # !SECTION
 
 # ANCHOR Page tree
