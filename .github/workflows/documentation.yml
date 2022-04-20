@@ -18,10 +18,6 @@ jobs:
         with:
           python-version: 3.x
           
-      - name: Install Python dependencies
-        run: |
-          pip install mkdocs-git-revision-date-localized-plugin>=1.0.1
-          
       - name: Install Insiders build
         if: github.event.repository.fork == false
         env:
