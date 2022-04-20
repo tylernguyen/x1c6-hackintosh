@@ -20,7 +20,6 @@ jobs:
           
       - name: Install Python dependencies
         run: |
-          pip install .
           pip install \
             mkdocs-git-revision-date-localized-plugin>=1.0.1
           
