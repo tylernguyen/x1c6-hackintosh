@@ -1,4 +1,6 @@
 name: Build & Deploy MkDocs
+env:
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
 on:
   push:
     branches:
@@ -16,6 +18,4 @@ jobs:
           python-version: 3.x
       - run: pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
       - run: mkdocs gh-deploy --force
-
-env:
-  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      
