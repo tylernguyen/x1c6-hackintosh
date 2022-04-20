@@ -1,6 +1,4 @@
 name: Build & Deploy MkDocs
-env:
-  GH_TOKEN: ${{ secrets.GH_TOKEN }}
 on:
   push:
     branches:
@@ -12,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.fork == false
     steps:
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
