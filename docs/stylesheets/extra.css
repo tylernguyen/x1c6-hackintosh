@@ -1,0 +1,94 @@
+/* ANCHOR Page Width */
+.md-grid {
+  max-width: 1500px;
+}
+
+/* SECTION Colors */
+:root {
+  --md-primary-fg-color: #282F38;
+  --md-primary-fg-color--light: #282F38;
+  --md-primary-fg-color--dark: #232631;
+}
+
+/* ANCHOR Dark Mode Colors */
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: rgb(26, 28, 35);
+  --md-default-bg-color--light: rgb(26, 28, 35, 0.54);
+  --md-default-bg-color--lighter: rgb(26, 28, 35, 0.26);
+  --md-default-bg-color--lightest: rgb(26, 28, 35, 0.07);
+  --md-default-fg-color: #FDF0ED;
+  --md-footer-bg-color: rgb(23, 27, 32, 0.87);
+  --md-footer-bg-color-dark: rgb(67, 126, 199);
+  --md-typeset-a-color: #689D6A;
+}
+
+/* ANCHOR Light Mode Colors */
+[data-md-color-scheme="default"] {
+  --md-typeset-a-color: #4051B5;
+}
+
+/* ANCHOR Button Color depends on Link Color */
+.md-typeset .md-button {
+  color: var(--md-typeset-a-color);
+  margin-bottom: 5px;
+}
+
+.md-typeset .md-button--primary {
+  color: white;
+  background-color: var(--md-typeset-a-color);
+  border-color: var(--md-typeset-a-color);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary {
+  color: var(--md-primary-bg-color);
+}
+
+/* !SECTION */
+
+/* ANCHOR Custom Recommendation Cards: https://github.com/privacyguides/privacyguides.org/blob/main/docs/stylesheets/extra.css */
+.md-typeset .admonition.recommendation,
+.md-typeset details.recommendation {
+  border: none;
+  font-size: inherit;
+}
+
+.md-typeset .recommendation>.admonition-title,
+.md-typeset .recommendation>summary {
+  background-color: rgba(43, 155, 70, 0.0);
+  border: none;
+  padding-left: 0.6rem;
+}
+
+.md-typeset .recommendation>.admonition-title::before,
+.md-typeset .recommendation>.admonition-title,
+.md-typeset .recommendation>summary::before {
+  display: none;
+}
+
+.md-typeset .recommendation img[align="right"],
+.md-typeset svg[align="right"] {
+  max-width: 150px;
+}
+
+.md-typeset .admonition.anonyimity,
+.md-typeset details.anonyimity {
+  border-color: rgb(43, 155, 70);
+}
+
+.md-typeset .anonyimity>.admonition-title,
+.md-typeset .anonyimity>summary {
+  background-color: rgba(43, 155, 70, 0.1);
+  border-color: rgb(43, 155, 70);
+}
+
+.md-typeset .anonyimity>.admonition-title::before,
+.md-typeset .anonyimity>summary::before {
+  background-color: rgb(43, 155, 70);
+  -webkit-mask-image: var(--md-admonition-icon--success);
+  mask-image: var(--md-admonition-icon--success);
+}
+
+/* ANCHOR Correct page icon size */
+.md-nav__link svg {
+  width: 22px;
+}

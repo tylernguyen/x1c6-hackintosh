@@ -1,13 +1,91 @@
-# Project information
-site_name: Hackintosh the Thinkpad X1 Carbon 6th Gen
+# ANCHOR Project information
+site_name: Hackintosh the Thinkpad X1 Carbon 2018/6th Gen
 site_url: https://tylernguyen.github.io/x1c6-hackintosh
 site_author: Tyler Nguyen
+site_description: >-
+   macOS on the Thinkpad X1 Carbon 2018/6th Generation, powered by OpenCore.
 
-# Repository
+# ANCHOR Repository
 repo_name: tylernguyen/x1c6-hackintosh
 repo_url: https://github.com/tylernguyen/x1c6-hackintosh
 edit_uri: ""
 
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/git
+    logo: material/laptop
+  custom_dir: docs/overrides
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: red
+      accent: yellow
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: red
+      accent: yellow
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+  features:
+    - announce.dismiss # NOTE Dismissable Announcement Banner
+    - search.highlight # NOTE Highlight Matched Occurences after a Search
+    - search.suggest
+    - navigation.instant # NOTE Instant Loading on Internal Links with XMLHttpRequest (XHR)
+    - navigation.top # NOTE Back-to-top button
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.tracking # NOTE Update URL with Active Anchor
+    - toc.follow # NOTE Anchor following in TOC
+  
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/tylernguyen
+  # NOTE Hide "Made with Material for MkDocs"
+  extra:
+    generator: false
+
+extra_css:
+  - stylesheets/extra.css
+
+# ANCHOR PLugins
+plugins:
+  - git-revision-date
+  - privacy
+  - search
+  - social
+  - tags
+
+# SECTION Extensions
+markdown_extensions:
+  # ANCHOR Python Markdown
+  - admonition
+  - attr_list # NOTE Grid, Annotations, Images, Buttons,
+  - md_in_html # NOTE Grid, Annotations, Images
+  - footnotes
+  - meta # NOTE YAML Front Matter
+
+ # ANCHOR Python Markdown Extensions
+  - pymdownx.details # NOTE Admonition
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.superfences: # NOTE Admoniton, Annotations, MermaidJS
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+# !SECTION
+
+# ANCHOR Page tree
 nav:
     - Home: index.md
     - Hardware:
@@ -48,44 +126,3 @@ nav:
           - MacbookPro14,1 ACPI: https://github.com/khronokernel/DarwinDumped/tree/master/MacBookPro/MacBookPro14%2C1
           - KabylakeOpenBoardPkg: https://github.com/tianocore/edk2-platforms/tree/master/Platform/Intel/KabylakeOpenBoardPkg
           - CFG Unlock without BIOS Mod: https://www.reddit.com/r/hackintosh/comments/hz2rtm/cfg_lockunlocking_alternative_method/
-
-theme:
-  name: material
-  icon:
-    logo: material/laptop
-  custom_dir: docs/overrides
-  palette:
-    scheme: default
-    primary: deep orange
-    accent: red
-  features:
-    - header.autohide
-    - search.highlight
-    - search.suggest
-    - navigation.instant
-    - navigation.top
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.tracking
-  
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/tylernguyen
-
-plugins:
-  - search
-
-markdown_extensions:
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-  - footnotes
