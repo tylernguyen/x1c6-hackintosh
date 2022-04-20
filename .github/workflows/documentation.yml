@@ -6,16 +6,24 @@ on:
     workflow_dispatch:
 
 jobs:
-  deploy:
+  documentation:
+    name: Build documentation
     runs-on: ubuntu-latest
-    if: github.event.repository.fork == false
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Set up Python runtime
+        uses: actions/setup-python@v2
         with:
           python-version: 3.x
-      - run: pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
+          
+      - name: Install Insiders build
+        if: github.event.repository.fork == false
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      - run: mkdocs gh-deploy --force
-      
+        run: pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git        
+        
+      - name: Deploy documentation
+        run: mkdocs gh-deploy --force
+        
