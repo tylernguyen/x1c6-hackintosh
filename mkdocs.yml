@@ -12,26 +12,37 @@ edit_uri: "edit/main/docs/"
 
 theme:
   name: material
-  custom_dir: overrides
+  custom_dir: material
   icon:
     repo: fontawesome/brands/git
     logo: material/laptop
-  custom_dir: docs/overrides
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/squirrel-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
+    - scheme: default
       accent: deep orange
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
+    - scheme: slate
       accent: amber
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
   features:
     - announce.dismiss # NOTE Dismissable Announcement Banner
+    - content.tooltips
     - search.highlight # NOTE Highlight Matched Occurences after a Search
     - search.suggest
     - navigation.instant # NOTE Instant Loading on Internal Links with XMLHttpRequest (XHR)
@@ -72,16 +83,25 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.mark
   - pymdownx.tilde
+  - pymdownx.keys
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+      options:
+        custom_icons:
+          - theme/.icons
   - pymdownx.superfences: # NOTE Admoniton, Annotations, MermaidJS
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
-      alternate_style: true 
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
 # !SECTION
 
 # ANCHOR Page tree
