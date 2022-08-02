@@ -20,9 +20,9 @@
 <p align="center">
 <a href="https://github.com/tylernguyen/obsidian-horizon/blob/main/LICENSE">
    <img src="https://img.shields.io/badge/License-The%20Unlicense-informational.svg"> </a>
-<a href="https://damnthattelevision.com/Contact">
+<a href="https://tylernguyebn.xyz/contact">
    <img src="https://img.shields.io/badge/%40-Contact-FFF27D"> </a>
-<a href="https://damnthattelevision.com/Support">
+<a href="https://github.com/sponsors/tylernguyen">
    <img src="https://img.shields.io/badge/%24-Support-ff69b4.svg"> </a>
 <a href="">
    <img src="https://img.shields.io/badge/Contributions-Welcome-orange.svg"> </a>
