@@ -84,7 +84,7 @@ Currently, there is no automatic solution available. For now, I recommend you cr
 | 4K UHD output via HDMI/ DisplayPort **(Modded BIOS)**  | ✅ | See `DMVT Pre-Allocated` to `64M`  | See [docs/BIOS.md](https://tylernguyen.github.io/x1c6-hackintosh/BIOS/) for information about modding the BIOS.           |
 | 4K UHD output via HDMI/ DisplayPort **(Vanilla BIOS)** | ✅ | See `/patches/OpenCore Patches/4K-Output-wo-BIOSmod.plist`     | -           |
 | USB 2.0, USB 3.0, and Micro SD Card Reader | ✅ | `SSDT-XHC1.aml`    | -     |
-| USB 3.1                                    | ⚠️ | `SSDT-TB-DSB2-XHC2.aml`    | Hotplug WIP     |
+| USB 3.1                                    | ⚠️ | `SSDT-TB-DSB2-XHC2.aml`    | USB 3.1 Gen2 hotplug will likely never work. It is also neither planned nor currently worked on. If you need USB 3.1 Gen2, coldboot the machine with the device attached.     |
 | USB Power Properties in macOS              | ✅ | `SSDT-XHC1.aml`    | -     |
 | Thunderbolt 3 Hotplug                      | ✅ | `SSDT-TB-*`     | Native interface within System Report   |
 
