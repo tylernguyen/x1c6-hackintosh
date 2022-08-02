@@ -6,7 +6,7 @@ A modded BIOS will allow for more optimizations to be made for macOS and will ov
 
 !!! recommendation
 
-    ![CH341a SPI Programmer and SOIC8 Clip](/img/CH341a.png){ align=right }
+    ![CH341a SPI Programmer and SOIC8 Clip](img/CH341a.png){ align=right }
 
     The CH341a SPI Programmer and SOIC8 Clip are needed to dump, mod, and flash the BIOS chip. There are better and more profession alternative devices but I've found this one to be adequate for the job.
 
@@ -24,16 +24,23 @@ Here are the steps to mod your BIOS (credits to `paranoidbashthot` and `\x`). At
 
 1. Refer to [digmorepaka/thinkpad-firnware-patches](https://github.com/digmorepaka/thinkpad-firmware-patches).
 2. Use `xx_80_patches-v*.txt`, I commented out WWAN patches since I do not need it.
-3. [@notthebee](https://github.com/notthebee) also has a useful video to follow: https://www.youtube.com/watch?v=ce7kqUEccUM
-4. Remember to **dump the vanilla twice and use `diff` to make sure things were dumped properly**, store this backup somewhere safe.
-5. Confirmed working `BIOS-v1.45`, I cannot be sure about other BIOS versions. Though they will most likely work as well.
-6. The modded BIOS does not need to be signed by `thinkpad-eufi-sign`. Remember to replace `4C 4E 56 42 42 53 45 43 FB` with `4C 4E 56 42 42 53 45 43 FF` on the patched BIOS.
 
-7. Your BIOS chip may not be made by Winbond, but by Macronix instead. In that case, add the argument `-c MX25L12835F/MX25L12845E/MX25L12865E` to `flashrom`. See [Issue #116](https://github.com/tylernguyen/x1c6-hackintosh/issues/116#issuecomment-778654320)
+!!! tip
+
+    [@notthebee](https://github.com/notthebee) also has a useful video to follow:
+
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ce7kqUEccUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+3. Remember to **dump the vanilla twice and use `diff` to make sure things were dumped properly**, store this backup somewhere safe.
+4. Confirmed working `BIOS-v1.45`, I cannot be sure about other BIOS versions. Though they will most likely work as well.
+5. The modded BIOS does not need to be signed by `thinkpad-eufi-sign`. Remember to replace `4C 4E 56 42 42 53 45 43 FB` with `4C 4E 56 42 42 53 45 43 FF` on the patched BIOS.
+
+6. Your BIOS chip may not be made by Winbond, but by Macronix instead. In that case, add the argument `-c MX25L12835F/MX25L12845E/MX25L12865E` to `flashrom`. See [Issue #116](https://github.com/tylernguyen/x1c6-hackintosh/issues/116#issuecomment-778654320)
    - Successfully modding your BIOS will reveal the `Advance Menu` tab.
 
 <p align="center">   
 <img align="center" src="https://user-images.githubusercontent.com/3349081/87883767-3d2d1780-c9cf-11ea-9fb0-f250590a3f28.jpg" alt="BIOS Advance Menu" width="300"> 
 </p>
 
-8. It goes without saying, after doing this, do not update your BIOS unless you want to do this again.
+7. It goes without saying, after doing this, do not update your BIOS unless you want to do this again.
