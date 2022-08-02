@@ -11,11 +11,12 @@ hide:
 
 #### Machine boots to black/BIOS, and/or selector
 
-- Double check your EFI paritiion dirrectory structure. It should look as `/Volumes/EFI/EFI/`
-  - `OC`
-  - `BOOT`
+- Double check your EFI paritiion dirrectory structure. The directory structure should look as `/Volumes/EFI/EFI/`
+    
+    - `OC`
+    - `BOOT`
 
-#### macOS Sierra, High Sierra, Catalina, and Big Sur
+#### Legacy macOS: Sierra, High Sierra, Catalina, and Big Sur
 
 - These were all working on the machine at one point. They should still working with some minor tweaks to the EFI. They won't be supported by me, however. You'll have to do this yourself.
 

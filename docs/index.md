@@ -7,7 +7,7 @@ hide:
 
 #### Does everything work?
 
-The core, majority functions work. Notable non-functional features include the fingerprint reader, WWAN, and USB 3.1 hotplug.
+Core functions work flawlessly. Notable non-functional features include the fingerprint reader, WWAN, and USB 3.1 Gen2 hotplug.
 
 #### Is this project maintained?
 

@@ -37,7 +37,7 @@ hide:
 
     Some patches within OC-Little can be oudated, badly done, or fragmented because of different patch authors. Consider using this resource only as a reference and basic guide, not a patch repository.
 
-3. Consider referencing the [MacbookPro14,1 ACPI Dump](https://github.com/khronokernel/DarwinDumped/tree/master/MacBookPro/MacBookPro14%2C1) when understanding certain functions within macOS.
+3. Consider referencing the [MacbookPro14,1 ACPI Dump](https://github.com/khronokernel/DarwinDumped/tree/master/MacBookPro/MacBookPro14%2C1) when trying to understand certain functions within macOS.
 
 ### Acidanthera Official Docs
 
