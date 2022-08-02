@@ -6,7 +6,7 @@ A modded BIOS will allow for more optimizations to be made for macOS and will ov
 
 !!! recommendation
 
-    ![CH341a SPI Programmer and SOIC8 Clip](img/CH341a.png){ align=right }
+    ![CH341a SPI Programmer and SOIC8 Clip](/docs/img/CH341a.png){ align=right }
 
     The CH341a SPI Programmer and SOIC8 Clip are needed to dump, mod, and flash the BIOS chip. There are better and more profession alternative devices but I've found this one to be adequate for the job.
 
@@ -29,7 +29,9 @@ Here are the steps to mod your BIOS (credits to `paranoidbashthot` and `\x`). At
 
     [@notthebee](https://github.com/notthebee) also has a useful video to follow:
 
+    <p align="center">
     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ce7kqUEccUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </p>
 
 
 3. Remember to **dump the vanilla twice and use `diff` to make sure things were dumped properly**, store this backup somewhere safe.
