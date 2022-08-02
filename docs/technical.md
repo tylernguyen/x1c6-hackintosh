@@ -1,4 +1,9 @@
-# Internal Technical Details on the X1C6
+---
+hide:
+  - navigation
+---
+
+## Internal Technical Details on the X1C6
 
 !!! note
 
@@ -16,9 +21,9 @@
 
 6. JackSense, EAPD, and AppleALC Patch Explaination: [Issue #75/ comment by ghost](https://github.com/tylernguyen/x1c6-hackintosh/issues/75#issuecomment-705889447)
 
-# External Technical Details
+## External Technical Details
 
-## ACPI, ASL, and Patches
+### ACPI, ASL, and Patches
 
 1. The patches written for this project are in ASL. Consder reading the [ACPI Source Language (ASL) Tutorial v20190625](https://acpica.org/sites/acpica/files/asl_tutorial_v20190625.pdf) to get a basic understanding of the patches' code.
 
@@ -34,10 +39,10 @@
 
 3. Consider referencing the [MacbookPro14,1 ACPI Dump](https://github.com/khronokernel/DarwinDumped/tree/master/MacBookPro/MacBookPro14%2C1) when understanding certain functions within macOS.
 
-## Acidanthera Official Docs
+### Acidanthera Official Docs
 
 
-## UEFI Secure Boot
+### UEFI Secure Boot
 
 It is possible to enable Secure Boot with macOS. Doing so will require custom secure boot keys and signing OpenCore binaries each update. See [profzei/Matebook-X-Pro-2018/wiki](https://github.com/profzei/Matebook-X-Pro-2018/wiki/Enable-BIOS-Secure-Boot-with-OpenCore) for a basic getting started guide.
 
@@ -45,6 +50,6 @@ It is possible to enable Secure Boot with macOS. Doing so will require custom se
 
     UEFI Secure Boot Explaination: [hac-mini-guide/details/secure-boot](https://osy.gitbook.io/hac-mini-guide/details/secure-boot)
 
-## Thunderbolt 3
+### Thunderbolt 3
 
 [osy](https://github.com/osy) has a great write-up of patching Thunderbolt 3 hotplug under macOS. See [Part 1](https://osy.gitbook.io/hac-mini-guide/details/thunderbolt-3-fix), [Part 2]( https://osy.gitbook.io/hac-mini-guide/details/thunderbolt-3-fix-part-2), and [Part 3](https://osy.gitbook.io/hac-mini-guide/details/thunderbolt-3-fix-part-3).
