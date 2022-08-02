@@ -9,7 +9,7 @@ hide:
 
     While inernal docs are written specifically for my X1C6, some of it are applicable to KabyLake ThinkPads. And to a lesser extent, different generation Carbon ThinkPads.
 
-1. Explainations of config choices in `config.plist`: [technical.config.plist.md](https://tylernguyen.github.io/x1c6-hackintosh/technical/config.plist/)
+1. Explainations of config choices in `config.plist`: [technical/config.plist.md](https://tylernguyen.github.io/x1c6-hackintosh/technical/config.plist/)
 
 2. Explaination of ACPI patches: [technical/patches.md](https://tylernguyen.github.io/x1c6-hackintosh/technical/patches/)
 
@@ -41,6 +41,9 @@ hide:
 
 ### Acidanthera Official Docs
 
+- Consider reading `Configuration.pdf` from the OpenCore release package if you haven't. From there, pay attention to `Differences.pdf` with everynew OpenCore releases.
+
+- WhateverGreen Intel HD Graphics FAQ: [WhateverGreen/Manual/FAQ.IntelHD.en.md](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
 
 ### UEFI Secure Boot
 

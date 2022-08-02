@@ -1,6 +1,4 @@
-## Vanilla BIOS Settings
-
-At the minimum, these BIOS settings must be made to install and run macOS without any problems:
+These BIOS settings must be made to install and run macOS without any problems:
 
 ``` mermaid
 graph LR
