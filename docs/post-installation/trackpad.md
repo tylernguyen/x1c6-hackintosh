@@ -2,6 +2,6 @@
 - In addition, I prefer to have tap to click on:  
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/tylernguyen/x1c6-hackintosh/main/docs/img/touchpad.png" width="400">
+  <img src="https://github.com/tylernguyen/x1c6-hackintosh/blob/main/docs/img/trackpad.png?raw=true" width="400">
 </p>
 
