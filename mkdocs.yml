@@ -14,7 +14,7 @@ theme:
   name: material
   custom_dir: material
   icon:
-    repo: fontawesome/brands/git
+    repo: fontawesome/brands/github
     logo: material/laptop
     admonition:
       note: octicons/tag-16
@@ -29,6 +29,9 @@ theme:
       bug: octicons/bug-16
       example: octicons/beaker-16
       quote: octicons/quote-16
+  font:
+    text: Public Sans
+    code: Fira Code  
   palette:
     - scheme: default
       accent: deep orange
