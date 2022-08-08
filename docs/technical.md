@@ -1,4 +1,4 @@
-## Internal Technical Details on the X1C6
+## Internal Resources
 
 !!! note
 
@@ -16,23 +16,23 @@
 
 6. JackSense, EAPD, and AppleALC Patch Explaination: [Issue #75/ comment by ghost](https://github.com/tylernguyen/x1c6-hackintosh/issues/75#issuecomment-705889447)
 
-## External Technical Details
+## External Resources
 
 ### ACPI, ASL, and Patches
 
-1. The patches written for this project are in ASL. Consder reading the [ACPI Source Language (ASL) Tutorial v20190625](https://acpica.org/sites/acpica/files/asl_tutorial_v20190625.pdf) to get a basic understanding of the patches' code.
+- The patches written for this project are in ASL. Consder reading the [ACPI Source Language (ASL) Tutorial v20190625](https://acpica.org/sites/acpica/files/asl_tutorial_v20190625.pdf) to get a basic understanding of the patches' code.
 
 !!! info
     
     The Ubuntu Wiki also has an [ACPI Tricks and Tips](https://wiki.ubuntu.com/Kernel/Reference/ACPITricksAndTips) section.
 
-2. [5T33Z0/OC-Little-Translated](https://github.com/5T33Z0/OC-Little-Translated) is the English docs translation of [daliansky/OC-little](https://github.com/daliansky/OC-little). It is helpful to refer to existing patches when Hackintoshing.
+- [5T33Z0/OC-Little-Translated](https://github.com/5T33Z0/OC-Little-Translated) is the English docs translation of [daliansky/OC-little](https://github.com/daliansky/OC-little). It is helpful to refer to existing patches when Hackintoshing.
 
 !!! warning
 
     Some patches within OC-Little can be oudated, badly done, or fragmented because of different patch authors. Consider using this resource only as a reference and basic guide, not a patch repository.
 
-3. Consider referencing the [MacbookPro14,1 ACPI Dump](https://github.com/khronokernel/DarwinDumped/tree/master/MacBookPro/MacBookPro14%2C1) when trying to understand certain functions within macOS.
+- Consider referencing the [MacbookPro14,1 ACPI Dump](https://github.com/khronokernel/DarwinDumped/tree/master/MacBookPro/MacBookPro14%2C1) when trying to understand certain functions within macOS.
 
 ### Acidanthera Official Docs
 
