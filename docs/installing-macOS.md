@@ -1,8 +1,3 @@
----
-hide:
-  - navigation
----
-
 ## Creating the macOS Installer
 
 Start by creating a vanilla macOS installer, refer to [Dortania's Creating the USB](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/).

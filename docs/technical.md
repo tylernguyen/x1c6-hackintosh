@@ -1,8 +1,3 @@
----
-hide:
-  - navigation
----
-
 ## Internal Technical Details on the X1C6
 
 !!! note

@@ -47,9 +47,9 @@ theme:
     - search.suggest
     - navigation.instant # NOTE Instant Loading on Internal Links with XMLHttpRequest (XHR)
     - navigation.top # NOTE Back-to-top button
-    - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.tracking # NOTE Update URL with Active Anchor
+    - navigation.sections
+    - navigation.expand
     - toc.follow # NOTE Anchor following in TOC
   
 extra:
