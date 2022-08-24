@@ -1654,8 +1654,6 @@
 				<string>boot-args</string>
 			</array>
 		</dict>
-		<key>LegacyEnable</key>
-		<false/>
 		<key>LegacyOverwrite</key>
 		<false/>
 		<key>LegacySchema</key>
@@ -1794,8 +1792,10 @@
 				<string>macOS Extended FS Support</string>
 				<key>Enabled</key>
 				<true/>
+				<key>LoadEarly</key>
+				<false/>
 				<key>Path</key>
-				<string>HfsPlus.efi</string>
+				<string>HFSPlus.efi</string>
 			</dict>
 			<dict>
 				<key>Arguments</key>
@@ -1804,6 +1804,8 @@
 				<string>OpenCore Runtime</string>
 				<key>Enabled</key>
 				<true/>
+				<key>LoadEarly</key>
+				<false/>
 				<key>Path</key>
 				<string>OpenRuntime.efi</string>
 			</dict>
@@ -1814,6 +1816,8 @@
 				<string>OpenCore Custom Boot Picker</string>
 				<key>Enabled</key>
 				<true/>
+				<key>LoadEarly</key>
+				<false/>
 				<key>Path</key>
 				<string>OpenCanopy.efi</string>
 			</dict>
@@ -1824,8 +1828,22 @@
 				<string>OpenCore Audio Engine</string>
 				<key>Enabled</key>
 				<true/>
+				<key>LoadEarly</key>
+				<false/>
 				<key>Path</key>
 				<string>AudioDxe.efi</string>
+			</dict>
+			<dict>
+				<key>Arguments</key>
+				<string>--show-csr</string>
+				<key>Comment</key>
+				<string>Menu Entry for Enabling/Disabling SIP</string>
+				<key>Enabled</key>
+				<true/>
+				<key>LoadEarly</key>
+				<false/>
+				<key>Path</key>
+				<string>ToggleSipEntry.efi</string>
 			</dict>
 		</array>
 		<key>Input</key>

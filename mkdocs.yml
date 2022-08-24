@@ -115,7 +115,7 @@ nav:
       - Optimizing Hardware: hardware/optimizing-hardware.md
     - BIOS:
       - Settings for Vanilla BIOS: BIOS/settings-for-vanilla-BIOS.md
-      - Modding the BIOS (optional): BIOS/modding-the-BIOS.md
+      - Modding the BIOS: BIOS/modding-the-BIOS.md
       - Settings for Modded BIOS: BIOS/settings-for-modded-BIOS.md
     - Installing macOS: installing-macOS.md
     - Post Installation:

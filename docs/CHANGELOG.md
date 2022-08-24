@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+### 2022-8-24
+
+#### Added
+- `ToggleSipEntry.efi` to easily enable/disable SIP status during boot picker.
+
+#### Changed
+- OC to 0.8.3
+- macOS to Monterey 12.5.1
+- Upgraded various Acidanthera kexts
+- Update hiDPI patching instructions
+
 ### 2022-4-20
 
 #### Added

@@ -1,6 +1,17 @@
 ## HiDPI, specfically, HiDPI for the WQHD-HDR 1440p Display
 
-- Run [xzhih/one-key-hidpi](https://github.com/xzhih/one-key-hidpi)
+!!! warning
+
+    Enabling HiDPI requires disabling Apple's System Integrity Protection (SIP).
+
+!!! danger
+
+    Users of `SecureBootModel` may end up in a RecoveryOS boot loop if the system partition has been modified. To resolve this, Reset NVRAM and set `SecureBootModel` to `Disabled`
+
+1. Disable SIP. I prefer to use `ToggleSipEntry.efi` at Boot Picker.
+2. Mount drive is writeable. See [instructions](https://dortania.github.io/OpenCore-Install-Guide/troubleshooting/extended/post-issues.html#writing-to-the-macos-system-partition)
+3. Run [xzhih/one-key-hidpi](https://github.com/xzhih/one-key-hidpi)
+4. Enable SIP.
 
 ## EDID Override
 

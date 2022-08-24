@@ -2,13 +2,13 @@
 
 <p align="center">
 <a href="https://www.apple.com/macos/big-sur/">
-  <img src="https://img.shields.io/badge/macOS-Monterey_v12.4-red.svg"/> </a>
+  <img src="https://img.shields.io/badge/macOS-Monterey_v12.5.1-red.svg"/> </a>
 <a href="https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-6th-gen-type-20kh-20kg/downloads/driver-list/component?name=BIOS%2FUEFI">
   <img src="https://img.shields.io/badge/BIOS-Modded_1.56-blue"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf">
   <img src="https://img.shields.io/badge/Model-20KH*-9cf"/> </a>
 <a href="https://github.com/acidanthera/OpenCorePkg">
-  <img src="https://img.shields.io/badge/OpenCore-0.8.2-12AED6"/> </a>
+  <img src="https://img.shields.io/badge/OpenCore-0.8.3-12AED6"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/issues"> 
   <img src="https://img.shields.io/github/issues/tylernguyen/x1c6-hackintosh"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/commits/master"> 
@@ -20,7 +20,7 @@
 <p align="center">
 <a href="https://github.com/tylernguyen/obsidian-horizon/blob/main/LICENSE">
    <img src="https://img.shields.io/badge/License-The%20Unlicense-informational.svg"> </a>
-<a href="https://tylernguyebn.xyz/contact">
+<a href="https://tylernguyen.xyz/contact">
    <img src="https://img.shields.io/badge/%40-Contact-FFF27D"> </a>
 <a href="https://github.com/sponsors/tylernguyen">
    <img src="https://img.shields.io/badge/%24-Support-ff69b4.svg"> </a>
@@ -49,14 +49,16 @@ I consider the state of this project to be **very stable**. Everything works the
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-### 2022-4-20
+### 2022-8-24
 
 #### Added
+- `ToggleSipEntry.efi` to easily enable/disable SIP status during boot picker.
 
 #### Changed
-- OC to 0.8.2
-- macOS to Monterey 12.4
+- OC to 0.8.3
+- macOS to Monterey 12.5.1
 - Upgraded various Acidanthera kexts
+- Update hiDPI patching instructions
 
 # Other Respositories
 

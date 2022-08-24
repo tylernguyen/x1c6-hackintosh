@@ -1,4 +1,8 @@
-!!! Danger
+!!! note
+
+    BIOS modding is optional.
+
+!!! danger
     
     The BIOS mod may permanently break TPM. Consider this if you wish to proceed, especially now that TPM is required for Windows 11.
 
