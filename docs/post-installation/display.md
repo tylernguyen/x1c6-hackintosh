@@ -1,4 +1,4 @@
-## HiDPI, specfically, HiDPI for the WQHD-HDR 1440p Display
+## HiDPI
 
 !!! warning
 

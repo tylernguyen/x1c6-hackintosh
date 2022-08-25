@@ -43,6 +43,7 @@ Currently, there is no automatic solution available. For now, I recommend you cr
 ### Non-Fuctional:
 | Feature                              | Status | Dependency          | Remarks                      |
 | :----------------------------------- | ------ | ------------------- | ---------------------------- |
+| Apple Music Lossless (DRM) | ❌ | | iGPU is incompatible with Apple's Lossless DRM. Try using an external DAC. |
 | Fingerprint Reader   | ❌ | `DISABLED` in BIOS to save power if not used in other OSes.   | Linux support was only recently added    |
 | Wireless WAN         | ❌ | `DISABLED` in BIOS to save power if not used in other OSes.   | Unable to investigate as I have no need and my model did not come with WWAN. |
 | Load Apple's Graphics Micro Code (GuC) | ❌ | | See [Issue #103](https://github.com/tylernguyen/x1c6-hackintosh/issues/103). Will never work AFAIK due to inherent incompatibility. |
@@ -65,7 +66,7 @@ Currently, there is no automatic solution available. For now, I recommend you cr
 | S3 Sleep/ Hibernation Mode 3 | ✅ | `SSDT-Sleep.aml` | |
 | Hibernation Mode 25          | ✅ | `RTCMemoryFixup.kext` and `HibernationFixup.kext`      | Supported, macOS uses mode 3 by default. Change to mode 25 via `pmset`.     |   
 | Custom Charge Threshold      | ✅ | `SSDT-EC.aml`, [YogaSMC.kext](https://github.com/zhen-zen/YogaSMC), and [YogaSMCPane](https://github.com/zhen-zen/YogaSMC)| Adjust with YogaSMCPane in System Preferences
-| Fan Control                  | ✅ | `SSDT-EC.aml`, [YogaSMC.kext](https://github.com/zhen-zen/YogaSMC), and [YogaSMCPane](https://github.com/zhen-zen/YogaSMC)| Adjust with YogaSMC App.
+| Fan Control                  | ✅ | `SSDT-EC.aml`, [YogaSMC.kext](https://github.com/zhen-zen/YogaSMC), and [YogaSMCApp](https://github.com/zhen-zen/YogaSMC)| Adjust with YogaSMC App.
 | Battery Life                 | ✅ | Native, comparable to Windows/Linux. Biggest impact is TB3, see [docs/BIOS.md](https://tylernguyen.github.io/x1c6-hackintosh/BIOS/)   | Will need a modded BIOS to disable `CFG Lock`
 
 
