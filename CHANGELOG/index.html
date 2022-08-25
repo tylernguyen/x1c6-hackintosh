@@ -1,0 +1,2594 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="macOS on the Thinkpad X1 Carbon 2018/6th Generation, powered by OpenCore.">
+      
+      
+        <meta name="author" content="Tyler Nguyen">
+      
+      
+        <link rel="canonical" href="https://tylernguyen.github.io/x1c6-hackintosh/CHANGELOG/">
+      
+      
+        
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1+insiders-4.22.0">
+    
+    
+      
+        <title>CHANGELOG - Hackintosh the Thinkpad X1 Carbon 2018/6th Gen</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3ccfee04.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 7.775V2.75a.25.25 0 0 1 .25-.25h5.025a.25.25 0 0 1 .177.073l6.25 6.25a.25.25 0 0 1 0 .354l-5.025 5.025a.25.25 0 0 1-.354 0l-6.25-6.25a.25.25 0 0 1-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.75 1.75 0 0 1 1 7.775zM6 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 1.75a.25.25 0 0 1 .25-.25h8.5a.25.25 0 0 1 .25.25v7.736a.75.75 0 1 0 1.5 0V1.75A1.75 1.75 0 0 0 11.25 0h-8.5A1.75 1.75 0 0 0 1 1.75v11.5c0 .966.784 1.75 1.75 1.75h3.17a.75.75 0 0 0 0-1.5H2.75a.25.25 0 0 1-.25-.25V1.75zM4.75 4a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5h-4.5zM4 7.75A.75.75 0 0 1 4.75 7h2a.75.75 0 0 1 0 1.5h-2A.75.75 0 0 1 4 7.75zm11.774 3.537a.75.75 0 0 0-1.048-1.074L10.7 14.145 9.281 12.72a.75.75 0 0 0-1.062 1.058l1.943 1.95a.75.75 0 0 0 1.055.008l4.557-4.45z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm6.5-.25A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75zM8 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M3.499.75a.75.75 0 0 1 1.5 0v.996C5.9 2.903 6.793 3.65 7.662 4.376l.24.202c-.036-.694.055-1.422.426-2.163C9.1.873 10.794-.045 12.622.26 14.408.558 16 1.94 16 4.25c0 1.278-.954 2.575-2.44 2.734l.146.508.065.22c.203.701.412 1.455.476 2.226.142 1.707-.4 3.03-1.487 3.898C11.714 14.671 10.27 15 8.75 15h-6a.75.75 0 0 1 0-1.5h1.376a4.489 4.489 0 0 1-.563-1.191 3.833 3.833 0 0 1-.05-2.063 4.636 4.636 0 0 1-2.025-.293.75.75 0 1 1 .525-1.406c1.357.507 2.376-.006 2.698-.318l.009-.01a.748.748 0 0 1 1.06 0 .75.75 0 0 1-.012 1.074c-.912.92-.992 1.835-.768 2.586.221.74.745 1.337 1.196 1.621H8.75c1.343 0 2.398-.296 3.074-.836.635-.507 1.036-1.31.928-2.602-.05-.603-.216-1.224-.422-1.93l-.064-.221c-.12-.407-.246-.84-.353-1.29a2.404 2.404 0 0 1-.507-.441 3.063 3.063 0 0 1-.633-1.248.75.75 0 0 1 1.455-.364c.046.185.144.436.31.627.146.168.353.305.712.305.738 0 1.25-.615 1.25-1.25 0-1.47-.95-2.315-2.123-2.51-1.172-.196-2.227.387-2.706 1.345-.46.92-.27 1.774.019 3.062l.042.19a.753.753 0 0 1 .01.05c.348.443.666.949.94 1.553a.75.75 0 1 1-1.365.62c-.553-1.217-1.32-1.94-2.3-2.768a85.08 85.08 0 0 0-.317-.265c-.814-.68-1.75-1.462-2.692-2.619a3.74 3.74 0 0 0-1.023.88c-.406.495-.663 1.036-.722 1.508.116.122.306.21.591.239.388.038.797-.06 1.032-.19a.75.75 0 0 1 .728 1.31c-.515.287-1.23.439-1.906.373-.682-.067-1.473-.38-1.879-1.193L.75 5.677V5.5c0-.984.48-1.94 1.077-2.664.46-.559 1.05-1.055 1.673-1.353V.75z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm9 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM6.92 6.085c.081-.16.19-.299.34-.398.145-.097.371-.187.74-.187.28 0 .553.087.738.225A.613.613 0 0 1 9 6.25c0 .177-.04.264-.077.318a.956.956 0 0 1-.277.245c-.076.051-.158.1-.258.161l-.007.004a7.728 7.728 0 0 0-.313.195 2.416 2.416 0 0 0-.692.661.75.75 0 0 0 1.248.832.956.956 0 0 1 .276-.245 6.3 6.3 0 0 1 .26-.16l.006-.004c.093-.057.204-.123.313-.195.222-.149.487-.355.692-.662.214-.32.329-.702.329-1.15 0-.76-.36-1.348-.863-1.725A2.76 2.76 0 0 0 8 4c-.631 0-1.155.16-1.572.438-.413.276-.68.638-.849.977a.75.75 0 1 0 1.342.67z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575L6.457 1.047zM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-.25-5.25a.75.75 0 0 0-1.5 0v2.5a.75.75 0 0 0 1.5 0v-2.5z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M3.404 12.596a6.5 6.5 0 1 1 9.192-9.192 6.5 6.5 0 0 1-9.192 9.192zM2.344 2.343a8 8 0 1 0 11.313 11.314A8 8 0 0 0 2.343 2.343zM6.03 4.97a.75.75 0 0 0-1.06 1.06L6.94 8 4.97 9.97a.75.75 0 1 0 1.06 1.06L8 9.06l1.97 1.97a.75.75 0 1 0 1.06-1.06L9.06 8l1.97-1.97a.75.75 0 1 0-1.06-1.06L8 6.94 6.03 4.97z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 0 0-.01.004L3.286 8.571A.25.25 0 0 0 3.462 9H6.75a.75.75 0 0 1 .694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0 0 12.538 7H9.25a.75.75 0 0 1-.683-1.06l2.008-4.418.003-.006a.02.02 0 0 0-.004-.009.02.02 0 0 0-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 0 1 2.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 0 1-.871.354h-.302a1.25 1.25 0 0 1-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.492 3.492 0 0 1 2.441 0l.999-1a.75.75 0 1 1 1.06 1.061l-.775.776c.616.63.995 1.493.995 2.444v.327c0 .1-.009.197-.025.292.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5c0 .409-.049.806-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A4.997 4.997 0 0 1 8 16a4.997 4.997 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5.013 5.013 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.684 1.684 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06zM6.173 5h3.654A.173.173 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173zM5.25 6.5a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75h-5.5z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458L5 5.782zM9.5 2.5h-3V6a.75.75 0 0 1-.117.403L4.73 9h6.54L9.617 6.403A.75.75 0 0 1 9.5 6V2.5zm-6.9 9.847L3.775 10.5h8.45l1.175 1.847a.75.75 0 0 1-.633 1.153H3.233a.75.75 0 0 1-.633-1.153z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.75 2.5a.75.75 0 0 0 0 1.5h10.5a.75.75 0 0 0 0-1.5H1.75zm4 5a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5zm0 5a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5zM2.5 7.75a.75.75 0 0 0-1.5 0v6a.75.75 0 0 0 1.5 0v-6z"/></svg>');}</style>
+
+
+    
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../assets/externals/fonts.googleapis.com/css.css">
+        <style>:root{--md-text-font:"Public Sans";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="CHANGELOG - Hackintosh the Thinkpad X1 Carbon 2018/6th Gen" >
+      
+        <meta  property="og:description"  content="macOS on the Thinkpad X1 Carbon 2018/6th Generation, powered by OpenCore." >
+      
+        <meta  property="og:image"  content="https://tylernguyen.github.io/x1c6-hackintosh/assets/images/social/CHANGELOG.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://tylernguyen.github.io/x1c6-hackintosh/CHANGELOG/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="CHANGELOG - Hackintosh the Thinkpad X1 Carbon 2018/6th Gen" >
+      
+        <meta  name="twitter:description"  content="macOS on the Thinkpad X1 Carbon 2018/6th Generation, powered by OpenCore." >
+      
+        <meta  name="twitter:image"  content="https://tylernguyen.github.io/x1c6-hackintosh/assets/images/social/CHANGELOG.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#changelog" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Hackintosh the Thinkpad X1 Carbon 2018/6th Gen" class="md-header__button md-logo" aria-label="Hackintosh the Thinkpad X1 Carbon 2018/6th Gen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6h16v10H4m16 2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4c-1.11 0-2 .89-2 2v10a2 2 0 0 0 2 2H0v2h24v-2h-4Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hackintosh the Thinkpad X1 Carbon 2018/6th Gen
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CHANGELOG
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tylernguyen/x1c6-hackintosh" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tylernguyen/x1c6-hackintosh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Hackintosh the Thinkpad X1 Carbon 2018/6th Gen" class="md-nav__button md-logo" aria-label="Hackintosh the Thinkpad X1 Carbon 2018/6th Gen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6h16v10H4m16 2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4c-1.11 0-2 .89-2 2v10a2 2 0 0 0 2 2H0v2h24v-2h-4Z"/></svg>
+
+    </a>
+    Hackintosh the Thinkpad X1 Carbon 2018/6th Gen
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tylernguyen/x1c6-hackintosh" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tylernguyen/x1c6-hackintosh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        
+        
+          <label class="md-nav__link" for="__nav_2">
+            
+  
+  <span class="md-ellipsis">
+    Hardware
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Hardware" data-md-level="1">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Hardware
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/parts-replacements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parts Replacements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/optimizing-hardware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optimizing Hardware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        
+        
+          <label class="md-nav__link" for="__nav_3">
+            
+  
+  <span class="md-ellipsis">
+    BIOS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="BIOS" data-md-level="1">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            BIOS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BIOS/settings-for-vanilla-BIOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Settings for Vanilla BIOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BIOS/modding-the-BIOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modding the BIOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BIOS/settings-for-modded-BIOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Settings for Modded BIOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installing-macOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing macOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+        
+        
+          <label class="md-nav__link" for="__nav_5">
+            
+  
+  <span class="md-ellipsis">
+    Post Installation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Post Installation" data-md-level="1">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Post Installation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../post-installation/iServices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iCloud, iMessage, FaceTime
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../post-installation/dual-booting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dual Booting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../post-installation/sleep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sleep
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../post-installation/display/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Display
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../post-installation/thunderbolt-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Thunderbolt 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../post-installation/keyboard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keyboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../post-installation/trackpad/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trackpad
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../issues/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Technical Details
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2022-8-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      2022-8-24
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2022-8-24">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2022-4-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      2022-4-20
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2022-4-20">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2022-2-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2022-2-21
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2022-2-21">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleted" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deleted
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2021-11-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      2021-11-5
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2021-11-5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2021-8-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2021-8-3
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2021-8-3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notice
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2021-6-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2021-6-21
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2021-6-21">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notice_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2021-6-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      2021-6-8
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2021-6-8">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notice_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2021-5-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      2021-5-15
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2021-5-15">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2021-4-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      2021-4-7
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2021-4-7">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2021-3-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      2021-3-6
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2021-3-6">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2021-2-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      2021-2-4
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2021-2-4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2021-1-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      2021-1-5
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2021-1-5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-12-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-12-26
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-12-26">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-11-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-11-17
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-11-17">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-11-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-11-14
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-11-14">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-11-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-11-13
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-11-13">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-11-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-11-3
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-11-3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#added_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-10-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-10-6
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-10-6">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notice_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notice
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#added_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-8-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-8-3
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-8-3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-7-18" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-7-18
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-7-18">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-6-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-6-29
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-6-29">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-6-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-6-26
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-6-26">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-6-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-6-1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-6-1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-5-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-5-27
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-5-27">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-5-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-5-24
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-5-24">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-5-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-5-22
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-5-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-5-21
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-5-21">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-5-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-5-9
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-5-9">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-4-6-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-4-6 (#2)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-4-6 (#2)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-4-6-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-4-6 (#1)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-4-6 (#1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-4-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-4-1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-4-1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-3-31" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-3-31
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-3-31">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-3-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-3-30
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-3-30">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deprecated
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-3-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-3-29
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-3-29">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-3-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-3-26
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-3-26">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-3-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-3-23
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-3-23">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-2-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-2-04
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-2-04">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2020-1-18" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020-1-18
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2020-1-18">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2019-12-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      2019-12-22
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2019-12-22">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecated_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deprecated
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/tylernguyen/x1c6-hackintosh/edit/main/docs/CHANGELOG.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+  
+
+
+
+<h1 id="changelog">CHANGELOG</h1>
+<p>All notable changes to this project will be documented in this file.<br />
+The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>.</p>
+<h3 id="2022-8-24">2022-8-24</h3>
+<h4 id="added">Added</h4>
+<ul>
+<li><code>ToggleSipEntry.efi</code> to easily enable/disable SIP status during boot picker.</li>
+</ul>
+<h4 id="changed">Changed</h4>
+<ul>
+<li>OC to 0.8.3</li>
+<li>macOS to Monterey 12.5.1</li>
+<li>Upgraded various Acidanthera kexts</li>
+<li>Update hiDPI patching instructions</li>
+</ul>
+<h3 id="2022-4-20">2022-4-20</h3>
+<h4 id="added_1">Added</h4>
+<h4 id="changed_1">Changed</h4>
+<ul>
+<li>OC to 0.8.0</li>
+<li>macOS to Monterey 12.3.1</li>
+<li>Upgraded various Acidanthera kexts</li>
+</ul>
+<h3 id="2022-2-21">2022-2-21</h3>
+<h4 id="added_2">Added</h4>
+<h4 id="changed_2">Changed</h4>
+<ul>
+<li>OC to 0.7.8</li>
+<li>macOS to Monterey 12.2.1</li>
+<li>Upgraded various Acidanthera kexts</li>
+</ul>
+<h4 id="deleted">Deleted</h4>
+<ul>
+<li><code>RTCMemoryFixup.kext</code></li>
+</ul>
+<h3 id="2021-11-5">2021-11-5</h3>
+<h4 id="added_3">Added</h4>
+<ul>
+<li><code>BluetToolFixup.kext</code> to fix Bluetooth stack in macOS Monterey. (It should on load on macOS Monterey).</li>
+</ul>
+<h4 id="changed_3">Changed</h4>
+<ul>
+<li>OC to 0.7.5</li>
+<li>macOS to Monterey 12.0.1</li>
+<li>Upgraded various Acidanthera kexts.</li>
+<li>Upgraded <code>HFSPlus.efi</code></li>
+<li><code>install EFI</code> is now deprecated. Use the main <code>EFI</code> to install macOS (You may also wish to enable <code>ShowPicker</code>, as well as  <code>-v</code> in <code>boot-args</code>)</li>
+</ul>
+<h3 id="2021-8-3">2021-8-3</h3>
+<h4 id="notice">Notice</h4>
+<ul>
+<li>AX200 is now my wireless card. However, I'll continue to manintain a vanilla repo.</li>
+</ul>
+<h4 id="changed_4">Changed</h4>
+<ul>
+<li>OC to 0.7.2</li>
+<li>Upgraded various Acidanthera kexts.</li>
+<li><code>docs/Hardware.md</code> no longer requires a wireless card change. The recommendaiton/preferred card is now AX200.</li>
+</ul>
+<h3 id="2021-6-21">2021-6-21</h3>
+<h4 id="changed_5">Changed</h4>
+<ul>
+<li>Fixed <code>Resources</code> folder structuring and added new support files.</li>
+<li>Revert <code>ECEnabler.kext</code> in favor of <code>SSDT-Battery</code> (<code>ECEnabler</code> had some trouble updating charge level for me).</li>
+<li>Fix brightness adjustment patch.</li>
+</ul>
+<h4 id="notice_1">Notice</h4>
+<ul>
+<li>This will likely be the last repo update until macOS Monterey is stable. At which I plan:</li>
+<li>Implement AX200 is the network card with the OpenIntelWireless kexts.</li>
+</ul>
+<h3 id="2021-6-8">2021-6-8</h3>
+<h4 id="changed_6">Changed</h4>
+<ul>
+<li>OC to 0.7.0 and upgraded various Acidanthera kexts.</li>
+<li>Big Sur to 11.</li>
+<li>Deprecate <code>SSDT-Battery</code> in favor of <code>ECEnabler.kext</code></li>
+<li>Fixed Brightness Adjustment issue (forgot to add patch entry when removing AppleBacklightSmoother.kext two commits back)</li>
+</ul>
+<h4 id="notice_2">Notice</h4>
+<ul>
+<li>This will likely be the last repo update until macOS Monterey is stable. At which I plan:</li>
+<li>Implement AX200 is the network card with the OpenIntelWireless kexts.</li>
+</ul>
+<h3 id="2021-5-15">2021-5-15</h3>
+<h4 id="changed_7">Changed</h4>
+<ul>
+<li>OC to 0.6.9 and upgraded various Acidanthera kexts.</li>
+</ul>
+<h4 id="removed">Removed</h4>
+<ul>
+<li>ACTUALLY AppleBacklightSmoother.kext per <a href="https://github.com/tylernguyen/x1c6-hackintosh/issues/122">Issue #122</a>, will readd to the repo once the issue is resolved.</li>
+</ul>
+<h3 id="2021-4-7">2021-4-7</h3>
+<h4 id="changed_8">Changed</h4>
+<ul>
+<li>OC to 0.6.8 and upgraded various Acidanthera kexts.</li>
+<li>OC <code>Resources</code> per master repo update.</li>
+</ul>
+<h4 id="removed_1">Removed</h4>
+<ul>
+<li>AppleBacklightSmoother.kext per <a href="https://github.com/tylernguyen/x1c6-hackintosh/issues/122">Issue #122</a>, will readd to the repo once the issue is resolved.</li>
+</ul>
+<h3 id="2021-3-6">2021-3-6</h3>
+<h4 id="changed_9">Changed</h4>
+<ul>
+<li>OC to 0.6.7 and upgraded various Acidanthera kexts.</li>
+<li>YogaSMC to <code>1.4.3</code></li>
+<li>Depricate some <code>SSDT-Keyboard</code> patches now that YogaSMC partially handles keyboard locale.</li>
+<li>Added note on flashing Macronix BIOS chip.</li>
+</ul>
+<h3 id="2021-2-4">2021-2-4</h3>
+<h4 id="changed_10">Changed</h4>
+<ul>
+<li>OC to 0.6.6 and upgraded various Acidanthera kexts</li>
+<li>Upgraded <code>Resources</code> with latest `OCBinaryData</li>
+</ul>
+<h3 id="2021-1-5">2021-1-5</h3>
+<h4 id="changed_11">Changed</h4>
+<ul>
+<li>OC to 0.6.5 and upgraded various Acidanthera kexts</li>
+<li>Added <code>ocvalidate</code> (0.6.5) in <code>OC</code> to easily check and validate <code>config.plist</code> changes.</li>
+</ul>
+<h3 id="2020-12-26">2020-12-26</h3>
+<h4 id="changed_12">Changed</h4>
+<ul>
+<li>OC to 0.6.4 and upgraded various Acidanthera kexts</li>
+<li>YogaSMC to 1.4.1 (Remember to upgrade your YogaSMC App and PrefPane)</li>
+<li>YogaSMC implementation on this machine is now considered stable.</li>
+</ul>
+<h3 id="2020-11-17">2020-11-17</h3>
+<h4 id="changed_13">Changed</h4>
+<ul>
+<li>Updated various TB3 patches and instructions.</li>
+<li>Added misc. DeviceProperties to <code>config.plist</code></li>
+</ul>
+<h3 id="2020-11-14">2020-11-14</h3>
+<h4 id="added_4">Added</h4>
+<ul>
+<li><code>SSDT-PWRB</code> to patch power button.</li>
+</ul>
+<h4 id="changed_14">Changed</h4>
+<ul>
+<li>Parition TB3 patch into smaller, more readable chunks.</li>
+<li><code>SSDT-XHC2</code> is also now apart of this.</li>
+<li>Removed experimental stuff from <code>SSDT-Sleep</code></li>
+<li>Updated to <code>SSDT-Battery</code> to rev8, thanks @benbender</li>
+<li>Updated some documenation, with more detailed documentation coming.</li>
+</ul>
+<h3 id="2020-11-13">2020-11-13</h3>
+<h4 id="changed_15">Changed</h4>
+<ul>
+<li>Upgraded to Big Sur</li>
+<li>Upgraded to BIOS-v1.50 and added corresponding ACPI dump.</li>
+<li>Upgraded <code>YogaSMC</code> to stable build <code>1.3.0</code></li>
+<li>Compatibiltity and improvements on <code>SSDT-Battery</code>. Thanks @benbender</li>
+<li>Experimental TB3 patch by @benbender:</li>
+<li>Complete hotplug and power management without modded TB3 controller firmware</li>
+<li>NOTE: Brokenb USB 3.1 Gen2 hotplug still, but everything else is amazing!</li>
+<li>Everyone thanks @benbender again! This would not have been possible without his hard work and research.</li>
+</ul>
+<h4 id="removed_2">Removed</h4>
+<ul>
+<li>Deprecated legacy keyboard patches. <code>YogaSMC</code> is now recommended and preferred.</li>
+<li><code>TbtForcePower.efi</code> as it is no longer needed.</li>
+<li><code>ThunderboltReset.kext</code> has it is no longer needed.</li>
+</ul>
+<h3 id="2020-11-3">2020-11-3</h3>
+<h4 id="changed_16">Changed</h4>
+<ul>
+<li>OC to 0.6.3 and upgrade various Acidanthera kexts</li>
+<li>Restructured docs: depricated legacy things and combined duplicates.</li>
+<li><code>YogaSMC</code> is now the preferred method to handle Fn keys instead of ThinkpadAssisstant.</li>
+<li>Note that <code>YogaSMC</code> is still in its infancy, so you still prefer ThinkpadAssistant, use <code>SSDT-Keyboard-Legacy.dsl</code> and <code>/patches/OpenCore Patches/ Keyboard-Legacy.plist</code></li>
+<li>Thank you @zhen-zen for the great kext and app.</li>
+<li>Updated <code>config.plsit</code>:</li>
+<li>Removed depricated ACPI renames in accordance with new ACPI patches.</li>
+<li>Added <code>Arch</code> value to each kext entry in accordance with new OpenCore doc.</li>
+<li>Added Thunderbolt 3 Device Properties.</li>
+<li>Added <code>ExtendBTFeatureFlags</code> value to replace <code>BT4LEContinuityFixup</code></li>
+<li>Reorganized subdirectories within <code>/patches/</code> to make things easier to find and understand.</li>
+<li>Renamed <code>3_README-POSTinstallation.md</code> to <code>SUMMARY.md</code> since it's not really a step but more of an overview of what patches what.</li>
+<li>More readble and better writing of <code>SSDT-Keyboard</code></li>
+<li>New <code>SSDT-PNLF</code> to accomodate <code>AppleBacklightSmoother.kext</code></li>
+<li>New battery patch <code>SSDT-Battery</code> that fixes accesses to 16byte-EC-field HWAC (Issue #82).</li>
+<li><code>SSDT-Sleep</code> is an all-in-one sleep patch over <code>SSDT-PTSWAK</code>, <code>SSDT-GPRW</code>, <code>SSDT-EXT*</code></li>
+<li>It is no longer necessary to set sleep mode to <code>Linux</code> in BIOS as it is now indepently set by <code>SSDT-Sleep</code></li>
+<li><code>If (_OSI ("Darwin"))</code> and <code>SSDT-DTPG</code> are now replaced in favor of <code>SSDT-Darwin</code> and <code>OSDW</code>, just like in genuine Macs.</li>
+<li>Removed <code>USBPorts.kext</code> in favor of patching/mapping via ACPI with <code>SSDT-XHC1</code>, <code>SSDT-XHC2</code>, and <code>SSDT-USBX</code></li>
+<li><code>README.md</code>:</li>
+<li>Turned different sections into menus for better readability.</li>
+<li>Merged <code>3_README-POSTinstallation.md</code> into the <code>SUMMARY</code> section.</li>
+<li>Set <code>HibernateMode</code> to <code>NVRAM</code> instead of <code>Auto</code></li>
+</ul>
+<h4 id="added_5">Added</h4>
+<ul>
+<li><code>update.sh</code> script to automatically build and replace all ACPI patches</li>
+<li><code>SSDT-HWAC</code> to patch access to 16byte-EC-field HWAC</li>
+<li><code>SSDT-EC</code> to patch embedded controller for use with <code>YogaSMC</code></li>
+<li><code>SSDT-Debug</code>, <code>SSDT-HOOKS</code>, and <code>Debug.plist</code> for debugging if needed</li>
+<li><code>SSDT-INIT</code> to configure system values: <code>HPET</code>, <code>DYTC</code>, and <code>DPTF</code></li>
+<li><code>YogaSMC.kext</code> to interface with the device's EC. Make sure to also install the <a href="https://github.com/zhen-zen/YogaSMC/releases">app and pref pane</a>.</li>
+<li><code>AppleBacklightSmoother.kext</code> is just as its name implies.</li>
+<li><code>BrightnessKeys.kext</code> to handle Fn keys with ACPI renames.</li>
+<li>Documentation of modding the Thunderbolt 3 controller.</li>
+</ul>
+<h4 id="removed_3">Removed</h4>
+<ul>
+<li><code>SSDT-HPET</code>, similar to genuine Macs, HPET is now disabled within <code>SSDT-INIT</code></li>
+</ul>
+<h3 id="2020-10-6">2020-10-6</h3>
+<h4 id="notice_3">Notice</h4>
+<ul>
+<li>Just getting back to my rountine and maintaining this project. There has been many developments lately, especially with Thunderbolt 3 ACPI patches and <a href="https://github.com/zhen-zen/YogaSMC">YogaSMC</a>. It will take some time for me to review all these developments and understand them. Meanwhile, it seems @benbender has taken matters to his own hand while I was away :)</li>
+<li>His experimental fork: https://github.com/benbender/x1c6-hackintosh</li>
+<li>I will create an issue to specfically to discuss YogaSMC usage and config on this machine.</li>
+<li>Looking forward, Big Sur is almost here so I want to get this project back onto the latest stable build before it comes out.</li>
+</ul>
+<h4 id="changed_17">Changed</h4>
+<ul>
+<li>Support for Hibernation Mode 25. As with normal macOS machines, mode 3 is default, but if you want, mode 25 is now also an option.</li>
+<li>There seems to be a bug with the GitHub release version of <code>ThunderboltReset.kext</code> so I replaced it one built by @benbender. You can monitor the issue here <a href="https://github.com/osy86/ThunderboltReset/issues/7">osy86/ThunderboltReset/issues/7</a>. Thank you @benbender for noticing this.</li>
+<li>OC to 0.6.2</li>
+<li>Upgraded various Acidanthera kexts as well as <code>VoodooRMI</code></li>
+</ul>
+<h4 id="added_6">Added</h4>
+<ul>
+<li>Added <code>RTCMemoryFixUp</code> for support of Hibernation Mode 25.</li>
+<li>OpenCore config patch for FHD Touchscreen.</li>
+<li>OpenCore config patch for Intel wireless.</li>
+</ul>
+<h4 id="removed_4">Removed</h4>
+<ul>
+<li>ALCPlugFix is now deprecated and is replaced by new AppleALC (per issue #75). Please run <code>uninstall.sh</code> from the previous commit to remove ALCPlugFix. </li>
+<li>Delete legacy DiskImage voice from OC <code>Resources</code></li>
+<li><code>GPRW</code> ACPI patch to fix Bluetooth wake. Make sure that your Wake-on-LAN is disabled in BIOS to prevent sleep problems.</li>
+<li>Removed advice to disable DPTF in modded BIOS as it can break methods in ACPI. Thanks @benbender</li>
+<li><code>SMCSuperIO</code> as it was unnecessary.</li>
+</ul>
+<h3 id="2020-8-3">2020-8-3</h3>
+<h4 id="added_7">Added</h4>
+<ul>
+<li>Added macOS Boot chime support. Disabled by default, <code>PlayChime</code> to <code>Yes</code> if you want it.</li>
+<li>Boot chime was upsampled by me using Audacity, will use this upsampled file until <code>AudioDxe.efi</code> can upsample audio on the fly.</li>
+</ul>
+<h4 id="changed_18">Changed</h4>
+<ul>
+<li>OC to 0.6 and upgraded various acidanthera kexts.</li>
+<li><a href="https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/1_README-HARDWAREandBIOS.md">docs/1_README-HARDWAREandBIOS.md</a>:</li>
+<li>BIOS modding instructions, confirmed working on <code>BIOS-v1.45</code>. Thanks @benbender for bringing this to my attention.</li>
+<li>CPU Performance/Battery configuration guidelines. A year and a half after <a href="https://github.com/tylernguyen/x1c6-hackintosh/issues/28">Issue #28</a> is opened. Thank you to everyone in that issue.</li>
+<li>Upgraded <code>VoodooRMI</code>, this kext is now stable.</li>
+<li>Offloaded universally applicable parts of this guide to <code>dortania</code> as referring to their often updated content should be better.</li>
+<li><code>config.plist</code> is now defaulted to users with a BIOS mod, those without a BIOS mod will need to add <code>config_unmoddedBIOS.plist</code> to <code>config.plist</code> </li>
+<li>Enforces modeset to fix <a href="https://github.com/tylernguyen/x1c6-hackintosh/issues/69">Issue #69</a></li>
+</ul>
+<h3 id="2020-7-18">2020-7-18</h3>
+<h4 id="added_8">Added</h4>
+<ul>
+<li>EDID Override patch for FHD screen. Thanks <a href="https://github.com/Paolo97Gll">@Paolo97Gll</a></li>
+</ul>
+<h4 id="changed_19">Changed</h4>
+<ul>
+<li>By default, <code>OpenCore-EFI</code> now has the 4K output patch disabled for easier system upgrades. Install <code>OpenCore patches/4K-Output</code> if you need it.</li>
+<li>Upgraded <code>VoodooRMI</code></li>
+<li>Documentation changes for readability. </li>
+</ul>
+<h3 id="2020-6-29">2020-6-29</h3>
+<h4 id="added_9">Added</h4>
+<ul>
+<li>X1 6th Gen Hardware Maintenance Guide pdf.</li>
+<li>Display Patches in <code>patches/Internal Displays/</code> for the WQHD HDR Screen:</li>
+<li>Color profile as calibrated by notebookcheck</li>
+<li>EDID override to patch HDMI hotplug and overclock refresh rate. Thank you @veelar</li>
+<li>Please follow instructions on <a href="https://github.com/tylernguyen/x1c6-hackintosh/issues/60">Issue #60</a> to create an EDID override for your own display. Make sure to create a pull request!</li>
+<li>Repo issue template to deter low effort issues and better diagnosing and support.</li>
+<li>More documentation in <code>EFI-OpenCore/README.md</code> about decisions on <code>config.plist</code></li>
+</ul>
+<h4 id="changed_20">Changed</h4>
+<ul>
+<li>Reverted to previous, simpler iGPU framebuffer patches.</li>
+</ul>
+<h3 id="2020-6-26">2020-6-26</h3>
+<h4 id="added_10">Added</h4>
+<ul>
+<li><code>VoodooRMI</code> as alternative trackpad option. <strong>Enabled by default, feel free to revert back to <code>VoodooPS2Mouse</code> and <code>VoodooPS2Trackpad</code> if you prefer</strong>. *Note, there's currently a bug with RMI where the touchpad would not load once in a while. The RMI kext uploaded in this repo has a temp fix by me (See <a href="https://github.com/VoodooSMBus/VoodooSMBus/pull/41">VoodooSMBUS/PR</a>). However, the issue is still ongoing and the dev team is aware of it. I'm switching this repo to VoodooRMI because I believe it's the future and I want to possible bugs to be reported to be fixed for the kext's first stable release.  </li>
+<li>Kernel patches to enable 4K external graphics, thank you so much <a href="https://github.com/benbender">@benbender</a></li>
+<li><code>XQ74</code> patch in <code>SSDT-Keyboard</code> to support <code>FnLock</code> HUD per ThinkpadAssistant 1.8.0</li>
+<li>In <a href="https://github.com/tylernguyen/x1c6-hackintosh/blob/master/EFI-OpenCore/README.md">EFI-OpenCore/README.md</a>, I've added a short section explaining why certain variables are the way they are in my <code>config.plist</code>. I will continue to update this section with more details as time goes on.  </li>
+</ul>
+<h4 id="changed_21">Changed</h4>
+<ul>
+<li>iGPU Framebuffer patching for HDMI issue in Catalina. <ul>
+<li>In Catalina/WhateverGreen version, for some reasons my previous framebuffer patches for HDMI no longer worked. So I re-did the patch in mode details but eventually the property that fixed it was <code>disable-external-gpu</code> or <code>-wegnoegpu</code>. For some strange reasons, that variable activated on-board HDMI. See <a href="https://www.tonymacx86.com/threads/guide-general-framebuffer-patching-guide-hdmi-black-screen-problem.269149/page-123">similar reports here</a>. I'm going to create an issue on acidanthera/bugtracker soon to report to the dev team. In the mean time, keep this property if you rely on HDMI and do not have an eGPU. Delete this property if you have an eGPU (You're likely using the HDMI on the eGPU anyway).</li>
+</ul>
+</li>
+<li>Fixed <code>VoodooPS2</code> kexts loading order.</li>
+<li>Various reference docs to dortania.</li>
+<li><code>HibernateMode</code> to <code>Auto</code></li>
+</ul>
+<h4 id="removed_5">Removed</h4>
+<ul>
+<li>Unnecessary Mutex OpenCore patches, all Mutex are already 0 in stock <code>DSDT</code>.</li>
+<li><code>SSDT-MCHC</code> and <code>SSDT-SBUS</code> for <code>VoodooRMI</code> compatibility.</li>
+</ul>
+<h3 id="2020-6-1">2020-6-1</h3>
+<h4 id="changed_22">Changed</h4>
+<ul>
+<li>OpenCore to 0.5.9</li>
+<li>Upgraded various Acidanthera kexts.</li>
+<li>Recompiled various SSDT with new iasl libraries.</li>
+<li>Replaced <code>SSDT-EXT3</code> with <code>SSDT-LED</code></li>
+<li>Change SSDT OEM ID to <code>tyler</code> to somewhat track distributions and usage across various projects</li>
+</ul>
+<h3 id="2020-5-27">2020-5-27</h3>
+<h4 id="changed_23">Changed</h4>
+<ul>
+<li>Keyboard backlight is now supported by <a href="https://github.com/MSzturc/ThinkpadAssistant">ThinkpadAssistant 1.7</a>, thank so much <a href="https://github.com/MSzturc">@MSzturc</a></li>
+<li>SSDT-keyboard to support ThinkpadAssistant 1.7.0</li>
+<li>Honestly, what's even left to improve on the keyboard? Open an issue.</li>
+</ul>
+<h3 id="2020-5-24">2020-5-24</h3>
+<h4 id="added_11">Added</h4>
+<ul>
+<li>Setting instructions better sleep in 5_README-other.md</li>
+</ul>
+<h4 id="changed_24">Changed</h4>
+<ul>
+<li>Bluetooth Toggle is now supported by <a href="https://github.com/MSzturc/ThinkpadAssistant">ThinkpadAssistant 1.6</a>, thank so much <a href="https://github.com/MSzturc">@MSzturc</a></li>
+<li>SSDT-keyboard to support ThinkpadAssistant 1.6.0</li>
+</ul>
+<h4 id="removed_6">Removed</h4>
+<ul>
+<li>BetterTouchTool is no longer needed for Fn key functions and has been removed.</li>
+<li><code>SMCLightSensor.kext</code> has been removed as the x1c6 has no ambient light sensor.</li>
+</ul>
+<h3 id="2020-5-22">2020-5-22</h3>
+<ul>
+<li>Further SSDT-Keyboard tweaks:<ul>
+<li>Windows (mismapped to Left Alt by default) is now properly mapped to Left GUI</li>
+<li>Left Alt (mismapped to Left GUI by default) is now properly mapped to Left Alt</li>
+<li>Right Alt (mismapped to Right GUI by default) is now properly mapped to Right Alt</li>
+</ul>
+</li>
+<li>This means that Karabiner-Elements is no longer a necessary for this project. Once less program! unless you need it for other purposes (like a hyper key). </li>
+<li>*Similarly, once Bluetooth toggle is implemented in ThinkpadAssistant, BetterTouchTool can also go away.</li>
+</ul>
+<h3 id="2020-5-21">2020-5-21</h3>
+<h4 id="changed_25">Changed</h4>
+<p>Keyboard Perfection is almost here!
+- Modified SSDT-Keyboard patch to be compatible with <a href="https://github.com/MSzturc/ThinkpadAssistant">ThinkpadAssistant</a>.
+    - Mute/unMute Microphone with F4, with LED!
+    - Disable WiFi with F8
+    - Mirror with F7
+    - Bluetooth, F10 still has to be handled by BetterTouchTool, but hopefully supported will be added soon. See my <a href="https://github.com/MSzturc/ThinkpadAssistant/issues/9">request</a></p>
+<h3 id="2020-5-9">2020-5-9</h3>
+<h4 id="changed_26">Changed</h4>
+<ul>
+<li>Upgraded OpenCore to 0.5.8</li>
+<li>Upgraded various acidanthera kexts.</li>
+<li>Fixed various dortania broken guide links.</li>
+<li>Removed <code>TbtForcePower.efi</code> from LiveUSB OpenCore <code>config.plist</code></li>
+<li>Added PM981 install suggestions per <a href="https://github.com/tylernguyen/x1c6-hackintosh/issues/43">Issue #43</a></li>
+<li>Changed ScanPolicy of <code>install_USB</code> to 0. </li>
+</ul>
+<h3 id="2020-4-6-2">2020-4-6 (#2)</h3>
+<h4 id="added_12">Added</h4>
+<ul>
+<li>Added OpenCanopy to EFI for Picker GUI support.  </li>
+<li>NVMeFix kext to EFI-installUSB for PM981 support.  </li>
+</ul>
+<h4 id="changed_27">Changed</h4>
+<ul>
+<li>Upgraded OpenCore to 0.5.7  </li>
+<li>Upgraded various kexts.  </li>
+</ul>
+<h3 id="2020-4-6-1">2020-4-6 (#1)</h3>
+<h4 id="added_13">Added</h4>
+<ul>
+<li>SSDT-EXT1-FixShutdown to fix the rare issue that sometimes a shutdown would result in a restart instead.  </li>
+<li>SSDT-HPET to patch out legacy IRQ conflicts.  </li>
+</ul>
+<h4 id="changed_28">Changed</h4>
+<ul>
+<li>Better notes and documentation with <code>config.plist</code>  </li>
+<li>Modularized each needed OpenCore config patches.  </li>
+</ul>
+<h3 id="2020-4-1">2020-4-1</h3>
+<h4 id="added_14">Added</h4>
+<ul>
+<li>ALCPlugFix to automatically change output to headphones after being plugged in, and to change it back to speakers after being unplugged.</li>
+<li>ALCPlugFix to fix the rare condition that audio is messed up after waking from sleep.</li>
+</ul>
+<h4 id="changed_29">Changed</h4>
+<ul>
+<li>More documentation about recommended macOS settings.</li>
+</ul>
+<h3 id="2020-3-31">2020-3-31</h3>
+<h4 id="added_15">Added</h4>
+<ul>
+<li>Further documentation regarding specific tweaks and recommmended macOS settings.</li>
+<li>ADB and PS2 code reference sheet.</li>
+</ul>
+<h4 id="changed_30">Changed</h4>
+<ul>
+<li>All Fn keys now have have an assigned key, remap as needed.</li>
+<li>Keyboard map is now in markdown.</li>
+</ul>
+<h3 id="2020-3-30">2020-3-30</h3>
+<h4 id="added_16">Added</h4>
+<ul>
+<li>OpenCore configuration folder intended for install media usage.</li>
+<li>Configuration, patches and documentation for alternative network cards, specifically the DW1560 and DW1820A.</li>
+</ul>
+<h4 id="changed_31">Changed</h4>
+<ul>
+<li>Moved <code>assets</code> folder into <code>docs/</code>.</li>
+</ul>
+<h4 id="deprecated">Deprecated</h4>
+<ul>
+<li>All things Clover. OpenCore is now my only friend.</li>
+</ul>
+<h4 id="removed_7">Removed</h4>
+<ul>
+<li>Removed EC related patches from <code>config.plist</code> as they are unnecessary.</li>
+</ul>
+<h3 id="2020-3-29">2020-3-29</h3>
+<h4 id="added_17">Added</h4>
+<ul>
+<li>SSDT-ALS0 hotpatch for faking ambient light sensor ALS0 per Catalina's brightness preservation.</li>
+<li>SSDT-GPRW hotpatching for fixing instant wake (0D/6D patch).</li>
+</ul>
+<h4 id="changed_32">Changed</h4>
+<ul>
+<li>SSDT-Keyboard with the exception of F7 and F12, now maps all hotkeys to a Fn value that can be remapped within macOS. In addition, PrtSc is now remapped to F13.</li>
+<li>SSDT-PLNF to a cleaner version.</li>
+<li>Similarly, battery patch has been simplified.</li>
+</ul>
+<h4 id="removed_8">Removed</h4>
+<ul>
+<li>Some unused patches within OpenCore config.plist has now been removed.</li>
+</ul>
+<h3 id="2020-3-26">2020-3-26</h3>
+<h4 id="changed_33">Changed</h4>
+<ul>
+<li>Switched to AppleALC layout 21.</li>
+</ul>
+<h3 id="2020-3-23">2020-3-23</h3>
+<h4 id="changed_34">Changed</h4>
+<ul>
+<li>Upgraded OpenCore to 0.5.6</li>
+</ul>
+<h3 id="2020-2-04">2020-2-04</h3>
+<h4 id="changed_35">Changed</h4>
+<ul>
+<li>Upgraded OpenCore to 0.5.5</li>
+<li>Upgraded kexts.</li>
+</ul>
+<h3 id="2020-1-18">2020-1-18</h3>
+<h4 id="changed_36">Changed</h4>
+<ul>
+<li>Upgraded OpenCore to 0.5.4</li>
+<li>Upgraded kexts.</li>
+</ul>
+<h3 id="2019-12-22">2019-12-22</h3>
+<h4 id="added_18">Added</h4>
+<ul>
+<li>Project website: https://tylernguyen.github.io/x1c6-hackintosh/</li>
+<li>ACPI dump for <code>BIOS-v1.43</code>.</li>
+<li>CHANGELOG.md to keep track of the project's developments.</li>
+<li>OpenCore bootloader, version <code>0.5.3</code>.</li>
+<li>Better SSDT patching with hotpatches under <code>patches</code>. Making sure to read <code>patches/README</code>.</li>
+</ul>
+<h4 id="changed_37">Changed</h4>
+<ul>
+<li>Switched completely to hotpatching through OpenCore. Credits to <a href="https://github.com/daliansky">daliansky</a> and <a href="https://github.com/jsassu20">jsassu20</a>.</li>
+<li>Updated main README, made it look more visually appealing and organized.</li>
+</ul>
+<h4 id="deprecated_1">Deprecated</h4>
+<ul>
+<li>Clover bootloader. Clover r5100 is the last version I used on this machine. Moving forward, OpenCore is my preferred bootloader. See <code>EFI-Clover/README.md</code>.</li>
+<li>Reorganized folder/project structure. Setup instructions and references now under <code>docs</code>.</li>
+</ul>
+<h4 id="removed_9">Removed</h4>
+<ul>
+<li>Old static patches.</li>
+<li>Old IORegistryExplorer dump.</li>
+</ul>
+
+  
+  
+
+
+
+
+
+              
+            </article>
+            
+<script>var input,hash=location.hash.slice(1);hash.startsWith("__tabbed_")&&((input=document.getElementById(hash)).checked=!0)</script>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+    
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["announce.dismiss", "content.tooltips", "search.highlight", "search.suggest", "navigation.instant", "navigation.top", "navigation.tracking", "navigation.sections", "navigation.expand", "toc.follow"], "search": "../assets/javascripts/workers/search.720157f5.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.3615f3ac.min.js"></script>
+      
+    
+  </body>
+</html>
