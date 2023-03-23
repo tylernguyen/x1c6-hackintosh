@@ -30,7 +30,7 @@ theme:
       example: octicons/beaker-16
       quote: octicons/quote-16
   font:
-    text: Public Sans
+    text: Roboto
     code: Fira Code  
   palette:
     - scheme: default
@@ -67,6 +67,12 @@ extra_css:
 
 # ANCHOR PLugins
 plugins:
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+      exclude:
+        - archive/*
+        - category/*
   - privacy
   - search
   - social
@@ -95,7 +101,7 @@ markdown_extensions:
       emoji_generator: !!python/name:materialx.emoji.to_svg
       options:
         custom_icons:
-          - theme/.icons
+          - material/.icons
   - pymdownx.superfences: # NOTE Admoniton, Annotations, MermaidJS
       custom_fences:
         - name: mermaid

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>19H1323</string>
+	<string>19H1615</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -17,13 +17,13 @@
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3.4</string>
+	<string>1.3.5</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.3.4</string>
+	<string>1.3.5</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
@@ -54,10 +54,10 @@
 				<integer>250</integer>
 				<key>FingerMajorMinorDiffMax</key>
 				<integer>10</integer>
-				<key>ForceTouchEmulation</key>
-				<true/>
 				<key>ForceTouchMinPressure</key>
 				<integer>90</integer>
+				<key>ForceTouchType</key>
+				<integer>1</integer>
 				<key>MinYDiffThumbDetection</key>
 				<integer>200</integer>
 				<key>PalmRejectionHeight</key>

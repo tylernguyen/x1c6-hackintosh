@@ -11,6 +11,7 @@
 1. Disable SIP. I prefer to use `ToggleSipEntry.efi` at Boot Picker.
 2. Mount drive is writeable. See [instructions](https://dortania.github.io/OpenCore-Install-Guide/troubleshooting/extended/post-issues.html#writing-to-the-macos-system-partition)
 3. Run [xzhih/one-key-hidpi](https://github.com/xzhih/one-key-hidpi)
+    - for Ventura: use this fork [yurhett/one-key-hidpi](https://github.com/yurhett/one-key-hidpi)
 4. Enable SIP.
 
 ## EDID Override

@@ -5,7 +5,35 @@
 	<key>files</key>
 	<dict/>
 	<key>files2</key>
-	<dict/>
+	<dict>
+		<key>PlugIns/RMII2C.kext</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			6CigMpN26G7T22ORS9CfflH6eL8=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"9cafe90a3238fdc7d00418688f745e38198443df" or cdhash H"e828a0329376e86ed3db63914bd09f7e51fa78bf"</string>
+		</dict>
+		<key>PlugIns/RMISMBus.kext</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			JGkme5f4wrAaegBPewdbL3ek5YE=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"08a5d1810a72fb643706a88eace16f3eff04339f" or cdhash H"2469267b97f8c2b01a7a004f7b075b2f77a4e581"</string>
+		</dict>
+		<key>PlugIns/VoodooInput.kext</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			JBICj5UHFFVVtj9lOA1p4Y4OGgY=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"b15c91dfd2afa91ec370660366d14a820eaa60cd" or cdhash H"2412028f9507145555b63f65380d69e18e0e1a06"</string>
+		</dict>
+	</dict>
 	<key>rules</key>
 	<dict>
 		<key>^Resources/</key>

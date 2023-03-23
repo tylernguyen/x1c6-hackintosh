@@ -1,0 +1,2 @@
+# NOTE Requirements for other plugins
+mkdocs-git-revision-date-localized-plugin>=1.2.0

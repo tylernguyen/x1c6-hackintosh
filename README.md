@@ -1,14 +1,14 @@
 ﻿<h1 align="center"> Hackintosh the Thinkpad X1 Carbon 6th Generation </h1>
 
 <p align="center">
-<a href="https://www.apple.com/macos/big-sur/">
-  <img src="https://img.shields.io/badge/macOS-Monterey_v12.5.1-red.svg"/> </a>
+<a href="https://www.apple.com/macos/ventura/">
+  <img src="https://img.shields.io/badge/macOS-Ventura_v13.2.1-red.svg"/> </a>
 <a href="https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-6th-gen-type-20kh-20kg/downloads/driver-list/component?name=BIOS%2FUEFI">
   <img src="https://img.shields.io/badge/BIOS-Modded_1.56-blue"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/references/x1c6-Platform_Specifications.pdf">
   <img src="https://img.shields.io/badge/Model-20KH*-9cf"/> </a>
 <a href="https://github.com/acidanthera/OpenCorePkg">
-  <img src="https://img.shields.io/badge/OpenCore-0.8.3-12AED6"/> </a>
+  <img src="https://img.shields.io/badge/OpenCore-0.9.0-12AED6"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/issues"> 
   <img src="https://img.shields.io/github/issues/tylernguyen/x1c6-hackintosh"/> </a>
 <a href="https://github.com/tylernguyen/x1c6-hackintosh/commits/master"> 
@@ -49,16 +49,13 @@ I consider the state of this project to be **very stable**. Everything works the
 
 ##### Recent | [Changelog Archive](https://github.com/tylernguyen/x1c6-hackintosh/blob/master/docs/CHANGELOG.md)
 
-### 2022-8-24
-
-#### Added
-- `ToggleSipEntry.efi` to easily enable/disable SIP status during boot picker.
+### 2023-3-23
 
 #### Changed
-- OC to 0.8.3
-- macOS to Monterey 12.5.1
+- OC to 0.9.0
 - Upgraded various Acidanthera kexts
-- Update hiDPI patching instructions
+- Upgraded `YogaSMC.kext`
+- Update HiDPI patching instructions, specfically for Ventura
 
 # Other Respositories
 
