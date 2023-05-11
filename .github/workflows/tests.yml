@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: brokeyourbike/ocvalidate-action@v0.2
+      - uses: brokeyourbike/ocvalidate-action@v0.3
         with:
           opencore-version: '0.9.0'
           release: true
