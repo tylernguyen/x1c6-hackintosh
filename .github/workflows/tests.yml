@@ -14,4 +14,4 @@ jobs:
         with:
           opencore-version: '0.9.0'
           release: true
-      - run: ocvalidate ./EFI/OC/config.plist | grep -q 'No issues found'
+      - run: ocvalidate ./EFI/OC/config.plist
